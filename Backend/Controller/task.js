@@ -6,6 +6,7 @@ const getSingleData=()=>{
     console.log(`get single data`);
 }
 const createData=async (req,res)=>{
+    console.log(req.body);
     try {
         const data=await userData.create(req.body)
         console.log(`data created`);

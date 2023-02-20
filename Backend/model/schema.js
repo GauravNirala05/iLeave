@@ -13,6 +13,14 @@ const schema = new mongoose.Schema({
         type:String,
         required:[true,'Must provide'],
     },
+    contect_type:{
+        type:String,
+        default:"contract"
+    },
+    Department:{
+        type:String,
+        default:"CSE"
+    },
     password:{
         type:String,
         required:[true,'Must provide'],
