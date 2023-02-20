@@ -1,0 +1,2 @@
+This is a static file
+Any one can see it
