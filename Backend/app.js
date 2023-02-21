@@ -1,22 +1,32 @@
-const express = require('express')
-const app = express()
-const getdata = require(`./routes/adminRoutes`)
-const userroutes = require(`./routes/userRoutes`)
-const userDefine = require(`./routes/basic`)
+//most Essentials
 const mongoose=require('mongoose')
 require('dotenv').config()
+const {notFound}=require(`./middlewares/notFound`)
+const errorHandlerMiddleware=require(`./middlewares/errorhandler`)
+const express = require('express')
+const app = express()
 
 //middlewares
 app.use(express.json())
-
 app.use(express.static('../frontend'))
 
-app.use('/api/v1/peoples', getdata)
-app.use('/', userDefine)
+
+//All Routes
+const deanRoute = require(`./routes/deanRoutes`)
+const adminRoute= require(`./routes/adminRoutes`)
+const userRoute = require(`./routes/userRoutes`)
+const facultyRoute = require(`./routes/facultyRoutes`)
+app.use('/Dean', deanRoute)
+app.use('/Admin', adminRoute)
+app.use('/Faculty', facultyRoute)
+app.use('/', userRoute)
 
 
 
-const port = 4000
+app.use(notFound)
+app.use(errorHandlerMiddleware)
+
+const port = process.env.PORT||4000
 const start = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI,{
