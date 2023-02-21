@@ -1,0 +1,44 @@
+#home{
+    background:none;
+    height:100%;
+  }
+  #myvideo{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height:50%;
+    width:auto;
+    height:auto;
+    z-index:-1;
+    
+  }
+	.header{
+		color:#fff ;
+    font-family:Swis721 Ex BT;
+    font-size: 50px;
+	font-weight:bold ;
+	}
+	.img_nav{
+		height:70px;
+		width:70px;
+	}
+	.nav-nav{
+		font-weight:bold;
+		font-size:20px;
+		color:#fff ;
+	}
+	.nav-nav:hover{
+		color:rgba(104,66,239,255);
+	}
+	.navbtn{
+		color:#fff;
+		border-radius:100px;
+		background-color:#6842ef;
+		transition: transform .2s; 
+	}
+	.navbtn:hover{
+		background-color:#fff;
+		zoom: 1.2;
+	}

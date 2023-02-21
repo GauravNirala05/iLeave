@@ -1,0 +1,11 @@
+.container {
+    max-width: 1000px;
+  }
+
+.btn {
+    background-color: #2accc8;
+}
+.btn:hover
+{
+ background-color:gray;
+}
