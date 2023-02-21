@@ -10,12 +10,7 @@
     <title>iLeave | Apply Leave</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
-
-    
-
-    
-
-<link href="https://getbootstrap.com//docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://getbootstrap.com//docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="static/images/logo.svg" sizes="180x180">
@@ -24,152 +19,11 @@
 <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
 <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
 <link rel="icon" href="static/images/logo.svg">
-<meta name="theme-color" content="#712cf9">
+<meta name="theme-color" content="#712cf9">    
+<!-- Custom styles for this template -->
+<link href="https://getbootstrap.com/docs/5.3/examples/sidebars/sidebars.css" rel="stylesheet">
+<link href="assets/css/ApplyLeave.css" rel="stylesheet">
 
-
-    <style>
-
-
-/* Month header */
-.month {
-  padding: 70px 25px;
-  width: 100%;
-  background: #1abc9c;
-  text-align: center;
-}
-
-/* Month list */
-.month ul {
-  margin: 0;
-  padding: 0;
-}
-
-.month ul li {
-  color: white;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-}
-
-/* Previous button inside month header */
-.month .prev {
-  float: left;
-  padding-top: 10px;
-}
-
-/* Next button */
-.month .next {
-  float: right;
-  padding-top: 10px;
-}
-
-/* Weekdays (Mon-Sun) */
-.weekdays {
-  margin: 0;
-  padding: 10px 0;
-  background-color:#ddd;
-}
-
-.weekdays li {
-  display: inline-block;
-  width: 13.6%;
-  color: #666;
-  text-align: center;
-}
-
-/* Days (1-31) */
-.days {
-  padding: 10px 0;
-  background: #eee;
-  margin: 0;
-}
-
-.days li {
-  list-style-type: none;
-  display: inline-block;
-  width: 13.6%;
-  text-align: center;
-  margin-bottom: 5px;
-  font-size:12px;
-  color: #777;
-}
-
-/* Highlight the "current" day */
-.days li .active {
-  padding: 5px;
-  background: #1abc9c;
-  color: white !important
-}
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-      .button {
-        background-color: #0d6efd; /* Blue */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 7px;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/5.3/examples/sidebars/sidebars.css" rel="stylesheet">
   </head>
   <body>
     
@@ -232,13 +86,14 @@
   </symbol>
 </svg>
 
-<main class="d-flex flex-nowrap">
-  <h1 class="visually-hidden">Sidebars examples</h1>
+<main class="cont-1 d-flex flex-nowrap">
+  
 
   <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
     <a href="dashboard" class="d-flex align-items-center mx-2 mb-3 mb-md-0 me-md-auto">
       
-      <img src="static/images/logo.svg" style="height: 40px; width: 40px;">
+      <img src="images/logo.svg" style="height: 40px; width: 40px;">
+      <img src="images/namelogo.svg" class="mx-2"style="height: 40px; width: 120px;">
      
       <div class="container mx-2 px-0">
         <img src="static/images/namelogo.svg" style="height: 40px; width: 40px;" class="d-block w-100" alt="...">
@@ -247,12 +102,12 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li>
+      <!-- <li>
         <a href="#" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           Profile
         </a>
-      </li>
+      </li> -->
       <li>
         <a href="dashboard.html" class="nav-link text-white" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
@@ -287,137 +142,170 @@
   </div>
 
   
+<div class="overflow-auto">
 
+  <div class="container-fluid px-lg-4 m-4 "style="width: 1198px;">
+        <div class="card flex-column ">
 
-  <div class="container-fluid px-lg-4 m-4">
-    <div class="container-fluid p-0 px-lg-0 px-md-0 ">
-        <nav class=" navbar navbar-expand navbar-light my-navbar ">
+          <h4 class="mb-3 my-3 text-center">Apply Leave</h4>
+          <hr class="my-4 mx-3">
             
-            <div type ="button" id="nav-icon1" >
-                <span></span>
-                <span></span>
-                <span></span>
+          <form>
+            <div class="row">
+              <div class="col mx-4 mb-3">
+                <label for="username" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" id="username" placeholder="Username" required>
+                <div class="invalid-feedback">
+                    Your username is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col mx-4 mb-3">
+                <label for="phonenumber" class="form-label">Contact Number</label>
+                <input type="email" class="form-control" id="name" placeholder="Phone Number" name="Name">
+              </div>
+        
             </div>
-            
-            <ul class="navbar-nav navnav">
-                
-                <li >
-                    <h1 class="headtext">Apply Leave</h1></li>
-                
-            </ul>
+        
+            <div class="row">
+              <div class="col mx-4 mb-3">
+                <label class="label-text">Leave Starting from</label>
+                  <input type="Date" name="r6" value="" placeholder="Date Of Birth"
+                  class="form-control" />
+              </div>
+              
+              <div class="col mx-4 mb-3">
+                <label class="label-text">Leave Till</label>
+                  <input type="Date" name="r6" value="" placeholder="Date Of Birth"
+                  class="form-control" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col mx-4 mb-3">
+                <label for="day" class="form-label">Total Day</label>
+                <input type="email" class="form-control" id="name" placeholder="Days" name="day">
+              </div>
+              
+              <div class="col mx-4 mb-3">
+                  <label>Category</label>
+              <div class="my-3">
+              <div class="form-check-inline">
+                  <label class="form-check-label">
+                      <input required type="radio" class="mx-2 form-check-input" name="r4"
+                          value="Male">CL
+                  </label>
+              </div>
+              <div class="form-check-inline">
+                  <label class="form-check-label">
+                      <input required type="radio" class="mx-2 form-check-input" name="r4"
+                          value="Female">ML
+                  </label>
+
+              </div>
+              <div class="form-check-inline">
+                  <label class="form-check-label">
+                      <input required type="radio" class="mx-2 form-check-input" name="r4"
+                          value="Male">OL
+                  </label>
+              </div>
+              <div class="form-check-inline">
+                  <label class="form-check-label">
+                      <input required type="radio" class="mx-2 form-check-input" name="r4"
+                          value="Male">EL
+                  </label>
+              </div>
+              </div>
+              </div>
+            <div class="mx-4 mb-3">
+              <label for="state" class="form-label">Replacement</label>
+              <label for="state" class="small">(filled by faculty only)</label></div>
+              <div class="row">
+              <div class="col mx-4 mb-3">
+                <select class="form-select" id="state" required>
+                  <option value="">First Year</option>
+                  <option>Person 1</option>
+                  <option>Person 2</option>
+                  <option>Person 3</option>
+                  <option>Person 4</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide person name.
+                </div>
+              </div>
+
+              <div class="col mx-4 mb-3">
+                <select class="form-select" id="state" required>
+                  <option value="">Second Year</option>
+                  <option>Person 1</option>
+                  <option>Person 2</option>
+                  <option>Person 3</option>
+                  <option>Person 4</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide person name.
+                </div>
+              </div>
+
+              <div class="col mx-4 mb-3">
+                <select class="form-select" id="state" required>
+                  <option value="">Third Year</option>
+                  <option>Person 1</option>
+                  <option>Person 2</option>
+                  <option>Person 3</option>
+                  <option>Person 4</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide person name.
+                </div>
+              </div>
+
+              <div class="col mx-4 mb-3">
+                <select class="form-select" id="state" required>
+                  <option value="">Fourth Year</option>
+                  <option>Person 1</option>
+                  <option>Person 2</option>
+                  <option>Person 3</option>
+                  <option>Person 4</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide person name.
+                </div>
+              </div>
+
+              
+              </div>
+            </div>
+
+            <div class="col mx-4 mb-3">
+              <label for="username" class="form-label">Reason</label>
+              <div class="input-group has-validation">
+                <label for="exampleFormControlTextarea1"></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </div>
+        
+            <hr class="my-4 mx-3">
+            <div class="mx-4 mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">All the information are valid.</label>
+            </div>
+            <div class="d-grid gap-2 mx-3 my-4">
+              <button class="btn" type="button">Submit</button>
+            </div>
+          </form>
+        
         </div>
-         
-    <div class="row ml-auto">
-      <div class="col-sm">
-      <div class="card">
-          <div class="card-body">
-      <form method="post" class="form "  enctype="multipart/form-data">
-          <div class="row">
-              <div class="col-sm-12">
-              <div class="form-input">
-                  <label><b>Employee name</b><input id="t1" type="text" name="r1" value="" placeholder="Username" class="form-control"/></label>
-              
-              </div>
-              </div>
-          </div>
-          
-          <div class="row">
-              <div class="col-sm-6">
-                  <div class="form-input">
-                      <label  class="label-text"><b>Leave Starting from</b><input id="t6" type="Date" name="r6" value="" placeholder="Date Of Birth" class="form-control"/></label>
-              
-                  </div>
-                  <div class="form-input">
-                      <label class="label-text"><b>Leave Till</b><input id="t6" type="Date" name="r6" value="" placeholder="Date Of Birth" class="form-control"/>
-                  </div></label>
-              
-                  <div class="form-input">
-                      <label class="label-text"><b>Total Days</b> <input id="t2" type="number" name="r2" value="" placeholder="" class="form-control"/></label>
-             
-                  </div>
-                  <div class="form-input">
-                      <label class="label-text"><b>Reason</b><input id="t3" type="text" name="r3" value="" placeholder="" class="form-control"/></label>
-              
-                  </div>
-                  <div class="form-input">
-                      <label><b>Contact Address</b><input id="t4" type="text" name="r7" value="" placeholder="" class="form-control"/></label>
-              
-                  </div>
-              </div>
-              <div class="col-sm-6">
-                  <div class="form-input">
-                      <label ><b>Contact No</b> <input id="t4" type="number" name="r7" value="" placeholder="Phone no" class="form-control"/></label>                </div>
-                  <div class="form-input">
-                      <label ><b>File Upload</b><input id="t4" type="file" name="r7" value="" placeholder="" class="form-control"/></label>
-              
-                  </div>
-                  <!--<div class="form-input">
-                      <label><b>Submit Date</b> <input id="t6" type="Date" name="r6" value="" placeholder="" class="form-control"/></label>
-             
-                  </div>-->
-                  <div>
-                      <label ><b >Catogory</b></label>
-                  </div>
-                  <div class="form-check-inline">
-                      <label class="form-check-label">
-                      <input required type="radio" class="form-check-input" name="r4" value="Male">CL
-                      </label>
-                  </div>
-                  <div class="form-check-inline">
-                      <label class="form-check-label">
-                      <input required type="radio" class="form-check-input" name="r4" value="Female">ML
-                      </label>
-          
-                  </div>
-                  <div class="form-check-inline">
-                      <label class="form-check-label">
-                      <input required type="radio" class="form-check-input" name="r4" value="Male">OL
-                      </label>
-                  </div>
-                  <div class="form-check-inline">
-                      <label class="form-check-label">
-                      <input required type="radio" class="form-check-input" name="r4" value="Male">EL
-                      </label>
-                  </div>
-          
-                  <div class="form-input">
-                      <label ><b>Replacement Person</b><input id="t6" type="Date" name="r6" value="" placeholder="" class="form-control"/></label>
-              
-                  </div>
-                  <div class="form-input">
-                      <label ><b>Role</b><input id="t7" type="text" name="r8" value="" placeholder="Role" class="form-control"/></label>
-              
-                  </div>
-                  
-              </div>
-          </div>
-          <div class="row my-3 mx-1">
-          <button class="button btn-info " type="submit" name="sub">SUBMIT</button>
-</div>
-      </form>
-      </div>
-      </div>
-      </div>   
-      </div>
           
          
       
           
       </div>
-
-
-
-
-
-
+    </div>
 <br />
   
-
-
-
-
-  
-
 
     <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

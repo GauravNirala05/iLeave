@@ -1,6 +1,6 @@
 body{        
     height:100vh;
-    background-image:linear-gradient(to left,#531fa6,#68e8d1);
+    background-color:grey;
     display:flex;
     flex-direction:column;
     align-items:center;
