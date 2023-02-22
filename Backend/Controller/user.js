@@ -11,17 +11,17 @@ const getSingleData = async (req, res) => {
             res.status(200).json({ data })
         }
         else {
-            res.status(200).json({ msg: `No userName with name ${req.body.name}` })
+            return res.status(200).json({ msg: `No userName with name ${req.body.name}` })
         }
     } catch (error) {
-        res.status(404).json({ msg: error })
+        res.status(500).json({ msg: error })
     }
 }
 const createData = async (req, res) => {
     console.log(req.body.password);
     try {
         if (await userData.exists({ Name: req.body.name })) {
-            res.status(200).json({ msg: `Username ${req.body.name} already Exists ...` })
+           return res.status(200).json({ msg: `Username ${req.body.name} already Exists ...` })
         }
         else {
             const data = await userData.create(
