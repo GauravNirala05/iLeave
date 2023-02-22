@@ -40,7 +40,7 @@ background: linear-gradient(
         to top, #6842ef ,#68e8d1 );
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-color:#68e8d1;
+    color:#68e8d1;
 }
 .card-body{
     padding:2rem;

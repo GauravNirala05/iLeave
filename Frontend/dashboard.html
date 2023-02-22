@@ -83,6 +83,7 @@
     
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/sidebars/sidebars.css" rel="stylesheet">
+    <link href="assets/css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     
@@ -151,7 +152,8 @@
   <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
     <a href="dashboard" class="d-flex align-items-center mx-2 mb-3 mb-md-0 me-md-auto">
       
-      <img src="static/images/logo.svg" style="height: 40px; width: 40px;">
+      <img src="images/logo.svg" style="height: 40px; width: 40px;">
+      <img src="images/namelogo.svg" class="mx-2"style="height: 40px; width: 120px;">
      
       <div class="container mx-2 px-0">
         <img src="static/images/namelogo.svg" style="height: 40px; width: 40px;" class="d-block w-100" alt="...">
@@ -160,12 +162,6 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li>
-        <a href="#" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-          Profile
-        </a>
-      </li>
       <li>
         <a href="dashboard.html" class="nav-link active" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
@@ -204,17 +200,11 @@
 
 
 
-  <div class="container-fluid px-lg-10 m-4">
+  <div class="overflow-auto container-fluid px-lg-10 m-4">
          
     <div class="row ml-auto mx-4">
 
       <nav class=" navbar navbar-expand navbar-light my-navbar ">
-            
-        <div type ="button" id="nav-icon1" >
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
         
         <ul class="navbar-nav navnav">
             
@@ -297,86 +287,102 @@
       </div>
 
 
-      <div class="col-sm- py-2">
-        <div class="card">
-            <div class="card-body">
-        <form method="post" class="form " enctype="multipart/form-data">
-            
-                <a href="#" class="image">
-                  <img src="static/images/profile.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-                </a>
-                <label class="my-2" style="color:Black"><strong>Akhilesh Verma</strong></label>
-            
-            
-            <div class="row">
-                <div class="col-sm-6 my-2">
-                    <div class="form-input">
-                        <label class="label-text"><b>Email</b></label>
-                
-                    </div>
-                    <div class="form my-2">
-                        <label class="label-text"><b>Dept</b></label></div>
-                
-                    <div class="form-input my-2">
-                        <label class="label-text"><b>Job Title</b></label>
-               
-                    </div>
-                    <div class="contact-no my-2">
-                      <label class="label-text"><b>Contact Number</b></label>
-             
-                  </div>
-                    <div class="form-input my-2">
-                        <label class="label-text"><b>Contact Duration</b></label>
-                
-                    </div>
-                    <div class="form-input my-2">
-                        <label><b>Leave Reamining</b></label>
-                
+      <div class="row py-2">
+        <div class="col-sm-4 ">
+                    <div class="card">
+                        <div class="card-body">
+                        <div class="table-responsive">
+                        <table class="table v-middle">
+                            <thead>
+                                <tr class="bg-light">
+                                    <h5 class="border-top-0 text-center head">Leave Balance</h5>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="m-r-10">
+                                                
+                                            </div>
+                                            <div >
+                                               
+                                            <h4 class="m-b-0 ">
+                                                    CL
+                                                </h4>
+                                                <h4 class="m-b-0 ">
+                                                    ML
+                                                </h4>
+                                                <h4 class="m-b-0 ">
+                                                    OL
+                                                </h4>
+                                                <h4 class="m-b-0 ">
+                                                    EL
+                                                </h4>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div >
+                                            <h4 class="m-b-0 ">
+                                                       10/45
+                                            </h4>
+                                            <h4 class="m-b-0">
+                                                      12/45
+                                            </h4>
+                                            <h4 class="m-b-0">
+                                                      11/45
+                                            </h4>
+                                            <h4 class="m-b-0 ">
+                                                      12/45
+                                            </h4>
+                                            
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-input my-2">
-                        <label><b>akhileshverma@gmail.com</b> </label>                </div>
-                    <div class="form-input my-2">
-                        <label><b>Computer Science</b></label>
-                
-                    </div>
-                    <!--<div class="form-input">
-                        <label><b>Submit Date</b> <input id="t6" type="Date" name="r6" value="" placeholder="" class="form-control"/></label>
-               
-                    </div>-->
-                    <div class="jobtitle my-2">
-                        <label><b>HOD</b></label>
-                    </div>
-            
-                    <div class="form-input my-2">
-                        <label><b>XXXX-XX-XXXX</b></label>
-                
-                    </div>
-                    <div class="form-input my-2">
-                        <label><b>Permanent</b></label>
-                
-                    </div>
-                    <div class="form-input my-2">
-                      <label><b>5</b></label>
-              
-                    </div>
-                    
-                </div>
+
             </div>
-            
-        </form>
-        </div>
-        </div>
 
-
-
-
-      </div>   
-      </div>
-          
-         
-      
+            <div class="card col-sm-8 d-flex flex-column align-items-stretch flex-shrink-0 bg-white" >
+              <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                <span class="fs-5 fw-semibold">Leave Pending</span>
+              </a>
+              <div class="list-group list-group-flush border-bottom scrollarea">
+                <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Casual Leave</strong>
+                    <small>Wed</small>
+                  </div>
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                    <small>20 Jul 2023</small>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Medical Leave</strong>
+                    <small class="text-muted">Tues</small>
+                  </div>
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                    <small class="text-muted small mb-1">20 Jul 2023</small>
+                  </div>
+                </a>
+               
+                
+              </div>
+            </div>
+    </div> 
+  </div>   
           
       </div>
 
