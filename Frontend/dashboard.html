@@ -146,7 +146,7 @@
   </symbol>
 </svg>
 
-<main class="d-flex flex-nowrap">
+<main class="cell d-flex flex-nowrap">
   <h1 class="visually-hidden">Sidebars examples</h1>
 
   <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
@@ -172,6 +172,12 @@
         <a href="ApplyLeave.html" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#calendar3"/></svg>
           Apply Leave
+        </a>
+      </li>
+      <li>
+        <a href="status.html" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#collection"/></svg>
+          Status / Leave Approval
         </a>
       </li>
       <li>
@@ -202,7 +208,7 @@
 
   <div class="overflow-auto container-fluid px-lg-10 m-4">
          
-    <div class="row ml-auto mx-4">
+    <div class="row ml-auto mx-4 ">
 
       <nav class=" navbar navbar-expand navbar-light my-navbar ">
         
@@ -287,77 +293,13 @@
       </div>
 
 
-      <div class="row py-2">
-        <div class="col-sm-4 ">
-                    <div class="card">
-                        <div class="card-body">
-                        <div class="table-responsive">
-                        <table class="table v-middle">
-                            <thead>
-                                <tr class="bg-light">
-                                    <h5 class="border-top-0 text-center head">Leave Balance</h5>
-                                   
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="m-r-10">
-                                                
-                                            </div>
-                                            <div >
-                                               
-                                            <h4 class="m-b-0 ">
-                                                    CL
-                                                </h4>
-                                                <h4 class="m-b-0 ">
-                                                    ML
-                                                </h4>
-                                                <h4 class="m-b-0 ">
-                                                    OL
-                                                </h4>
-                                                <h4 class="m-b-0 ">
-                                                    EL
-                                                </h4>
-                                                
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                    <td>
-                                        <div >
-                                            <h4 class="m-b-0 ">
-                                                       10/45
-                                            </h4>
-                                            <h4 class="m-b-0">
-                                                      12/45
-                                            </h4>
-                                            <h4 class="m-b-0">
-                                                      11/45
-                                            </h4>
-                                            <h4 class="m-b-0 ">
-                                                      12/45
-                                            </h4>
-                                            
-                                        </div>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card col-sm-8 d-flex flex-column align-items-stretch flex-shrink-0 bg-white" >
+      <div class="row py-2 mx-1">
+            <div class="roll card col-sm-12 d-flex flex-column align-items-stretch flex-shrink-0 bg-white" >
               <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
                 <span class="fs-5 fw-semibold">Leave Pending</span>
               </a>
               <div class="list-group list-group-flush border-bottom scrollarea">
-                <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
                   <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Casual Leave</strong>
                     <small>Wed</small>
@@ -367,6 +309,27 @@
                     <small>20 Jul 2023</small>
                   </div>
                 </a>
+                <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Casual Leave</strong>
+                    <small>Wed</small>
+                  </div>
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                    <small>20 Jul 2023</small>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Casual Leave</strong>
+                    <small>Wed</small>
+                  </div>
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                    <small>20 Jul 2023</small>
+                  </div>
+                </a>
+                
                 <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
                   <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Medical Leave</strong>
@@ -381,6 +344,7 @@
                 
               </div>
             </div>
+          
     </div> 
   </div>   
           
@@ -417,6 +381,69 @@
      
       
     </div>
+    <div class="mx-3 my-4 col-sm-11 ">
+      <div class="card">
+          <div class="card-body">
+          <div class="table-responsive">
+          <table class="table v-middle">
+              <thead>
+                  <tr class="bg-light">
+                      <h5 class="border-top-0 text-center head">Leave Balance</h5>
+                     
+                  </tr>
+              </thead>
+              <tbody class="text-center">
+                  <tr>
+                      <td>
+                          <div class="d-flex align-items-center">
+                              <div class="m-r-10">
+                                  
+                              </div>
+                              <div >
+                                 
+                              <h4 class="m-b-0 ">
+                                      CL
+                                  </h4>
+                                  <h4 class="m-b-0 ">
+                                      ML
+                                  </h4>
+                                  <h4 class="m-b-0 ">
+                                      OL
+                                  </h4>
+                                  <h4 class="m-b-0 ">
+                                      EL
+                                  </h4>
+                                  
+                              </div>
+                          </div>
+
+                      </td>
+                      <td>
+                          <div >
+                              <h4 class="m-b-0 ">
+                                         10/45
+                              </h4>
+                              <h4 class="m-b-0">
+                                        12/45
+                              </h4>
+                              <h4 class="m-b-0">
+                                        11/45
+                              </h4>
+                              <h4 class="m-b-0 ">
+                                        12/45
+                              </h4>
+                              
+                          </div>
+                      </td>
+                  </tr>
+                  
+              </tbody>
+          </table>
+          </div>
+      </div>
+  </div>
+
+</div>
   </div>
 
   <div class="b-example-divider b-example-vr"></div>

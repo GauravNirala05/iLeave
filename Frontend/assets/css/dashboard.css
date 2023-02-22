@@ -6,15 +6,18 @@ body2{
     align-items:center;
     justify-content:center;
 }
-
+.cell {
+    background-color: #b8f3f2;
+  }
 .card{
     overflow:hidden;
     border:0 !important;
     border-radius:10px !important;
     box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.1);
-    
-
 }
+.roll {
+    overflow-y: hidden;
+  }
 .img-left{
     width:45%;
     background:url('images/clg1.png') center;
