@@ -9,10 +9,10 @@ const getleaveStatus = async (req, res) => {
             res.status(200).json({ data })
         }
         else {
-            res.status(200).json({ msg: `No Leave applied by ${name}` })
+           return res.status(404).json({ msg: `No Leave applied by ${name}` })
         }
     } catch (error) {
-        res.status(404).json({ msg: error })
+        res.status(500).json({ msg: error })
     }
 }
 const getReplacements = async (req, res) => {
@@ -25,10 +25,10 @@ const getReplacements = async (req, res) => {
             res.status(200).json({ data })
         }
         else {
-            res.status(200).json({ msg: `No replacement requested for ${name}` })
+           return res.status(200).json({ msg: `No replacement requested for ${name}` })
         }
     } catch (error) {
-        res.status(404).json({ msg: error })
+        res.status(500).json({ msg: error })
     }
 }
 const approveReplacements = async (req, res) => {
