@@ -1,8 +1,9 @@
 
-const fun = () => {
+const fun = async () => {
     try {
         const div = document.createElement('div')
-        fetch(`http://localhost:4000/faculty/sonu/leaveHistory`, {
+        
+        await fetch(`http://localhost:4000/faculty/sonu/leaveHistory`, {
 
         }).then((v) => {
             console.log(v.status)
