@@ -3,7 +3,7 @@ const leaves = require('../model/applyLeave')
 
 const allUsers = async (req, res) => {
     const data = await leaves.find({})
-    res.status(200).json({ data })
+    res.status(200).json({ data :data,hits:data.length})
 }
 const appliedUsers = async (req, res) => {
     const data = await leaves.find({HOD_approval: true})
