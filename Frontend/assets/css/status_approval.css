@@ -1,0 +1,144 @@
+body {
+    background: #f7f7fc;
+    font-family: Arial;
+}
+
+/* Fixed left navbar */
+.fixed-left-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    background: #283593;
+    padding: 0px;
+    z-index: 1;
+}
+
+/* Responsive left navbar */
+@media (max-width: 576px) {
+    .fixed-left-navbar {
+        position: static;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Responsive body */
+@media (min-width: 576px) {
+    .responsive-body {
+        margin-left: 270px;
+    }
+}
+
+.sidebar-brand {
+    padding: 10px;
+    display: block;
+    color: #fff;
+    pointer-events: none;
+    margin-bottom: 10px;
+}
+
+.img-sidebar {
+    height: 60px;
+    width: 60px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.logo-sidebar {
+    height: 60px;
+    width: 130px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+/* Navbar links */
+.nav-item {
+    padding: 7px;
+    box-shadow: 0 8px 6px -9px black;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.navbar-link {
+    color: #dfe3e8;
+    border-radius: 7px;
+}
+
+.navbar-link:hover {
+    color: black;
+}
+
+.navbar-link.active {
+    color: black;
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    background: #f7f7fc;
+    border-radius: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*header navbar design*/
+
+.main-content {
+    margin-right: 0px;
+}
+
+.img-nav {
+    font-family: 'Arial';
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.headtext {
+    padding-left: 10px;
+    color: black;
+    font-family: Arial;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.navnav {
+    margin-left: 10px;
+}
+
+.my-navbar {
+    margin-bottom: 20px;
+    padding-left: 0px;
+    background-color: #f7f7fc;
+    box-shadow: 2px 1px 1px rgba(143, 65, 65, 0.16);
+}
+
+.text-gray-600 {
+    color: #212c81 !important;
+
+}
+
+.nav-link .img-profile {
+    height: 40px;
+    width: 40px;
+}
+
+.badge-counter {
+    position: absolute;
+    transform: scale(.7);
+    transform-origin: top right;
+    right: 6px;
+    margin-top: 4px;
+}
+
+/*top header closed*/
