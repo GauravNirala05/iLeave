@@ -1,10 +1,22 @@
 
+const fun = () => {
+    try {
+        const div = document.createElement('div')
+        fetch(`http://localhost:4000/faculty/sonu/leaveHistory`, {
 
-fetch(url,{
-    method:'POST',
-    body:JSON.stringify({bodydata}),
-    headers:{
-        'Content-type':'application/json;charset=UTF-8'
-        
+        }).then((v) => {
+            console.log(v.status)
+            return v.json()
+        }).then((result) => {
+            console.log(result);
+            console.log(result.hits);
+            div.innerHTML = `<h1>${result.data[0].employee_name}</h1>`
+            document.body.appendChild(div)
+        })
+
+    } catch (error) {
+        console.log(error);
     }
-})
+}
+fun()
+>>>>>>> d707c2c4ca9d88521c7ea6a93bd1fddf20cad463

@@ -9,10 +9,8 @@ const app = express()
 
 //middlewares
 app.use(express.json())
-// app.use(express.static('../frontend'))
-app.get('/',(req,res)=>{
-    res.status(200).send(`This is home page`)
-})
+app.use(express.static('../frontend'))
+
 
 //All Routes
 const deanRoute = require(`./routes/AdminRoutes`)
