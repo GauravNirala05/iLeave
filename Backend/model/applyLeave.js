@@ -20,6 +20,10 @@ const applyLeave = new mongoose.Schema({
         type: Date,
         required: [true, 'must provide Ending Date']
     },
+    total_days: {
+        type: Number,
+        required: [true, 'must total Day']
+    },
     discription: {
         type: String,
         required: [true, 'must provide ']
@@ -72,10 +76,6 @@ const applyLeave = new mongoose.Schema({
             type: Boolean,
             default: false
         }
-    },
-    faculty_approval: {
-        type: Boolean,
-        default: false
     },
     HOD_approval: {
         type: Boolean,

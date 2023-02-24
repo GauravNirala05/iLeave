@@ -12,11 +12,10 @@ const appliedUsers = async (req, res) => {
 const approveLeave = async (req, res) => {
 
     const{id:userID}=req.params
-    const leave = await leaves.findAndUpdate({ _id:userID,HOD_approval: true },{principal_approval:true},{new:true})
-    // let num=leaves.from_date-leaves.to_date
-    // let ty=leaves.leave_type
-
-    // const user = await User.findAndUpdate({name:leaves.emmployee_name},)
+    const leave = await leaves.findOneAndUpdate({ _id:userID,HOD_approval: true },{principal_approval:true},{new:true})
+    let num=leave.total_days
+    
+    const user = await User.findOneAndUpdate({name:leaves.emmployee_name},req.body,{new:true})
 
     res.status(200).json({ leave })
 
