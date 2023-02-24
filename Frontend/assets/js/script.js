@@ -19,4 +19,3 @@ const fun = () => {
     }
 }
 fun()
->>>>>>> d707c2c4ca9d88521c7ea6a93bd1fddf20cad463
