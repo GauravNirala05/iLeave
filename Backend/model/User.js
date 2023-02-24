@@ -1,25 +1,25 @@
 const mongoose = require(`mongoose`)
 const leaveType = new mongoose.Schema({
-    casualLeave:{
+    casual_leave:{
         type:Number,
         default:12
     },
-    extraLeave:{
+    extra_leave:{
         type:Number,
         default:20
     },
-    meducalLeave:{
+    medical_leave:{
         type:Number,
         default:6
     },
-    optionalLeave:{
+    optional_leave:{
         type:Number,
         default:3
     }
 })
 
 const schema = new mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         trim:true,
         required:[true,'Must provide Your name'],
@@ -30,27 +30,28 @@ const schema = new mongoose.Schema({
         lowercase:true,
         required:[true,'Must provide Your name'],
     },
-    Mob_no:{
+    mob_no:{
         type:Number,
         required:[true,'Must provide Your name'],
     },
-    Designation:{
+    designation:{
         type:String,
+        enum:['faculty','HOD','principal'],
         required:[true,'Must provide'],
     },
     contect_type:{
         type:String,
         default:"contract"
     },
-    Department:{
+    department:{
         type:String,
-        default:"CSE"
+        required:[true,'Must provide'],
+        enum:['CSE','IT','ET&T']
     },
     password:{
         type:String,
         required:[true,'Must provide'],
     },
-    LeaveType:leaveType
-
+    leave_type:{type:leaveType,default:{}}
 })
 module.exports =mongoose.model('UserData',schema)

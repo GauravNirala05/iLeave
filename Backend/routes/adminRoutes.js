@@ -1,11 +1,12 @@
 const express = require(`express`)
 const router = express.Router()
 
-const {allUsers,approveLeave } = require(`../Controller/admin`)
+const { allUsers,approveLeave,appliedUsers } = require(`../Controller/admin`)
 
-// Admin routes
+// routes
 router.route('/alluser').get(allUsers)
-router.route(`/approve`).patch(approveLeave)
+router.route('/applieduser').get(appliedUsers)
+router.route('/:id/approv').patch(approveLeave)
 
 
 module.exports = router

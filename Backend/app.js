@@ -1,23 +1,26 @@
 //most Essentials
 const mongoose=require('mongoose')
 require('dotenv').config()
-const {notFound}=require(`./middlewares/notFound`)
+require(`express-async-errors`)
+const notFound=require(`./middlewares/notFound`)
 const errorHandlerMiddleware=require(`./middlewares/errorhandler`)
 const express = require('express')
 const app = express()
 
 //middlewares
 app.use(express.json())
-app.use(express.static('../frontend'))
-
+// app.use(express.static('../frontend'))
+app.get('/',(req,res)=>{
+    res.status(200).send(`This is home page`)
+})
 
 //All Routes
-const deanRoute = require(`./routes/deanRoutes`)
-const adminRoute= require(`./routes/adminRoutes`)
+const deanRoute = require(`./routes/AdminRoutes`)
+const adminRoute= require(`./routes/HODRoutes`)
 const userRoute = require(`./routes/userRoutes`)
 const facultyRoute = require(`./routes/facultyRoutes`)
-app.use('/Dean', deanRoute)
-app.use('/Admin', adminRoute)
+app.use('/principal', deanRoute)
+app.use('/HOD', adminRoute)
 app.use('/Faculty', facultyRoute)
 app.use('/', userRoute)
 
@@ -32,6 +35,7 @@ const start = async () => {
         await mongoose.connect(process.env.MONGO_URI,{
             useUnifiedTopology: true,
             useNewUrlParser:true,
+            useFindAndModify:false
         })
         console.log(`connected to db`);
         app.listen(port, () =>console.log(`Server is listning at ${port}...`))

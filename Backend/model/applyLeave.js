@@ -1,56 +1,98 @@
-const mongoose=require(`mongoose`)
-const refrence=new mongoose.Schema(
-    {
-        FirstYear:String,
-        SecondYear:String,
-        ThirdYear:String,
-        ForthYear:String
-    }
-)
-const applyLeave=new mongoose.Schema({
-    EmployeeName:{
-        type:String,
-        trim:true,
-        required:[true,'must provide Your Name']
+const mongoose = require(`mongoose`)
+// const refrence=new mongoose.Schema(
+//     {
+//         first_year:String,
+//         second_year:String,
+//         third_year:String,
+//         forth_year:String
+//     }
+// )
+const applyLeave = new mongoose.Schema({
+    employee_name: {
+        type: String,
+        trim: true,
     },
-    fromDate:{
-        type:Date,
-        required:[true,'must provide Starting Date']
+    from_date: {
+        type: Date,
+        required: [true, 'must provide Starting Date']
     },
-    toDate:{
-        type:Date,
-        required:[true,'must provide Ending Date']
+    to_date: {
+        type: Date,
+        required: [true, 'must provide Ending Date']
     },
-    Discription:{
-        type:String,
-        required:[true,'must provide ']
+    discription: {
+        type: String,
+        required: [true, 'must provide ']
     },
-    contect_no:{
-        type:Number,
-        required:[true,'must provide']
+    contect_no: {
+        type: Number,
+        required: [true, 'must provide']
     },
-    appliedDate:{
-        type:Date,
-        default:()=>Date.now()
+    appliedDate: {
+        type: Date,
+        default: () => Date.now()
     },
-    leaveType:{
-        type:String,
-        required:[true,`must provide`]
+    leave_type: {
+        type: String,
+        enum:['medical_leave','casual_leave','optional_leave','extra_leave']
     },
-    Replacement:refrence,
-    facultyApproval:{
-        type:Boolean,
-        default:false
+    // replacement:refrence,
+    reference1: {
+        name: {
+            type: String,
+        },
+        approved: {
+            type: Boolean,
+            default: false
+        }
     },
-    HODApproval:{
-        type:Boolean,
-        default:false
+    reference2: {
+        name: {
+            type: String,
+        },
+        approved: {
+            type: Boolean,
+            default: false
+        }
     },
-    PrincipalApproval:{
-        type:Boolean,
-        default:false
-    }
-    
-    
+    reference3: {
+        name: {
+            type: String,
+        },
+        approved: {
+            type: Boolean,
+            default: false
+        }
+    },
+    reference4: {
+        name: {
+            type: String,
+        },
+        approved: {
+            type: Boolean,
+            default: false
+        }
+    },
+    faculty_approval: {
+        type: Boolean,
+        default: false
+    },
+    HOD_approval: {
+        type: Boolean,
+        default: false
+    },
+    principal_approval: {
+        type: Boolean,
+        default: false
+    },
+    // status:{
+    //     type:Boolean,
+    //     validate:{
+    //         validator:(v)=>v>to_date,
+    //         mass
+    //     }
+    // }
+
+
 })
-module.exports=mongoose.model('leave',applyLeave)
+module.exports = mongoose.model('leave', applyLeave)

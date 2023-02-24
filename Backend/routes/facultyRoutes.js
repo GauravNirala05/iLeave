@@ -11,6 +11,7 @@ const {
 
 router.route(`/:name/leaveApply`).post(createleave)
 router.route(`/:name/leaveStatus`).get(getleaveStatus)
-router.route(`/:name/getReplacements`).get(getReplacements).post(approveReplacements)
+router.route(`/:name/getReplacements`).get(getReplacements)
+router.route(`/:name/:id/approve`).patch(approveReplacements)
 router.route(`/:name/leaveHistory`).get(getAllLeave)
 module.exports = router
