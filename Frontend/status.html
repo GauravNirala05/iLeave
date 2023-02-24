@@ -4,8 +4,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
     <title>iLeave | Dashboard</title>
 
@@ -28,63 +26,10 @@
 <meta name="theme-color" content="#712cf9">
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-
     
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/sidebars/sidebars.css" rel="stylesheet">
-    <link href="assets/css/dashboard.css" rel="stylesheet">
+    <link href="assets/css/status.css" rel="stylesheet">
   </head>
   <body>
     
@@ -147,9 +92,9 @@
   </symbol>
 </svg>
 
-<main class="cell d-flex flex-nowrap">
+<main class="cell d-flex ">
 
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 290px;">
+  <div class="d-flex flex-column flex-shrink-0 p-3 mr-3 text-bg-dark navi" >
     <a href="dashboard" class="d-flex align-items-center mx-2 mb-3 mb-md-0 me-md-auto">
       
       <img src="images/logo.svg" style="height: 40px; width: 40px;">
@@ -201,103 +146,321 @@
     </div>
   </div>
 
-
-
-
-
-
-  <div class="deck overflow-auto container-fluid px-lg-10 m-4 ">
-         
-    <div class="row ml-auto mx-4">
-
-      <nav class=" navbar navbar-expand navbar-light my-navbar ">
-    </div>
-
-      <div class="col-sm-">
-        <h4 class="headtext mx-4">Leave Status</h4></li>
-      <div class="card my-2">
-          <div class="card-body">
-            <div class="d-flex w-100 align-items-center justify-content-between">
-                <strong class="mb-1">Casual Leave</strong>
-                <small>Tusday</small>
-              </div>
-              <div class="d-flex w-100 align-items-center justify-content-between">
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-                <small>20 Jul 2023</small>
-              </div>
+  <div class="mx-2 d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 610px;">
+    <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <span class="fs-5 fw-semibold">Leave Status</span>
+  </div>
+    <div class="list-group list-group-flush border-bottom scrollarea">
+      <div class="list-group-item  py-2 lh-sm">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Casual Leave <label for="status">(Pending)</label></strong>
+          <div>
+            <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+            <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
           </div>
+        </div>
+        <div class="small">
+          <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+            <div class="card" style="width: 35rem;">
+                <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+            </div>  
+          </div>
+          <label for="day" class="mx-1">Wed</label>
+          <label for="date" class="mx-1">22-Feb-2023</label>
+          <div class="d-flex justify-content-end">
+            <span type="button" class=" mx-1 btn btn-sm btn-outline-success">Edit</span>
+            <span type="button" class=" btn btn-sm btn-outline-danger">Delete</span>
+          </div>
+        </div>  
       </div>
-      <div class="card my-2">
-        <div class="cell2 card-body">
-          <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">Casual Leave</strong>
-              <small>Tusday</small>
-            </div>
-            <div class="d-flex w-100 align-items-center justify-content-between">
-              <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-              <small>20 Jul 2023</small>
-            </div>
-        </div>
-    </div>
-      <div class="card my-2">
-        <div class="cell-red card-body">
-          <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">Medical Leave</strong>
-              <small>Wed</small>
-            </div>
-            <div class="d-flex w-100 align-items-center justify-content-between">
-              <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-              <small>19 Jul 2023</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-">
-        <h4 class="headtext mx-4">Leave Approval</h4></li>
-      <div class="card my-2">
-          <div class="card-body">
-            <div class="d-flex w-100 align-items-center">
-                <strong class="mb-1">Akhil Sharma</strong>
-            </div>
-            <label class="mb-1">Casual Leave</label>
-            <div class="d-flex w-100 align-items-center justify-content-between">
-                <div class="col-10 mb-1 small">Reason..................................</div>
-                <small>From: 20 Jul 2023</small>
-            </div>
-            <div class="d-flex w-100 align-items-center justify-content-between">
-                <div class="col-10 mb-1 small">..................................</div>
-                <small>To: 25 Jul 2023</small>
-            </div>
-            <span class="mx-2">First Year</span>
-            <span type="button" class="btn btn-outline-success">Accept</span>
-            <span type="button" class="btn btn-outline-danger">Reject</span>
+
+      <div class="list-group-item py-2 lh-sm ">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Casual Leave</strong>
+          <div>
+            <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+            <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
           </div>
+        </div>
+        <div class="small">
+          <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+            <div class="card " style="width: 35rem;">
+                <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+            </div>  
+          </div>
+          <div class="my-1 d-flex justify-content-between ">
+            <div><label for="day" class="mx-2">Wed</label>
+            <label for="date" class="mx-1">22-Feb-2023</label></div>
+            <button class="btn btn-success btn-sm disabled"> Approved </button>
+          </div>
+        </div>  
       </div>
-      <div class="card my-2">
-        <div class="card-body">
-          <div class="d-flex w-100 align-items-center">
-              <strong class="mb-1">Rani Singh</strong>
+
+      <div class="list-group-item py-2 lh-sm ">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Casual Leave</strong>
+          <div>
+            <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+            <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
           </div>
-          <label class="mb-1">Medical Leave</label>
-          <div class="d-flex w-100 align-items-center justify-content-between">
-              <div class="col-10 mb-1 small">Reason..................................</div>
-              <small>From: 20 Jul 2023</small>
-          </div>
-          <div class="d-flex w-100 align-items-center justify-content-between">
-              <div class="col-10 mb-1 small">..................................</div>
-              <small>To: 25 Jul 2023</small>
-          </div>
-          <span class="mx-2">Third Year</span>
-          <span type="button" class="btn btn-outline-success">Accept</span>
-          <span type="button" class="btn btn-outline-danger">Reject</span>
         </div>
-    </div>
-    </div>
+        <div class="small">
+          <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+            <div class="card " style="width: 35rem;">
+                <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+            </div>  
+          </div>
+          <div class="my-1 d-flex justify-content-between ">
+            <div><label for="day" class="mx-2">Wed</label>
+            <label for="date" class="mx-1">22-Feb-2023</label></div>
+            <button class="btn btn-success btn-sm disabled"> Approved </button>
+          </div>
+        </div>  
+      </div>
 
+      <div class="list-group-item py-2 lh-sm ">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Casual Leave</strong>
+          <div>
+            <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+            <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+          </div>
+        </div>
+        <div class="small">
+          <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+            <div class="card " style="width: 35rem;">
+                <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+            </div>  
+          </div>
+          <div class="my-1 d-flex justify-content-between ">
+            <div><label for="day" class="mx-2">Wed</label>
+            <label for="date" class="mx-1">22-Feb-2023</label></div>
+            <button class="btn btn-danger btn-sm disabled"> Rejected </button>
+          </div>
+        </div>  
+      </div>
 
+      <div class="list-group-item py-2 lh-sm ">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">Casual Leave</strong>
+          <div>
+            <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+            <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+          </div>
+        </div>
+        <div class="small">
+          <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+            <div class="card " style="width: 35rem;">
+                <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+            </div>  
+          </div>
+          <div class="my-1 d-flex justify-content-between ">
+            <div><label for="day" class="mx-2">Wed</label>
+            <label for="date" class="mx-1">22-Feb-2023</label></div>
+            <button class="btn btn-success btn-sm disabled"> Approved </button>
+          </div>
+        </div>  
+      </div>
       
-  </div>   
-          
+      
+     
+      
+    </div>
+  </div>  
+    
+    <div class="mx-1 d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 610px;">
+      <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <span class="fs-5 fw-semibold">Leave Approval</span>
+      </a>
+
+      <div class="list-group list-group-flush border-bottom scrollarea">
+        <!-- First item -->
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Casual Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Medical Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Casual Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Casual Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Medical Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Casual Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Casual Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="list-group-item py-2 lh-sm ">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><label for="name">Rani Singh</label> (Casual Leave)</strong>
+            <div>
+              <div class="mb-1 mx-1">From: <label for="date">Date</label> </div>
+              <div class="mb-1 mx-1">To: <label for="date">Date</label> </div>
+            </div>
+          </div>
+          <div class="small">
+            <div class="d-flex w-100 align-items-center justify-content-between col-9 my-1 mb-1">
+              <div class="card " style="width: 35rem;">
+                  <label class="card-body"for="reason">Reason...........................................................................................................................................................................................</label>  
+              </div>  
+            </div>
+            <div class="my-1 d-flex justify-content-between ">
+              <div><label for="day" class="mx-2">Wed</label>
+              <label for="date" class="mx-1">22-Feb-2023</label></div>
+              <div><button class="btn btn-outline-success btn-sm "> Accept </button>
+              <button class="btn btn-outline-danger btn-sm "> Reject </button></div>
+            </div>
+          </div>  
+        </div>
       </div>
+    </div>
+      
 </main>
 
 

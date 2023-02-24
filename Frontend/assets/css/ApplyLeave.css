@@ -138,13 +138,13 @@
             max-width: 1000px;
           }
         
-        .btn {
+        /* .btn {
             background-color: #2accc8;
         }
         .btn:hover
         {
-         background-color:gray;
-        }
+         background-color:gray; */
+        /* } */
         .card{
             overflow:hidden;
             border:0 !important;
