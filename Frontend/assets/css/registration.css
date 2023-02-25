@@ -2,9 +2,6 @@
     max-width: 700px;
   }
 
-.btn {
-    background-color: #2accc8;
-}
 .btn:hover
 {
  background-color:gray;
