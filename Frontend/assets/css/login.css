@@ -1,6 +1,6 @@
 body{        
     height:100vh;
-    background-color:grey;
+    background-image:linear-gradient(to left,#531fa6,#68e8d1);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -17,7 +17,7 @@ body{
 }
 .img-left{
     width:45%;
-    background:url('images/clg1.png') center;
+    background:url('../assets/images/clg1.png') center;
     background-size:cover;
     
 }
@@ -40,7 +40,7 @@ background: linear-gradient(
         to top, #6842ef ,#68e8d1 );
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-color:#68e8d1;
+    color:#68e8d1;
 }
 .card-body{
     padding:2rem;
