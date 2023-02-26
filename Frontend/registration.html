@@ -23,19 +23,12 @@
     <!-- Custom styles for this template -->
     <link href="assets\css\registration.css" rel="stylesheet">
   </head>
-  <body class="cell">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container d-flex justify-content-around">
-        <a class="navbar-brand" href="#">
-          <img src="images/logo.svg" alt="Bootstrap" width="50" height="54">
-          <img src="images/namelogo.svg" alt="Bootstrap" width="120" height="70">
-        </a>
-      </div>
-    </nav>    
+  <body class="cell">  
+   
 <div class="card container mx-20 my-3 ">
 
-  <h4 class="mb-3 my-3 text-center">Registration</h4>
-  <hr class="my-4 mx-3">
+  <h4 class="mb-3 my-2 text-center">Register to <img src="images/name.svg" alt="Bootstrap" width="120" height="40"></h4>
+  <hr class="mx-3">
     
   <form id="signupform" method ="post">
     <div class="row">
@@ -58,26 +51,34 @@
 
     <div class=" mx-4 mb-3 ">
       <label for="email" class="form-label">Email </label>
+      <div class="input-group has-validation">
+        <span class="input-group-text"><img src="images/envelope-at.svg"></span>
       <input type="email" class="form-control" id="email" placeholder="you@example.com">
       <div class="invalid-feedback">
         Please enter a valid email address.
+      </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col mx-4 mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
+        <div class="input-group has-validation">
+          <span class="input-group-text"><img src="images/key.svg"></span>
+        <input type="password" placeholder="Password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
           Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+        </div>
         </div>
       </div>
       
       <div class="col mx-4 mb-3">
-        <label for="confirmpassword" class="form-label">Confirm Password</label>
-        <input type="password" id="confirmpassword" class="form-control" aria-describedby="passwordHelpBlock">
+        <label for="password" class="form-label">Confirm Password</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text"><img src="images/key.svg"></span>
+        <input type="password" placeholder="Password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
-          Reenter the Password.
+          </div>
         </div>
       </div>
     </div>
