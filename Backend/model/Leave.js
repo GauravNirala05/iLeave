@@ -1,5 +1,7 @@
 const mongoose = require(`mongoose`)
 
+const leavetype = new mongoose.Schema({})
+
 const leaveSchema = new mongoose.Schema({
     employee_id: {
         type: String,
@@ -36,7 +38,7 @@ const leaveSchema = new mongoose.Schema({
     },
     leave_type: {
         type: String,
-        enum:['medical_leave','casual_leave','optional_leave','extra_leave']
+        enum:['medical_leave','casual_leave','ordinary_leave','earned_leave']
     },
     // replacement:refrence,
     reference1: {

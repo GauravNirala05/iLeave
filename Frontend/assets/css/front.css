@@ -35,7 +35,6 @@
 	.navbtn{
 		color:#fff;
 		border-radius:100px;
-		background-color:#6842ef;
 		transition: transform .2s; 
 	}
 	.navbtn:hover{

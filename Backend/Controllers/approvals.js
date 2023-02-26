@@ -90,6 +90,24 @@ const approve = async (req, res) => {
                 }
 
                 const data = await Leave.findOneAndUpdate({ employee_id: targetID }, approveObject, { new: true })
+                const data1 = await Leave.findOne({ employee_id: targetID })
+                const type=data1.leave_type
+                const totalDay=data1.total_days
+                // const updateObj={}
+                // updateObj.leave_type={}
+                // if (type==='casual_leave') {
+                //     updateObj.leave_type=
+                // }
+                // if (type==='medical_leave') {
+                //     updateObj.leave_type=
+                // }
+                // if (type==='extra_leave') {
+                //     updateObj.leave_type=
+                // }
+                // if (type==='optional_leave') {
+                //     updateObj.leave_type=
+                // }
+
                 res.status(200).json({ status: 'SUCCESS', data: data })
             }
         }

@@ -8,9 +8,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    
+    <link rel="stylesheet" href="assets/css/registration.css">
 
 <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
@@ -18,12 +16,10 @@
 <link rel="apple-touch-icon" href="images\logo.svg" sizes="180x180">
 <link rel="icon" href="images\logo.svg" sizes="32x32" type="image/png">
 <link rel="icon" href="images\logo.svg" sizes="16x16" type="image/png">
-<link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
+
 <link rel="mask-icon" href="images\logo.svg" color="#712cf9">
 <link rel="icon" href="images/logo.svg">
 <meta name="theme-color" content="#712cf9">
-
-    
     <!-- Custom styles for this template -->
     <link href="assets\css\registration.css" rel="stylesheet">
   </head>
@@ -41,11 +37,11 @@
   <h4 class="mb-3 my-3 text-center">Registration</h4>
   <hr class="my-4 mx-3">
     
-  <form>
+  <form id="signupform" method ="post">
     <div class="row">
       <div class="col mx-4 mb-3">
-        <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="email" class="form-control" id="name" placeholder="Enter Name" name="Name">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="Name">
       </div>
 
       <div class="col mx-4 mb-3">
@@ -70,16 +66,16 @@
 
     <div class="row">
       <div class="col mx-4 mb-3">
-        <label for="inputPassword5" class="form-label">Password</label>
-        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
           Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
         </div>
       </div>
       
       <div class="col mx-4 mb-3">
-        <label for="inputPassword5" class="form-label">Confirm Password</label>
-        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+        <label for="confirmpassword" class="form-label">Confirm Password</label>
+        <input type="password" id="confirmpassword" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
           Reenter the Password.
         </div>
@@ -88,11 +84,11 @@
 
     <div class="row">
       <div class="col mx-4 mb-3">
-        <label for="state" class="form-label">Designation</label>
-        <select class="form-select" id="state" required>
-          <option value="">Choose...</option>
+        <label for="designation" class="form-label">Designation</label>
+        <select class="form-select" id="designation" required>
+          <option value="">Select...</option>
           <option>Admin</option>
-          <option>Facalty</option>
+          <option>Faculty</option>
           <option>HOD</option>
           <option>Principal</option>
         </select>
@@ -101,9 +97,9 @@
         </div>
       </div>
       <div class="col mx-4 mb-3">
-        <label for="state" class="form-label">Department</label>
-        <select class="form-select" id="state" required>
-          <option value="">Choose...</option>
+        <label for="department" class="form-label">Department</label>
+        <select class="form-select" id="department" required>
+          <option value="">Select...</option>
           <option>Civil</option>
           <option>Computer Science</option>
           <option>Electrical</option>
@@ -120,19 +116,15 @@
 
     <hr class="my-4 mx-3">
     <div class="mx-4 mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">All the information are valid.</label>
+      <input type="checkbox" class="form-check-input" id="checkbox">
+      <label class="form-check-label" for="checkbox">All the information are valid.</label>
     </div>
     <div class="d-grid gap-2 mx-3 my-4">
-      <button class="btn" type="button">Submit</button>
+      <button class="btn btn-primary" type="submit">Submit</button>
     </div>
   </form>
 
 </div>
-
-
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-      <script src="checkout.js"></script>
+<script src="./assets/js/registration.js"></script>
   </body>
 </html>
