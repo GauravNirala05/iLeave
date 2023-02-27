@@ -17,7 +17,7 @@ signupform.addEventListener('submit',function(event){
     console.log(designation)
     var department=document.getElementById('department').values
     console.log(department)
-=======
+
 // var signupform=document.getElementById('signupform')
 // signupform.addEventListener('submit',function(event){
 //     event.preventDefault()
