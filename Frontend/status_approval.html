@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="assets/css/status_approval.css">
 </head>
 <body>
-    <div class="fixed-left-navbar ">
+    
+    <nav class="fixed-left-navbar ">
         <a class="sidebar-brand " href="">
             <span class="align-middle"><img class="img-sidebar " src="images/logo.svg"><img
                     class="logo-sidebar" src="images/namelogo.svg">
@@ -49,52 +50,50 @@
             </li>
         </ul>
 
-    </div>
+    </nav>
+    
     <div class="responsive-body">
         <div class="deck overflow-auto container-fluid m-2 ">
 
             <div class="col-sm-12">
                 <h4 class="headtext mx-4">Leave Status</h4>
-                </li>
-                <div class="card my-2">
-                    <div class="card-body">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <strong class="mb-1">Casual Leave</strong>
-                            <small>Tusday</small>
-                        </div>
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the
-                                heading and date.</div>
-                            <small>20 Jul 2023</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card my-2">
-                    <div class="cell2 card-body">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <strong class="mb-1">Casual Leave</strong>
-                            <small>Tusday</small>
-                        </div>
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the
-                                heading and date.</div>
-                            <small>20 Jul 2023</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card my-2">
-                    <div class="cell-red card-body">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <strong class="mb-1">Medical Leave</strong>
-                            <small>Wed</small>
-                        </div>
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the
-                                heading and date.</div>
-                            <small>19 Jul 2023</small>
-                        </div>
-                    </div>
-                </div>
+                <table class="table table-bordered my-4">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Sr.</th>
+                        <th scope="col">App. Date</th>
+                        <th scope="col">Leave Name</th>
+                        <th scope="col">Frome Date</th>
+                        <th scope="col">To Date</th>
+                        <th scope="col">Replacement</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">HOD Approval</th>
+                        <th scope="col">Principal Approval</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>27 Feb 2023</td>
+                        <td>Medical Leave</td>
+                        <td>28 Feb 2023</td>
+                        <td>2 Mar 2023</td>
+                        <td colspan="">
+                            <div>Person 1</div>
+                            <div>Person 2</div>
+                            <div>Person 3</div>
+                            <div>Person 4</div>
+                        </td>
+                        <td>Pending</td>
+                        <td>Pending</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                
+              
+               
                 <div class="col-sm-">
                     <h4 class="headtext mx-4">Leave Approval</h4>
                     </li>
