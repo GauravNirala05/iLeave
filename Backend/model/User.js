@@ -2,19 +2,19 @@ const mongoose = require(`mongoose`)
 const leaveTypeSchema = new mongoose.Schema({
     casual_leave: {
         type: Number,
-        default: 12
+        default: 10
     },
-    extra_leave: {
+    earned_leave: {
         type: Number,
-        default: 20
+        default: 10
     },
     medical_leave: {
         type: Number,
-        default: 6
+        default: 10
     },
-    optional_leave: {
+    ordinary_leave: {
         type: Number,
-        default: 3
+        default: 10
     }
 })
 

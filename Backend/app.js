@@ -1,5 +1,6 @@
 require('dotenv').config()
 require('express-async-errors')
+
 // Essentials
 const connectDB = require('./db/connectDB')
 const routes = require(`./routes/allroutes`)
@@ -16,10 +17,8 @@ const errorHandlerMiddleware=require(`./middlewares/errorhandler`)
 app.use(express.json())
 // app.use(express.static('../frontend'))
 
-
 //All Routes
 app.use('/', routes)
-
 
 //errorhandlers
 app.use(notFound)

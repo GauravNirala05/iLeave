@@ -45,10 +45,22 @@ const getApprovals = async (req, res) => {
     const user = await User.findById(userID)
     if (user) {
         if (user.designation === 'faculty') {
-            const data1 = await Leave.find({ 'reference1.name': user.name }).select('employee_id employee_dep employee_name from_date to_date reference1 leave_type')
-            const data2 = await Leave.find({ 'reference2.name': user.name }).select('employee_id employee_dep employee_name from_date to_date reference2 leave_type')
-            const data3 = await Leave.find({ 'reference3.name': user.name }).select('employee_id employee_dep employee_name from_date to_date reference3 leave_type')
-            const data4 = await Leave.find({ 'reference4.name': user.name }).select('employee_id employee_dep employee_name from_date to_date reference4 leave_type')
+            const data1 = await Leave.find({
+                'reference1.name': user.name,
+                status: ['applied', 'rejected']
+            }).select('employee_id employee_dep employee_name from_date to_date reference1 leave_type')
+            const data2 = await Leave.find({
+                'reference2.name': user.name,
+                status: ['applied', 'rejected']
+            }).select('employee_id employee_dep employee_name from_date to_date reference2 leave_type')
+            const data3 = await Leave.find({
+                'reference3.name': user.name,
+                status: ['applied', 'rejected']
+            }).select('employee_id employee_dep employee_name from_date to_date reference3 leave_type')
+            const data4 = await Leave.find({
+                'reference4.name': user.name,
+                status: ['applied', 'rejected']
+            }).select('employee_id employee_dep employee_name from_date to_date reference4 leave_type')
 
             res.status(200).json({
                 status: 'SUCCESS',
@@ -67,12 +79,16 @@ const getApprovals = async (req, res) => {
                 'reference1.approved': true,
                 'reference2.approved': true,
                 'reference3.approved': true,
-                'reference4.approved': true
+                'reference4.approved': true,
+                status: ['applied', 'rejected']
             })
             res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
         if (user.designation === 'principal') {
-            const data = await Leave.find({ HOD_approval: true }).select('employee_id employee_name employee_dep from_date to_date leave_type discription')
+            const data = await Leave.find({
+                HOD_approval: true,
+                status: ['applied', 'rejected','approved']
+            }).select('employee_id employee_name employee_dep from_date to_date leave_type discription')
             res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
     }
