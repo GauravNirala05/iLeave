@@ -69,8 +69,7 @@ const approve = async (req, res) => {
 
 
         if (user.designation === 'HOD') {
-            if (await Leave.exists({ employee_id: targetID, status: ['applied'] })) {
-
+            if (await Leave.exists({ employee_id: targetID,employee_dep:user.department, status: ['applied'] })) {
                 const { approval } = req.body
                 const approveObject = {}
                 if (approval === 'true') {
