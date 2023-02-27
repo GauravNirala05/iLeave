@@ -27,23 +27,22 @@
    
 <div class="card container mx-20 my-3 ">
 
-  <h4 class="mb-3 my-2 text-center">Register to <img src="images/name.svg" alt="Bootstrap" width="120" height="40"></h4>
-  <hr class="mx-3">
+  <h4 class="mb-3 my-3 text-center">Register to <img src="images/name.svg" alt="Bootstrap" width="120" height="40"></h4>
+  <hr class="mx-3 my-2">
     
-  <form id="signupform" method ="post">
+  <form id="signupform" method ="post" action="/registration">
     <div class="row">
       <div class="col mx-4 mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="Name">
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
       </div>
 
       <div class="col mx-4 mb-3">
-        <label for="username" class="form-label">Username</label>
+        <label for="mob_no" class="form-label">Mobile Number</label>
         <div class="input-group has-validation">
-          <span class="input-group-text">@</span>
-          <input type="text" class="form-control" id="username" placeholder="Username" required>
+          <input type="text" class="form-control" name="mob_no" id="mob_no" placeholder="Number" required>
         <div class="invalid-feedback">
-            Your username is required.
+            Your Mobile Number is required.
           </div>
         </div>
       </div>
@@ -53,7 +52,7 @@
       <label for="email" class="form-label">Email </label>
       <div class="input-group has-validation">
         <span class="input-group-text"><img src="images/envelope-at.svg"></span>
-      <input type="email" class="form-control" id="email" placeholder="you@example.com">
+      <input type="email" name ="email"class="form-control" id="email" placeholder="you@example.com">
       <div class="invalid-feedback">
         Please enter a valid email address.
       </div>
@@ -65,7 +64,7 @@
         <label for="password" class="form-label">Password</label>
         <div class="input-group has-validation">
           <span class="input-group-text"><img src="images/key.svg"></span>
-        <input type="password" placeholder="Password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
+        <input type="password" placeholder="Password" name="password"id="password" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
           Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
         </div>
@@ -86,12 +85,11 @@
     <div class="row">
       <div class="col mx-4 mb-3">
         <label for="designation" class="form-label">Designation</label>
-        <select class="form-select" id="designation" required>
+        <select class="form-select" name="designation" id="designation" required>
           <option value="">Select...</option>
-          <option>Admin</option>
-          <option>Faculty</option>
-          <option>HOD</option>
-          <option>Principal</option>
+          <option value="faculty">Faculty</option>
+          <option value="HOD">HOD</option>
+          <option value="principal">Principal</option>
         </select>
         <div class="invalid-feedback">
           Please provide a valid state.
@@ -99,15 +97,15 @@
       </div>
       <div class="col mx-4 mb-3">
         <label for="department" class="form-label">Department</label>
-        <select class="form-select" id="department" required>
+        <select class="form-select"  name="department"id="department" required>
           <option value="">Select...</option>
-          <option>Civil</option>
-          <option>Computer Science</option>
-          <option>Electrical</option>
-          <option>ET & T</option>
-          <option>Information Technology</option>
-          <option>Mechenical</option>
-          <option>Mining</option>
+          <option value="Civil">Civil</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Electrical">Electrical</option>
+          <option value="ET & T">ET & T</option>
+          <option value="Information Tecnology">Information Technology</option>
+          <option value="Mechanical">Mechenical</option>
+          <option value="Mining">Mining</option>
         </select>
         <div class="invalid-feedback">
           Please provide a valid state.
@@ -126,6 +124,6 @@
   </form>
 
 </div>
-<script src="./assets/js/registration.js"></script>
+<script src="assets/js/registration.js"></script>
   </body>
 </html>

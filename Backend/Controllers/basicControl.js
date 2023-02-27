@@ -2,6 +2,7 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 
 const createData = async (req, res) => {
+    console.log(req.body);
     if (await User.exists({ email: req.body.email })) {
         return res.status(401).json({
             status: 'FAILED',
