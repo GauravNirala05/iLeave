@@ -26,8 +26,8 @@
 <body>
   <div class="fixed-left-navbar ">
     <a class="sidebar-brand " href="">
-      <span class="align-middle"><img class="img-sidebar rounded-circle" src="images/logonew.png"><img
-          class="logo-sidebar" src="images/namelogo.png">
+      <span class="align-middle"><img class="img-sidebar" src="images/logo.svg"><img
+          class="logo-sidebar" src="images/namelogo.svg">
       </span>
     </a>
     <ul class="nav flex-column">
@@ -41,7 +41,7 @@
         <a class="nav-link navbar-link" href="status_approval.html"><i class="fa fa-check-square-o"></i>&nbsp;Status/Approval</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navbar-link" href="#"><i class="fa fa-cog"></i>&nbsp;Settings</a>
+        <a class="nav-link navbar-link" href="setting.html"><i class="fa fa-cog"></i>&nbsp;Settings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link navbar-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
@@ -49,28 +49,7 @@
     </ul>
 
   </div>
-  <div class="responsive-body">
-    <!--<div id="page-content-wrapper">
-      <div id="content">
-        <div class="container-fluid p-0 px-lg-0 px-md-0">
-          <nav class="navbar navbar-expand navbar-light my-navbar ">
-            <div type="button" id="nav-icon1">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <ul class="navbar-nav navnav">
-              <li>
-                <h1 class="headtext">Apply Leave</h1>
-              </li>
-              <li>
-                <img class="img-nav rounded-circle mr-0" src="images/icon.jpg"></a>-->
-
-    <!--</li>
-            </ul>
-          </nav>-->
-    <!--end of the top bar
-  begin page content-->
+  <div class="responsive-body col-lg-10">
     <div class="container-fluid px-lg-4  ">
       <h4 class="mb-3 my-3 text-center">Apply Leave</h4>
       <hr class="my-4 mx-3">
@@ -150,8 +129,8 @@
         </div>
         <div class="row">
 
-          <div class="col mx-4 mb-3">
-            <select class="form-select" id="state" required>
+          <div class="col mx-4 mb-3 form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
               <option value="">First Year</option>
               <option>Person 1</option>
               <option>Person 2</option>
@@ -163,8 +142,8 @@
             </div>
           </div>
 
-          <div class="col mx-4 mb-3">
-            <select class="form-select" id="state" required>
+          <div class="col mx-4 mb-3 form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
               <option value="">Second Year</option>
               <option>Person 1</option>
               <option>Person 2</option>
@@ -176,8 +155,8 @@
             </div>
           </div>
 
-          <div class="col mx-4 mb-3">
-            <select class="form-select" id="state" required>
+          <div class="col mx-4 mb-3 form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
               <option value="">Third Year</option>
               <option>Person 1</option>
               <option>Person 2</option>
@@ -189,8 +168,8 @@
             </div>
           </div>
 
-          <div class="col mx-4 mb-3">
-            <select class="form-select" id="state" required>
+          <div class="col mx-4 mb-3 form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
               <option value="">Fourth Year</option>
               <option>Person 1</option>
               <option>Person 2</option>
@@ -206,21 +185,21 @@
         </div>
     </div>
 
-    <div class="col mx-4 mb-3">
-      <label for="username" class="form-label">Reason</label>
-      <div class="input-group has-validation">
+    <div class="col mx-3 mb-3">
+      <label for="username" class="form-label mx-3">Reason</label>
+      <div class="col input-group has-validation">
         <label for="exampleFormControlTextarea1"></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <textarea class="col-lg-11 form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
       </div>
     </div>
     <div class="row">
       <hr class="my-4 mx-3">
-      <div class=" col mx-4 mb-3 form-check">
+      <div class="  mx-4 mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">All the information are valid.</label>
       </div>
    </div>
-   <div class="row text-center">
+   <div class="d-flex justify-content-center row text-center">
       <div class="d-grid gap-2 mx-3 my-2 text-center">
         <button class="btn btn-primary" type="button">Submit</button>
       </div>

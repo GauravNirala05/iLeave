@@ -1,6 +1,6 @@
 body{        
     height:100vh;
-    background-image:linear-gradient(to left,#531fa6,#68e8d1);
+    background-image:linear-gradient(to left,#007bff,#68e8d1);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -19,6 +19,7 @@ body{
     width:45%;
     background:url('../assets/images/clg1.png') center;
     background-size:cover;
+    background-image: url("images/clg1.png") ;
     
 }
 .img-left .overlay {
@@ -37,7 +38,7 @@ font-weight: 700;
 margin-top: 90px;
 margin-bottom: 50px;
 background: linear-gradient(
-        to top, #6842ef ,#68e8d1 );
+        to top, #007bff ,#68e8d1 );
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     color:#68e8d1;

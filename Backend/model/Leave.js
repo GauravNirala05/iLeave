@@ -1,16 +1,16 @@
 const mongoose = require(`mongoose`)
-// const refrence=new mongoose.Schema(
-//     {
-//         first_year:String,
-//         second_year:String,
-//         third_year:String,
-//         forth_year:String
-//     }
-// )
-const applyLeave = new mongoose.Schema({
+
+const leavetype = new mongoose.Schema({})
+
+const leaveSchema = new mongoose.Schema({
+    employee_id: {
+        type: String,
+    },
     employee_name: {
         type: String,
-        trim: true,
+    },
+    employee_dep: {
+        type: String,
     },
     from_date: {
         type: Date,
@@ -38,7 +38,7 @@ const applyLeave = new mongoose.Schema({
     },
     leave_type: {
         type: String,
-        enum:['medical_leave','casual_leave','optional_leave','extra_leave']
+        enum:['medical_leave','casual_leave','ordinary_leave','earned_leave']
     },
     // replacement:refrence,
     reference1: {
@@ -85,14 +85,12 @@ const applyLeave = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    // status:{
-    //     type:Boolean,
-    //     validate:{
-    //         validator:(v)=>v>to_date,
-    //         mass
-    //     }
-    // }
+    status:{
+        type:String,
+        enum:['applied','rejected','approved','completed'],
+        default:'applied'
+    }
 
 
 })
-module.exports = mongoose.model('leave', applyLeave)
+module.exports = mongoose.model('leave', leaveSchema)

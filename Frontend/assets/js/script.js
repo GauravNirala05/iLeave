@@ -2,12 +2,25 @@
 const fun = async () => {
     try {
         const div = document.createElement('div')
-        
-        await fetch(`http://localhost:4000/faculty/sonu/leaveHistory`, {
 
-        }).then((v) => {
-            console.log(v.status)
-            return v.json()
+        await fetch(`http://localhost:4000/faculty/sonu/leaveHistory`,{
+            method:"POST",
+            body:JSON.stringify(
+                 username= document.getElementById().value
+                //  username= document.getElementById().value
+                //  username= document.getElementById().value
+                //  username= document.getElementById().value
+            ),
+            headers:{
+                'Content-type':application/json
+            }
+        })
+        .then((v) => {
+            let stat = v.status
+            console.log(v.msg)
+            if(v.ok){
+                return v.json()
+            }
         }).then((result) => {
             console.log(result);
             console.log(result.hits);
@@ -20,3 +33,6 @@ const fun = async () => {
     }
 }
 fun()
+const fun2=(e)=>{
+    console.log(e.msg);
+}
