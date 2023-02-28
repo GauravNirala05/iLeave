@@ -16,7 +16,7 @@ const errorHandlerMiddleware=require(`./middlewares/errorhandler`)
 //middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-// app.use(express.static('../frontend'))
+app.use(express.static('../frontend'))
 
 //All Routes
 app.use('/', routes)

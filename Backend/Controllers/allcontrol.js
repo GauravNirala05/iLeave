@@ -88,7 +88,7 @@ const getApprovals = async (req, res) => {
             const data = await Leave.find({
                 HOD_approval: true,
                 status: ['applied', 'rejected','approved']
-            }).select('employee_id employee_name employee_dep from_date to_date leave_type discription')
+            }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
             res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
     }

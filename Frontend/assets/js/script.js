@@ -1,38 +1,32 @@
 
-const fun = async () => {
-    try {
-        const div = document.createElement('div')
+const name1 = document.getElementById('name').value
+console.log(name1); 
+const email1 = document.getElementById('email').value
+const department1 = document.getElementById('department').value
+const mob_no1 = document.getElementById('mob_no').value
+const designation1 = document.getElementById('designation').value
+const password1 = document.getElementById('password').value
+console.log(email1);
+const fn = async () => {
+    console.log(`its running`);
 
-        await fetch(`http://localhost:4000/faculty/sonu/leaveHistory`,{
-            method:"POST",
-            body:JSON.stringify(
-                 username= document.getElementById().value
-                //  username= document.getElementById().value
-                //  username= document.getElementById().value
-                //  username= document.getElementById().value
-            ),
-            headers:{
-                'Content-type':application/json
+    const data = await fetch(`http://localhost:4000/registration`, {
+        method: "POST",
+        body: JSON.stringify(
+            {
+                name: 'name1',
+                email: 'email1',
+                department: 'department1',
+                mob_no: 'mob_no1',
+                designation: 'designation1',
+                password: 'password1'
             }
-        })
-        .then((v) => {
-            let stat = v.status
-            console.log(v.msg)
-            if(v.ok){
-                return v.json()
-            }
-        }).then((result) => {
-            console.log(result);
-            console.log(result.hits);
-            div.innerHTML = `<h1>${result.data[0].employee_name}</h1>`
-            document.body.appendChild(div)
-        })
+        ),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    const data1=await data.json()
+    console.log(data1 );
 
-    } catch (error) {
-        console.log(error);
-    }
-}
-fun()
-const fun2=(e)=>{
-    console.log(e.msg);
 }

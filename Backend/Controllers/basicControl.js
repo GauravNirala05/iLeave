@@ -2,6 +2,7 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 
 const createData = async (req, res) => {
+    console.log(req.body);
     if (await User.exists({ email: req.body.email })) {
         return res.status(401).json({
             status: 'FAILED',
@@ -53,8 +54,9 @@ const applyLeave = async (req, res) => {
 }
 
 const getSingleData = async (req, res) => {
-
+    console.log(req.body);
     const { email, password } = req.body
+    console.log(email,password);
     if (email === "" || password === "") {
         return res.json({ status: 'FAILED', msg: `please provide credentials...` })
     }

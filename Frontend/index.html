@@ -1,54 +1,107 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>iLeave</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="icon" href="images/logo.svg">
-    <link rel="stylesheet" href="assets/css/front.css">
-</head>
-<body>
-<section id="home">
-  <video src="images/video.mp4" autoplay muted loop id="myvideo"  >
-    </video>
+<html lang="en">
 
-</section>
-	<nav class="navbar navbar-expand-lg" >
-		<a class="navbar-brand" href="#">
-			<img src="images/logo.svg" alt="Bootstrap" width="40" height="44">
-          	<img src="images/namelogo.svg" alt="Bootstrap" width="120" height="70">
-		</a>
-		<button class="navbar-toggler" style="color:black" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon" style="color:black"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<!--<ul class="navbar-nav">
-				<li class="nav-item active">
-					<h1 class="header">iLEAVE</h1>
-				</li>
-			</ul>-->
-			<ul class="navbar-nav ml-auto">
-      			
-				<li class="nav-item active ">
-					<a class="nav-link nav-nav" href="frontpage.html">Home</a>
-				</li>
-				<li class="nav-item  active ">
-					<a class="nav-link nav-nav" href="#">About Us</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link nav-nav" href="#">Contact Us</a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link" href="login.html"><button type="button" class="btn btn-primary navbtn">SignIn</button></a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link" href="registration.html"><button type="button" class="btn btn-success navbtn">Register</button></a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="name" placeholder="name">
+        <input type="email" id="email" placeholder="email">
+        <input type="text" id="designation" placeholder="designation">
+        <input type="number" id="mob_no" placeholder="mob_no">
+        <input type="text" id="department" placeholder="department">
+        <input type="password" id="password" placeholder="password">
+        <button class="submit-btn">submit</button>
+    </form>
+    <form action="new.html">
+        <input type="email" class="email-log" placeholder="email">
+        <input type="password" class="password-log" placeholder="password">
+        <button class="login-btn">login</button>
+    </form>
+    <div class="result"></div>
+    <script>
+        const result = document.querySelector('.result')
+        const btn = document.querySelector('.submit-btn')
+        const input = document.querySelector('#name')
+        const idesignation = document.querySelector('#designation')
+        const imob_no = document.querySelector('#mob_no')
+        const idepartment = document.querySelector('#department')
+        const iemail = document.querySelector('#email')
+        const ipassword = document.querySelector('#password')
+
+        const btn_log = document.querySelector('.login-btn')
+        const email_log = document.querySelector('.email-log')
+        const password_log = document.querySelector('.password-log')
+        // const formAlert = document.querySelector('.form-alert')
+
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const nameValue = input.value
+            const email = iemail.value
+            const mob_no = imob_no.value
+            const department = idepartment.value
+            const designation = idesignation.value
+            const password = ipassword.value
+            try {
+                const fetcher = await fetch('http://localhost:4000/registration', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: nameValue,
+                        email: email,
+                        mob_no: mob_no,
+                        department: department,
+                        designation: designation,
+                        password: password
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+
+                })
+                const { status, data, msg } = await fetcher.json()
+                console.log(data, status, msg)
+                const h5 = document.createElement('span')
+                h5.innerHTML = `${status}, ${data._id}, ${msg} `
+                result.appendChild(h5)
+            } catch (error) {
+                // console.log(error.response)
+                console.log(error.response)
+            }
+
+        })
+
+        btn_log.addEventListener('click', async (e) => {
+            e.preventDefault()
+            console.log('hits');
+            const emaillog = email_log.value
+            const passwordlog = password_log.value
+            console.log(emaillog, passwordlog);
+
+            const loger = await fetch('http://localhost:4000/login', {
+                method:'POST',
+                body: JSON.stringify({
+                    email: emaillog,
+                    password: passwordlog
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            })
+            const { status, data, msg } = await loger.json()
+            console.log(data, status, msg)
+            const h5 = document.createElement('span')
+            h5.innerHTML = `${status}, ${data._id}, ${msg} `
+            result.appendChild(h5)
+
+
+        })
+    </script>
 </body>
+
 </html>

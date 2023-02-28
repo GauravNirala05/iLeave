@@ -81,7 +81,7 @@ const approve = async (req, res) => {
                     approveObject.status = 'rejected'
                 }
                 const data = await Leave.findOneAndUpdate({ employee_id: targetID }, approveObject, { new: true })
-                res.status(200).json({ status: 'SUCCESS', data: data })
+                return res.status(200).json({ status: 'SUCCESS', data: data })
             }
             else {
                 return res.status(404).json({ status: 'FAILED', msg: `Leave not found with id ${targetID}` })
@@ -136,7 +136,7 @@ const approve = async (req, res) => {
 
                     const data3 = await Leave.findOneAndUpdate({ employee_id: targetID }, { principal_approval: true, status: 'completed' }, { new: true })
                     const data2 = await User.findOneAndUpdate({ _id: targetID }, updateObj, { new: true })
-                    res.status(200).json({ status: 'SUCCESS', userUpadated: 'TRUE', data: data3, user: data2 })
+                    return res.status(200).json({ status: 'SUCCESS', userUpadated: 'TRUE', data: data3, user: data2 })
                 }
                 if (approval === 'true') {
                     approveObject.principal_approval = approval
