@@ -27,5 +27,4 @@ router.route('/leaveStatus/:id').get(leaveStatus)
 router.route('/approvals/:id').get(getApprovals)
 router.route('/approvals/:id/:targetid').patch(approve)
 router.route('/allUsers/:id').get(alluser)
-
 module.exports = router

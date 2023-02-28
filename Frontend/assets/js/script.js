@@ -1,4 +1,3 @@
-
 const result = document.querySelector('.result')
 const btn = document.querySelector('.submit-btn')
 const input = document.querySelector('#name')
