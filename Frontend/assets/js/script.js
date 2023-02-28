@@ -7,47 +7,55 @@ const imob_no = document.querySelector('#mob_no')
 const idepartment = document.querySelector('#department')
 const iemail = document.querySelector('#email')
 const ipassword = document.querySelector('#password')
-
+const iconpassword = document.querySelector('#Conpassword')
 const btn_log = document.querySelector('.login-btn')
 const email_log = document.querySelector('.email-log')
 const password_log = document.querySelector('.password-log')
-// const formAlert = document.querySelector('.form-alert')
-
+console.log(ipassword,iconpassword);
 btn.addEventListener('click', async (e) => {
     e.preventDefault()
-    const nameValue = input.value
-    const email = iemail.value
-    const mob_no = imob_no.value
-    const department = idepartment.value
-    const designation = idesignation.value
-    const password = ipassword.value
-    try {
-        const fetcher = await fetch('http://localhost:4000/registration', {
-            method: 'POST',
-            body: JSON.stringify({
-                name: nameValue,
-                email: email,
-                mob_no: mob_no,
-                department: department,
-                designation: designation,
-                password: password
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+    if (ipassword.value == iconpassword.value) {
 
-        })
-        const { status, data, msg } = await fetcher.json()
-        console.log(data, status, msg)
-        const h5 = document.createElement('span')
-        h5.innerHTML = `${status}, ${data._id}, ${msg} `
-        result.appendChild(h5)
-    } catch (error) {
-        // console.log(error.response)
-        console.log(error.response)
+        // const formAlert = document.querySelector('.form-alert')
+
+        const nameValue = input.value
+        const email = iemail.value
+        const mob_no = imob_no.value
+        const department = idepartment.value
+        const designation = idesignation.value
+        const password = ipassword.value
+        try {
+            const fetcher = await fetch('http://localhost:4000/registration', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: nameValue,
+                    email: email,
+                    mob_no: mob_no,
+                    department: department,
+                    designation: designation,
+                    password: password
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            })
+            const { status, data, msg } = await fetcher.json()
+            console.log(data, status, msg)
+            const h5 = document.createElement('span')
+            h5.innerHTML = `${status}, ${data._id}, ${msg} `
+            result.appendChild(h5)
+        } catch (error) {
+            // console.log(error.response)
+            console.log(error.response)
+        }
+
     }
-
+    else {
+        result.innerHTML = `<h1>provide same password</h1>`
+    }
 })
+
 
 btn_log.addEventListener('click', async (e) => {
     e.preventDefault()
@@ -57,7 +65,7 @@ btn_log.addEventListener('click', async (e) => {
     console.log(emaillog, passwordlog);
 
     const loger = await fetch('http://localhost:4000/login', {
-        method:'POST',
+        method: 'POST',
         body: JSON.stringify({
             email: emaillog,
             password: passwordlog
@@ -69,8 +77,15 @@ btn_log.addEventListener('click', async (e) => {
     })
     const DATA1 = await loger.json()
     console.log(DATA1)
-    result.innerHTML=`${DATA1.status} ${DATA1.data._id},${DATA1.msg}`
-    
+    ihtml = `${DATA1.status}`
+    if (DATA1.status === 'SUCCESS') {
+        ihtml += `${DATA1.data.name}`
+    }
+    if (DATA1.status === 'FAILED') {
+        ihtml += `${DATA1.msg}`
+    }
+    result.innerHTML = ihtml
+
 
 
 })
