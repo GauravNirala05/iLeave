@@ -6,7 +6,7 @@ const approve = async (req, res) => {
     const user = await User.findById(userID)
     if (user) {
 
-
+        
         if (user.designation === 'faculty') {
             if (await Leave.exists({ employee_id: targetID, status: ['applied', 'rejected'] })) {
                 const { refer, approval } = req.body
