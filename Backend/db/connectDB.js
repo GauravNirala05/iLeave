@@ -4,7 +4,7 @@ const connectDB = (uri) => {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useFindAndModify: false,
-        // useCreateIndex: true,
+        useCreateIndex: true,
     })
 }
 module.exports = connectDB

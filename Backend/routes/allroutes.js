@@ -17,7 +17,7 @@ const {
 
 
 // routes
-router.route('/login').get(getSingleData)
+router.route('/login').post(getSingleData)
 router.route('/registration').post(createData)
 router.route('/updateProfile/:id').patch(updateProfile)
 router.route('/deleteProfile/:id').delete(deleteProfile)

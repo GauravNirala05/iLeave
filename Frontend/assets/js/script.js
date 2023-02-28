@@ -1,38 +1,76 @@
 
-const fun = async () => {
+const result = document.querySelector('.result')
+const btn = document.querySelector('.submit-btn')
+const input = document.querySelector('#name')
+const idesignation = document.querySelector('#designation')
+const imob_no = document.querySelector('#mob_no')
+const idepartment = document.querySelector('#department')
+const iemail = document.querySelector('#email')
+const ipassword = document.querySelector('#password')
+
+const btn_log = document.querySelector('.login-btn')
+const email_log = document.querySelector('.email-log')
+const password_log = document.querySelector('.password-log')
+// const formAlert = document.querySelector('.form-alert')
+
+btn.addEventListener('click', async (e) => {
+    e.preventDefault()
+    const nameValue = input.value
+    const email = iemail.value
+    const mob_no = imob_no.value
+    const department = idepartment.value
+    const designation = idesignation.value
+    const password = ipassword.value
     try {
-        const div = document.createElement('div')
-
-        await fetch(`http://localhost:4000/faculty/sonu/leaveHistory`,{
-            method:"POST",
-            body:JSON.stringify(
-                 username= document.getElementById().value
-                //  username= document.getElementById().value
-                //  username= document.getElementById().value
-                //  username= document.getElementById().value
-            ),
-            headers:{
-                'Content-type':application/json
+        const fetcher = await fetch('http://localhost:4000/registration', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: nameValue,
+                email: email,
+                mob_no: mob_no,
+                department: department,
+                designation: designation,
+                password: password
+            }),
+            headers: {
+                'Content-Type': 'application/json'
             }
-        })
-        .then((v) => {
-            let stat = v.status
-            console.log(v.msg)
-            if(v.ok){
-                return v.json()
-            }
-        }).then((result) => {
-            console.log(result);
-            console.log(result.hits);
-            div.innerHTML = `<h1>${result.data[0].employee_name}</h1>`
-            document.body.appendChild(div)
-        })
 
+        })
+        const { status, data, msg } = await fetcher.json()
+        console.log(data, status, msg)
+        const h5 = document.createElement('span')
+        h5.innerHTML = `${status}, ${data._id}, ${msg} `
+        result.appendChild(h5)
     } catch (error) {
-        console.log(error);
+        // console.log(error.response)
+        console.log(error.response)
     }
-}
-fun()
-const fun2=(e)=>{
-    console.log(e.msg);
-}
+
+})
+
+btn_log.addEventListener('click', async (e) => {
+    e.preventDefault()
+    console.log('hits');
+    const emaillog = email_log.value
+    const passwordlog = password_log.value
+    console.log(emaillog, passwordlog);
+
+    const loger = await fetch('http://localhost:4000/login', {
+        method:'POST',
+        body: JSON.stringify({
+            email: emaillog,
+            password: passwordlog
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+    })
+    const DATA1 = await loger.json()
+    console.log(DATA1)
+    result.innerHTML=`${DATA1.status} ${DATA1.data._id},${DATA1.msg}`
+    
+
+
+})

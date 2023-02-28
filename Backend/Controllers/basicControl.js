@@ -54,15 +54,16 @@ const applyLeave = async (req, res) => {
 }
 
 const getSingleData = async (req, res) => {
-
+    console.log(req.body);
     const { email, password } = req.body
+    console.log(email,password);
     if (email === "" || password === "") {
         return res.json({ status: 'FAILED', msg: `please provide credentials...` })
     }
     if (await User.exists({ email: email })) {
         const data = await User.findOne({ email: email, password: password })
         if (!data) {
-            return res.status(401).json({ status: 'FAILED', msg: `Wrong password` })
+            return res.json({ status: 'FAILED', msg: `Wrong password` })
         }
         res.status(200).json({ status: 'SUCCESS', data: data })
     }
