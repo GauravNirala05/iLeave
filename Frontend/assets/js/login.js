@@ -51,8 +51,11 @@ btn_log.addEventListener('click', async (e) => {
     ihtml = `${DATA1.status}`
     if (DATA1.status === 'SUCCESS') {
         // ihtml += `${DATA1.data.name}`
+    const id = DATA1.data._id
+    localStorage.setItem("id", id)
+    console.log(localStorage)
         suc_modal.style.display = "block";
-        setTimeout(() => {  location.replace("../dash_board.html"); }, 1000);
+        setTimeout(() => {  location.replace("../dash_board.html"); }, 10000);
         
     }
     if (DATA1.status === 'FAILED') {
@@ -62,6 +65,6 @@ btn_log.addEventListener('click', async (e) => {
     }
     error_message.innerHTML = ihtml
 
-
+    
 
 })

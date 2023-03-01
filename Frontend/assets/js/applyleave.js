@@ -1,5 +1,5 @@
 const result = document.querySelector('.result')
-const apply_btn = document.querySelector('#apply_submit')
+const apply_btn = document.querySelector('.apply_submit')
 const apply_name = document.querySelector('#name')
 const apply_startdate = document.querySelector('#startdate')
 const apply_totaldays = document.querySelector('#totaldays')
@@ -14,7 +14,10 @@ const apply_reason = document.querySelector('#reason')
 // const apply_checkbox = document.querySelector('#checkbox')
 //console.log(ipassword,iconpassword);
 apply_btn.addEventListener('click', async (e) => {
+    // ihtml=``
+    
     e.preventDefault()
+    
         // const formAlert = document.querySelector('.form-alert')
         const name = apply_name.value
         const startdate = apply_startdate.value
@@ -27,9 +30,12 @@ apply_btn.addEventListener('click', async (e) => {
         const ref3 = reference3.value
         const ref4 = reference4.value
         const reason = apply_reason.value
+        console.log(name, startdate,enddate,totaldays,contactno
+            ,leavetype,ref1,ref2,ref3,ref4,reason);
+        
         // const checkbox = apply_checkbox.value
         try {
-            const fetcher = await fetch('http://localhost:4000/applyLeave/63ff13ae1910ac2974080ed9', {
+            const fetcher = await fetch(`http://localhost:4000/applyLeave/apply_submit/${id}`, {
                 method: 'POST',
                 body: JSON.stringify({
                     employee_name: name,
@@ -51,6 +57,8 @@ apply_btn.addEventListener('click', async (e) => {
                 }
 
             })
+            const id=localStorage.getItem("id",id)
+
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)
             const h5 = document.createElement('span')
