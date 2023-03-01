@@ -33,66 +33,33 @@
     </h4>
     <hr class="mx-3 my-2">
 
-    <form action="/registration" id="signupform" method="post">
+    <form name="myForm" method="post" onsubmit="return validateForm()">
 
       <div class="row">
         <div class="col mx-4 mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+          <label for="name" class="form-label">Name <label class="error">*</label></label>
+          <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+          <div class="invalide"></div>
         </div>
 
         <div class="col mx-4 mb-3">
-          <label for="mob_no" class="form-label">Mobile Number</label>
-          <div class="input-group has-validation">
-            <input type="text" class="form-control" name="mob_no" id="mob_no" placeholder="Number" required>
-            <div class="invalid-feedback">
-              Your Mobile Number is required.
-            </div>
-          </div>
+          <label for="mob_no" class="form-label">Mobile Number <label class="error">*</label></label>
+          <input type="tel" class="form-control" name="mob_no" id="mob_no" placeholder="Number" required>
         </div>
       </div>
 
       <div class=" mx-4 mb-3 ">
-        <label for="email" class="form-label">Email </label>
+        <label for="email" class="form-label">Email <label class="error">*</label></label>
         <div class="input-group has-validation">
           <span class="input-group-text"><img src="images/envelope-at.svg"></span>
-          <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com">
-          <div class="invalid-feedback">
-            Please enter a valid email address.
-          </div>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+          <div></div>
         </div>
       </div>
-
       <div class="row">
         <div class="col mx-4 mb-3">
-          <label for="password" class="form-label">Password</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text"><img src="images/key.svg"></span>
-            <input type="password" placeholder="Password" name="password" id="password" class="form-control"
-              aria-describedby="passwordHelpBlock">
-            <div id="passwordHelpBlock" class="form-text">
-              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-              special characters, or emoji.
-            </div>
-          </div>
-        </div>
-
-        <div class="col mx-4 mb-3">
-          <label for="password" class="form-label">Confirm Password</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text"><img src="images/key.svg"></span>
-            <input type="password" placeholder="Password" id="password" class="form-control"
-              aria-describedby="passwordHelpBlock">
-            <div id="passwordHelpBlock" class="form-text">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col mx-4 mb-3">
-          <label for="designation" class="form-label">Designation</label>
-          <select class="form-select" name="designation" id="designation" required>
+          <label for="designation" class="form-label">Designation <label class="error">*</label></label>
+          <select class="form-select" id="designation" required>
             <option value="">Select...</option>
             <option value="faculty">Faculty</option>
             <option value="HOD">HOD</option>
@@ -103,8 +70,8 @@
           </div>
         </div>
         <div class="col mx-4 mb-3">
-          <label for="department" class="form-label">Department</label>
-          <select class="form-select" name="department" id="department" required>
+          <label for="department" class="form-label">Department </label>
+          <select class="form-select" id="department" required>
             <option value="">Select...</option>
             <option value="Civil">Civil</option>
             <option value="Computer Science">Computer Science</option>
@@ -120,18 +87,79 @@
         </div>
       </div>
 
-      <hr class="my-4 mx-3">
-      <div class="mx-4 mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="checkbox">
-        <label class="form-check-label" for="checkbox">All the information are valid.</label>
+
+      <div class="row">
+        <div class="col mx-4 mb-3">
+          <label for="password" class="form-label">Password <label class="error">*</label></label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><img src="images/key.svg"></span>
+            <input type="password" placeholder="Password"  id="password" class="form-control"
+              aria-describedby="passwordHelpBlock" required>
+            </div>
+            <div id="passwordHelpBlock" class="form-text">
+              Must be 8-20 characters long.
+            </div>
+        </div>
+
+        <div class="col mx-4 mb-3">
+          <label for="password" class="form-label">Confirm Password <label class="error">*</label></label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><img src="images/key.svg"></span>
+            <input type="password" placeholder="Password" id="Conpassword" class="form-control"
+              aria-describedby="passwordHelpBlock" required>
+            <div id="passwordHelpBlock" class="form-text">
+            </div>
+          </div>
+          <span class="error SamePass"></span>
+        </div>
       </div>
-      <div class="d-grid gap-2 mx-3 my-4">
-        <button class="btn btn-primary" type="submit">Submit</button>
+
+      
+
+      
+      <!-- <div class="result"></div> -->
+      <div class="mb-4 d-flex justify-content-center">
+        <!-- Button trigger modal -->
+        <button class="submit-btn btn btn-primary  text-uppercase" type="submit">Submit</button>
       </div>
+      <hr class=" my-4 mx-3">
+      <div class="text-center mb-4">
+        have an account
+        <a href="login.html" class="register-link">
+            Login here
+        </a>
+    </div>
     </form>
+    
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content my-4"  >
+      
+    <div class="card ">
+        <div class="card-body">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><div class="msg">!</div></h5>
+            <button type="button"  id="close"  class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body my-3">
+            <div class="result"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button-btn" id="login-btn"  class="btn btn-primary login-btn">Login</button>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
 
   </div>
-  <script src="assets/js/registration.js"></script>
+  <script src="./assets/js/registration.js"></script>
 </body>
 
 </html>

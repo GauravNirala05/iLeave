@@ -1,5 +1,6 @@
 
 const result = document.querySelector('.result')
+const SamePass = document.querySelector('.SamePass')
 const btn = document.querySelector('.submit-btn')
 const input = document.querySelector('#name')
 const idesignation = document.querySelector('#designation')
@@ -19,7 +20,7 @@ console.log(ipassword, iconpassword);
 btn.addEventListener('click', async (e) => {
     e.preventDefault()
     if (ipassword.value == iconpassword.value) {
-
+        SamePass.innerHTML = ``
         // const formAlert = document.querySelector('.form-alert')
 
         const nameValue = input.value
@@ -46,9 +47,10 @@ btn.addEventListener('click', async (e) => {
             })
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)
-            const h5 = document.createElement('span')
-            h5.innerHTML = `${status}, ${data._id}, ${msg} `
-            result.appendChild(h5)
+            result.innerHTML = `${status}, ${data._id}, ${msg} `
+            if(status=="SUCCESS"){
+                location.replace("login.html")
+            }
         } catch (error) {
             // console.log(error.response)
             console.log(error.response)
@@ -56,8 +58,9 @@ btn.addEventListener('click', async (e) => {
 
     }
     else {
-        result.innerHTML = `<h1>provide same password</h1>`
+        SamePass.innerHTML = `Password is not Matching`
     }
+    
 })
 
 
