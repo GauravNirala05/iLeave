@@ -40,7 +40,7 @@
                                 <img src="images/envelope-at.svg">
                                 </span>
                             </div>
-                            <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Input group example" aria-describedby="basic-addon1">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" aria-label="Input group example" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="input-group mb-4">
@@ -49,9 +49,9 @@
                                 <img src="images/key.svg">
                                 </span>
                             </div>
-                            <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Input group example" aria-describedby="basic-addon1">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" aria-label="Input group example" aria-describedby="basic-addon1">
                         </div>
-
+                           
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="cb1" name="">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="mb-4 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary  text-uppercase" >Login</button>
+                            <button type="submit" id="login-btn" class="login-btn btn btn-primary  text-uppercase" >Login</button>
                     </div>
                     <hr class="my-4">
                     <div class="text-center mb-2">
@@ -72,10 +72,53 @@
                             Register here
                         </a>
                     </div>
+                    
+
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content  my-4"  >
+                            
+                          <div class="card ">
+                              <div class="card-body">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"><div class="msg">Warning !</div></h5>
+                                  <button type="button"  id="close"  class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body my-3">
+                                    <div class="error_result"></div> 
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                      
+                      </div>
+                      <div id="success-model" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content  my-4"  >
+                            
+                          <div class="card ">
+                              <div class="card-body">
+                                <div class="row d-flex justify-content-center">
+                                  <img class="logo rounded-circle bg-success" src="images/check.svg">
+                                </div>
+                                <div class="row d-flex justify-content-center modal-body my-3">
+                                    <h2 class="Green">Login Success!</h2>
+                                    <h5 >successfully loged In</h5> 
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                      
+                      </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="./assets/js/login.js"></script>
 </body>
 </html>

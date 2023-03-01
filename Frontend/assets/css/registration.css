@@ -32,6 +32,11 @@ body{
   text-align: center;
   color: rgb(18, 212, 79);
 }
+.modal-header-war {
+  
+  text-align: center;
+  color: rgb(255, 74, 74);
+}
 
 /* Modal Body */
 .modal-body {padding: 2px 16px;}
@@ -43,7 +48,7 @@ body{
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content{
   margin-top: 5%;
   margin: auto;
   width: 28rem;
