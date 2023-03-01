@@ -19,3 +19,7 @@ body{
   align-items:center;
   justify-content:center;
 }
+
+.error{
+  color: rgb(255, 37, 37);
+}
