@@ -8,14 +8,18 @@ const idepartment = document.querySelector('#department')
 const iemail = document.querySelector('#email')
 const ipassword = document.querySelector('#password')
 const iconpassword = document.querySelector('#Conpassword')
+
+
 const btn_log = document.querySelector('.login-btn')
 const email_log = document.querySelector('.email-log')
 const password_log = document.querySelector('.password-log')
-console.log(ipassword,iconpassword);
+
+console.log(ipassword.value,iconpassword.value);
+
 btn.addEventListener('click', async (e) => {
     e.preventDefault()
-    if (ipassword.value == iconpassword.value) {
-        SamePass.innerHTML = ``
+    if (ipassword.value === iconpassword.value) {
+        SamePass.innerHTML = ` `
         // const formAlert = document.querySelector('.form-alert')
 
         const nameValue = input.value
@@ -42,9 +46,9 @@ btn.addEventListener('click', async (e) => {
             })
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)
-            result.innerHTML = `${status}, ${data._id}, ${msg} `
             if(status=="SUCCESS"){
-                location.replace("login.html")
+                result.innerHTML = `${status}, ${data._id}, ${msg} `
+                // location.replace("login.html")
             }
         } catch (error) {
             // console.log(error.response)

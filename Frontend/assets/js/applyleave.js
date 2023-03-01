@@ -1,20 +1,3 @@
-// const methods = require("methods");
-
-// const form=document.getElementById("form")
-// form.addEventListener('submit',function(apply){
-//     apply.preventDefault()
-//     const formData=new FormData(form)
-//     const jsonData=JSON.stringify(Object.fromEntries(formData.entries()));
-//     fetch('http://httpbin.org/post',{
-//         method:"POST",
-//         headers:{
-//             'Content-Type':'application/json'
-//         },body:jsonData
-//     })
-//     .then(res=>res.json())
-//     .then(data=>console.log(data))
-//     .catch(err=>console.log(err))
-// })
 const result = document.querySelector('.result')
 const apply_btn = document.querySelector('#apply_submit')
 const apply_name = document.querySelector('#name')
@@ -25,22 +8,16 @@ const apply_enddate = document.querySelector('#enddate')
 const apply_type = document.querySelector('#leavetype')
 const reference1 = document.querySelector('#reference1')
 const reference2 = document.querySelector('#reference2')
-
 const reference3 = document.querySelector('#reference2')
-
 const reference4 = document.querySelector('#reference4')
-
 const apply_reason = document.querySelector('#reason')
-const apply_checkbox = document.querySelector('#checkbox')
+// const apply_checkbox = document.querySelector('#checkbox')
 //console.log(ipassword,iconpassword);
-btn.addEventListener('click', async (e) => {
+apply_btn.addEventListener('click', async (e) => {
     e.preventDefault()
-    
-
         // const formAlert = document.querySelector('.form-alert')
-
-        const name = input.value
-        const startdate = apply_name.value
+        const name = apply_name.value
+        const startdate = apply_startdate.value
         const totaldays = apply_totaldays.value
         const enddate = apply_enddate.value
         const contactno = apply_contactno.value
@@ -50,20 +27,24 @@ btn.addEventListener('click', async (e) => {
         const ref3 = reference3.value
         const ref4 = reference4.value
         const reason = apply_reason.value
-        const checkbox = apply_checkbox.value
-
-        
+        // const checkbox = apply_checkbox.value
         try {
-            const fetcher = await fetch('http://localhost:4000/applyLeave/:id', {
-                mode: 'no-cors',
+            const fetcher = await fetch('http://localhost:4000/applyLeave/63ff13ae1910ac2974080ed9', {
                 method: 'POST',
                 body: JSON.stringify({
-                    name: nameValue,
-                    email: email,
-                    mob_no: mob_no,
-                    department: department,
-                    designation: designation,
-                    password: password
+                    employee_name: name,
+                    to_date: startdate,
+                    total_days: totaldays,
+                    from_date: enddate,
+                    contect_no: contactno,
+                    leave_type: leavetype,
+                    reference1: ref1,
+                    reference2: ref2,
+                    reference3: ref3,
+                    reference4: ref4,
+                    discription: reason,
+                    // password: checkbox
+
                 }),
                 headers: {
                     'Content-Type': 'application/json'
