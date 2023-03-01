@@ -49,15 +49,16 @@
       </li>
     </ul>
   </div>
-  <div class="responsive-body col-lg-10">
-    <div class="container-fluid px-lg-4  ">
+  <!--col-lg-10-->
+  <div class="responsive-body ">
+    <div class="container-fluid p-0 px-lg-0 px-md-0  ">
       <h4 class="mb-3 my-3 text-center">Apply Leave</h4>
       <hr class="my-4 mx-3">
       <div class="container">
       <form id="form">
         <div class="row">
           <div class="col-md-6">
-            <div class="form-groupmb-3">
+            <div class="form-group mx-4 mb-3">
               <label for="name" class="form-label">Name</label>
               <!--<div class="input-group has-validation">
               <span class="input-group-text">@</span>-->
@@ -71,51 +72,51 @@
 
 
 
-            <div class="form-group  mb-3">
-              <label class="mx-3 label-text">Leave Starting from</label>
-              <input type="Date" name="Startingdate" value="" placeholder="" class="form-control" />
+            <div class="form-group mx-4 mb-3">
+              <label class=" label-text">Leave Starting from</label>
+              <input type="Date" name="Startingdate" id="startdate" value="" placeholder="" class="form-control" />
             </div>
 
 
 
 
-            <div class="form-group mb-3">
+            <div class="form-group mx-4 mb-3">
               <label class="label-text">Total Day</label>
               <input type="number" class="form-control" id="totaldays" placeholder="Days" name="totaldays">
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group mb-3">
+            <div class="form-group mx-4 mb-3">
               <label for="phonenumber" class="form-label">Contact Number</label>
               <input type="number" class="form-control" id="contactno" placeholder="Phone Number" name="contactno">
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mx-4 mb-3">
               <label class="label-text">Leave Till</label>
-              <input type="Date" name="Endingdate" value="" placeholder="" class="form-control" />
+              <input type="Date" name="Endingdate" id="enddate" value="" placeholder="" class="form-control" />
             </div>
 
-            <div class="form-group  mb-3">
+            <div class="form-group mx-4  mb-3">
               <label>Category</label>
               <div class="my-3">
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input required type="radio" class="mx-2 form-check-input" name="leave" value="CL">CL
+                    <input required type="radio" class="mx-2 form-check-input"  id="leavetype" name="leave" value="CL">CL
                   </label>
                 </div>
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input required type="radio" class="mx-2 form-check-input" name="leave" value="ML">ML
+                    <input required type="radio" class="mx-2 form-check-input"  id="leavetype" name="leave" value="ML">ML
                   </label>
 
                 </div>
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input required type="radio" class="mx-2 form-check-input" name="leave" value="OL">OL
+                    <input required type="radio" class="mx-2 form-check-input" id="leavetype"  name="leave" value="OL">OL
                   </label>
                 </div>
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input required type="radio" class="mx-2 form-check-input" name="leave" value="EL">EL
+                    <input required type="radio" class="mx-2 form-check-input"  id="leavetype" name="leave" value="EL">EL
                   </label>
                 </div>
 
@@ -126,7 +127,7 @@
           </div>-->
             </div>
           </div>
-          <div class="form-group mx-3 mb-3">
+          <div class="form-group mx-5 mb-3">
             <label for="replacement" class="form-label">Replacement</label>
             <label for="replacement" class="small">(filled by faculty only)</label>
           </div>
@@ -135,7 +136,7 @@
 
         <div class="row">
           <div class="col-md-3">
-            <div class=" mx-2 mb-3 form-group">
+            <div class=" mx-4 mb-3 form-group">
               <select class="form-control" id="reference1">
                 <option name="reference1" value="">First Year</option>
                 <option>Person 1</option>
@@ -149,7 +150,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class=" mx-2 mb-3 form-group">
+            <div class=" mx-4 mb-3 form-group">
               <select class="form-control" id="reference2">
                 <option name="reference2" value="">Second Year</option>
                 <option>Person 1</option>
@@ -163,7 +164,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class=" mx-2 mb-3 form-group">
+            <div class=" mx-4 mb-3 form-group">
               <select class="form-control" id="reference3">
                 <option name="reference3" value="">Third Year</option>
                 <option>Person 1</option>
@@ -177,7 +178,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class=" mx-2 mb-3 form-group">
+            <div class=" mx-4 mb-3 form-group">
               <select class="form-control" id="reference4">
                 <option name="reference4" value="">Fourth Year</option>
                 <option>Person 1</option>
@@ -195,14 +196,14 @@
     </div>
   </div>
   <div class="col mx-5 mb-3">
-    <label for="reason" class="form-label">Reason</label>
+    <label for="reason" class="form-label mx-3 ">Reason</label>
     <div class="col input-group has-validation">
       <label for="reason"></label>
-      <textarea class="col-lg-11 form-control" id="reason" rows="2" name="reason"></textarea>
+      <textarea class="col-lg-9 form-control" id="reason" rows="2" name="reason"></textarea>
     </div>
   </div>
 
-  <hr class="my-4 mx-3">
+  <hr class="my-4 mx-5">
   <div class="  mx-5 mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="checkbox">
     <label class="form-check-label" for="checkbox">All the information are valid.</label>
@@ -210,7 +211,7 @@
 
   <div class="d-flex justify-content-center row text-center">
     <div class="d-grid gap-2 mx-3 my-2 text-center">
-      <button class="btn btn-primary button" type="submit">Submit</button>
+      <button class="btn btn-primary button" id="apply_submit" type="submit">Submit</button>
     </div>
   </div>
   </form>
