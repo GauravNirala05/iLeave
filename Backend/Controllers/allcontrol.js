@@ -11,11 +11,11 @@ const alluser = async (req, res) => {
         }
         if (designation === 'HOD') {
             const alluser = await User.find({ department: user.department, designation: 'faculty' })
-            return res.json({ status: `SUCCESS`, hits: alluser.length, users: alluser })
+            return res.json({ status: `SUCCESS`, hits: alluser.length, data: alluser })
         }
         if (designation === 'principal') {
             const alluser = await User.find({ designation: ['faculty', 'HOD'] })
-            return res.json({ status: `SUCCESS`, hits: alluser.length, users: alluser })
+            return res.json({ status: `SUCCESS`, hits: alluser.length, data: alluser })
         }
         return res.status(401).json({ status: 'FAILED', msg: `plz provide credentials` })
 

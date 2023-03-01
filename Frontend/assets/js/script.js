@@ -8,10 +8,14 @@ const idepartment = document.querySelector('#department')
 const iemail = document.querySelector('#email')
 const ipassword = document.querySelector('#password')
 const iconpassword = document.querySelector('#Conpassword')
+
+
 const btn_log = document.querySelector('.login-btn')
 const email_log = document.querySelector('.email-log')
 const password_log = document.querySelector('.password-log')
-console.log(ipassword,iconpassword);
+
+
+console.log(ipassword, iconpassword);
 btn.addEventListener('click', async (e) => {
     e.preventDefault()
     if (ipassword.value == iconpassword.value) {
@@ -84,8 +88,39 @@ btn_log.addEventListener('click', async (e) => {
     if (DATA1.status === 'FAILED') {
         ihtml += `${DATA1.msg}`
     }
+    const user = DATA1.data._id
+    console.log(user);
+    document.cookie = `user=${user}`;
     result.innerHTML = ihtml
 
+    localStorage.setItem("id",user)
+})
+console.log(document.cookie);
+const cookieValue = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("user="))
+  ?.split("=");
 
+console.log(cookieValue);
+const alluser_btn = document.querySelector('.alluser')
 
+alluser_btn.addEventListener('click', async (e) => {
+    console.log(`clicked`);
+    ihtml=``
+    const id=localStorage.getItem("id")
+
+    const alluser = await fetch(`/alluser/${id}`)
+    const allusers = await alluser.json()
+    console.log((allusers));
+    const{status,msg,data}=allusers
+    if (status=="FAILED") {
+        ihtml=`${msg}`
+    }
+    else{
+        data.forEach(element => {
+            ihtml+=`<h1>${element.name}</h1><br>
+            <h5>${element.email}</h5><h5>${element.designation}</h5><h5>${element.department}</h5>`
+        })
+    }
+    result.innerHTML=ihtml
 })
