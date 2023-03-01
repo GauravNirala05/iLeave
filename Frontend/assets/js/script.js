@@ -9,19 +9,16 @@ const iemail = document.querySelector('#email')
 const ipassword = document.querySelector('#password')
 const iconpassword = document.querySelector('#Conpassword')
 
-
 const btn_log = document.querySelector('.login-btn')
 const email_log = document.querySelector('.email-log')
 const password_log = document.querySelector('.password-log')
 
-console.log(ipassword.value,iconpassword.value);
+const alluser_btn = document.querySelector('.alluser')
 
 btn.addEventListener('click', async (e) => {
     e.preventDefault()
-    if (ipassword.value === iconpassword.value) {
-        SamePass.innerHTML = ` `
-        // const formAlert = document.querySelector('.form-alert')
-
+    if (ipassword.value == iconpassword.value) {
+        SamePass.innerHTML = ``
         const nameValue = input.value
         const email = iemail.value
         const mob_no = imob_no.value
@@ -46,9 +43,15 @@ btn.addEventListener('click', async (e) => {
             })
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)
-            if(status=="SUCCESS"){
-                result.innerHTML = `${status}, ${data._id}, ${msg} `
-                // location.replace("login.html")
+            if (status == "FAILED") {
+                result.innerHTML = `${msg} `
+
+            }
+            else {
+                result.innerHTML = `You have been registered ...<h1>${data.name}</h1>${data.department}`
+            }
+            if (status == "SUCCESS") {
+                location.replace("login.html")
             }
         } catch (error) {
             // console.log(error.response)
@@ -59,16 +62,17 @@ btn.addEventListener('click', async (e) => {
     else {
         SamePass.innerHTML = `Password is not Matching`
     }
-    
+
 })
 
 
 btn_log.addEventListener('click', async (e) => {
     e.preventDefault()
-    console.log('hits');
+
     const emaillog = email_log.value
     const passwordlog = password_log.value
     console.log(emaillog, passwordlog);
+    ihtml = ``
 
     const loger = await fetch('http://localhost:4000/login', {
         method: 'POST',
@@ -81,17 +85,45 @@ btn_log.addEventListener('click', async (e) => {
         }
 
     })
-    const DATA1 = await loger.json()
-    console.log(DATA1)
-    ihtml = `${DATA1.status}`
-    if (DATA1.status === 'SUCCESS') {
-        ihtml += `${DATA1.data.name}`
+    const user = await loger.json()
+    const { status, msg, data } = user
+
+    if (status === 'FAILED') {
+        ihtml += `${msg}`
     }
-    if (DATA1.status === 'FAILED') {
-        ihtml += `${DATA1.msg}`
+    else {
+        ihtml += `Hey ${data.name} you are successfully logged in....
+        now you are have facilty to find other users <br>
+        `
+        alluser_btn.hidden=false
     }
     result.innerHTML = ihtml
 
+    const id = data._id
+    localStorage.setItem("id", id)
+})
 
 
+
+alluser_btn.addEventListener('click', async (e) => {
+    ihtml = ``
+    const id = localStorage.getItem("id")
+
+    const alluser = await fetch(`/alluser/${id}`)
+
+    const allusers = await alluser.json()
+    console.log((allusers));
+
+    const { status, msg, data } = allusers
+
+    if (status == "FAILED") {
+        ihtml = `${msg}`
+    }
+    else {
+        data.forEach(element => {
+            ihtml += `<h1>${element.name}</h1><br>
+            <h5>${element.email}</h5><h5>${element.designation}</h5><h5>${element.department}</h5>`
+        })
+    }
+    result.innerHTML = ihtml
 })
