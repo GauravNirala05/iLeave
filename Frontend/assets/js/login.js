@@ -51,7 +51,7 @@ btn_log.addEventListener('click', async (e) => {
     ihtml = `${DATA1.status}`
     if (DATA1.status === 'SUCCESS') {
         // ihtml += `${DATA1.data.name}`
-    alluser_btn.hidden=false
+    
     const id = DATA1.data._id
     localStorage.setItem("id", id)
     console.log(localStorage)

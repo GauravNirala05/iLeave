@@ -14,13 +14,14 @@ const apply_reason = document.querySelector('#reason')
 // const apply_checkbox = document.querySelector('#checkbox')
 //console.log(ipassword,iconpassword);
 apply_btn.addEventListener('click', async (e) => {
-    ihtml=``
+    // ihtml=``
     
     e.preventDefault()
-    totaldays.innerHTML=`${enddate-startdate}`
+    
         // const formAlert = document.querySelector('.form-alert')
         const name = apply_name.value
         const startdate = apply_startdate.value
+        
         const totaldays = apply_totaldays.value
         const enddate = apply_enddate.value
         const contactno = apply_contactno.value
@@ -30,6 +31,7 @@ apply_btn.addEventListener('click', async (e) => {
         const ref3 = reference3.value
         const ref4 = reference4.value
         const reason = apply_reason.value
+        // totaldays.innerHTML=`${apply_enddate.value-apply_startdate.value}`
         console.log(name, startdate,enddate,totaldays,contactno
             ,leavetype,ref1,ref2,ref3,ref4,reason);
             
@@ -61,9 +63,6 @@ apply_btn.addEventListener('click', async (e) => {
                 
             })
            
-            console.log(employee_name,to_date,total_days,from_date,contect_no,leave_type,reference1,reference2,reference3,reference4,discription)
-            
-
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)
             const h5 = document.createElement('span')
