@@ -1,4 +1,4 @@
-
+const alluser_btn = document.querySelector('.alluser')
 const error_message = document.querySelector('.error_result')
 
 const btn_log = document.querySelector('.login-btn')
@@ -51,6 +51,7 @@ btn_log.addEventListener('click', async (e) => {
     ihtml = `${DATA1.status}`
     if (DATA1.status === 'SUCCESS') {
         // ihtml += `${DATA1.data.name}`
+    
     const id = DATA1.data._id
     localStorage.setItem("id", id)
     console.log(localStorage)

@@ -21,6 +21,7 @@ apply_btn.addEventListener('click', async (e) => {
         // const formAlert = document.querySelector('.form-alert')
         const name = apply_name.value
         const startdate = apply_startdate.value
+        
         const totaldays = apply_totaldays.value
         const enddate = apply_enddate.value
         const contactno = apply_contactno.value
@@ -30,11 +31,14 @@ apply_btn.addEventListener('click', async (e) => {
         const ref3 = reference3.value
         const ref4 = reference4.value
         const reason = apply_reason.value
+        // totaldays.innerHTML=`${apply_enddate.value-apply_startdate.value}`
         console.log(name, startdate,enddate,totaldays,contactno
             ,leavetype,ref1,ref2,ref3,ref4,reason);
-        
+            
         // const checkbox = apply_checkbox.value
         try {
+            let id ;
+            id=localStorage.getItem("id",id)
             const fetcher = await fetch(`http://localhost:4000/applyLeave/apply_submit/${id}`, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -55,10 +59,10 @@ apply_btn.addEventListener('click', async (e) => {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-
+               
+                
             })
-            const id=localStorage.getItem("id",id)
-
+           
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)
             const h5 = document.createElement('span')
