@@ -14,10 +14,10 @@ const apply_reason = document.querySelector('#reason')
 // const apply_checkbox = document.querySelector('#checkbox')
 //console.log(ipassword,iconpassword);
 apply_btn.addEventListener('click', async (e) => {
-    // ihtml=``
+    ihtml=``
     
     e.preventDefault()
-    
+    totaldays.innerHTML=`${enddate-startdate}`
         // const formAlert = document.querySelector('.form-alert')
         const name = apply_name.value
         const startdate = apply_startdate.value
@@ -32,9 +32,11 @@ apply_btn.addEventListener('click', async (e) => {
         const reason = apply_reason.value
         console.log(name, startdate,enddate,totaldays,contactno
             ,leavetype,ref1,ref2,ref3,ref4,reason);
-        
+            
         // const checkbox = apply_checkbox.value
         try {
+            let id ;
+            id=localStorage.getItem("id",id)
             const fetcher = await fetch(`http://localhost:4000/applyLeave/apply_submit/${id}`, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -55,9 +57,12 @@ apply_btn.addEventListener('click', async (e) => {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-
+               
+                
             })
-            const id=localStorage.getItem("id",id)
+           
+            console.log(employee_name,to_date,total_days,from_date,contect_no,leave_type,reference1,reference2,reference3,reference4,discription)
+            
 
             const { status, data, msg } = await fetcher.json()
             console.log(data, status, msg)

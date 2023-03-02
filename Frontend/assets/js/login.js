@@ -1,4 +1,4 @@
-
+const alluser_btn = document.querySelector('.alluser')
 const error_message = document.querySelector('.error_result')
 
 const btn_log = document.querySelector('.login-btn')
@@ -51,11 +51,12 @@ btn_log.addEventListener('click', async (e) => {
     ihtml = `${DATA1.status}`
     if (DATA1.status === 'SUCCESS') {
         // ihtml += `${DATA1.data.name}`
+    alluser_btn.hidden=false
     const id = DATA1.data._id
     localStorage.setItem("id", id)
     console.log(localStorage)
         suc_modal.style.display = "block";
-        setTimeout(() => {  location.replace("../dash_board.html"); }, 10000);
+        setTimeout(() => {  location.replace("../dash_board.html"); }, 1000);
         
     }
     if (DATA1.status === 'FAILED') {
