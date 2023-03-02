@@ -39,7 +39,7 @@ apply_btn.addEventListener('click', async (e) => {
         try {
             let id ;
             id=localStorage.getItem("id",id)
-            const fetcher = await fetch(`http://localhost:4000/applyLeave/apply_submit/${id}`, {
+            const fetcher = await fetch(`http://localhost:4000/applyLeave/${id}`, {
                 method: 'POST',
                 body: JSON.stringify({
                     employee_name: name,
