@@ -55,7 +55,7 @@ btn_log.addEventListener('click', async (e) => {
     localStorage.setItem("id", id)
     console.log(localStorage)
         suc_modal.style.display = "block";
-        setTimeout(() => {  location.replace("../dash_board.html"); }, 10000);
+        setTimeout(() => {  location.replace("../dash_board.html"); }, 1000);
         
     }
     if (DATA1.status === 'FAILED') {
