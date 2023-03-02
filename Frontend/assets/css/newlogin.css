@@ -6,6 +6,19 @@
 }
 
 
+.popup{
+	width: 400px;
+	background: white;
+	border-radius: 6px;
+	position:absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%,-50) scale(0.1);
+	text-align: center;
+	padding: 0 30px 30px;
+	color: #333;
+
+}
 
 h1 {
 	font-weight: bold;
@@ -23,6 +36,13 @@ p {
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
 }
+.p2p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 0;
+}
 
 span {
 	font-size: 12px;
@@ -33,6 +53,17 @@ a {
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
+}
+.button2{
+	background-color: #ffffff;
+	color: #000000;
+	text-transform: lowercase;
+	border: none;
+	font-weight: normal;
+	padding: 1px 5px;
+	letter-spacing: normal;
+	margin-top: 0%;
+
 }
 
 button {
@@ -86,7 +117,7 @@ input {
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
+	position: absolute;
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
@@ -260,7 +291,7 @@ footer a {
   }
 
   body {
-	background-image: url("images/wall.jpg");
+	background-image: url("/Frontend/images/wall.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	backdrop-filter: blur(5px);
