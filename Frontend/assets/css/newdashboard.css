@@ -221,7 +221,7 @@ main{
 }
 
 .recent-grid{
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 65% auto;
@@ -230,26 +230,22 @@ main{
 .card{
   background: #fff;
   border-radius: 12px;
-   box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
   padding: 1rem;
 }
 .card-header
 {
   padding: 1rem;
 }
-.card-header-new{
-  display:block;
-  padding: 0rem;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #f0f0f0;
-}
 .card-header{
-  display: block;
+  display:flex;
+  padding: 1.5rem;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #f0f0f0;
 }
+
+
 .card-header button{
   background: var(--main-color);
   border-radius: 10px;
