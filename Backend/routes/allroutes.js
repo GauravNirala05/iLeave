@@ -1,12 +1,14 @@
 const express = require(`express`)
 const router = express.Router()
-
+const auth=require('../middlewares/auth')
 const {
     alluser,
     leaveStatus,
     getApprovals
 } = require('../Controllers/allcontrol')
-const {approve} = require('../Controllers/approvals')
+const {
+    approve
+} = require('../Controllers/approvals')
 const {
     applyLeave,
     getSingleData,
@@ -19,13 +21,13 @@ const {
 // routes
 router.route('/login').post(getSingleData)
 router.route('/registration').post(createData)
-router.route('/updateProfile/:id').patch(updateProfile)
-router.route('/deleteProfile/:id').delete(deleteProfile)
-router.route('/alluser/:id').get(alluser)
-router.route('/applyLeave/:id').post(applyLeave)
-router.route('/leaveStatus/:id').get(leaveStatus)
-router.route('/approvals/:id').get(getApprovals)
-router.route('/approvals/:id/:targetid').patch(approve)
-router.route('/allUsers/:id').get(alluser)
+router.route('/updateProfile').patch(auth,updateProfile)
+router.route('/deleteProfile').delete(auth,deleteProfile)
+router.route('/alluser').get(auth,alluser)
+router.route('/applyLeave').post(auth,applyLeave)
+router.route('/leaveStatus').get(auth,leaveStatus)
+router.route('/approvals').get(auth,getApprovals)
+router.route('/approvals/:targetid').patch(auth,approve)
+router.route('/allUsers').get(auth,alluser)
 
 module.exports = router

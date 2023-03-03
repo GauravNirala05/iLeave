@@ -1,75 +1,42 @@
 const User = require('../model/User')
 const Leave = require('../model/Leave')
+const jwt = require('jsonwebtoken');
+const {StatusCodes}=require('http-status-codes')
+const { NotFound, BadRequestError,UnAuthorizedError } = require('../errors');
+
 
 const createData = async (req, res) => {
     console.log(req.body);
     if (await User.exists({ email: req.body.email })) {
-        return res.status(401).json({
-            status: 'FAILED',
-            msg: `user with Email address ${req.body.email} already Exists ...`
-        })
+       throw new BadRequestError(`User with this email already exists...${req.body.email}`)
     }
     else {
         const data = await User.create(req.body)
         console.log(`User created`);
-        res.status(200).json({ status: 'SUCCESS', data: data })
+        const token = data.generateJWT()
+        res.status(StatusCodes.CREATED).json({ status: 'SUCCESS', msg: `You are registred Now`, token })
     }
 }
 
-const applyLeave = async (req, res) => {
-    const { id: userID } = req.params
-    const user = await User.findOne({ _id: userID })
-    const userName = user.name
-    const userDep = user.department
-    if (user) {
-        const designation = user.designation
-        if (designation === 'faculty') {
-            const leave = await Leave.create(req.body)
-            leave.employee_id = userID
-            leave.employee_dep = userDep
-            leave.employee_name = userName
-            await leave.save()
-            return res.status(200).json({ leave: leave, status: 'SUCCESS' })
-
-        }
-        if (designation === 'HOD') {
-            const leave = await Leave.create(req.body)
-            leave.employee_id = userID
-            leave.employee_dep = userDep
-            leave.employee_name = userName
-            leave.HOD_approval = true
-            await leave.save()
-            return res.status(200).json({ leave: leave, status: 'SUCCESS' })
-
-        }
-        if (designation === 'principal') {
-            return res.send('you are principal')
-        }
-
-        res.status(404).json({ status: 'FAILED', msg: `the credential ${user.designation} doesnt exists...` })
-
-    } else {
-        res.status(404).json({ status: 'FAILED', msg: `user with id ${userID} doesnt exists...` })
-    }
-}
 
 const getSingleData = async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body
-    console.log(email,password);
-    if (email === "" || password === "") {
-        return res.json({ status: 'FAILED', msg: `please provide credentials...` })
+    console.log(email, password);
+    if (!email || !password) {
+        throw new BadRequestError('provide credentials....')
     }
-    if (await User.exists({ email: email })) {
-        const data = await User.findOne({ email: email, password: password })
-        if (!data) {
-            return res.json({ status: 'FAILED', msg: `Wrong password` })
-        }
-        res.status(200).json({ status: 'SUCCESS', data: data })
+    const data = await User.findOne({ email })
+    if (!data) {
+        throw new BadRequestError(`No user with email ${email}`)
     }
-    else {
-        return res.status(200).json({ status: 'FAILED', msg: `No user with email... ${req.body.email}` })
+    const match =await data.CompPass(password)
+    if (!match) {
+        throw new UnAuthorizedError(`incorrect password`)
     }
+    const token = data.generateJWT()
+    res.status(StatusCodes.OK).json({ status: 'SUCCESS',data, msg: `You are successfully Logged In`, token })
+
 
 }
 
@@ -133,4 +100,40 @@ const deleteProfile = async (req, res) => {
 }
 
 
+const applyLeave = async (req, res) => {
+    const { userID, userName } = req.user
+    console.log(req.user);
+    const user = await User.findOne({ _id: userID })
+    const userDep = user.department
+    if (user) {
+        const designation = user.designation
+        if (designation === 'faculty') {
+            const leave = await Leave.create(req.body)
+            leave.employee_id = userID
+            leave.employee_dep = userDep
+            leave.employee_name = userName
+            await leave.save()
+            return res.status(200).json({ leave: leave, status: 'SUCCESS' })
+
+        }
+        if (designation === 'HOD') {
+            const leave = await Leave.create(req.body)
+            leave.employee_id = userID
+            leave.employee_dep = userDep
+            leave.employee_name = userName
+            leave.HOD_approval = true
+            await leave.save()
+            return res.status(200).json({ leave: leave, status: 'SUCCESS' })
+
+        }
+        if (designation === 'principal') {
+            return res.send('you are principal')
+        }
+
+        res.status(404).json({ status: 'FAILED', msg: `the credential ${user.designation} doesnt exists...` })
+
+    } else {
+        res.status(404).json({ status: 'FAILED', msg: `user with id ${userID} doesnt exists...` })
+    }
+}
 module.exports = { applyLeave, getSingleData, createData, updateProfile, deleteProfile }

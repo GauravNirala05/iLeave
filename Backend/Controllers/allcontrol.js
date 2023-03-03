@@ -2,7 +2,7 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 
 const alluser = async (req, res) => {
-    const { id: userID } = req.params
+    const { userID,userName } = req.user
     const user = await User.findOne({ _id: userID })
     if (user) {
         const designation = user.designation

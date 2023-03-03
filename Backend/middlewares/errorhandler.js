@@ -1,9 +1,14 @@
+const {CustomAPIError}=require('../errors')
+const {StatusCodes}=require('http-status-codes')
+
 const errorHandlerMiddleware = async (err, req, res, next) => {
-  console.log(err.message);
-  res.status(500).json({
+  if (err instanceof CustomAPIError ) {
+    return res.status(err.statusCode).json({msg:err.message})
+  }
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'FAILED',
     msg: 'Something went wrong, please try again',
-    error: err.message
+    error:err.message
   })
 }
 
