@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>iLeave | Status</title>
   <meta charset="utf-8">
@@ -25,88 +26,101 @@
 </head>
 <style>
 </style>
+
 <body>
-    <input type="checkbox" id="nav-toggle">
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <span><img class="img-logo mr-2" src="images/logo.svg"> </span> 
-            <span><img class="img-logo-name" src="images/newname.svg" alt=""></span>
-        </div>
-        
-        <div class="sidebar-menu">
-          <ul>
-            <li>
-              <a href="newdashboard.html" >
-                  <span class="fa fa-clone"></span> 
-                  <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-              <a href="newapplyleave.html">
-                <span class="fa fa-calendar" ></span>
-                <span>Apply leave</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="active">
-                <span class="fa fa-calendar-check-o"></span>
-              <span>Status/Approval</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-pencil-square-o"></span>
-                <span>Profile Update</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-sign-out"></span>
-                <span>Logout</span>
-              </a>
-            </li>
-          </ul>
+  <input type="checkbox" id="nav-toggle">
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
+      <span><img class="img-logo-name" src="images/newname.svg" alt=""></span>
+    </div>
 
-        </div>
-    </div>    
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+          <a href="newdashboard.html">
+            <span class="fa fa-clone"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="newapplyleave.html">
+            <span class="fa fa-calendar"></span>
+            <span>Apply leave</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <span class="fa fa-calendar-check-o"></span>
+            <span>Status/Approval</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-pencil-square-o"></span>
+            <span>Profile Update</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-sign-out"></span>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
 
-    <div class="main-content">
-      <header>
-        <h2>
-          <label for="nav-toggle">
-            <span class="fa fa-bars"></span>
-          </label>
-          Status/Approval
-        </h2>
+    </div>
+  </div>
 
-        <div class="dropdown">
-        <div type="button" class="dropbtn user-wrapper">
-         <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
-        </div>
-         <div class="dropdown-content ">
-            <div class="card">
-                <div class="">
-                    <h4>Malik Abushabab</h4>
-                    <small>Faculty</small>
-                 </div>
-              </div>
+  <div class="main-content">
+    <header>
+      <h2>
+        <label for="nav-toggle">
+          <span class="fa fa-bars"></span>
+        </label>
+        Status/Approval
+      </h2>
+
+      <div class="dropdown">
+        <div class=" user-wrapper ">
+          <button class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
+          </button>
+          <div class="">
+            <span>
+              <h4>Prof. Akhil Verma</h4>
+            </span>
+
           </div>
-        </div> 
+
+          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+            <img src="images/profile.jpg" alt="John" style="width:70px;height: 70px;">
+            <div class="card-header" style="margin:10px">
+              <span>
+                <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;akhilverma42@gmail.com<br></h4>
+              </span>
+              <p class="title">HOD<br></p>
+              <p>Department of Computer Science</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-      </header>
+    </header>
 
-      <main>
-        <div class="recents-grid mt-4">
-          <div class="projects">
-            <div class="card">
-              <div class="card-header">
-                <h2>Leave Staus</h2>
-                <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table width="100%">
+    <main>
+      <div class="recents-grid mt-4">
+        <div class="projects">
+          <div class="card">
+            <div class="card-header">
+              <h2>Leave Staus</h2>
+              <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%">
                   <thead>
                     <tr>
                       <td>Sr.No</td>
@@ -128,11 +142,12 @@
                       <td>Medical Leave</td>
                       <td>28 Feb 2023</td>
                       <td>2 Mar 2023</td>
-                      <td>	
+                      <td>
                         <div><span class="status orange"></span>Person 1</div>
                         <div><span class="status green"></span>Person 2</div>
                         <div><span class="status orange"></span>Person 3</div>
-                        <div><span class="status green"></span>Person 4</div></td>
+                        <div><span class="status green"></span>Person 4</div>
+                      </td>
                       <td>Pending</td>
                       <td>Pending</td>
                       <td>Pending</td>
@@ -142,77 +157,84 @@
                   </tbody>
 
                 </table>
-                </div>
               </div>
-
             </div>
 
-        </div>
-        </div>  
-        <div class="recents-grid mt-3">
-            <div class="projects">
-              <div class="card">
-                <div class="card-header">
-                  <h2>Leave Approval</h2>
-                  <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table width="100%">
-                    <thead>
-                      <tr>
-                        <td>Sr.No</td>
-                        <td>Name</td>
-                        <td>Leave Name</td>
-                        <td>From Date</td>
-                        <td>To Date</td>
-                        <td>Reason</td>
-                        <td>For Year</td>
-                        <td></td>
-  
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Akhil Sharma</td>
-                        <td>Casual Leave</td>
-                        <td>28 Feb 2023</td>
-                        <td>2 Mar 2023</td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis similique autem dolorum neque sit inventore vitae natus, itaque totam et voluptates accusantium! Doloribus obcaecati debitis velit nihil assumenda at illum.</td>
-                        <td>2</td>
-                        <td><span type="button" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" class="btn btn-outline-danger col-lg-11">Reject</span></td>
-                        <td></td>
-  
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Rani Singh</td>
-                        <td>Medical Leave</td>
-                        <td>28 Feb 2023</td>
-                        <td>2 Mar 2023</td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis similique autem dolorum neque sit inventore vitae natus, itaque totam et voluptates accusantium! Doloribus obcaecati debitis velit nihil assumenda at illum.</td>
-                        <td>2</td>
-                        <td><span type="button" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" class="btn btn-outline-danger col-lg-11">Reject</span></td>
-                        <td></td>
-  
-                      </tr>
-                      
-                    </tbody>
-  
-                  </table>
-                  </div>
-                </div>
-  
-              </div>
-  
           </div>
-          </div> 
-      </main>
-    </div>
+
+        </div>
+      </div>
+      <div class="recents-grid mt-3">
+        <div class="projects">
+          <div class="card">
+            <div class="card-header">
+              <h2>Leave Approval</h2>
+              <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%">
+                  <thead>
+                    <tr>
+                      <td>Sr.No</td>
+                      <td>Name</td>
+                      <td>Leave Name</td>
+                      <td>From Date</td>
+                      <td>To Date</td>
+                      <td>Reason</td>
+                      <td>For Year</td>
+                      <td></td>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Akhil Sharma</td>
+                      <td>Casual Leave</td>
+                      <td>28 Feb 2023</td>
+                      <td>2 Mar 2023</td>
+                      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis similique autem dolorum
+                        neque sit inventore vitae natus, itaque totam et voluptates accusantium! Doloribus obcaecati
+                        debitis velit nihil assumenda at illum.</td>
+                      <td>2</td>
+                      <td><span type="button" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                        <span type="button" class="btn btn-outline-danger col-lg-11">Reject</span>
+                      </td>
+                      <td></td>
+
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Rani Singh</td>
+                      <td>Medical Leave</td>
+                      <td>28 Feb 2023</td>
+                      <td>2 Mar 2023</td>
+                      <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis similique autem dolorum
+                        neque sit inventore vitae natus, itaque totam et voluptates accusantium! Doloribus obcaecati
+                        debitis velit nihil assumenda at illum.</td>
+                      <td>2</td>
+                      <td><span type="button" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                        <span type="button" class="btn btn-outline-danger col-lg-11">Reject</span>
+                      </td>
+                      <td></td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
 
 
 </body>
+
 </html>
