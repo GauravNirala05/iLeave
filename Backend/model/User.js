@@ -37,13 +37,12 @@ const userSchema = new mongoose.Schema({
     },
     mob_no: {
         type: Number,
-        required: [true, 'Must provide Your name'],
+        required: [true, 'Must provide Your Mobile Number'],
     },
     designation: {
         type: String,
         immutable: true,
         enum: ['faculty', 'HOD', 'principal'],
-        required: [true, 'Must provide'],
     },
     contect_type: {
         type: String,
@@ -52,7 +51,6 @@ const userSchema = new mongoose.Schema({
     },
     department: {
         type: String,
-        required: [true, 'Must provide'],
         enum: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil']
     },
     password: {

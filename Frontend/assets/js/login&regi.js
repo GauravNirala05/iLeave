@@ -1,14 +1,12 @@
-const btn_log = document.querySelector('.button2')
-const email_log = document.querySelector('.email')
-const password_log = document.querySelector('.password')
+const btn_log = document.querySelector('.btn_log')
+const email_log = document.querySelector('.email_log')
+const password_log = document.querySelector('.password_log')
 
 btn_log.addEventListener('click', async (e) => {
     e.preventDefault()
 
-    const email = email.value
-    const password = password.value
-    console.log(emaillog, password);
-    ihtml = ``
+    const email = email_log.value
+    const password = password_log.value
     try {
 
         const loger = await fetch('http://localhost:4000/login', {
@@ -29,8 +27,7 @@ btn_log.addEventListener('click', async (e) => {
         else {
             const { data, msg, token } = await loger.json()
             localStorage.setItem("token", token)
-            ihtml += `${msg}`
-            result.innerHTML = ihtml
+            alert(`${msg}`)
             setTimeout(() => {
                 location.replace("newdashboard.html")
             }, 3000);
@@ -44,18 +41,20 @@ btn_log.addEventListener('click', async (e) => {
 })
 
 
-const btn_regi = document.querySelector('.registrationButton')
+const btn_regi = document.querySelector('.btn_regi')
 const name_regi = document.querySelector('.name_regi')
 const email_regi = document.querySelector('.email_regi')
+const mob_no = document.querySelector('.mob_no')
 const password_regi = document.querySelector('.password_regi')
 const confirmPassword_regi = document.querySelector('.confirmPassword_regi')
 
 
 btn_regi.addEventListener('click', async (e) => {
     e.preventDefault()
-    if (password_log.value == confirmPassword_regi.value) {
+    if (password_regi.value == confirmPassword_regi.value) {
         const name = name_regi.value
         const email = email_regi.value
+        const mob = mob_no.value
         const password = password_regi.value
         try {
             const fetcher = await fetch('http://localhost:4000/registration', {
@@ -63,6 +62,7 @@ btn_regi.addEventListener('click', async (e) => {
                 body: JSON.stringify({
                     name: name,
                     email: email,
+                    mob_no:mob,
                     password: password
                 }),
                 headers: {
@@ -75,9 +75,8 @@ btn_regi.addEventListener('click', async (e) => {
                 throw Error(fetcher.status + " " + error)
             }
             const { token, msg } = await fetcher.json()
-
-            result.innerHTML = `${msg}`
             localStorage.setItem("token", token)
+            alert(`${msg}`)
             setTimeout(() => {
                 location.replace("newdashboard.html")
                 
@@ -92,12 +91,32 @@ btn_regi.addEventListener('click', async (e) => {
 
     }
     else {
-        result.innerHTML = `Password is not Matching`
+        console.log(`Password is not Matching`);
     }
 
 })
 
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
 
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 
