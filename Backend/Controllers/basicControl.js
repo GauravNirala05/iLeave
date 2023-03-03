@@ -19,7 +19,7 @@ const createData = async (req, res) => {
 }
 
 
-const getSingleData = async (req, res) => {
+const login = async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body
     console.log(email, password);
@@ -38,6 +38,12 @@ const getSingleData = async (req, res) => {
     res.status(StatusCodes.OK).json({ status: 'SUCCESS',data, msg: `You are successfully Logged In`, token })
 
 
+}
+const getSingleData = async (req, res) => {
+    console.log(req.user);
+    const { userID, userName } = req.user
+    const data =await User.findOne({_id:userID,name:userName})
+    res.status(StatusCodes.OK).json({ status: 'SUCCESS',data })
 }
 
 const updateProfile = async (req, res) => {
@@ -136,4 +142,4 @@ const applyLeave = async (req, res) => {
         res.status(404).json({ status: 'FAILED', msg: `user with id ${userID} doesnt exists...` })
     }
 }
-module.exports = { applyLeave, getSingleData, createData, updateProfile, deleteProfile }
+module.exports = { applyLeave, getSingleData, createData,login, updateProfile, deleteProfile }

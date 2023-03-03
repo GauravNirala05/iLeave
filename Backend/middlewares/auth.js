@@ -9,6 +9,7 @@ const auth=(req,res,next)=>{
         throw new BadRequestError(`please provide token`)
     }
     const token =authorization.split(' ')[1]
+    console.log(token);
     try {
         const decode=jwt.verify(token,process.env.JWT_SECRET)
         req.user=decode
