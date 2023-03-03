@@ -148,3 +148,44 @@ background: linear-gradient(
 .form-box .btn-twitter:hover{
     background:#2eb7e5;
 }*/
+.green{
+    color: greenyellow;
+}
+.logo{
+    width:20%; 
+    height: 20%;
+}
+/* Modal Header */
+.modal-header {
+  
+    text-align: center;
+    color: rgb(255, 74, 74);
+  }
+
+  
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;}
+  
+  /* Modal Footer */
+  .modal-footer {
+    align-items: center;
+    color: rgb(0, 0, 0);
+  }
+  
+  /* Modal Content */
+  .modal-content{
+    margin-top: 5%;
+    margin: auto;
+    width: 28rem;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
