@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>iLeave |Dashboard</title>
   <meta charset="utf-8">
@@ -24,316 +25,510 @@
 </head>
 <style>
 </style>
+
 <body>
-    <input type="checkbox" id="nav-toggle">
-    <div class="sidebar">
-        <div class="sidebar-brand">
-          <!--<h1> <span class="fa fa-user"> </span> <span>Aizcar</span>
+  <input type="checkbox" id="nav-toggle">
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <!--<h1> <span class="fa fa-user"> </span> <span>Aizcar</span>
           </h1>-->
-          <span><img class="img-sidebar" src="images/logo.svg"> </span> <span><img class="logo-sidebar" src="images/namelogo.svg"><!--<img class="logo-sidebar" src="images/namelogo.svg">--></span>
-          
+      <span><img class="img-sidebar" src="images/logo.svg"> </span> <span><img class="logo-sidebar"
+          src="images/namelogo.svg"><!--<img class="logo-sidebar" src="images/namelogo.svg">--></span>
+
+    </div>
+
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+          <a href="./newdashboard.html" class="active">
+            <span class="fa fa-home"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="apply_leave.html">
+            <span class="fa fa-calendar"></span>
+            <span>Apply Leave</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-check-square-o"></span>
+            <span>Status/Approval</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-cog"></span>
+            <span>Update Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa fa-sign-out"></span>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2>
+        <label for="nav-toggle">
+          <span class="fa fa-bars"></span>
+        </label>
+        Dashboard
+      </h2>
+
+      <!--<div class="search-wrapper">
+        <span class="fas fa-search"> </span>
+        <input type="search" placeholder="Search..." />
+
+      </div>-->
+
+
+      <div class="dropdown user-wrapper">
+        <button class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="images/profile.jpg" width="50px" height="50px" alt="profile-img">
+        </button>
+        <div class="">
+          <h4>Prof.Akhil Verma</h4>
         </div>
-        
-        <div class="sidebar-menu">
-          <ul>
-            <li>
-              <a href="#" class="active">
-                <span class="fa fa-clone"></span>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-calendar" ></span>
-                <span>Apply Leave</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-check-square-o"></span>
-                <span>Status/Approval</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-cog"></span>
-                <span>Update Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-sign-out"></span>
-                <span>Logout</span>
-              </a>
-            </li>
-          </ul>
-
-        </div>
-    </div>    
-
-    <div class="main-content">
-      <header>
-        <h2>
-          <label for="nav-toggle">
-            <span class="fas fa-bars"></span>
-          </label>
-          Dashboard
-        </h2>
-
-        <div class="search-wrapper">
-          <span class="fas fa-search"> </span>
-          <input type="search" placeholder="Search..." />
-
-        </div>
-
-        <div class="user-wrapper">
-         <img src="https://bit.ly/3bvT89p" width="40px" height="40px" alt="profile-img">
-         <div class="">
-            <h4>Malik Abushabab</h4>
-            <small>Super Admin</small>
-         </div>
-        </div>
-
-
-        <!--<details class="dropdown">
-          <summary role="button">
-            <a class="button">Prof. Akhil Verma</a>
-          </summary>
-          <ul>
-            <li><a href="#">I'm a dropdown.</a></li>
-            <li><a href="#">In Pure CSS</a></li>
-            <li><a href="#">As in...</a></li>
-            <li><a href="#">No JavaScript.</a></li>
-            <li><a href="#">At All.</a></li>
-        </ul>
-      </details>-->
-      
-      </header>
-
-      <main>
-        <div class="cards">
-          <div class="card-single">
-            <div>
-              <h1>50</h1>
-              <span>Customers</span>
-            </div>
-            <div>
-              <span class="fas fa-users"></span>
-            </div>
+        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+          <img src="images/profile.jpg" alt="John" style="width:70px;height: 70px;">
+          <div class="card-header"style="margin:10px">
+             <span><h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;akhilverma42@gmail.com<br></h4></span>
+            <p class="title">HOD<br></p>
+            <p>Department of Computer Science</p>
           </div>
-          <div class="card-single">
-            <div>
-              <h1>12</h1>
-              <span>Projects</span>
-            </div>
-            <div>
-              <span class="fas fa-clipboard-list"></span>
-            </div>
-          </div>
-          <div class="card-single">
-            <div>
-              <h1>15</h1>
-              <span>Orders</span>
-            </div>
-            <div>
-              <span class="fas fa-shopping-cart"></span>
-            </div>
-          </div>
-          <div class="card-single">
-            <div>
-              <h1>$50K</h1>
-              <span>Income</span>
-            </div>
-            <div>
-              <span class="fas fa-wallet"></span>
-            </div>
-          </div>
-
         </div>
+        </div>
+    </header>
 
-        <div class="recent-grid">
-          <div class="projects">
-            <div class="card">
-              <div class="card-header">
-                <h2>Recent Projects</h2>
-                <button>See all <span class="fas fa-arrow-right"></span> </button>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table width="100%">
+    <main>
+
+      <div class="recent-grid">
+        <div class="projects">
+          <div class="card">
+            <div class="card-header">
+              <h2>Leave Pending</h2>
+              <!--<button>See all <span class="fa fa-arrow-right"></span> </button>-->
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%">
                   <thead>
                     <tr>
-                      <td>Project Title</td>
-                      <td>Department</td>
-                      <td>Status</td>
+                      <td></td>
+                      <td>Leave</td>
+                      <td>Date</td>
+
 
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Website</td>
-                      <td>Frontend</td>
                       <td>
-                        <span class="status purple"></span>
-                        Review
+                        <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+
                       </td>
+                      <td>Medical Leave
+                        <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                          request this leave for ...</h6>
+                        <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                      </td>
+                      <td>20 JUL 2023 07:02pm</td>
+
                     </tr>
                     <tr>
-                      <td>Website</td>
-                      <td>Frontend</td>
                       <td>
-                        <span class="status orange"></span>
-                        Pending
+                        <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+
                       </td>
-                    </tr>
-                    <tr>
-                      <td>Website</td>
-                      <td>Frontend</td>
-                      <td>
-                        <span class="status pink"></span>
-                        In Progress
+                      <td>Causual Leave
+                        <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                          request this leave for ...</h6>
+                        <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
                       </td>
+                      <td>20 JUL 2023 07:02pm</td>
+
                     </tr>
-                    <tr>
-                      <td>Website</td>
-                      <td>Frontend</td>
-                      <td>
-                        <span class="status purple"></span>
-                        Review
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Website</td>
-                      <td>Frontend</td>
-                      <td>
-                        <span class="status pink"></span>
-                        In Progress
-                      </td>
-                    </tr>
+
+
                   </tbody>
 
                 </table>
-                </div>
               </div>
 
             </div>
 
           </div>
-          <div class="customers">
+
+        </div>
+        <div class="customers">
+          <div class="card">
+            <div class="card-header">
+              <h2>Leave Balance</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%">
+                  <!-- <thead>
+                    <tr>
+                      <td></td>
+                      <td>Leave</td>
+                      <td>Date</td>
+                    </tr>
+                  </thead>-->
+                  <tbody>
+                    <tr>
+                      <!--<td>
+                        <span class="status purple"></span>
+
+                      </td>-->
+                      <td>
+                        <span class="status orange" style="margin-right: 7px;"></span>Medical Leave
+                      </td>
+                      <td> 10/45</td>
+
+                    </tr>
+                    <tr>
+                      <!--<td>
+                        <span class="status pink"></span>
+
+                      </td>-->
+                      <td >
+                        <span class="status orange" style="margin-right: 7px;"></span>Causual <span>Leave</span>
+                      </td>
+                      <td> 10/45</td>
+
+                    </tr>
+                    <tr>
+                      <!--<td>
+                        <span class="status pink"></span>
+
+                      </td>-->
+                      <td>
+                        <span class="status orange" style="margin-right: 7px;"></span>Ordinary Leave
+
+                      </td>
+                      <td> 10/45</td>
+
+                    </tr>
+                    <tr>
+                      <!-- <td>
+                        <span class="status purple"></span>
+
+                      </td>-->
+                      <td>
+                        <span class="status orange" style="margin-right: 7px;"></span>Causual Leave
+
+                      </td>
+                      <td> 10/45</td>
+
+                    </tr>
+
+
+                  </tbody>
+
+                </table>
+                <div class="card-header">
+                  <button style="width:200px;height: 50px;">Apply Leave <span class="fa fa-arrow-right"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<div class="cards">
+        <div class="card-header">
+          <h2>Leave Status</h2>
+          <button>See all <span class="fa fa-arrow-right"></span> </button>
+        </div>
+        
+        <div class="card-body">
+          <div class="table-responsive">
+            <table width="100%">
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>Leave</td>
+                  <td>Date</td>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+                  <td>Medical Leave
+                  </td>
+                  <td> 10/45</td>
+
+                </tr>
+                <tr>
+
+                  <td>Causual Leave
+
+                  </td>
+                  <td> 10/45</td>
+
+                </tr>
+                <tr>
+
+                  <td>Ordinary Leave
+
+                  </td>
+                  <td> 10/45</td>
+
+                </tr>
+                <tr>
+
+                  <td>Causual Leave
+
+                  </td>
+                  <td> 10/45</td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+         
+        </div>-->
+      </div>
+      <div class="recent-grid">
+        <div class="projects">
+          <div class="card">
+            <div class="card-header">
+              <h2>Leave History</h2>
+              <!--<button>See all <span class="fa fa-arrow-right"></span> </button>-->
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%">
+                  <thead>
+                    <tr>
+                      <td></td>
+                      <td>Leave</td>
+                      <td>Date</td>
+
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="status purple"></span>
+
+                      </td>
+                      <td>Medical Leave
+                        <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                          request this leave for ...</h6>
+                        <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                      </td>
+                      <td>20 JUL 2023 07:02pm</td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="status pink"></span>
+
+                      </td>
+                      <td>Causual Leave
+                        <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                          request this leave for ...</h6>
+                        <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                      </td>
+                      <td>20 JUL 2023 07:02pm</td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="status pink"></span>
+
+                      </td>
+                      <td>Ordinary Leave
+                        <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                          request this leave for ...</h6>
+                        <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                      </td>
+                      <td>20 JUL 2023 07:02pm</td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="status purple"></span>
+
+                      </td>
+                      <td>Causual Leave
+                        <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                          request this leave for ...</h6>
+                        <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                      </td>
+                      <td>20 JUL 2023 07:02pm</td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!--<div class="customers">
             <div class="card">
               <div class="card-header">
-                  <h2>New Customers</h2>
-                  <button>See all <span class="fas fa-arrow-right"></span> </button>
+                <h2>Leave Pending</h2>
+                <button>See all <span class="fa fa-arrow-right"></span> </button>
               </div>
               <div class="card-body">
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
-                  </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
+                <div class="table-responsive">
+                  <table width="100%">
+                    <thead>
+                      <tr>
+                        <td></td>
+                        <td>Leave</td>
+                        <td>Date</td>
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+
+                        </td>
+                        <td>Medical Leave
+                          <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                            request this leave for ...</h6>
+                          <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                        </td>
+                        <td>20 JUL 2023 07:02pm</td>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+
+                        </td>
+                        <td>Causual Leave
+                          <h6 class="text-danger text-left"><i class="mdi mdi-arrow-bottom-right"></i>I
+                            request this leave for ...</h6>
+                          <h6 class="text-muted text-left">25 Jul- 27 Jul</h6>
+                        </td>
+                        <td>20 JUL 2023 07:02pm</td>
+
+                      </tr>
+
+
+                    </tbody>
+
+                  </table>
                 </div>
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
+                <!-- <div class="customer">
+                <div class="info ">
+                  <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+                  
+                  <div>
+                    <h4>Malik Abushabab</h4>
+                    <small>CEO</small>
                   </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
                 </div>
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
-                  </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
-                </div>
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
-                  </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
-                </div>
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
-                  </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
-                </div>
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
-                  </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
-                </div>
-                <div class="customer">
-                  <div class="info">
-                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                    <div>
-                      <h4>Malik Abushabab</h4>
-                      <small>CEO</small>
-                    </div>
-                  </div>
-                  <div class="contact">
-                      <span class="fas fa-user-circle"></span>
-                      <span class="fas fa-comment"></span>
-                      <span class="fas fa-phone-alt"></span>
-                    </div>
+                <div class="contact">
+                  <span class="fas fa-user-circle"></span>
+                  <span class="fas fa-comment"></span>
+                  <span class="fas fa-phone-alt"></span>
                 </div>
               </div>
+              <div class="customer">
+                <div class="info">
+                  <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+                  <!--<img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+              <div>
+                <h4>Malik Abushabab</h4>
+                <small>CEO</small>
+              </div>
             </div>
-
+            <div class="contact">
+              <span class="fas fa-user-circle"></span>
+              <span class="fas fa-comment"></span>
+              <span class="fas fa-phone-alt"></span>
+            </div>
           </div>
-          
-        </div>  
+          <div class="customer">
+            <div class="info">
+              <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+              <!--<img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+              <div>
+                <h4>Malik Abushabab</h4>
+                <small>CEO</small>
+              </div>
+            </div>
+            <div class="contact">
+              <span class="fas fa-user-circle"></span>
+              <span class="fas fa-comment"></span>
+              <span class="fas fa-phone-alt"></span>
+            </div>
+          </div>
+          <div class="customer">
+            <div class="info">
+              <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+              <!--<img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+              <div>
+                <h4>Malik Abushabab</h4>
+                <small>CEO</small>
+              </div>
+            </div>
+            <div class="contact">
+              <span class="fas fa-user-circle"></span>
+              <span class="fas fa-comment"></span>
+              <span class="fas fa-phone-alt"></span>
+            </div>
+          </div>
+          <div class="customer">
+            <div class="info">
+              <i class="fa fa-check-circle" style="font-size:24px; margin-right:15px"></i>
+              <!--<img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+              <div>
+                <h4>Malik Abushabab</h4>
+                <small>CEO</small>
+              </div>
+            </div>
+            <div class="contact">
+              <span class="fas fa-user-circle"></span>
+              <span class="fas fa-comment"></span>
+              <span class="fas fa-phone-alt"></span>
+            </div>
+          </div>
 
-      </main>
-    </div>
+        </div>-->
+      </div>
 
+  </div>
 
+  </div>
+
+  </div>
+  </main>
+
+ 
+  <footer>
+    <p>
+      Created with <i class="fa fa-heart"></i> by
+      <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+      - Read how I created this and how you can join the challenge
+    </p >
+  </footer>
 </body>
+
 </html>
