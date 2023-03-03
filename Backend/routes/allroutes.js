@@ -1,5 +1,6 @@
 const express = require(`express`)
 const router = express.Router()
+
 const auth=require('../middlewares/auth')
 const {
     alluser,
@@ -13,13 +14,15 @@ const {
     applyLeave,
     getSingleData,
     createData,
+    login,
     updateProfile,
     deleteProfile
 } = require('../Controllers/basicControl')
 
 
 // routes
-router.route('/login').post(getSingleData)
+router.route('/login').post(login)
+router.route('/loginUser').get(auth,getSingleData)
 router.route('/registration').post(createData)
 router.route('/updateProfile').patch(auth,updateProfile)
 router.route('/deleteProfile').delete(auth,deleteProfile)
