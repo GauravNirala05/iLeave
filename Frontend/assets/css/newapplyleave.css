@@ -59,11 +59,7 @@
     font-size: 12px;
     color: #000; }
 
-    button{
-        border-radius: 10px;
-        background-color: orangered;
-        border: #d9d9d9;
-    }
+ 
     .icon-error:before {
         content: "\e000";
       }
@@ -73,3 +69,4 @@
 .orangered{
     color: #f57c00
 }
+
