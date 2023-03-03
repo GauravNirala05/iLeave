@@ -6,7 +6,12 @@
   --color-dark: #1D2231;
   --text-grey:  #8390A2;
 }
-
+.img-logo-name{
+  width: 200px;
+}
+.img-logo{
+  width: 40px;
+}
 *{
   padding: 0;
   margin: 0;
@@ -449,4 +454,46 @@ td .status{
   .cards{
     grid-template-columns: 100%;
   }
+}
+
+/* Dropdown Button */
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  /* position:absolute; */
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* z-index: 1; */
+  position:absolute;
+  top:100%;
+  width:160px;
+  z-index:-100
+}
+
+
+
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  border-radius: 12px;
+  /* background-color: #ddd; */
 }
