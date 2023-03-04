@@ -460,6 +460,8 @@ td .status{
 .dropdown {
   position: relative;
   display: inline-block;
+  border: none;
+  outline: none;
 }
 
 /* Dropdown Content (Hidden by Default) */
