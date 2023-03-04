@@ -12,7 +12,10 @@ const getuser=async ()=>{
         throw Error('something went wrong')
       }
       const userData=await user.json()
-      console.log(userData);
+      // console.log(userData);
+      console.log(userData.data);
+      console.log(userData.data.name);
+      document.getElementById("name").innerHTML = `${userData.data.name}`
     } catch (error) {
       console.log(error);
     }
