@@ -31,7 +31,7 @@
 		color:#fff ;
 	}
 	.nav-nav:hover{
-		color:rgba(104,66,239,255);
+		color:black;
 	}
 	.navbtn{
 		color:#fff;
@@ -39,7 +39,7 @@
 		transition: transform .2s; 
 	}
 	.navbtn:hover{
-		background-color:#fff;
+		background-color:rgba(104,66,239,255);
 		zoom: 1.2;
 	}
 
