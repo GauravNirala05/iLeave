@@ -12,10 +12,15 @@ const getuser=async ()=>{
         throw Error('something went wrong')
       }
       const userData=await user.json()
+      console.log(userData)
+      console.log(userData.data.designation)
+      if (userData.data.designation==null){
+
+      }
       let ihtml=``
       for(item in userData)
       {
-        console.log(userData);
+        // console.log(userData);
         ihtml=`
         <div class=" user-wrapper ">
         <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
@@ -24,7 +29,7 @@ const getuser=async ()=>{
         </a>
         <div class="">
           <span>
-            <h4>${userData.data.name}</h4>
+            <h4 class="name mr-4">Prof.${userData.data.name}</h4>
           </span>
 
         </div>

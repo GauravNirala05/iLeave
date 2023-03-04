@@ -31,8 +31,8 @@ btn_log.addEventListener('click', async (e) => {
             localStorage.setItem("token", token)
             alert(`${msg}`)
             setTimeout(() => {
-                location.replace("newdashboard.html")
-            }, 3000);
+                location.replace("Dashboard.html")
+            }, 1000);
         }
 
     }
@@ -89,7 +89,7 @@ btn_regi.addEventListener('click', async (e) => {
             localStorage.setItem("token", token)
             alert(`${msg}`)
             setTimeout(() => {
-                location.replace("newdashboard.html")
+                location.replace("updateprofile.html")
                 
             }, 5000);
             name_regi.value = ``
