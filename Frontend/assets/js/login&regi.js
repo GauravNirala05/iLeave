@@ -32,7 +32,7 @@ btn_log.addEventListener('click', async (e) => {
             alert(`${msg}`)
             setTimeout(() => {
                 location.replace("newdashboard.html")
-            }, 1000);
+            }, 3000);
         }
 
     }
@@ -90,8 +90,8 @@ btn_regi.addEventListener('click', async (e) => {
             alert(`${msg}`)
             setTimeout(() => {
                 location.replace("newdashboard.html")
-
-            }, 1000);
+                
+            }, 5000);
             name_regi.value = ``
             email_regi.value = ``
             password_regi.value = ``
