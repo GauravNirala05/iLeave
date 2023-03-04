@@ -18,10 +18,10 @@ const getuser=async ()=>{
         console.log(userData);
         ihtml=`
         <div class=" user-wrapper ">
-        <button class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
+        <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
-        </button>
+        </a>
         <div class="">
           <span>
             <h4>${userData.data.name}</h4>
