@@ -39,8 +39,8 @@ const getuser=async ()=>{
             <div class="card-header" style="margin:10px">
             <div>
                 <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
-              <p class="title">HOD</p>
-              <p>Department of Computer Science</p>
+              <p class="title">${userData.data.designation}</p>
+              <p>${userData.data.department}</p>
             </div>
             </div>
           </div>
@@ -48,7 +48,34 @@ const getuser=async ()=>{
           
         }
         document.getElementById("profile").innerHTML=ihtml
-  
+        // document.getElementById("name").innerHTML=userData.data.name
+
+        document.getElementById("Name").innerHTML=`<input type="text" class="form-control Name" name="name" id="fname" value="${userData.data.name}" placeholder="Full name"
+                          aria-required="true" aria-invalid="true">`
+        
+        document.getElementById("email").innerHTML=`<input type="email" class="form-control Name" name="email" id="email" value="${userData.data.email}" placeholder="Email"
+                          aria-required="true" aria-invalid="true">`
+
+        document.getElementById("number").innerHTML=`<input type="number" class="form-control Name" name="mob_no" id="data" value="${userData.data.mob_no}" placeholder="Full name"
+                          aria-required="true" aria-invalid="true">`
+                          
+        document.getElementById("Designation").innerHTML=`<select class="form-control" id="designation">
+        <option name="reference3" value="">Designation</option>
+        <option>Faculty</option>
+        <option>HOD</option>
+        <option>Pricipal</option>
+      </select>`
+
+        document.getElementById("Department").innerHTML=`<select class="form-control" id="department">
+        <option name="reference3" value="">Department</option>
+        <option value="Computer Science">CSE</option>
+        <option value="Iformation Tecnology">HOD</option>
+        <option value="ET & T">ET & T</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Civil">Civil</option>
+        <option value="Mining">Mining</option>
+      </select>`
+
       } catch (error) {
         console.log(error);
       }

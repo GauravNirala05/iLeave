@@ -1,3 +1,6 @@
 # iLeave
-Our college project
-Leave Apllication Project
+This is Our Leave Project. 
+
+This is a Web Application.
+
+

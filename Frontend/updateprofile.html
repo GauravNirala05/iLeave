@@ -93,29 +93,12 @@
 
             <div class="card-body">
               <div class="row align-items-center">
-                <div class="col-lg-4 ml-auto border-right">
-                  <div class="card">
-                    <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
-                    <h4>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Casual Leave: </span><span> 5</span>
-                      </div>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Medical Leave: </span><span> 5</span>
-                      </div>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Extra Leave: </span><span> 5</span>
-                      </div>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Ordinary Leave: </span><span> 5</span>
-                      </div>
-                      <hr>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span class="orangered">Total Leave: </span><span> 20</span>
-                      </div>
-                    </h4>
+                
+                <div class="col-lg-4  mt-0 mb-lg-0">
+                  <img src="images/logo.svg" alt="">
                   </div>
-                 </div>
+               
+
                 <div class="col-lg-8 mb-5 mb-lg-0">
                   <form class="pr-5 mb-5" method="post" id="contactForm" name="contactForm"
                     novalidate="novalidate">
@@ -124,69 +107,52 @@
                       <div class="col-md-6 form-group">
                         <!-- name -->
                         <label class="mb-0">Name</label>
-                        <input type="text" class="form-control error" name="name" id="fname" placeholder="Full name"
-                          aria-required="true" aria-invalid="true"><label id="fname-error" class="error"
-                          for="fname"></label>
+                        <div id="Name"></div>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
-                        <label class="mb-0">Email</label>
-                        <input type="email" class="form-control error" name="email" id="email" placeholder="Email"
-                          aria-required="true"><label id="lname-error" class="error" for="email"></label>
+                        <label class="mb-0">Phone Number</label>
+                        <div id="number"></div>
                       </div>
 
                     </div>
+                    <div class=" form-group">
+                      <!-- Email  -->
+                      <label class="mb-0">Email</label>
+                      <div id="email"></div>
+                    </div>
+                    <div class="row">
+                      
+                      <div class="col-md-6 form-group">
+                        <!-- Designation -->
+                        <label class="mb-0">Designation</label>
+                        <div id="Designation"></div>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <!-- Department -->
+                        <label class="mb-0">Department</label>
+                        <div id="Department"></div>
+                      </div>
+                     
+
+                    </div>
+
                     <div class="row mb-0">
                       <div class="col-md-6 form-group">
-                        <!--<label class="mb-0">Password:</label>-->
-                        <!-- From -->
+                        <label class="mt-4">Please Enter the Password to confirm the changes</label>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <!--<label class="mb-0"> password:</label>-->
+                        <!-- To -->
                         <input type="password" class="form-control error" name="fromdate" id="fromdate"
                           placeholder="Password" aria-required="true"><label id="lname-error" class="error"
                           for="lname"></label>
                       </div>
-                      <div class="col-md-6 form-group">
-                        <!--<label class="mb-0">Confirm password:</label>-->
-                        <!-- To -->
-                        <input type="password" class="form-control error" name="fromdate" id="fromdate"
-                          placeholder="Confirm Password" aria-required="true"><label id="lname-error" class="error"
-                          for="lname"></label>
-                      </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <button href="#" class="py-2 px-4">Save</button>
-                        <span class="submitting"></span>
-                      </div>
+                    <div class="row d-flex justify-content-center">
+                      <button style="width:200px;height: 50px;" class="save">Save</button>
                     </div>
                   </form>
-                  <!--<div id="form-message-warning mt-4"></div>
-                  <div id="form-message-success">
-                    Your message was sent, thank you!
-                  </div>
-                </div>
-                <div class="col-lg-4 ml-auto">
-                  <div class="card">
-                    <h4>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Casual Leave: </span><span> 5</span>
-                      </div>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Medical Leave: </span><span> 5</span>
-                      </div>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>Extra Leave: </span><span> 5</span>
-                      </div>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span>O Leave: </span><span> 5</span>
-                      </div>
-                      <hr>
-                      <div class="Center d-flex justify-content-between mx-4 mb-2">
-                        <span class="orangered">Total Leave: </span><span> 20</span>
-                      </div>
-                    </h4>
-                  </div>
-
-                </div>-->
               </div>
             </div>
 
@@ -194,6 +160,34 @@
 
         </div>
       </div>
+      <div class="recents-grid mt-4 mb-4">
+        <div class="projects">
+          <div class="card">
+            <div class="card-body">
+              <form action="" >
+                <h2 calss="mt-2 ml-2">Change Password</h2>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <!-- New Password -->
+                    <input class="form-control newpass" placeholder="New-Passwprd" id="new_password" aria-required="true" aria-invalid="true"></div>
+                    
+                    <div class="col-md-6 form-group">
+                      <!-- Old Password -->
+                      <input class="form-control pass" placeholder="Old-Passwprd" id="password" aria-required="true" aria-invalid="true"></div>
+                    
+                <div class="col-md-6 form-group">
+                  <!-- Confirm New Password -->
+                  <input class="form-control newpasscon" placeholder="Confirm New Password" id="new_confirm_password" aria-required="true" aria-invalid="true" ></div>
+                
+                </form>
+                <div class="d-flex ">
+                  <button style="width:200px;height: 50px;" class="save">Save</button>
+                </div>
+              </div>
+          </div>
+          </div>
+          </div>
+          </div>
 
     </main>
   </div>
@@ -201,7 +195,9 @@
   <script>// Data Picker Initialization
     $('.datepicker').datepicker({
       inline: true
-    });</script>
+    });
+    
+  </script>
 
     <script src="assets/js/updateprofile.js">
     </script>
