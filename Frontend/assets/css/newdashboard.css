@@ -28,7 +28,7 @@
   top: 0;
   height: 100%;
   z-index: 100; 
-  background-image:linear-gradient(to right, #00796B , #06b9c9);
+  background-image:linear-gradient(to right,#434343 0%, rgb(21, 21, 21) 100%);
   /*background: var(--main-color);*/
   transition: width 300ms;
 

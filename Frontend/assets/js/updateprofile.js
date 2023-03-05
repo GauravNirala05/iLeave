@@ -50,7 +50,7 @@ const getuser=async ()=>{
         document.getElementById("profile").innerHTML=ihtml
         // document.getElementById("name").innerHTML=userData.data.name
 
-        document.getElementById("Name").innerHTML=`<input type="text" class="form-control Name" name="name" id="fname" value="${userData.data.name}" placeholder="Full name"
+        document.getElementById("Name").innerHTML=`<input type="text" class="name form-control Name" name="name" id="fname" value="${userData.data.name}" placeholder="Full name"
                           aria-required="true" aria-invalid="true">`
         
         document.getElementById("email").innerHTML=`<input type="email" class="form-control Name" name="email" id="email" value="${userData.data.email}" placeholder="Email"

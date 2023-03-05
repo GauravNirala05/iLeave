@@ -91,7 +91,7 @@ btn_regi.addEventListener('click', async (e) => {
             setTimeout(() => {
                 location.replace("updateprofile.html")
                 
-            }, 5000);
+            }, 1000);
             name_regi.value = ``
             email_regi.value = ``
             password_regi.value = ``
