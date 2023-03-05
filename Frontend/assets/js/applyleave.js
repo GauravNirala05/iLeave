@@ -1,3 +1,4 @@
+
 const btn_apply = document.querySelector('.btn_apply')
 const apply_name = document.querySelector('#name')
 const apply_contactno = document.querySelector('#mob_no')
@@ -11,8 +12,12 @@ const reference4 = document.querySelector('#reference4')
 const apply_type = document.querySelector('#leavetype')
 const apply_reason = document.querySelector('#reason')
 // const token =localStorage.getItem('token')
+// let token
+// token=localStorage.getItem('token')
+// console.log(localStorage)
 btn_apply.addEventListener('click', async (e) => {
     // ihtml=``
+    // const token =localStorage.getItem('token')
     e.preventDefault()
         // const formAlert = document.querySelector('.form-alert')
         const name = apply_name.value
@@ -26,18 +31,15 @@ btn_apply.addEventListener('click', async (e) => {
         const ref4 = reference4.value
         const leave_type = apply_type.value
         const reason = apply_reason.value
-        // totaldays.innerHTML=`${apply_enddate.value-apply_startdate.value}`
         console.log(name, contactno,fromdate,todate,total_days,
             ref1,ref2,ref3,ref4,leave_type,reason);
-        
-        let token
-        localStorage.getItem('token')
-        console.log(localStorage)
-        // const checkbox = apply_checkbox.value
+            
+            let token
+            localStorage.getItem('token',token)
+            console.log(localStorage)
+
       if(token){ 
          try {
-            // let id ;
-            // id=localStorage.getItem("id",id)
             const fetcher = await fetch(`http://localhost:4000/applyLeave`, {
                 method: 'POST',
                 body: JSON.stringify({
