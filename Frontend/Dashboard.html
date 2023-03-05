@@ -48,20 +48,15 @@
             <span>Apply Leave</span>
           </a>
         </li>
-        <li>
-          <a href="Status.html">
-            <span class="fa fa-check-square-o"></span>
-            <span>Status/Approval</span>
-          </a>
         </li>
         <li>
-          <a href="updateprofile.html">
+          <a href="updateprofile.html" >
             <span class="fa fa-cog"></span>
             <span>Update Profile</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a class="logout" onclick="openPopup()">
             <span class="fa fa-sign-out"></span>
             <span>Logout</span>
           </a>
@@ -70,6 +65,13 @@
 
     </div>
   </div>
+  <div id="popup" class="popup card-header">
+		<div class="popup-content">
+			<span class="close" onclick="closePopup()">&times;</span>
+			<p>Are You Sure You Want to Logout!</p>
+      <button>ok</button>
+		</div>
+	</div>
 
   <div class="main-content">
     <header>
@@ -495,6 +497,14 @@
         </div>-->
       </div>
 
+      <footer class="d-flex mt-3 justify-content-center">
+        <p>
+          Created with <i class="fa fa-heart"></i> by
+          <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+          <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+          <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
+        </p>
+      </footer>
   </div>
 
   </div>
@@ -503,13 +513,6 @@
   </main>
 
 
-  <footer>
-    <p>
-      Created with <i class="fa fa-heart"></i> by
-      <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-      - Read how I created this and how you can join the challenge
-    </p>
-  </footer>
   <script src="./assets/js/dashboard.js"></script>
 </body>
 

@@ -55,12 +55,12 @@
         </li>
         <li>
           <a href="updateprofile.html" class="active">
-            <span class="fa fa-pencil-square-o"></span>
-            <span>Profile Update</span>
+            <span class="fa fa-cog"></span>
+            <span>Update Profile</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a class="logout" onclick="openPopup()">
             <span class="fa fa-sign-out"></span>
             <span>Logout</span>
           </a>
@@ -69,6 +69,13 @@
 
     </div>
   </div>
+  <div id="popup" class="popup card-header">
+		<div class="popup-content">
+			<span class="close" onclick="closePopup()">&times;</span>
+			<p>Are You Sure You Want to Logout!</p>
+      <button>ok</button>
+		</div>
+	</div> 
 
   <div class="main-content">
     <header>
@@ -188,6 +195,14 @@
           </div>
           </div>
           </div>
+          <footer class="d-flex mt-3 justify-content-center">
+            <p>
+              Created with <i class="fa fa-heart"></i> by
+              <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+              <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+              <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
+            </p>
+          </footer> 
 
     </main>
   </div>
