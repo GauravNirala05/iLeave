@@ -52,7 +52,7 @@ const getuser=async ()=>{
 
       let hodhtml=``
 
-      // once login is implemeted it will be == insted of !=
+      // once logic is implemeted it will be == insted of !=
       if (userData.data.designation !="HOD"){
         console.log(userData.data.designation)
   
