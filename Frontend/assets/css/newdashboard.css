@@ -179,6 +179,15 @@ header label span{
 }
 .dropdown-toggle::after {
   content: none;
+  border-radius: none;
+  border: none;
+  color: white;
+}
+.dropdown-toggle::before {
+  content: none;
+  border-radius: none;
+  border: none;
+  color: white;
 }
 main{
   margin-top: 85px;
@@ -460,6 +469,7 @@ td .status{
 .dropdown {
   position: relative;
   display: inline-block;
+  border: none;
 }
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -488,4 +498,7 @@ td .status{
 .dropdown:hover .dropbtn {
   border-radius: 12px;
   /* background-color: #ddd; */
+}
+.name{
+  text-transform: capitalize;
 }

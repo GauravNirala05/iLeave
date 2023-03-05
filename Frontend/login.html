@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Login|Register</title>
   <link rel="stylesheet" href="assets/css/newlogin.css">
+  <link rel="icon" href="images/logo.svg">
 </head>
 
 <body>
@@ -16,13 +17,14 @@
       <form>
         <!--           REGISTER              -->
         <h1>Create Account</h1>
-        <span>or use your email for registration</span>
+        <span >use your email for registration</span>
         <input type="text" class="name_regi" placeholder="Name" />
         <input type="email" class="email_regi" placeholder="Email" />
         <input type="number" class="mob_no" placeholder="Mobile Number" />
         <input type="password" class="password_regi" placeholder="Password" />
         <input type="password" class="confirmPassword_regi" placeholder="Confirm Password" />
-        <button class="btn_regi">Register</button>
+        <button  class="btn_regi">Register</button>
+        <p class="red"id="errormsg"></p> 
       </form>
 
     </div>
@@ -38,7 +40,8 @@
         <input type="password" class="password_log" placeholder="Password" />
         <!-- Trigger/Open The Modal -->
         <a class="button2" href="changepassword.html">Forgot your password?</a>
-        <button  class="btn_log">Log In</button>
+        <button class="btn_log">Log In</button>
+        <p class="red"id="loginerrormsg"></p>
       </form>
 
     </div>
@@ -72,6 +75,7 @@
   </footer>
 
   <script src="assets/js/login&regi.js" async defer></script>
+  <script> </script>
 </body>
 
 </html>
