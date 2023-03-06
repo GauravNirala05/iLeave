@@ -36,7 +36,7 @@ const getSingleData = async (req, res) => {
 }
 
 const updateProfile = async (req, res) => {
-    const { id: userID } = req.params
+    const { userID,userName } = req.user
     console.log(req.params);
 
     if (await User.exists({ _id: userID })) {

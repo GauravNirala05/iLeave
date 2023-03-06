@@ -6,11 +6,12 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
 const createData = async (req, res) => {
     console.log(req.body);
-    if (await User.exists({ email: req.body.email })) {
-        throw new BadRequestError(`User with this email already exists...${req.body.email}`)
+    const {email,name,password}=req.body
+    if (await User.exists({ email})) {
+        throw new BadRequestError(`User with this email already exists...${email}`)
     }
     else {
-        const data = await User.create(req.body)
+        const data = await User.create({email,name,password})
         console.log(`User created...`);
         const token = data.generateJWT()
         res.status(StatusCodes.CREATED).json({ status: 'SUCCESS', msg: `You are registred Now`, token })

@@ -9,13 +9,13 @@ const express = require('express')
 const app = express()
 
 
-const notFound=require(`./middlewares/notFound`)
-const errorHandlerMiddleware=require(`./middlewares/errorhandler`)
+const notFound = require(`./middlewares/notFound`)
+const errorHandlerMiddleware = require(`./middlewares/errorhandler`)
 
 
 //middlewares
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.static('../frontend'))
 
 //All Routes
@@ -26,14 +26,16 @@ app.use('/', routes)
 app.use(notFound)
 app.use(errorHandlerMiddleware)
 
-const port = process.env.PORT||4000
+const port = process.env.PORT || 4000
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI)
-        app.listen(port, () =>console.log(`Server is listning at ${port}...`))
-        
+        app.listen(port, () => console.log(`Server is listning at port ${port}...`))
+
     } catch (error) {
-        console.log(`error occur ${error}` );
+        console.log(`Error occured..
+while starting the server...
+${error}`);
     }
 }
 start()
