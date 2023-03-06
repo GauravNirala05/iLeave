@@ -520,6 +520,8 @@ td .status{
 	position: absolute;
 	top: 50%;
 	left: 50%;
+  min-width: 500px;
+  max-height: 200px;
 	transform: translate(-50%, -50%);
 }
 

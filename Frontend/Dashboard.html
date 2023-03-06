@@ -27,6 +27,13 @@
 </style>
 
 <body>
+  <div id="popup" class="popup card-header">
+		<div class="popup-content">
+			<span class="close" onclick="closePopup()">&times;</span>
+			<p>Are You Sure You Want to Logout!</p>
+      <button ><i class="fa fa-sign-out"></i>ok</button>
+		</div>
+	</div>
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
@@ -65,13 +72,7 @@
 
     </div>
   </div>
-  <div id="popup" class="popup card-header">
-		<div class="popup-content">
-			<span class="close" onclick="closePopup()">&times;</span>
-			<p>Are You Sure You Want to Logout!</p>
-      <button>ok</button>
-		</div>
-	</div>
+  
 
   <div class="main-content">
     <header>
@@ -97,7 +98,9 @@
           <div class="card">
             <div class="card-header">
               <h2>Leave Pending</h2>
+              <div class="card-header">
               <button >See all <span class="fa fa-arrow-down"></span> </button>
+            </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">

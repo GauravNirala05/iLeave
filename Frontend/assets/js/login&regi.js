@@ -50,7 +50,7 @@ btn_log.addEventListener('click', async (e) => {
 const btn_regi = document.querySelector('.btn_regi')
 const name_regi = document.querySelector('.name_regi')
 const email_regi = document.querySelector('.email_regi')
-const mob_no = document.querySelector('.mob_no')
+// const mob_no = document.querySelector('.mob_no')
 const password_regi = document.querySelector('.password_regi')
 const confirmPassword_regi = document.querySelector('.confirmPassword_regi')
 var errorhtml = document.getElementById("errormsg").innerHTML;
@@ -62,7 +62,7 @@ btn_regi.addEventListener('click', async (e) => {
         document.getElementById("errormsg").innerHTML = ``
         const name = name_regi.value
         const email = email_regi.value
-        const mob = mob_no.value
+        // const mob = mob_no.value
         const password = password_regi.value
         try {
             const fetcher = await fetch('http://localhost:4000/registration', {
@@ -70,7 +70,7 @@ btn_regi.addEventListener('click', async (e) => {
                 body: JSON.stringify({
                     name: name,
                     email: email,
-                    mob_no: mob,
+                    // mob_no: mob,
                     password: password
                 }),
                 headers: {
