@@ -230,4 +230,7 @@ footer {
     color: #333;
     text-decoration: underline;
   }
+  .footer-copyright p{
+font-size: 20px;
+  }
   

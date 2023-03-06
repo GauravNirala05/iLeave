@@ -3,23 +3,28 @@
 
 <head>
 	<title>iLeave</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="icon" href="images/logo.svg">
     <link rel="stylesheet" href="assets/css/front.css">
 	<link rel="icon" href="images/logo.svg">
 </head>
 
 <body>
-
-	<section id="home">
-		<video src="images/video.mkv" autoplay muted loop id="myvideo">
-		</video>
-
-	</section>
+<header>
 	<nav class="navbar navbar-expand-lg">
 		<a class="navbar-brand" href="#">
 			<img src="images/logo.svg" alt="Bootstrap" width="40" height="44">
@@ -41,10 +46,10 @@
 					<a class="nav-link nav-nav" href="frontpage.html">Home</a>
 				</li>
 				<li class="nav-item  active ">
-					<a class="nav-link nav-nav" href="#">About Us</a>
+					<a class="nav-link nav-nav" href="#aboutUs">About Us</a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link nav-nav" href="#">Contact Us</a>
+					<a class="nav-link nav-nav" href="#contactUs">Contact Us</a>
 				</li>
 				<li class="nav-item ">
 					<a class="nav-link" href="login.html"><button type="button"
@@ -53,8 +58,16 @@
 			</ul>
 		</div>
 	</nav>
+</header>
+	<section id="home">
+		<video src="images/video.mkv" autoplay muted loop id="myvideo">
+		</video>
 
-	<footer class="page-footer font-small text-danger indigo">
+	</section>
+	
+
+	<footer class="page-footer font-small text-danger indigo" >
+		<section id="aboutUs">
 
 		<!-- Footer Links -->
 		<div class="container text-center text-md-left">
@@ -66,7 +79,7 @@
 			<div class="col-md-3 mx-auto">
 	  
 			  <!-- Links -->
-			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">About Us</h5>
 	  
 			  <ul class="list-unstyled">
 				<li>
@@ -92,7 +105,7 @@
 			<div class="col-md-3 mx-auto">
 	  
 			  <!-- Links -->
-			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact Us</h5>
 	  
 			  <ul class="list-unstyled">
 				<li>
@@ -118,7 +131,7 @@
 			<div class="col-md-3 mx-auto">
 	  
 			  <!-- Links -->
-			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+			  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Usefull links</h5>
 	  
 			  <ul class="list-unstyled">
 				<li>
@@ -171,12 +184,17 @@
 		<!-- Footer Links -->
 	  
 		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© 2020 Copyright:
-		  <a href="/"> MDBootstrap.com</a>
+		<div class="footer-copyright text-center py-3">
+			<!-- © 2020 Copyright: -->
+		  <p> Created with <i class="fa fa-heart" style="font-size:20px;color:red"></i> by
+			<a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+			<a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+			<a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a></p>
 		</div>
 		<!-- Copyright -->
-	  
+	</section>
 	  </footer>
+	
 	  <!-- Footer -->
 	<svg id="d451f1d61e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080"
 		zoomAndPan="magnify" viewBox="0 0 810 809.999993" height="1080" preserveAspectRatio="xMidYMid meet"
