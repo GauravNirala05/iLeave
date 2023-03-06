@@ -2,7 +2,7 @@ const mongoose = require(`mongoose`)
 const bcrypt = require(`bcryptjs`)
 const jwt = require(`jsonwebtoken`)
 
-const leaveTypeSchema = new mongoose.Schema({
+const techLeaveSchema = new mongoose.Schema({
     casual_leave: {
         type: Number,
         default: 10
@@ -20,6 +20,24 @@ const leaveTypeSchema = new mongoose.Schema({
         default: 10
     }
 })
+const nonTechLeaveSchema = new mongoose.Schema({
+    casual_leave: {
+        type: Number,
+        default: 5
+    },
+    earned_leave: {
+        type: Number,
+        default: 5
+    },
+    medical_leave: {
+        type: Number,
+        default: 5
+    },
+    ordinary_leave: {
+        type: Number,
+        default: 5
+    }
+})
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -31,17 +49,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        unique:true,
+        unique: true,
         required: [true, 'Must provide Your name'],
     },
     mob_no: {
         type: Number,
-        min:10
+        min: 10
     },
     designation: {
         type: String,
         immutable: true,
-        enum: ['faculty', 'HOD', 'principal'],
+        enum: ['faculty', 'HOD', 'principal', 'non-tech'],
     },
     contect_type: {
         type: String,
@@ -56,15 +74,36 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Must provide'],
     },
-    leave_type: {
-        type: leaveTypeSchema,
-        default: {}
+    profileCompleted: {
+        type: Boolean,
+        default: false
     },
-    verified:Boolean
+    leave_type: Object,
+    verified: {
+        type: Boolean,
+        default: false
+    },
 })
+
+
 userSchema.pre('save', async function () {
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)
+})
+
+
+userSchema.pre('save', async function () {
+    const designation = this.designation
+    if (designation) {
+        if (designation == 'non-tech') {
+
+            this.leave_type = techLeaveSchema
+        }
+        else {
+            this.leave_type = nonTechLeaveSchema
+
+        }
+    }
 })
 userSchema.methods.generateJWT = function () {
     const token = jwt.sign({ userID: this._id, userName: this.name }, process.env.JWT_SECRET, { expiresIn: process.env.EXPIRE })

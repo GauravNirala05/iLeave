@@ -19,25 +19,29 @@ transporter.verify((error, success) => {
     if (error) {
         console.log(error);
 
-    } else {
-        console.log("its ready")
-        console.log(success)
+    }
+    if (success) {
+        console.log("Mail service activated...")
+        console.log("Ready to send messages...")
     }
 })
 
 const register = async (req, res) => {
     console.log(req.body);
-
-    if (await User.exists({ email: req.body.email })) {
-        throw new BadRequestError(`User with this email already exists...${req.body.email}`)
+    const { email, name, password } = req.body
+    if (await User.exists({ email })) {
+        const data = await User.findOne({ email })
+        if (data.verified == false) {
+            sendVerificationEmail(data, res)
+            return res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Email has been sent to your email: ${email}` })
+        }
+        throw new BadRequestError(`User with this email ${email} already exists and verified.Please go to sign in... `)
     }
     else {
-        const data = await User.create(req.body)
-        data.verified = false
-        data.save()
+        const data = await User.create({ email, name, password })
         console.log(`User created`);
         sendVerificationEmail(data, res)
-        res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Email has been sent to your email: ${req.body.email}`})
+        res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Email has been sent to your email: ${email}` })
     }
 }
 const sendVerificationEmail = async ({ _id, email }, res) => {
@@ -53,7 +57,7 @@ const sendVerificationEmail = async ({ _id, email }, res) => {
         userID: _id,
         uniqueString: uniquestring,
         createdAt: Date.now(),
-        expiresAt: Date.now() +1000
+        expiresAt: Date.now() + (1000 * 60 * 60 * 6)
     })
     await transporter.sendMail(mailOptions)
 
@@ -61,21 +65,23 @@ const sendVerificationEmail = async ({ _id, email }, res) => {
 
 const verify = async (req, res) => {
     const { userid, uniquestring } = req.params
-    const userverify = await UserVerification.findOne({ userID: userid })
+    const userToBeVerify = await UserVerification.find({ userID: userid })
 
-    if (userverify) {
+    if (userToBeVerify.length > 0) {
+
+        const userverify = userToBeVerify[userToBeVerify.length - 1]
         const { expiresAt } = userverify
 
         if (expiresAt < Date.now()) {
             await UserVerification.deleteOne({ userID: userid })
-            await User.deleteOne({ _id: userid })
+            await User.deleteMany({ _id: userid })
             throw new BadRequestError(`Link has been expired. Please sign up again...`)
         }
         else {
             const result = await userverify.compString(uniquestring)
             if (result) {
-                const user = await User.updateOne({ _id: userid }, { verified: true }, { new: true })
-                await UserVerification.deleteOne({ userID: userid })
+                const user = await User.findOneAndUpdate({ _id: userid }, { verified: true }, { new: true })
+                await UserVerification.deleteMany({ userID: userid })
                 res.status(StatusCodes.OK).json({ user, msg: `you are verified now` })
             }
             else {
