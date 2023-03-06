@@ -1,5 +1,4 @@
 const mongoose = require(`mongoose`)
-const email = require(`email-validator`)
 const bcrypt = require(`bcryptjs`)
 const jwt = require(`jsonwebtoken`)
 
@@ -37,7 +36,7 @@ const userSchema = new mongoose.Schema({
     },
     mob_no: {
         type: Number,
-        required: [true, 'Must provide Your Mobile Number'],
+        min:10
     },
     designation: {
         type: String,
@@ -60,7 +59,8 @@ const userSchema = new mongoose.Schema({
     leave_type: {
         type: leaveTypeSchema,
         default: {}
-    }
+    },
+    verified:Boolean
 })
 userSchema.pre('save', async function () {
     const salt = await bcrypt.genSalt(10)

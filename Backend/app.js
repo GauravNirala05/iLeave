@@ -21,6 +21,7 @@ app.use(express.static('../frontend'))
 //All Routes
 app.use('/', routes)
 
+
 //errorhandlers
 app.use(notFound)
 app.use(errorHandlerMiddleware)

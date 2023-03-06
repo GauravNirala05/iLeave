@@ -1,35 +1,24 @@
-const User = require('../model/User')
-const Leave = require('../model/Leave')
+//dependencies
 const jwt = require('jsonwebtoken');
 const {StatusCodes}=require('http-status-codes')
+//models
+const User = require('../model/User')
+const Leave = require('../model/Leave')
+//Errors
 const { NotFound, BadRequestError,UnAuthorizedError } = require('../errors');
-
-
-const createData = async (req, res) => {
-    console.log(req.body);
-    if (await User.exists({ email: req.body.email })) {
-       throw new BadRequestError(`User with this email already exists...${req.body.email}`)
-    }
-    else {
-        const data = await User.create(req.body)
-        console.log(`User created`);
-        const token = data.generateJWT()
-        res.status(StatusCodes.CREATED).json({ status: 'SUCCESS', msg: `You are registred Now`, token })
-    }
-}
 
 
 const login = async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body
-    console.log(email, password);
-    if (!email || !password) {
-        throw new BadRequestError('provide credentials....')
-    }
+    
     const data = await User.findOne({ email })
     if (!data) {
         throw new BadRequestError(`No user with email ${email}`)
     }
+    // if (!data.verified) {
+    //     throw new BadRequestError(`Your email ${email} is not verified`)
+    // }
     const match =await data.CompPass(password)
     if (!match) {
         throw new UnAuthorizedError(`incorrect password`)
@@ -142,4 +131,4 @@ const applyLeave = async (req, res) => {
         res.status(404).json({ status: 'FAILED', msg: `user with id ${userID} doesnt exists...` })
     }
 }
-module.exports = { applyLeave, getSingleData, createData,login, updateProfile, deleteProfile }
+module.exports = { applyLeave, getSingleData,login, updateProfile, deleteProfile }
