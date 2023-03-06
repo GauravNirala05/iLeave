@@ -8,6 +8,7 @@ btn_log.addEventListener('click', async (e) => {
 
     const email = email_log.value
     const password = password_log.value
+    
     try {
 
         const loger = await fetch('http://localhost:4000/login', {
@@ -39,9 +40,14 @@ btn_log.addEventListener('click', async (e) => {
 
     catch (error) {
         console.log(error)
-        document.getElementById("loginerrormsg").innerHTML = `Fill all the information`
+        if (error=="Error: undefined  400"){
+            document.getElementById("loginerrormsg").innerHTML = `User not Registered`
+        }
         if (error=="Error: undefined  401"){
             document.getElementById("loginerrormsg").innerHTML = `Wrong Password`
+        }
+        if (email=='' || password ==''){
+            document.getElementById("loginerrormsg").innerHTML = `Fill all the information`
         }
     }
 })
