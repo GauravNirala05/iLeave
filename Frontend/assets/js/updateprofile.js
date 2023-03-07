@@ -12,8 +12,8 @@ const getuser=async ()=>{
           throw Error('something went wrong')
         }
         const userData=await user.json()
-        console.log(userData)
-        console.log(userData.data.designation)
+        console.log(Object.keys(userData.data))
+        console.log(userData.data.password)
         if (userData.data.designation==null){
   
         }
@@ -47,6 +47,7 @@ const getuser=async ()=>{
         </div>`
           
         }
+        // console.log(user.data)
         document.getElementById("profile").innerHTML=ihtml
         // document.getElementById("name").innerHTML=userData.data.name
 
@@ -56,7 +57,7 @@ const getuser=async ()=>{
         document.getElementById("email").innerHTML=`<input type="email" class="form-control Name" name="email" id="email" value="${userData.data.email}" placeholder="Email"
                           aria-required="true" aria-invalid="true">`
 
-        document.getElementById("number").innerHTML=`<input type="number" class="form-control Name" name="mob_no" id="data" value="${userData.data.mob_no}" placeholder="Full name"
+        document.getElementById("number").innerHTML=`<input type="number" class="form-control Name" name="mob_no" id="data" value="${userData.data.mob_no}" placeholder="Number"
                           aria-required="true" aria-invalid="true">`
                           
         document.getElementById("Designation").innerHTML=`<select class="form-control" id="designation">
