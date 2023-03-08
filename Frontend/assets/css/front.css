@@ -25,24 +25,37 @@
 		height:70px;
 		width:70px;
 	}
-	.nav-nav{
+	.nav-item a{
 		font-weight:bold;
-		font-size:20px;
+		font-size:22px;
+        font-family: sans-serif;
 		color:#fff ;
+        border-bottom: 3px solid transparent;
 	}
 	.nav-nav:hover{
-		color:black;
+		color:rgb(35, 67, 79);
+        border-bottom: 3px solid #fff;
 	}
 	.navbtn{
+        font-family:sans-serif;
+        font-weight: bold;
 		color:#fff;
+        font-size: 15px;
 		border-radius:100px;
 		transition: transform .2s; 
 	}
 	.navbtn:hover{
-		background-color:rgba(104,66,239,255);
+		background-color:#083f7a;
 		zoom: 1.2;
 	}
-
+    .custom-toggler.navbar-toggler {
+        border-color: aliceblue;
+    }
+    .custom-toggler .navbar-toggler-icon {
+        color: rgb(194, 205, 214);
+        background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(194, 205, 214)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
 body{
 	background-size: cover;
 	background-position: center;
