@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema({
     contect_type: {
         type: String,
         enum: ['contract', 'parmanent'],
-        default: "contract"
     },
     department: {
         type: String,
@@ -55,7 +54,6 @@ userSchema.pre('save', async function () {
 })
 
 userSchema.methods.leaveSchema= async function(){
-    console.log(`leave schema running`)
     if(this.department=="non-tech"){
         this.leave_type={
             casual_leave:10,
