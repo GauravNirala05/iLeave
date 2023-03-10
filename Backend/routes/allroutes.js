@@ -45,12 +45,18 @@ router.route('/forgotPassword/verifyOTP/resetPass').post(updatePass)
 router.route('/loginUser').get(auth, getSingleData)
 router.route('/completeProfile').patch(auth, completeProfile)
 router.route('/updateProfile').patch(auth, updateProfile)
+
 router.route('/deleteProfile/:id').delete(auth, deleteProfile)
-router.route('/getuser').get(auth, getuser)
+
 router.route('/applyLeave').post(auth, applyLeave)
+
+router.route('/getuser').get(auth, getuser)
 router.route('/leaveStatus').get(auth, leaveStatus)
+
 router.route('/approvals').get(auth, getApprovals)
+
 router.route('/approvals/:targetid').patch(auth, approve)
+
 router.route('/alluser').get(auth, alluser)
 
 module.exports = router
