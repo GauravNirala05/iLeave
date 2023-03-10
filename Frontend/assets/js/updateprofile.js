@@ -1,3 +1,9 @@
+const usertoken = localStorage.getItem('token');
+if (usertoken==null){
+  alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
+  location.replace("login.html")
+}
+
 const getuser = async () => {
   const token = localStorage.getItem('token')
   if (token) {
