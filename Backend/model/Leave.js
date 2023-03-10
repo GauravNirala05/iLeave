@@ -1,16 +1,10 @@
 const mongoose = require(`mongoose`)
 
-const leavetype = new mongoose.Schema({})
-
 const leaveSchema = new mongoose.Schema({
-    employee_id: {
-        type: String,
-    },
-    employee_name: {
-        type: String,
-    },
-    employee_dep: {
-        type: String,
+    appliedBy:{
+        type:mongoose.Types.ObjectId,
+        ref:'UserData',
+        required:[true,`please provide the user` ]
     },
     from_date: {
         type: Date,
@@ -92,5 +86,5 @@ const leaveSchema = new mongoose.Schema({
     }
 
 
-})
+},{timestamps:true})
 module.exports = mongoose.model('leave', leaveSchema)

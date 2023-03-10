@@ -2,7 +2,8 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 
 const approve = async (req, res) => {
-    const { id: userID, targetid: targetID } = req.params
+    const { userID, userName } = req.user
+    const {targetid: targetID } = req.params
     const user = await User.findById(userID)
     if (user) {
 
@@ -160,4 +161,4 @@ const approve = async (req, res) => {
     }
 }
 
-module.exports = { approve } 
+module.exports =approve

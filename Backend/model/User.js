@@ -2,42 +2,6 @@ const mongoose = require(`mongoose`)
 const bcrypt = require(`bcryptjs`)
 const jwt = require(`jsonwebtoken`)
 
-const techLeaveSchema = new mongoose.Schema({
-    casual_leave: {
-        type: Number,
-        default: 10
-    },
-    earned_leave: {
-        type: Number,
-        default: 10
-    },
-    medical_leave: {
-        type: Number,
-        default: 10
-    },
-    ordinary_leave: {
-        type: Number,
-        default: 10
-    }
-})
-const nonTechLeaveSchema = new mongoose.Schema({
-    casual_leave: {
-        type: Number,
-        default: 5
-    },
-    earned_leave: {
-        type: Number,
-        default: 5
-    },
-    medical_leave: {
-        type: Number,
-        default: 5
-    },
-    ordinary_leave: {
-        type: Number,
-        default: 5
-    }
-})
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -58,8 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     designation: {
         type: String,
-        immutable: true,
-        enum: ['faculty', 'HOD', 'principal', 'non-tech'],
+        enum: ['faculty', 'HOD', 'principal'],
     },
     contect_type: {
         type: String,
@@ -68,7 +31,7 @@ const userSchema = new mongoose.Schema({
     },
     department: {
         type: String,
-        enum: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil']
+        enum: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil','non-tech']
     },
     password: {
         type: String,
@@ -78,7 +41,7 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    leave_type: Object,
+    leave_type:Object,
     verified: {
         type: Boolean,
         default: false
@@ -91,20 +54,26 @@ userSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, salt)
 })
 
-
-userSchema.pre('save', async function () {
-    const designation = this.designation
-    if (designation) {
-        if (designation == 'non-tech') {
-
-            this.leave_type = techLeaveSchema
-        }
-        else {
-            this.leave_type = nonTechLeaveSchema
-
+userSchema.methods.leaveSchema= async function(){
+    console.log(`leave schema running`)
+    if(this.department=="non-tech"){
+        this.leave_type={
+            casual_leave:10,
+            earned_leave:10,
+            medical_leave:10,
+            ordinary_leave:10
         }
     }
-})
+    else{
+        this.leave_type={
+            casual_leave:20,
+            earned_leave:20,
+            medical_leave:20,
+            ordinary_leave:20
+        }
+    }
+}
+
 userSchema.methods.generateJWT = function () {
     const token = jwt.sign({ userID: this._id, userName: this.name }, process.env.JWT_SECRET, { expiresIn: process.env.EXPIRE })
     return token
@@ -114,3 +83,42 @@ userSchema.methods.CompPass = async function (userPassword) {
     return match
 }
 module.exports = mongoose.model('UserData', userSchema)
+    //it will not work
+    
+    
+    // userSchema.pre('save', async function () {
+    //     const designation = this.designation
+    //     console.log(designation);
+    //     console.log(`its running`);
+    //     if (designation) {
+    //         if (designation == 'non-tech') {
+    
+    //             this.leave_type = techLeaveSchema
+    //         }
+    //         else {
+    //             this.leave_type = nonTechLeaveSchema
+    
+    //         }
+    //     }
+    // })
+    // const techLeaveSchema = new mongoose.Schema({
+    //     casual_leave: {
+    //         type: Number,
+    //         default: 10
+    //     },
+    //     earned_leave: {
+    //         type: Number,
+    //         default: 10
+    //     },
+    //     medical_leave: {
+    //         type: Number,
+    //         default: 10
+    //     },
+    //     ordinary_leave: {
+    //         type: Number,
+    //         default: 10
+    //     }
+    // })
+    // const nonTechLeaveSchema = new mongoose.Schema({
+        
+    // })
