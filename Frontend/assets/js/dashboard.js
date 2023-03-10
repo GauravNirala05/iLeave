@@ -142,5 +142,5 @@ function closePopup() {
 function confirm_logout(){
   localStorage.removeItem('token');
   alert(`You have been successfully logged out. Thank you for using our application.`)
-  location.replace("login.html")
+  location.replace("index.html")
 }
