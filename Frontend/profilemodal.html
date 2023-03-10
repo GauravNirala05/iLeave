@@ -19,8 +19,13 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="">
   <link rel="icon" href="images/logo.svg">
- 
+  <script>
+    $(document).ready(function(){
+      $("#myModal").modal('show');
+    });
+  </script>
 </head>
+
 <style>
   .modal{
     display: block;
@@ -29,13 +34,13 @@
 <body>
 
 <div class="container">
-  <h2>Fading Modal</h2>
+  <!-- <h2>Fading Modal</h2>
   <p>Add the "fade" class to the modal container if you want the modal to fade in on open and fade out on close.</p>
 
-  <!-- Button to Open the Modal -->
+ 
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Open modal
-  </button>
+  </button> -->
 
   <!-- The Modal -->
   <div class="modal fade" id="myModal">

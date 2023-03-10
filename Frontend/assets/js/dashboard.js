@@ -10,7 +10,7 @@ const getuser=async ()=>{
   if(token){
     try {
       
-      const user=await fetch('/loginUser',{
+      const user=await fetch('/getUserData',{
         headers:{
           'Authorization':`Bearer ${token}`
         }
@@ -23,10 +23,8 @@ const getuser=async ()=>{
       console.log(userData.data.designation)
       if(userData.data.profileCompleted==false){
         $(document).ready(function(){
-          setTimeout(function(){
-             PopUp();
-          },5000); // 5000 to load it after 5 seconds from page load
-       });
+          $("#myModal").modal('show');
+        });
       }
       if (userData.data.designation==null){
 
