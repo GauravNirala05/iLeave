@@ -40,7 +40,7 @@ const getuser=async ()=>{
           <div class="card-header" style="margin:10px">
           <div>
               <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
-            <p class="title">HOD</p>
+            <p class="title"</p>
             <p>Department of Computer Science</p>
           </div>
           </div>
