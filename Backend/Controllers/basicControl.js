@@ -41,7 +41,7 @@ const updateProfile = async (req, res) => {
     if (!mob_no || !contect_type || !department || !designation) {
         throw new BadRequestError(`Provide all the credentials...mob_no,contect_type,department,designation...`)
     }
-    if (await User.exists({ _id: userID })) {
+    if (await User.exists({ _id: userID,profileCompleted:true })) {
         const user = await User.findOneAndUpdate({_id:userID,profileCompleted:true}, { mob_no, contect_type, department, designation}, { new: true, runValidators: true })
         res.status(200).json({ status: 'SUCCESS', data: user })
     }
