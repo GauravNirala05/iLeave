@@ -1,8 +1,9 @@
 const User = require('../model/User')
 const Leave = require('../model/Leave')
+const { UnAuthorizedError } = require('../errors')
 
 const alluser = async (req, res) => {
-    const { userID,userName } = req.user
+    const { userID, userName } = req.user
     const user = await User.findOne({ _id: userID })
     if (user) {
         const designation = user.designation
@@ -23,8 +24,30 @@ const alluser = async (req, res) => {
         res.status(404).json({ status: 'FAILED', msg: `user with id ${userID} doesnt exists...` })
     }
 }
+const getuser = async (req, res) => {
+    const { userID, userName } = req.user
+    const user = await User.findOne({ _id: userID })
+    if (user) {
+        const designation = user.designation
+        if (designation == 'faculty') {
+            const getuser = await User.find({ department: user.department, designation: 'faculty' }).sort('name')
+            return res.json({ status: 'SUCCESS', hits: getuser.length, data:getuser })
+        }
+        if (designation == 'HOD') {
+            const getuser = await User.find({ department: user.department}).sort('name')
+            return res.json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
+        }
+        if (designation == 'principal') {
+            const getuser = await User.find({ designation: ['faculty', 'HOD'] })
+            return res.json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
+        }
+
+    } else {
+        throw new UnAuthorizedError(`user with id ${userID} doesnt exists...`)
+    }
+}
 const leaveStatus = async (req, res) => {
-    const { id: userID } = req.params
+    const { userID, userName } = req.user
     const { status: stat } = req.body
     console.log(stat);
     if (await User.exists({ _id: userID })) {
@@ -41,10 +64,10 @@ const leaveStatus = async (req, res) => {
 
 }
 const getApprovals = async (req, res) => {
-    const { id: userID } = req.params
+    const { userID, userName } = req.user
     const user = await User.findById(userID)
     if (user) {
-        if (user.designation === 'faculty') {
+        if (user.designation =='faculty') {
             const data1 = await Leave.find({
                 'reference1.name': user.name,
                 status: ['applied', 'rejected']
@@ -72,7 +95,7 @@ const getApprovals = async (req, res) => {
                 }
             })
         }
-        if (user.designation === 'HOD') {
+        if (user.designation =='HOD') {
 
             const data = await Leave.find({
                 employee_dep: user.department,
@@ -84,10 +107,10 @@ const getApprovals = async (req, res) => {
             })
             res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
-        if (user.designation === 'principal') {
+        if (user.designation =='principal') {
             const data = await Leave.find({
                 HOD_approval: true,
-                status: ['applied', 'rejected','approved']
+                status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
             res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
@@ -98,4 +121,4 @@ const getApprovals = async (req, res) => {
 }
 
 
-module.exports = { alluser, leaveStatus, getApprovals }
+module.exports = { alluser, leaveStatus, getApprovals,getuser }

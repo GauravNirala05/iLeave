@@ -2,6 +2,7 @@ const User = require('../model/User')
 const nodemailer = require("nodemailer");
 const { v4: uuidv4 } = require("uuid");
 const UserVerification = require('../model/UserVerification')
+const otpVerification = require('../model/otpVerification')
 const { StatusCodes } = require('http-status-codes')
 const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
@@ -18,7 +19,7 @@ const transporter = nodemailer.createTransport(config);
 transporter.verify((error, success) => {
     if (error) {
         console.log(error);
-
+        console.log("Mail service Not Working...")
     }
     if (success) {
         console.log("Mail service activated...")
@@ -33,7 +34,7 @@ const register = async (req, res) => {
         const data = await User.findOne({ email })
         if (data.verified == false) {
             sendVerificationEmail(data, res)
-            return res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Email has been sent to your email: ${email}` })
+            return res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Again email has been sent to your email: ${email}` })
         }
         throw new BadRequestError(`User with this email ${email} already exists and verified.Please go to sign in... `)
     }
@@ -60,10 +61,9 @@ const sendVerificationEmail = async ({ _id, email }, res) => {
         expiresAt: Date.now() + (1000 * 60 * 60 * 6)
     })
     await transporter.sendMail(mailOptions)
-
 }
 
-const verify = async (req, res) => {
+const verifyEmail = async (req, res) => {
     const { userid, uniquestring } = req.params
     const userToBeVerify = await UserVerification.find({ userID: userid })
 
@@ -93,6 +93,71 @@ const verify = async (req, res) => {
     else {
         throw new NotFound(`Account record doesn't exist or have been verified already. Please signup or login`)
     }
-
 }
-module.exports = { register, verify }
+
+const forgotPassword = async (req, res) => {
+    console.log(req.body);
+    const { email } = req.body
+    if (await User.exists({ email })) {
+
+        const data = await User.findOne({ email })
+        sendOTP(data, res)
+        return res.status(StatusCodes.CREATED).json({status: 'PENDING', msg: `OTP has been sent to your email: ${email}`,userid:data._id })
+
+    }
+    else {
+        throw new BadRequestError(`User with this email ${email} not exists.`)
+    }
+}
+const sendOTP = async ({ _id, email }, res) => {
+    const otp = Math.floor(1000 + Math.random() * 9000)
+    console.log(otp);
+    const mailOptions = {
+        from: process.env.AUTH_EMAIL,
+        to: email,
+        subject: "OTP Verification",
+        html: `<p>Verify your OTP,<b>  ${otp}  </b>.</p><p>This OTP <b>expires in 5 min</b></p>`
+    }
+    await otpVerification.create({
+        userID: _id,
+        OTP: otp,
+        createdAt: Date.now(),
+        expiresAt: Date.now() + (1000 * 60 * 6)
+    })
+    await transporter.sendMail(mailOptions)
+}
+
+const verifyOTP = async (req, res) => {
+
+    const { id: userid, OTP } = req.body
+
+    const otpVerificationUser = await otpVerification.find({ userID: userid })
+    const otpverify = otpVerificationUser[otpVerificationUser.length - 1]
+
+    if (otpverify) {
+        const { expiresAt } = otpverify
+        if (expiresAt < Date.now()) {
+            await otpVerification.deleteMany({ userID: userid })
+            throw new BadRequestError(`OTP has been expired...`)
+        }
+        else {
+            const result = await otpverify.compOTP(OTP)
+            if (result) {
+                
+                const userverifyotp=await otpVerification.deleteMany({ userID: userid })
+                const user=await User.findOne({ _id:userid })
+                const token=await user.generateJWT()
+                // sent to change password page
+                res.status(StatusCodes.OK).json({user, status:"SUCCESS",token, msg: `you are verified now and sent to password updation page` })
+            }
+            else {
+                throw new BadRequestError(`Invalid OTP datails passed. Check your inbox...`)
+            }
+
+        }
+    }
+    else {
+        throw new NotFound(`Account record doesn't exist.`)
+    }
+}
+module.exports = { register, verifyEmail, verifyOTP, forgotPassword }
