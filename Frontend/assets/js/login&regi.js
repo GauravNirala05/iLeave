@@ -91,17 +91,16 @@ btn_regi.addEventListener('click', async (e) => {
                 console.log(msg);
                 throw Error(`${status}`)
             }
-            const { token, msg } = await fetcher.json()
-            localStorage.setItem("token", token)
+            const { msg } = await fetcher.json()
             alert(`${msg}`)
-            setTimeout(() => {
-                location.replace("updateprofile.html")
+            // setTimeout(() => {
+            //     location.replace("login.html")
                 
-            }, 1000);
-            name_regi.value = ``
-            email_regi.value = ``
-            password_regi.value = ``
-            confirmPassword_regi.value = ``
+            // }, 1000);
+            // name_regi.value = ``
+            // email_regi.value = ``
+            // password_regi.value = ``
+            // confirmPassword_regi.value = ``
         } catch (error) {
             console.log(error)
             if (error == "Error: 500"){
