@@ -10,7 +10,7 @@ const getuser=async ()=>{
   if(token){
     try {
       
-      const user=await fetch('/loginUser',{
+      const user=await fetch('/getUserData',{
         headers:{
           'Authorization':`Bearer ${token}`
         }
@@ -19,7 +19,7 @@ const getuser=async ()=>{
         throw Error('something went wrong')
       }
       const userData=await user.json()
-      console.log(userData)
+      // console.log(userData)
       console.log(userData.data.designation)
       if (userData.data.designation==null){
 
