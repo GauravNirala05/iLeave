@@ -21,6 +21,13 @@ const getuser=async ()=>{
       const userData=await user.json()
       // console.log(userData)
       console.log(userData.data.designation)
+      if(userData.data.profileCompleted==false){
+        $(document).ready(function(){
+          setTimeout(function(){
+             PopUp();
+          },5000); // 5000 to load it after 5 seconds from page load
+       });
+      }
       if (userData.data.designation==null){
 
       }

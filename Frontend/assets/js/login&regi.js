@@ -41,7 +41,9 @@ btn_log.addEventListener('click', async (e) => {
             alert(`${msg}`)
             setTimeout(() => {
                 location.replace("Dashboard.html")
+                
             }, 1000);
+            
         }
 
     }
@@ -93,7 +95,7 @@ btn_regi.addEventListener('click', async (e) => {
             })
             if (!fetcher.ok) {
                 const status = fetcher.status
-                console.log(status);
+                console.log(status)
                 const { msg, error } = await fetcher.json()
                 console.log(msg);
                 throw Error(`${status}`)
@@ -147,6 +149,5 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-
 
 

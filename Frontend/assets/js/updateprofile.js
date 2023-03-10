@@ -55,7 +55,6 @@ getuser()
 function openPopup() {
   document.getElementById("popup").style.display = "block";
 }
-
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
@@ -86,7 +85,7 @@ if (token) {
           password: pass
         }),
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': `application/json`,
           'Authorization': `Bearer ${token}`
         }
       })
