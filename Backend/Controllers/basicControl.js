@@ -16,71 +16,54 @@ const login = async (req, res) => {
     if (!data) {
         throw new BadRequestError(`No user with email ${email}`)
     }
-    // if (!data.verified) {
-    //     throw new BadRequestError(`Your email ${email} is not verified`)
-    // }
+    if (!data.verified) {
+        throw new BadRequestError(`Your email ${email} is not verified. Go to register page and verify your email.`)
+    }
     const match = await data.CompPass(password)
     if (!match) {
         throw new UnAuthorizedError(`incorrect password`)
     }
     const token = data.generateJWT()
-    res.status(StatusCodes.OK).json({ status: 'SUCCESS', data, msg: `You are successfully Logged In`, token })
+    res.status(StatusCodes.OK).json({ status: 'SUCCESS', msg: `You are successfully Sign In`, token })
 
 
 }
 const getSingleData = async (req, res) => {
-    console.log(req.user);
     const { userID, userName } = req.user
-    const data = await User.findOne({ _id: userID, name: userName })
+    const data = await User.findOne({ _id: userID, name: userName }).select(['name','department','mob_no','contect_type','designation','leave_type'])
     res.status(StatusCodes.OK).json({ status: 'SUCCESS', data })
 }
-
-const updateProfile = async (req, res) => {
-    const { userID, userName } = req.user
-    const { mob_no, contect_type, department, designation } = req.body
-    if (!mob_no || !contect_type || !department || !designation) {
-        throw new BadRequestError(`Provide all the credentials...mob_no,contect_type,department,designation...`)
-    }
-    if (await User.exists({ _id: userID })) {
-        const user = await User.findOneAndUpdate({_id:userID,profileCompleted:true}, { mob_no, contect_type, department, designation}, { new: true, runValidators: true })
-        res.status(200).json({ status: 'SUCCESS', data: user })
-    }
-    else {
-        throw new NotFound(`User doesn't exixts or profile is initially not completed`)
-    }
-
-}
-
-const updatePass = async (req, res) => {
-    const { userID, userName } = req.user
-    const { password } = req.body
-    if (!password) {
-        throw new BadRequestError(`Provide all the credentials...password...`)
-    }
-    if (await User.exists({ _id: userID })) {
-        const user = await User.findOneAndUpdate({_id:userID}, {password}, { new: true, runValidators: true })
-        res.status(200).json({ status: 'SUCCESS', data: user })
-    }
-    else {
-        throw new NotFound(`User doesn't exixts...`)
-    }
-}
-
 
 const completeProfile = async (req, res) => {
     const { userID, userName } = req.user
     const { mob_no, contect_type, department, designation } = req.body
+    const user=await User.findOne({ _id: userID})
     if (!mob_no || !contect_type || !department || !designation) {
         throw new BadRequestError(`Provide all the credentials...mob_no,contect_type,department,designation...`)
     }
-    if (await User.exists({ _id: userID })) {
+    if (!user) {
+        throw new BadRequestError(`No user with given id ${userID} or`)
+    }
+    if (user.profileCompleted==false ) {
         const user = await User.findByIdAndUpdate(userID, { mob_no, contect_type, department, designation, profileCompleted: true }, { new: true, runValidators: true })
         await user.leaveSchema()
         user.save()
-        res.status(200).json({ status: 'SUCCESS', data: user })
+        res.status(200).json({ status: 'SUCCESS', msg:`Account is successfully initailized.` })
     }
     else {
-        throw new NotFound(`No user with given id ${userID}`)
+        throw new NotFound(`User ${userName} Account records is already initially updated`)
+    }
+
+}
+const updateProfile = async (req, res) => {
+    const { userID, userName } = req.user
+
+    if (await User.exists({ _id: userID,profileCompleted:true })) {
+        const user = await User.findOneAndUpdate({_id:userID,profileCompleted:true},req.body, { new: true, runValidators: true })
+        res.status(200).json({ status: 'SUCCESS', msg:`Profile updated.` })
+    }
+    else {
+        throw new NotFound(`User doesn't exixts or profile is initially not completed`)
     }
 
 }
@@ -126,4 +109,4 @@ const deleteProfile = async (req, res) => {
     }
 }
 
-module.exports = {getSingleData, login,completeProfile, updateProfile, deleteProfile,updatePass }
+module.exports = {getSingleData, login,completeProfile, updateProfile, deleteProfile }

@@ -1,5 +1,6 @@
 const User = require('../model/User')
 const nodemailer = require("nodemailer");
+const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
 const UserVerification = require('../model/UserVerification')
 const otpVerification = require('../model/otpVerification')
@@ -122,7 +123,7 @@ const sendOTP = async ({ _id, email }, res) => {
         userID: _id,
         OTP: otp,
         createdAt: Date.now(),
-        expiresAt: Date.now() + (1000 * 60 * 6)
+        expiresAt: Date.now() + (1000 * 60 * 5)
     })
     await transporter.sendMail(mailOptions)
 }
@@ -148,7 +149,7 @@ const verifyOTP = async (req, res) => {
                 const user=await User.findOne({ _id:userid })
                 const token=await user.generateJWT()
                 // sent to change password page
-                res.status(StatusCodes.OK).json({user, status:"SUCCESS",token, msg: `you are verified now and sent to password updation page` })
+                res.status(StatusCodes.OK).json({status:"SUCCESS",token, msg: `you are verified now and sent to password updation page` })
             }
             else {
                 throw new BadRequestError(`Invalid OTP datails passed. Check your inbox...`)
@@ -160,4 +161,22 @@ const verifyOTP = async (req, res) => {
         throw new NotFound(`Account record doesn't exist.`)
     }
 }
-module.exports = { register, verifyEmail, verifyOTP, forgotPassword }
+
+const updatePass = async (req, res) => {
+    const { userID, userName } = req.user
+    const { password } = req.body
+    const salt=await bcrypt.genSalt(10)
+    const hashedPassword=await bcrypt.hash(password,salt)
+    if (!password) {
+        throw new BadRequestError(`Provide all the credentials...password...`)
+    }
+    if (await User.exists({ _id: userID })) {
+        const user = await User.findOneAndUpdate({_id:userID}, {password:hashedPassword}, { new: true, runValidators: true })
+        res.status(200).json({ status: 'SUCCESS', data: user })
+    }
+    else {
+        throw new NotFound(`User doesn't exixts...`)
+    }
+}
+
+module.exports = { register, verifyEmail, verifyOTP, forgotPassword, updatePass }

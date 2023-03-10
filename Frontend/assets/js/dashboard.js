@@ -1,3 +1,9 @@
+const usertoken = localStorage.getItem('token');
+if (usertoken==null){
+  alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
+  location.replace("login.html")
+}
+
 const getuser=async ()=>{
   const token =localStorage.getItem('token')
 
@@ -47,8 +53,8 @@ const getuser=async ()=>{
           <div class="card-header" style="margin:10px">
           <div>
               <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
-            <p class="title"</p>
-            <p>Department of Computer Science</p>
+              <p class="title">${userData.data.designation}</p>
+              <p>${userData.data.department}</p>
           </div>
           </div>
         </div>
@@ -140,6 +146,8 @@ function closePopup() {
 	document.getElementById("popup").style.display = "none";
 }
 
-function PopUp(){
-  document.getElementById('myModal').style.display="block"; 
+function confirm_logout(){
+  localStorage.removeItem('token');
+  alert(`You have been successfully logged out. Thank you for using our application.`)
+  location.replace("index.html")
 }

@@ -1,3 +1,11 @@
+const usertoken = localStorage.getItem('token');
+if (usertoken!=null){
+  alert(`You are already logged in. If you need to log in with a different account, please log out first.`)
+  location.replace("dashboard.html")
+}
+
+
+
 const btn_log = document.querySelector('.btn_log')
 const email_log = document.querySelector('.email_log')
 const password_log = document.querySelector('.password_log')
@@ -58,7 +66,6 @@ btn_log.addEventListener('click', async (e) => {
 const btn_regi = document.querySelector('.btn_regi')
 const name_regi = document.querySelector('.name_regi')
 const email_regi = document.querySelector('.email_regi')
-// const mob_no = document.querySelector('.mob_no')
 const password_regi = document.querySelector('.password_regi')
 const confirmPassword_regi = document.querySelector('.confirmPassword_regi')
 var errorhtml = document.getElementById("errormsg").innerHTML;
