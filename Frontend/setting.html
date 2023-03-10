@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>iLEAVE | ApplyLeave</title>
-  <meta charset="utf-8">
+  <title>iLeave | Status</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -19,97 +18,222 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="">
-  <link rel="icon" href="images/logonew.png">
-  <link rel="stylesheet" href="assets/css/apply_leave.css">
+  <link rel="icon" href="images/logo.svg">
+  <link rel="stylesheet" href="assets/css/newdashboard.css">
+  <link rel="stylesheet" href="assets/css/updateprofile.css">
 </head>
-
 <body>
-  <div class="fixed-left-navbar ">
-    <a class="sidebar-brand " href="">
-      <span class="align-middle"><img class="img-sidebar" src="images/logo.svg"><img
-          class="logo-sidebar" src="images/namelogo.svg">
-      </span>
-    </a>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link navbar-link " href="dash_board.html"><i class="fa fa-clone"></i>&nbsp;Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navbar-link" href="apply_leave.html"><i class="fa fa-calendar"></i>&nbsp;Apply Leave</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navbar-link" href="status_approval.html"><i class="fa fa-check-square-o"></i>&nbsp;Status/Approval</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navbar-link" href="#"><i class="fa fa-cog"></i>&nbsp;Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link navbar-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
-      </li>
-    </ul>
+  <input type="checkbox" id="nav-toggle">
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
+      <span><img class="img-logo-name" src="images/name.svg" alt=""></span>
+    </div>
 
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+          <a href="Dashboard.html">
+            <span class="fa fa-clone"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="Applyleave.html">
+            <span class="fa fa-calendar"></span>
+            <span>Apply leave</span>
+          </a>
+        </li>
+        <li>
+          <a href="Status.html">
+            <span class="fa fa-calendar-check-o"></span>
+            <span>Status/Approval</span>
+          </a>
+        </li>
+        <li>
+          <a href="setting.html" class="active">
+            <span class="fa fa-cog"></span>
+            <span>Setting</span>
+          </a>
+        </li>
+        <li>
+          <a class="logout" onclick="openPopup()">
+            <span class="fa fa-sign-out"></span>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
   </div>
-  <div class="responsive-body">
-    <div class="deck overflow-auto container-fluid m-2 my-4">
-      <h4 class="mb-3 my-3 text-center">Setting</h4>
-      <hr class="my-4 mx-3">
-  <div id="signupform" method ="post">
-    <div class="row">
-      <div class="col mx-4 mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="Name">
-      </div>
+  <div id="popup" class="popup card-header">
+		<div class="popup-content">
+			<span class="close" onclick="closePopup()">&times;</span>
+			<p>Are You Sure You Want to Logout!</p>
+      <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
+		</div>
+	</div> 
 
-      <div class="col mx-4 mb-3">
-        <label for="username" class="form-label">Username</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text">@</span>
-          <input type="text" class="form-control" id="username" placeholder="Username" required>
-        <div class="invalid-feedback">
-            Your username is required.
+  <div class="main-content">
+    <header>
+      <h2>
+        <label for="nav-toggle">
+          <span class="fa fa-bars"></span>
+        </label>
+        Setting
+      </h2>
+
+      <div class="dropdown" id="profile">
+      </div>
+    </header>
+
+    <main>
+      <div class="recents-grid mt-4">
+        <div class="projects">
+          <div class="card">
+
+            <div class="card-body">
+              <h2 class="ml-3">Update Profile</h2>
+              <div class="row align-items-center">
+                <div class="col-lg-4  mt-0 mb-lg-0">
+                  <img src="images/profile.jpg" alt="">
+                  <div id="profile2">
+                  </div>
+                  </div>
+               
+
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                  <form class="pr-5 mb-5" method="post" id="contactForm" name="contactForm"
+                    novalidate="novalidate">
+                    <div class="row">
+
+                      <div class="col-md-6 form-group">
+                        <!-- name -->
+                        <label class="mb-0">Name</label>
+                        <div><input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+                          aria-required="true" aria-invalid="true"></div>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <!-- Phone Number -->
+                        <label class="mb-0">Phone Number</label>
+                        <div id="number"><input type="number" class="form-control Name mob_no" name="mob_no" id="data" value="" placeholder="Contact No."
+                          aria-required="true" aria-invalid="true"></div>
+                      </div>
+
+                    </div>
+                    <div class=" form-group">
+                      <!-- Email  -->
+                      <label class="mb-0">Email</label>
+                      <div><input type="email" class="form-control Name" name="email" id="email" placeholder="Email"
+                        aria-required="true" aria-invalid="true"></div>
+                    </div>
+                    <div class="row">
+                      
+                      <div class="col-md-6 form-group">
+                        <!-- Designation -->
+                        <label class="mb-0">Designation</label>
+                        <div id="Designation">
+                          <select class="form-control designation" id="designation">
+                            <option name="reference3" value="">Designation</option>
+                            <option>Faculty</option>
+                            <option>HOD</option>
+                            <option>Pricipal</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <!-- Department -->
+                        <label class="mb-0">Department</label>
+                        <div id="Department">
+                          <select class="form-control department" id="department">
+                            <option name="reference3" value="">Department</option>
+                            <option value="Computer Science">CSE</option>
+                            <option value="Iformation Tecnology">HOD</option>
+                            <option value="ET & T">ET & T</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Civil">Civil</option>
+                            <option value="Mining">Mining</option>
+                          </select>
+                        </div>
+                      </div>
+                     
+
+                    </div>
+
+                    <div class="row mb-0">
+                      <div class="col-md-6 form-group">
+                        <label class="mt-4">Please Enter the Password to confirm the changes</label>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <!--<label class="mb-0"> password:</label>-->
+                        <!-- To -->
+                        <input type="password" class="form-control error password" name="fromdate" id="confirm_password"
+                          placeholder="Password" aria-required="true"><label id="lname-error" class="error"
+                          for="lname"></label>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <button style="width:200px;height: 50px;" class="save">Save</button>
+                    </div>
+                  </form>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </div>
-    </div>
+      <div class="recents-grid mt-4 mb-4">
+        <div class="projects">
+          <div class="card">
+            <div class="card-body">
+              <form action="" >
+                <h2 calss="mt-2 ml-2">Change Password</h2>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <!-- New Password -->
+                    <input class="form-control newpass" placeholder="New-Passwprd" id="new_password" aria-required="true" aria-invalid="true"></div>
+                    
+                    <div class="col-md-6 form-group">
+                      <!-- Old Password -->
+                      <input class="form-control pass" placeholder="Old-Passwprd" id="password" aria-required="true" aria-invalid="true"></div>
+                    
+                <div class="col-md-6 form-group">
+                  <!-- Confirm New Password -->
+                  <input class="form-control newpasscon" placeholder="Confirm New Password" id="new_confirm_password" aria-required="true" aria-invalid="true" ></div>
+                
+                </form>
+                <div class="d-flex ">
+                  <button style="width:200px;height: 50px;" class="savepass">Save</button>
+                </div>
+              </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          <footer class="d-flex mt-3 justify-content-center">
+            <p>
+              Created with <i class="fa fa-heart"></i> by
+              <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+              <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+              <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
+            </p>
+          </footer> 
 
-    <div class=" mx-4 mb-3 ">
-      <label for="email" class="form-label">Email </label>
-      <input type="email" class="form-control" id="email" placeholder="you@example.com">
-      <div class="invalid-feedback">
-        Please enter a valid email address.
-      </div>
-    </div>
+    </main>
+  </div>
 
-    <div class="row">
-      <div class="col mx-4 mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
-        <div id="passwordHelpBlock" class="form-text">
-          Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-        </div>
-      </div>
-      
-      <div class="col mx-4 mb-3">
-        <label for="confirmpassword" class="form-label">Confirm Password</label>
-        <input type="password" id="confirmpassword" class="form-control" aria-describedby="passwordHelpBlock">
-        <div id="passwordHelpBlock" class="form-text">
-          Reenter the Password.
-        </div>
-      </div>
-    </div>
+  <!-- <script>// Data Picker Initialization
+    $('.datepicker').datepicker({
+      inline: true
+    });
+    
+  </script> -->
 
-
-    <hr class="my-4 mx-3">
-    <div class="mx-4 mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="checkbox">
-      <label class="form-check-label" for="checkbox">All the information are valid.</label>
-    </div>
-    <div class="d-grid gap-2 mx-3 my-4 d-flex justify-content-center text-center">
-      <button class="btn btn-primary " type="submit">Submit</button>
-    </div>
-</div>
-</div>
-</div>
+  <script src="assets/js/dashboard.js">
+  </script>
+    <script src="assets/js/updateprofile.js">
+    </script>
 
 </body>
 

@@ -19,7 +19,7 @@ const getuser=async ()=>{
         throw Error('something went wrong')
       }
       const userData=await user.json()
-      console.log(userData)
+      // console.log(userData)
       console.log(userData.data.designation)
       if(userData.data.profileCompleted==false){
         $(document).ready(function(){
