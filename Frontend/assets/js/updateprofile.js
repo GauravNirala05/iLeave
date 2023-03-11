@@ -1,5 +1,5 @@
 const usertoken = localStorage.getItem('token');
-if (usertoken==null){
+if (usertoken == null) {
   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
   location.replace("login.html")
 }
@@ -23,7 +23,7 @@ const getuser = async () => {
       for(item in userData)
       {
         // console.log(userData);
-        ihtml=`
+        ihtml = `
         <div class=" user-wrapper ">
         <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,13 +47,13 @@ const getuser = async () => {
           </div>
         </div>
       </div>`
-        
+
       }
-      document.getElementById("profile").innerHTML=ihtml
-      document.getElementById("Name").innerHTML =`<input type="name" class="form-control Name" name="name" id="name" placeholder="Name" value="${userData.data.name}"
+      document.getElementById("profile").innerHTML = ihtml
+      document.getElementById("Name").innerHTML = `<input type="name" class="form-control Name" name="name" id="name" placeholder="Name" value="${userData.data.name}"
       aria-required="true" aria-invalid="true">`
 
-      document.getElementById("email").innerHTML =`<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
+      document.getElementById("email").innerHTML = `<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
       aria-required="true" aria-invalid="true">`
     } catch (error) {
       console.log(error);
@@ -72,31 +72,31 @@ const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
-const update_contract_type=document.querySelector('.contract_type')
+const update_contract_type = document.querySelector('.contract_type')
 // const confirmPassword = document.querySelector('.password')
 const utoken = localStorage.getItem('token')
-console.log(localStorage)
+// console.log(localStorage)
 if (utoken) {
-  
+
   update_profile.addEventListener('click', async (e) => {
     e.preventDefault()
     const contact_no = update_contact.value
-    const contract_type=update_contract_type.value
+    const contract_type = update_contract_type.value
     const desig = update_designation.value
     const depart = update_department.value
-    
+
     // const mob = mob_no.value
     // const pass = confirmPassword.value
     try {
       const fetcher = await fetch('/updateProfile', {
         method: 'PATCH',
         body: JSON.stringify({
-         
+
           mob_no: contact_no,
-          contect_type:contract_type,
+          contect_type: contract_type,
           department: depart,
           designation: desig,
-          
+
           // password: pass
         }),
         headers: {
@@ -106,25 +106,43 @@ if (utoken) {
       })
       if (!fetcher.ok) {
         const status = fetcher.status
-        console.log(status);
+        // console.log(status);
         const { msg, error } = await fetcher.json()
-        console.log(msg);
+        // console.log(msg);
         throw Error(`${status}`)
       }
       const { token, msg } = await fetcher.json()
       alert(`${msg}`)
-      
+
       setTimeout(() => {
         location.replace("Dashboard.html")
       }, 1000);
-      console.log('updated profile')
+      // console.log('updated profile')
       update_designation.value = ``
       update_department.value = ``
       update_contact.value = ``
-      update_contract_type.value=``
+      update_contract_type.value = ``
       // confirmPassword.value = ``
     } catch (error) {
       console.log(error)
     }
   })
+}
+
+function delete_acc() {
+  const utoken = localStorage.getItem('token')
+  console.log(localStorage.id)
+  fetch('/deleteProfile/:'+localStorage.id, {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log("Delete was successful")
+      } else {
+        console.log("Handle error response")
+      }
+    })
+    .catch(error => {
+      // Handle network error
+    });
 }

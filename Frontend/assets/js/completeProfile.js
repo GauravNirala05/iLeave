@@ -13,6 +13,7 @@ imageUpload.addEventListener("change", function() {
     reader.readAsDataURL(file);
   }
 });
+
 const usertoken = localStorage.getItem('token');
 if (usertoken==null){
   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
@@ -90,7 +91,6 @@ const update_contact = document.querySelector('.phone_no')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
 const update_contract_type=document.querySelector('.contract_type')
-// const confirmPassword = document.querySelector('.password')
 const utoken = localStorage.getItem('token')
 console.log(localStorage)
 if (utoken) {
@@ -101,6 +101,7 @@ if (utoken) {
     const contract_type=update_contract_type.value
     const desig = update_designation.value
     const depart = update_department.value
+    const img = previewImage.value
     
     // const mob = mob_no.value
     // const pass = confirmPassword.value
@@ -113,8 +114,8 @@ if (utoken) {
           contect_type:contract_type,
           department: depart,
           designation: desig,
+          image: img,
           
-          // password: pass
         }),
         headers: {
           'Content-Type': `application/json`,
@@ -132,7 +133,7 @@ if (utoken) {
       alert(`${msg}`)
       
       setTimeout(() => {
-        location.replace("Completeprofile.html")
+        location.replace("dashboard.html")
       }, 1000);
       console.log('updated profile')
       update_designation.value = ``

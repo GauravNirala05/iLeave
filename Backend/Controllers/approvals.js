@@ -1,15 +1,16 @@
 const User = require('../model/User')
 const Leave = require('../model/Leave')
+const nonTechLeave = require('../model/non-techLeave')
 
 const approve = async (req, res) => {
     const { userID, userName } = req.user
-    const {targetid: targetID } = req.params
+    const {leaveId: targetID } = req.params
     const user = await User.findById(userID)
     if (user) {
 
         
         if (user.designation === 'faculty') {
-            if (await Leave.exists({ employee_id: targetID, status: ['applied', 'rejected'] })) {
+            if (await Leave.exists({_id: targetID, status: ['applied', 'rejected'] })) {
                 const { refer, approval } = req.body
                 const approveObject = {}
                 if (refer === 1) {
@@ -59,7 +60,7 @@ const approve = async (req, res) => {
                     }
 
                 }
-                const data = await Leave.findOneAndUpdate({ employee_id: targetID }, approveObject, { new: true })
+                const data = await Leave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
                 res.status(200).json({ status: 'SUCCESS', data: data })
             }
             else {
@@ -70,10 +71,10 @@ const approve = async (req, res) => {
 
 
         if (user.designation === 'HOD') {
-            if (await Leave.exists({ employee_id: targetID,employee_dep:user.department, status: ['applied'] })) {
+            if (await Leave.exists({_id: targetID,employee_dep:user.department, status: ['applied'] })) {
                 const { approval } = req.body
                 const approveObject = {}
-                if (approval === 'true') {
+                if (approval === true) {
                     approveObject.HOD_approval = approval
                     approveObject.status = 'applied'
                 }
@@ -81,7 +82,26 @@ const approve = async (req, res) => {
                     approveObject.HOD_approval = approval
                     approveObject.status = 'rejected'
                 }
-                const data = await Leave.findOneAndUpdate({ employee_id: targetID }, approveObject, { new: true })
+                const data = await Leave.findOneAndUpdate({_id: targetID }, approveObject, { new: true })
+                return res.status(200).json({ status: 'SUCCESS', data: data })
+            }
+            else {
+                return res.status(404).json({ status: 'FAILED', msg: `Leave not found with id ${targetID}` })
+            }
+        }
+        if (user.designation === 'non-tech-head') {
+            if (await nonTechLeave.exists({_id: targetID,employee_dep:user.department, status: ['applied'] })) {
+                const { approval } = req.body
+                const approveObject = {}
+                if (approval === true) {
+                    approveObject.Head_approval = approval
+                    approveObject.status = 'applied'
+                }
+                else {
+                    approveObject.Head_approval = approval
+                    approveObject.status = 'rejected'
+                }
+                const data = await nonTechLeave.findOneAndUpdate({_id: targetID }, approveObject, { new: true })
                 return res.status(200).json({ status: 'SUCCESS', data: data })
             }
             else {
@@ -89,19 +109,16 @@ const approve = async (req, res) => {
             }
         }
 
-
-
         if (user.designation === 'principal') {
-
-            const leaveData = await Leave.findOne({ employee_id: targetID, status: ['applied', 'rejected', 'approved'] })
+            const leaveData = await Leave.findOne({ _id: targetID, status: ['applied', 'rejected', 'approved'] })
             if (leaveData) {
                 const { approval, confirmation } = req.body
                 const approveObject = {}
                 const updateObj = {}
-                if (confirmation === 'true' && approval === 'true') {
+                if (confirmation === true && approval === true) {
                     const type = leaveData.leave_type
                     const totalDay = leaveData.total_days
-                    const leaveUser = await User.findOne({ _id: targetID })
+                    const leaveUser = await User.findOne({ _id: leaveData.employee_id })
                     const cl = leaveUser.leave_type.casual_leave
                     const ml = leaveUser.leave_type.medical_leave
                     const ol = leaveUser.leave_type.ordinary_leave
@@ -135,11 +152,11 @@ const approve = async (req, res) => {
                     }
                     console.log(updateObj);
 
-                    const data3 = await Leave.findOneAndUpdate({ employee_id: targetID }, { principal_approval: true, status: 'completed' }, { new: true })
-                    const data2 = await User.findOneAndUpdate({ _id: targetID }, updateObj, { new: true })
+                    const data3 = await Leave.findOneAndUpdate({ _id: targetID }, { principal_approval: true, status: 'completed' }, { new: true })
+                    const data2 = await User.findOneAndUpdate({ _id: leaveData.employee_id }, updateObj, { new: true })
                     return res.status(200).json({ status: 'SUCCESS', userUpadated: 'TRUE', data: data3, user: data2 })
                 }
-                if (approval === 'true') {
+                if (approval === true) {
                     approveObject.principal_approval = approval
                     approveObject.status = 'approved'
                 }
@@ -147,7 +164,7 @@ const approve = async (req, res) => {
                     approveObject.principal_approval = approval
                     approveObject.status = 'rejected'
                 }
-                const leaveUpdate = await Leave.findOneAndUpdate({ employee_id: targetID }, approveObject, { new: true })
+                const leaveUpdate = await Leave.findOneAndUpdate({_id: targetID }, approveObject, { new: true })
                 return res.status(200).json({ status: 'SUCCESS', data: leaveUpdate, })
 
             }

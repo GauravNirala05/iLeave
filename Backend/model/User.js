@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     designation: {
         type: String,
-        enum: ['faculty', 'HOD', 'principal','clark'],
+        enum: ['faculty', 'HOD', 'principal','non-tech-employee','non-tech-head'],
     },
     contect_type: {
         type: String,

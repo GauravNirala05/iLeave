@@ -19,8 +19,8 @@ const getuser=async ()=>{
         throw Error('something went wrong')
       }
       const userData=await user.json()
-       console.log(userData)
-      console.log(userData.data.designation)
+      //  console.log(userData)
+      // console.log(userData.data.designation)
       if(userData.data.profileCompleted==false){
         $(document).ready(function(){
           $("#myModal").modal('show');
@@ -62,7 +62,7 @@ const getuser=async ()=>{
 
       // once logic is implemeted it will be == insted of !=
       if (userData.data.designation !="HOD"){
-        console.log(userData.data.designation)
+        // console.log(userData.data.designation)
   
         hodhtml=`<div class="projects">
         <div class="card">
