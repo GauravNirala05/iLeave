@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     designation: {
         type: String,
-        enum: ['faculty', 'HOD', 'principal'],
+        enum: ['faculty', 'HOD', 'principal','clark'],
     },
     contect_type: {
         type: String,
@@ -48,13 +48,14 @@ const userSchema = new mongoose.Schema({
 })
 
 
-userSchema.pre('save', async function () {
-    const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
-})
+// userSchema.pre('save', async function () {
+//     const salt = await bcrypt.genSalt(10)
+//     const hashedPassword = await bcrypt.hash(this.password, salt)
+//     this.password=hashedPassword
+// })
 
 userSchema.methods.leaveSchema= async function(){
-    if(this.department=="non-tech"){
+    if(this.department==="non-tech"){
         this.leave_type={
             casual_leave:10,
             earned_leave:10,
@@ -62,7 +63,7 @@ userSchema.methods.leaveSchema= async function(){
             ordinary_leave:10
         }
     }
-    else{
+    if(this.department==="Civil"){
         this.leave_type={
             casual_leave:20,
             earned_leave:20,
