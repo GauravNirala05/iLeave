@@ -22,39 +22,14 @@
   <!--<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>-->
   <link rel="icon" href="images/logo.svg">
   <link rel="stylesheet" href="assets/css/newdashboard.css">
+  <!--script to include an html page to another page-->
+  <script src="https://unpkg.com/htmlincludejs"></script>
 </head>
 <style>
 </style>
 
 <body>
-  <div class="container">
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-        
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Successfully Registered</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          
-          <!-- Modal body -->
-          <div class="modal-body">
-            You are registered ,Plz complete your profile
-          </div>
-          
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button"  onclick="complete_profile()" class="btn btn-danger" data-dismiss="modal">Ok</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-  
-  <!-- <div w3-include-html="profilemodal.html"></div> -->
+ <include src="./dashboard_modal.html"></include>
   <div id="popup" class="popup card-header">
 		<div class="popup-content">
 			<span class="close" onclick="closePopup()">&times;</span>
