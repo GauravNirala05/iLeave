@@ -12,22 +12,22 @@ const approve = async (req, res) => {
             if (await Leave.exists({ employee_id: targetID, status: ['applied', 'rejected'] })) {
                 const { refer, approval } = req.body
                 const approveObject = {}
-                if (refer == 1) {
+                if (refer === 1) {
                     approveObject.reference1 = {}
                     approveObject.reference1.name = user.name
                     approveObject.reference1.approved = approval
-                    if (approval === 'true') {
+                    if (approval === true) {
                         approveObject.status = 'applied'
                     }
                     else {
                         approveObject.status = 'rejected'
                     }
                 }
-                if (refer == 2) {
+                if (refer === 2) {
                     approveObject.reference2 = {}
                     approveObject.reference2.name = user.name
                     approveObject.reference2.approved = approval
-                    if (approval === 'true') {
+                    if (approval === true) {
                         approveObject.status = 'applied'
                     }
                     else {
@@ -35,11 +35,11 @@ const approve = async (req, res) => {
                     }
 
                 }
-                if (refer == 3) {
+                if (refer === 3) {
                     approveObject.reference3 = {}
                     approveObject.reference3.name = user.name
                     approveObject.reference3.approved = approval
-                    if (approval === 'true') {
+                    if (approval === true) {
                         approveObject.status = 'applied'
                     }
                     else {
@@ -47,11 +47,11 @@ const approve = async (req, res) => {
                     }
 
                 }
-                if (refer == 4) {
+                if (refer === 4) {
                     approveObject.reference4 = {}
                     approveObject.reference4.name = user.name
                     approveObject.reference4.approved = approval
-                    if (approval === 'true') {
+                    if (approval === true) {
                         approveObject.status = 'applied'
                     }
                     else {
