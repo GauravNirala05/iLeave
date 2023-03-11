@@ -19,7 +19,6 @@ const getuser = async () => {
       }
       const userData = await user.json()
       console.log(userData)
-      console.log(userData.data.designation)
       let ihtml=``
       for(item in userData)
       {
@@ -69,7 +68,7 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-const update_profile = document.querySelector('.save')
+const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
@@ -126,7 +125,6 @@ if (utoken) {
       // confirmPassword.value = ``
     } catch (error) {
       console.log(error)
-     
     }
   })
 }

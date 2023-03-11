@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/updateprofile.css">
 </head>
+
 <body>
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
@@ -67,12 +68,12 @@
     </div>
   </div>
   <div id="popup" class="popup card-header">
-		<div class="popup-content">
-			<span class="close" onclick="closePopup()">&times;</span>
-			<p>Are You Sure You Want to Logout!</p>
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <p>Are You Sure You Want to Logout!</p>
       <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
-		</div>
-	</div> 
+    </div>
+  </div>
 
   <div class="main-content">
     <header>
@@ -99,18 +100,17 @@
                   <img src="images/profile.jpg" alt="">
                   <div id="profile2">
                   </div>
-                  </div>
-               
+                </div>
+
 
                 <div class="col-lg-8 mb-5 mb-lg-0">
-                  <form class="pr-5 mb-5" method="post" id="contactForm" name="contactForm"
-                    novalidate="novalidate">
+                  <form class="pr-5 mb-5" id="contactForm" name="contactForm" novalidate="novalidate">
                     <div class="row">
 
                       <div class="col-md-6 form-group">
                         <!-- name -->
                         <label class="mb-0">Name</label>
-                        <div  id="Name">
+                        <div id="Name">
                           <!-- <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
                           aria-required="true" aria-invalid="true"> -->
                         </div>
@@ -118,8 +118,8 @@
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
                         <label class="mb-0">Phone Number</label>
-                        <div id="number"><input type="number" class="form-control Name mob_no" name="mob_no" id="data" value="" placeholder="Contact No."
-                          aria-required="true" aria-invalid="true"></div>
+                        <div id="number"><input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
+                            value="" placeholder="Contact No." aria-required="true" aria-invalid="true"></div>
                       </div>
 
                     </div>
@@ -132,7 +132,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      
+
                       <div class="col-md-6 form-group">
                         <!-- Designation -->
                         <label class="mb-0">Designation</label>
@@ -160,7 +160,7 @@
                           </select>
                         </div>
                       </div>
-                  
+
                     </div>
                     <div class="row">
 
@@ -171,8 +171,8 @@
                           <select class="form-control contract_type" id="contract_type">
                             <option>parmanent</option>
                             <option>contract</option>
-                            
-                            
+
+
                           </select>
                         </div>
                       </div>
@@ -191,66 +191,63 @@
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                      <button style="width:200px;height: 50px;" class="save">Save</button>
+                      <button style="width:200px;height: 50px;" class="update">Update</button>
                     </div>
                   </form>
+                </div>
+
               </div>
 
             </div>
-
           </div>
         </div>
-      </div>
-      <div class="recents-grid mt-4 mb-4">
-        <div class="projects">
-          <div class="card">
-            <div class="card-body">
-              <form action="" >
-                <h2 calss="mt-2 ml-2">Change Password</h2>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <!-- New Password -->
-                    <input class="form-control newpass" placeholder="New-Passwprd" id="new_password" aria-required="true" aria-invalid="true"></div>
-                    
+        <div class="recents-grid mt-4 mb-4">
+          <div class="projects">
+            <div class="card">
+              <div class="card-body">
+                <form action="">
+                  <h2 calss="mt-2 ml-2">Change Password</h2>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <!-- New Password -->
+                      <input class="form-control newpass" placeholder="New-Passwprd" id="new_password"
+                        aria-required="true" aria-invalid="true">
+                    </div>
+
                     <div class="col-md-6 form-group">
                       <!-- Old Password -->
-                      <input class="form-control pass" placeholder="Old-Passwprd" id="password" aria-required="true" aria-invalid="true"></div>
-                    
-                <div class="col-md-6 form-group">
-                  <!-- Confirm New Password -->
-                  <input class="form-control newpasscon" placeholder="Confirm New Password" id="new_confirm_password" aria-required="true" aria-invalid="true" ></div>
-                
+                      <input class="form-control pass" placeholder="Old-Passwprd" id="password" aria-required="true"
+                        aria-invalid="true">
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                      <!-- Confirm New Password -->
+                      <input class="form-control newpasscon" placeholder="Confirm New Password"
+                        id="new_confirm_password" aria-required="true" aria-invalid="true">
+                    </div>
+
                 </form>
                 <div class="d-flex ">
                   <button style="width:200px;height: 50px;" class="savepass">Save</button>
                 </div>
               </div>
+            </div>
           </div>
-          </div>
-          </div>
-          </div>
-          <footer class="d-flex mt-3 justify-content-center">
-            <p>
-              Created with <i class="fa fa-heart"></i> by
-              <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
-              <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
-              <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
-            </p>
-          </footer> 
+        </div>
+      </div>
+      <footer class="d-flex mt-3 justify-content-center">
+        <p>
+          Created with <i class="fa fa-heart"></i> by
+          <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+          <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+          <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
+        </p>
+      </footer>
 
     </main>
   </div>
-
-  <!-- <script>// Data Picker Initialization
-    $('.datepicker').datepicker({
-      inline: true
-    });
-    
-  </script> -->
-
- 
-    <script src="assets/js/updateprofile.js">
-    </script>
+  <script src="assets/js/updateprofile.js">
+  </script>
 
 </body>
 

@@ -24,11 +24,15 @@
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <!-- <link rel="stylesheet" href="assets/css/newstatus.css"> -->
   <link rel="stylesheet" href="assets/css/newapplyleave.css">
+
+  <!--script to include an html page to another page-->
+  <script src="https://unpkg.com/htmlincludejs"></script>
 </head>
 <style>
 </style>
 
 <body>
+  <include src="./applyleave_modal.html"></include>
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
@@ -107,13 +111,13 @@
 
                       <div class="col-md-6 form-group">
                         <!-- name -->
-                        <input type="text" class="form-control error" name="name" id="name" placeholder="First name"
+                        <input type="text" class="form-control error name" name="name" id="name" placeholder="First name"
                           aria-required="true" aria-invalid="true"><label id="fname-error" class="error"
                           for="fname"></label>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
-                        <input type="number" class="form-control error" name="number" id="mob_no"
+                        <input type="number" class="form-control error mob_no" name="number" id="mob_no"
                           placeholder="Contact No." aria-required="true"><label id="lname-error" class="error"
                           for="contactno"></label>
                       </div>
@@ -123,14 +127,14 @@
                       <div class="col-md-3 form-group">
                         <label class="mb-0">From:</label>
                         <!-- From -->
-                        <input type="date" class="form-control error" name="fromdate" id="fromdate"
+                        <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
                           placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
                           for="fromdate"></label>
                       </div>
                       <div class="col-md-3 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
-                        <input type="date" class="form-control error" name="todate" id="todate"
+                        <input type="date" class="form-control error todate" name="todate" id="todate"
                           placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
                           for="todate"></label>
                       </div>
@@ -145,7 +149,7 @@
                       <div class="col-md-3 form-group">
                         <!-- To -->
                         <label for="">Total days</label>
-                        <input type="number" class="form-control error" name="totaldays" id="totaldays"
+                        <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
                           placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
                           for="totaldays"></label>
                       </div>
@@ -154,7 +158,7 @@
                     <div class="row mt-0">
                       <div class="col-md-3">
                         <div class=" form-group">
-                          <select class="form-control" id="reference1">
+                          <select class="form-control reference1" id="reference1">
                             <option name="reference3" value="">First Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -168,7 +172,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group">
-                          <select class="form-control" id="reference2">
+                          <select class="form-control reference2" id="reference2">
                             <option name="reference3" value="">Second Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -182,7 +186,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group">
-                          <select class="form-control" id="reference3">
+                          <select class="form-control reference3" id="reference3">
                             <option name="reference3" value="">Third Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -196,7 +200,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group">
-                          <select class="form-control" id="reference4">
+                          <select class="form-control reference4" id="reference4">
                             <option name="reference3" value="">Fourth Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -212,12 +216,12 @@
                     <div class="row">
                       <div class="col-md-3 mt-4">
                         <div class=" form-group">
-                          <select class="form-control" id="leavetype">
+                          <select class="form-control leavetype" id="leavetype">
                             <option name="reference3" value="">Leave Type</option>
-                            <option>Medical Leave</option>
-                            <option>Casual Leave</option>
-                            <option>Ordinary Leave</option>
-                            <option>Extra Leave</option>
+                            <option>medical_leave</option>
+                            <option>casual_leave</option>
+                            <option>ordinary_leave</option>
+                            <option>earned_leave</option>
                           </select>
                           <div class="invalid-feedback">
                             Please provide person name.
@@ -225,7 +229,7 @@
                         </div>
                       </div>
                       <div class="col-md-9 form-group">
-                        <textarea class="form-control error" name="message" id="reason" cols="30" rows="3"
+                        <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
                           placeholder="Reason For Applying Leave" aria-required="true"></textarea><label
                           id="message-error" class="error" for="message">Please enter a message</label>
                       </div>
@@ -233,7 +237,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="card-header d-flex justify-content-center">
-                          <button style="width:200px;height: 50px;" type="submit" class="btn_apply"
+                          <button style="width:200px;height: 50px;" type="submit" id="btn_apply" class="btn_apply" data-toggle="modal" data-target="#myModal"
                            >Apply Leave <span class="fa fa-arrow-right"></span>
                           </button>
                         </div>
