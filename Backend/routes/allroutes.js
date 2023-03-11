@@ -19,14 +19,13 @@ const {
     updateProfile,
     deleteProfile,
 } = require('../Controllers/basicControl')
-const applyLeave = require('../Controllers/applyLeave')
+const {applyLeave,getReferenceName} = require('../Controllers/applyLeave')
 const approve = require('../Controllers/approvals')
 
 const {
     alluser,
     leaveStatus,
-    getApprovals,
-    getReferenceName
+    getApprovals
 } = require('../Controllers/allcontrol')
 
 
