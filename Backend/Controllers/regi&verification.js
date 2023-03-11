@@ -40,7 +40,10 @@ const register = async (req, res) => {
         throw new BadRequestError(`User with this email ${email} already exists and verified.Please go to sign in... `)
     }
     else {
-        const data = await User.create({ email, name, password })
+
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+        const data = await User.create({ email, name, password:hashedPassword })
         console.log(`User created`);
         sendVerificationEmail(data, res)
         res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Email has been sent to your email: ${email}` })
@@ -103,7 +106,7 @@ const forgotPassword = async (req, res) => {
 
         const data = await User.findOne({ email })
         sendOTP(data, res)
-        return res.status(StatusCodes.CREATED).json({status: 'PENDING', msg: `OTP has been sent to your email: ${email}`,userid:data._id })
+        return res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `OTP has been sent to your email: ${email}`, userid: data._id })
 
     }
     else {
@@ -144,12 +147,12 @@ const verifyOTP = async (req, res) => {
         else {
             const result = await otpverify.compOTP(OTP)
             if (result) {
-                
-                const userverifyotp=await otpVerification.deleteMany({ userID: userid })
-                const user=await User.findOne({ _id:userid })
-                const token=await user.generateJWT()
+
+                const userverifyotp = await otpVerification.deleteMany({ userID: userid })
+                const user = await User.findOne({ _id: userid })
+                const token = await user.generateJWT()
                 // sent to change password page
-                res.status(StatusCodes.OK).json({status:"SUCCESS",token, msg: `you are verified now and sent to password updation page` })
+                res.status(StatusCodes.OK).json({ status: "SUCCESS", token, msg: `you are verified now and sent to password updation page` })
             }
             else {
                 throw new BadRequestError(`Invalid OTP datails passed. Check your inbox...`)
@@ -165,14 +168,14 @@ const verifyOTP = async (req, res) => {
 const updatePass = async (req, res) => {
     const { userID, userName } = req.user
     const { password } = req.body
-    const salt=await bcrypt.genSalt(10)
-    const hashedPassword=await bcrypt.hash(password,salt)
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
     if (!password) {
         throw new BadRequestError(`Provide all the credentials...password...`)
     }
     if (await User.exists({ _id: userID })) {
-        const user = await User.findOneAndUpdate({_id:userID}, {password:hashedPassword}, { new: true, runValidators: true })
-        res.status(200).json({ status: 'SUCCESS', data: user })
+        const user = await User.findOneAndUpdate({ _id: userID }, { password: hashedPassword }, { new: true, runValidators: true })
+        res.status(200).json({ status: 'SUCCESS', msg: `Your password has been reset to ${password}` })
     }
     else {
         throw new NotFound(`User doesn't exixts...`)

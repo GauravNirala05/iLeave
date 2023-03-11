@@ -21,6 +21,7 @@
   <link rel="icon" href="images/logo.svg">
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/updateprofile.css">
+  <link rel="stylesheet" href="assets/css/completeprofile.css">
 </head>
 
 <body>
@@ -54,7 +55,7 @@
         <li>
           <a href="updateprofile.html" class="active">
             <span class="fa fa-cog"></span>
-            <span>Update Profile</span>
+            <span>Setting</span>
           </a>
         </li>
         <li>
@@ -94,19 +95,23 @@
           <div class="card">
 
             <div class="card-body">
-              <span><img src="images/profile.jpg" style="border-radius: 50px;margin: 10px 10px 10px 10px" width="100px"
-                  height="100px" alt="profile-img"></img></span>
+              <!-- <span><img src="images/profile.jpg" style="border-radius: 50px;margin: 10px 10px 10px 10px" width="100px"
+                  height="100px" alt="profile-img"></img></span> -->
 
 
+              <img src="images/logo.svg" width="40px" height="40px" alt="logo-img">
               <div class="row align-items-center">
+                <div class="col-lg-4 ">
 
-                <div class="col-lg-4  mt-0 mb-lg-0">
-                  <img src="images/logo.svg" alt="">
+                  <form class="pr-5 mb-5" method="patch" id="contactForm" name="contactForm" novalidate="novalidate">            
+                  <div class="row d-flex justify-content-center">
+                    <img id="preview-image" src="https://via.placeholder.com/250x250.png?text=No+Image" alt="Preview Image">
+                    <input  class="mt-3" type="file" id="image-upload" name="image-upload">
+                  </div>
                 </div>
 
 
                 <div class="col-lg-8 mb-5 mb-lg-0">
-                  <form class="pr-5 mb-5" method="post" id="contactForm" name="contactForm" novalidate="novalidate">
                     <div class="row">
 
                       <div class="col-md-6 form-group">
@@ -117,6 +122,7 @@
                           aria-required="true" aria-invalid="true"> -->
                         </div>
                       </div>
+
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
                         <label class="mb-0">Phone Number</label>
@@ -147,7 +153,6 @@
                             <option>HOD</option>
                             <option>principal</option>
                           </select>
-                        </div>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Department -->
@@ -164,7 +169,6 @@
                             <option value="Mining">Civil</option>
                             <option value="Mining">non-tech</option>
                           </select>
-                        </div>
                       </div>
 
 
@@ -197,7 +201,7 @@
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                      <button style="width:200px;height: 50px;" class="save">Save</button>
+                      <button style="width:200px;height: 50px;" class="save">Complete</button>
                     </div>
                   </form>
                 </div>
@@ -224,6 +228,8 @@
   <!-- <script src="assets/js/dashboard.js">
   </script> -->
   <script src="assets/js/completeProfile.js">
+  </script>
+  <script src="assets/js/dashboard.js">
   </script>
 
 </body>

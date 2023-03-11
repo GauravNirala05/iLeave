@@ -12,11 +12,11 @@ const alluser = async (req, res) => {
             throw new UnAuthorizedError( `You are a ${designation} and cant access any other user`)
         }
         if (designation === 'HOD') {
-            const alluser = await User.find({ department: user.department, designation: 'faculty' })
+            const alluser = await User.find({ department: user.department, designation: 'faculty' }).select(' _id email name contect_type department designation mob_no leave_type')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: alluser.length, data: alluser })
         }
         if (designation === 'principal') {
-            const alluser = await User.find({ designation: ['faculty', 'HOD','non-tech'] })
+            const alluser = await User.find({ department: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil','non-tech'] }).select(' _id email name contect_type department designation mob_no leave_type')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: alluser.length, data: alluser })
         }
         throw new BadRequestError(`Please provide credentials.`)
@@ -24,28 +24,7 @@ const alluser = async (req, res) => {
         throw new NotFound( `user with id ${userID} doesnt exists...` )
     }
 }
-const getReferenceName = async (req, res) => {
-    const { userID, userName } = req.user
-    const user = await User.findOne({ _id: userID })
-    if (user) {
-        const designation = user.designation
-        if (designation == 'faculty') {
-            const getuser = await User.find({ department: user.department, designation: 'faculty' }).select('name')
-            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
-        }
-        if (designation == 'HOD') {
-            const getuser = await User.find({ department: user.department}).select('name')
-            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
-        }
-        if (designation == 'principal') {
-            const getuser = await User.find({ designation: ['faculty', 'HOD'] }).select('name')
-            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
-        }
 
-    } else {
-        throw new UnAuthorizedError(`user with id ${userID} doesnt exists...`)
-    }
-}
 
 const leaveStatus = async (req, res) => {
     const { userID, userName } = req.user
@@ -121,4 +100,4 @@ const getApprovals = async (req, res) => {
 }
 
 
-module.exports = { alluser, leaveStatus, getApprovals,getReferenceName }
+module.exports = { alluser, leaveStatus, getApprovals }
