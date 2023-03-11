@@ -1,3 +1,18 @@
+var imageUpload = document.getElementById("image-upload");
+var previewImage = document.getElementById("preview-image");
+
+imageUpload.addEventListener("change", function() {
+  var file = this.files[0];
+  var reader = new FileReader();
+
+  reader.addEventListener("load", function() {
+    previewImage.src = reader.result;
+  });
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+});
 const usertoken = localStorage.getItem('token');
 if (usertoken==null){
   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
@@ -153,4 +168,3 @@ if (utoken) {
 
 
 
-)
