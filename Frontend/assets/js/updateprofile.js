@@ -9,7 +9,7 @@ const getuser = async () => {
   if (token) {
     try {
 
-      const user = await fetch('/loginUser', {
+      const user = await fetch('/getUserData', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

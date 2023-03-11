@@ -19,7 +19,7 @@ const getuser=async ()=>{
         throw Error('something went wrong')
       }
       const userData=await user.json()
-      // console.log(userData)
+       console.log(userData)
       console.log(userData.data.designation)
       if(userData.data.profileCompleted==false){
         $(document).ready(function(){
@@ -148,4 +148,7 @@ function confirm_logout(){
   localStorage.removeItem('token');
   alert(`You have been successfully logged out. Thank you for using our application.`)
   location.replace("index.html")
+}
+function complete_profile(){
+  location.replace("Completeprofile.html")
 }
