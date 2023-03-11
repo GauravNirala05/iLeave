@@ -26,9 +26,6 @@ const getuser=async ()=>{
           $("#myModal").modal('show');
         });
       }
-      if (userData.data.designation==null){
-
-      }
       let ihtml=``
       for(item in userData)
       {

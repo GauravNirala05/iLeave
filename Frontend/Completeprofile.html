@@ -112,20 +112,28 @@
                       <div class="col-md-6 form-group">
                         <!-- name -->
                         <label class="mb-0">Name</label>
-                        <div id="Name"></div>
+                        <div id="Name">
+                          <!-- <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+                          aria-required="true" aria-invalid="true"> -->
+                        </div>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
                         <label class="mb-0">Phone Number</label>
-                        <div id="number"><input type="number" class="form-control Name mob_no" name="mob_no" id="data"
-                            value="" placeholder="Contact No." aria-required="true" aria-invalid="true">`</div>
+                        <div id="number">
+                          <input type="number" class="form-control phone_no" name="mob_no" id="number" value=""
+                            placeholder="Contact No." aria-required="true" aria-invalid="true">
+                        </div>
                       </div>
 
                     </div>
                     <div class=" form-group">
                       <!-- Email  -->
                       <label class="mb-0">Email</label>
-                      <div id="email"></div>
+                      <div id="email">
+                        <!-- <input type="email" class="form-control Name" name="email" id="email" placeholder="Email"
+                        aria-required="true" aria-invalid="true"> -->
+                      </div>
                     </div>
                     <div class="row">
 
@@ -133,11 +141,11 @@
                         <!-- Designation -->
                         <label class="mb-0">Designation</label>
                         <div id="Designation">
-                          <select class="form-control designation" id="designation">
-                            <option name="reference3" value="">Designation</option>
-                            <option>Faculty</option>
+                          <select class="form-control designation" id="Designation">
+                            <option name="reference3" value="">Designaton</option>
+                            <option>faculty</option>
                             <option>HOD</option>
-                            <option>Pricipal</option>
+                            <option>principal</option>
                           </select>
                         </div>
                       </div>
@@ -145,7 +153,7 @@
                         <!-- Department -->
                         <label class="mb-0">Department</label>
                         <div id="Department">
-                          <select class="form-control department" id="department">
+                          <select class="form-control department" id="Department">
                             <option name="reference3" value="">Department</option>
                             <option value="Computer Science">Computer Science</option>
                             <option value="Iformation Tecnology">Information Tecnology</option>
@@ -161,7 +169,21 @@
 
 
                     </div>
+                    <div class="row">
 
+                      <div class="col-md-6 form-group">
+                        <!-- Contract_type -->
+                        <label class="mb-0">Contract Type</label>
+                        <div id="contract_type">
+                          <select class="form-control contract_type" id="contract_type">
+                            <option>parmanent</option>
+                            <option>contract</option>
+                            
+                            
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                     <div class="row mb-0">
                       <div class="col-md-6 form-group">
                         <label class="mt-4">Please Enter the Password to confirm the changes</label>
@@ -198,13 +220,9 @@
     </main>
   </div>
 
-  <!-- <script>// Data Picker Initialization
-    $('.datepicker').datepicker({
-      inline: true
-    });
-    
-  </script> -->
 
+  <!-- <script src="assets/js/dashboard.js">
+  </script> -->
   <script src="assets/js/completeProfile.js">
   </script>
 
