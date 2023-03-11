@@ -55,8 +55,6 @@ const getuser = async () => {
 
       document.getElementById("email").innerHTML = `<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
       aria-required="true" aria-invalid="true">`
-
-
     } catch (error) {
       console.log(error);
     }
