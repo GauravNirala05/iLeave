@@ -16,10 +16,7 @@ const reference3 = document.querySelector('.reference3')
 const reference4 = document.querySelector('.reference4')
 const apply_type = document.querySelector('.leavetype')
 const apply_reason = document.querySelector('.reason')
-// const token =localStorage.getItem('token')
-// let token
-// token=localStorage.getItem('token')
-// console.log(localStorage)
+
 button_apply.addEventListener('click', async (e) => {
     e.preventDefault()
     // const formAlert = document.querySelector('.form-alert')
