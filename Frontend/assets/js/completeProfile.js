@@ -13,6 +13,7 @@ imageUpload.addEventListener("change", function() {
     reader.readAsDataURL(file);
   }
 });
+
 const usertoken = localStorage.getItem('token');
 if (usertoken==null){
   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
@@ -71,25 +72,6 @@ const getuser = async () => {
 
       document.getElementById("email").innerHTML =`<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
       aria-required="true" aria-invalid="true">`
-      // document.getElementById("number").innerHTML = `<input type="number" class="form-control Name" name="mob_no" id="data" value="" placeholder="Full name"
-      //                     aria-required="true" aria-invalid="true">`
-      /*
-            document.getElementById("Designation").innerHTML = `<select class="form-control" id="designation">
-              <option name="reference3" value="">Designation</option>
-              <option>Faculty</option>
-              <option>HOD</option>
-              <option>Pricipal</option>
-            </select>`
-      
-            document.getElementById("Department").innerHTML = `<select class="form-control" id="department">
-              <option name="reference3" value="">Department</option>
-              <option value="Computer Science">CSE</option>
-              <option value="Iformation Tecnology">HOD</option>
-              <option value="ET & T">ET & T</option>
-              <option value="Mechanical">Mechanical</option>
-              <option value="Civil">Civil</option>
-              <option value="Mining">Mining</option>
-            </select>`*/
 
     } catch (error) {
       console.log(error);
@@ -109,7 +91,6 @@ const update_contact = document.querySelector('.phone_no')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
 const update_contract_type=document.querySelector('.contract_type')
-// const confirmPassword = document.querySelector('.password')
 const utoken = localStorage.getItem('token')
 console.log(localStorage)
 if (utoken) {
@@ -120,6 +101,7 @@ if (utoken) {
     const contract_type=update_contract_type.value
     const desig = update_designation.value
     const depart = update_department.value
+    const img = previewImage.value
     
     // const mob = mob_no.value
     // const pass = confirmPassword.value
@@ -132,8 +114,8 @@ if (utoken) {
           contect_type:contract_type,
           department: depart,
           designation: desig,
+          image: img,
           
-          // password: pass
         }),
         headers: {
           'Content-Type': `application/json`,
@@ -151,7 +133,7 @@ if (utoken) {
       alert(`${msg}`)
       
       setTimeout(() => {
-        location.replace("Completeprofile.html")
+        location.replace("dashboard.html")
       }, 1000);
       console.log('updated profile')
       update_designation.value = ``

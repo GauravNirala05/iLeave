@@ -79,7 +79,7 @@
   <div class="main-content">
     <header>
       <h2>
-        <label for="nav-toggle">
+        <label class="big" for="nav-toggle">
           <span class="fa fa-bars"></span>
         </label>
         Complete Profile
@@ -95,11 +95,6 @@
           <div class="card">
 
             <div class="card-body">
-              <!-- <span><img src="images/profile.jpg" style="border-radius: 50px;margin: 10px 10px 10px 10px" width="100px"
-                  height="100px" alt="profile-img"></img></span> -->
-
-
-              <img src="images/logo.svg" width="40px" height="40px" alt="logo-img">
               <div class="row align-items-center">
                 <div class="col-lg-4 ">
 
@@ -114,36 +109,31 @@
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="row">
 
-                      <div class="col-md-6 form-group">
+                      <div class="col-md-6 mt-3 form-group">
                         <!-- name -->
                         <label class="mb-0">Name</label>
                         <div id="Name">
-                          <!-- <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
-                          aria-required="true" aria-invalid="true"> -->
                         </div>
                       </div>
-
-                      <div class="col-md-6 form-group">
-                        <!-- Phone Number -->
-                        <label class="mb-0">Phone Number</label>
-                        <div id="number">
-                          <input type="number" class="form-control phone_no" name="mob_no" id="number" value=""
-                            placeholder="Contact No." aria-required="true" aria-invalid="true">
+                      <div class="col-md-6 mt-3 form-group">
+                        <!-- Email  -->
+                        <label class="mb-0">Email</label>
+                        <div id="email">
                         </div>
                       </div>
+                      
 
                     </div>
-                    <div class=" form-group">
-                      <!-- Email  -->
-                      <label class="mb-0">Email</label>
-                      <div id="email">
-                        <!-- <input type="email" class="form-control Name" name="email" id="email" placeholder="Email"
-                        aria-required="true" aria-invalid="true"> -->
-                      </div>
+                    
+                    <div class="form-group mt-3">
+                      <!-- Phone Number -->
+                      <label class="mb-0">Phone Number</label>
+                      <input type="number" class="form-control phone_no" name="mob_no" id="number" value=""
+                          placeholder="Contact No." aria-required="true" aria-invalid="true">
+                      
                     </div>
-                    <div class="row">
 
-                      <div class="col-md-6 form-group">
+                      <div class=" form-group mt-3">
                         <!-- Designation -->
                         <label class="mb-0">Designation</label>
                         <div id="Designation">
@@ -154,52 +144,38 @@
                             <option>principal</option>
                           </select>
                       </div>
-                      <div class="col-md-6 form-group">
+
+                      <div class="form-group mt-3">
                         <!-- Department -->
                         <label class="mb-0">Department</label>
                         <div id="Department">
                           <select class="form-control department" id="Department">
                             <option name="reference3" value="">Department</option>
                             <option value="Computer Science">Computer Science</option>
-                            <option value="Iformation Tecnology">Information Tecnology</option>
+                            <option value="Information Tecnology">Information Tecnology</option>
                             <option value="ET & T">ET & T</option>
                             <option value="Mechanical">Mechanical</option>
-                            <option value="Civil">Mining</option>
-                            <option value="Mining">Electrical</option>
-                            <option value="Mining">Civil</option>
-                            <option value="Mining">non-tech</option>
+                            <option value="Mining">Mining</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Civil">Civil</option>
+                            <option value="Non-Tech">non-tech</option>
                           </select>
                       </div>
 
 
-                    </div>
-                    <div class="row">
+            
 
-                      <div class="col-md-6 form-group">
+                      <div class="form-group mt-3">
                         <!-- Contract_type -->
                         <label class="mb-0">Contract Type</label>
                         <div id="contract_type">
                           <select class="form-control contract_type" id="contract_type">
                             <option>parmanent</option>
                             <option>contract</option>
-                            
-                            
                           </select>
                         </div>
                       </div>
-                    </div>
-                    <div class="row mb-0">
-                      <div class="col-md-6 form-group">
-                        <label class="mt-4">Please Enter the Password to confirm the changes</label>
-                      </div>
-                      <div class="col-md-6 form-group">
-                        <!--<label class="mb-0"> password:</label>-->
-                        <!-- To -->
-                        <input type="password" class="form-control error password" name="fromdate" id="confirm_password"
-                          placeholder="Password" aria-required="true"><label id="lname-error" class="error"
-                          for="lname"></label>
-                      </div>
-                    </div>
+
                     <div class="row d-flex justify-content-center">
                       <button style="width:200px;height: 50px;" class="save">Complete</button>
                     </div>
