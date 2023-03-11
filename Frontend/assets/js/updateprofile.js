@@ -118,11 +118,6 @@ if (utoken) {
         location.replace("Dashboard.html")
       }, 1000);
       console.log('updated profile')
-      // update_designation.value = ``
-      // update_department.value = ``
-      // update_contact.value = ``
-      // update_contract_type.value = ``
-      // // confirmPassword.value = ``
     } catch (error) {
       console.log(error)
     }
