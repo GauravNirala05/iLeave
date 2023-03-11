@@ -32,10 +32,10 @@ const leaveStatus = async (req, res) => {
 
     if (await User.exists({ _id: userID })) {
         if (stat) {
-            const leave = await Leave.find({ employee_id: userID, status: stat, })
-            return res.status(200).json({ status: 'SUCCESS', hits: leave.length, data: leave })
+            const leave = await Leave.find({ employee_id: userID, status: stat, }).sort('createdAt')
+            return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: leave.length, data: leave })
         }
-        const leave = await Leave.find({ employee_id: userID })
+        const leave = await Leave.find({ employee_id: userID }).sort('createdAt')
         res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: leave.length, data: leave })
     } else {
         throw new NotFound(`No user with id ${userID}`)
@@ -84,18 +84,18 @@ const getApprovals = async (req, res) => {
                 'reference4.approved': true,
                 status: ['applied', 'rejected']
             })
-            res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
+            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
         if (user.designation =='principal') {
             const data = await Leave.find({
                 HOD_approval: true,
                 status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
-            res.status(200).json({ status: 'SUCCESS', hits: data.length, data: data })
+            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
     }
     else {
-        return res.status(404).json({ msg: `no user with id ${userID}` })
+        throw new NotFound(`no user with id ${userID}`)
     }
 }
 

@@ -13,7 +13,7 @@ const applyLeave = async (req, res) => {
     const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
     const fromDate = new Date(req.body.from_date)
     const toDate = new Date(req.body.to_date)
-    if(fromDate>toDate){
+    if (fromDate > toDate) {
         throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
     }
     if (availableleave.length > 0) {
@@ -84,7 +84,7 @@ const getReferenceName = async (req, res) => {
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
         }
         if (designation === 'HOD') {
-            const getuser = await User.find({ department: user.department}).select('name')
+            const getuser = await User.find({ department: user.department }).select('name')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
         }
         if (designation === 'principal') {
@@ -96,4 +96,19 @@ const getReferenceName = async (req, res) => {
         throw new UnAuthorizedError(`user with id ${userID} doesnt exists...`)
     }
 }
-module.exports = {applyLeave,getReferenceName}
+const deleteLeave = async (req, res) => {
+    const { userID, userName } = req.user
+    const { leaveId: targetLeaveID } = req.params
+    const user = await User.findOne({ _id: userID })
+    if (user) {
+        const leave = await Leave.findOne({ _id: targetID })
+        if (leave) {
+            await Leave.findOneAndDelete({ _id: targetID })
+            res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+        }
+        else {
+            throw new NotFound(`The provided leave id does'nt exists.`)
+        }
+    }
+}
+module.exports = { applyLeave, getReferenceName,deleteLeave }
