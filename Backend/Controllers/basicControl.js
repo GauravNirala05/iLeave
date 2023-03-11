@@ -30,7 +30,7 @@ const login = async (req, res) => {
 }
 const getSingleData = async (req, res) => {
     const { userID, userName } = req.user
-    const data = await User.findOne({ _id: userID, name: userName })
+    const data = await User.findOne({ _id: userID, name: userName }).select('profileCompleted _id email name contect_type department designation mob_no leave_type')
     res.status(StatusCodes.OK).json({ status: 'SUCCESS', data })
 }
 
