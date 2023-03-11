@@ -14,8 +14,8 @@ otpVerificationSchema.pre('save', async function (){
     this.OTP = await bcrypt.hash(this.OTP, salt)
 })
 
-otpVerificationSchema.methods.compOTP = async function (string) {
-    const match = await bcrypt.compare(string, this.OTP)
+otpVerificationSchema.methods.compOTP = async function (num) {
+    const match = await bcrypt.compare(num, this.OTP)
     return match
 }
 module.exports = mongoose.model('OTPverification', otpVerificationSchema)

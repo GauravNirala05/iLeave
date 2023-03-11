@@ -26,7 +26,7 @@ const {
     alluser,
     leaveStatus,
     getApprovals,
-    getuser
+    getReferenceName
 } = require('../Controllers/allcontrol')
 
 
@@ -46,7 +46,7 @@ router.route('/forgotPassword/verifyOTP/resetPass').patch(auth,updatePass)
 
 
 router.route('/applyLeave').post(auth, applyLeave)
-router.route('/getuser').get(auth, getuser)
+router.route('/getReferenceUser').get(auth, getReferenceName)
 router.route('/leaveStatus').get(auth, leaveStatus)
 
 
