@@ -26,22 +26,22 @@ const applyLeave = async (req, res) => {
     const leave_type = req.body.leave_type
     const total_days = req.body.total_days
 
-    if (leave_type == 'casual_leave') {
+    if (leave_type === 'casual_leave') {
         if (user.leave_type.casual_leave < total_days) {
             throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
         }
     }
-    if (leave_type == 'earned_leave') {
+    if (leave_type === 'earned_leave') {
         if (user.leave_type.earned_leave < total_days) {
             throw new BadRequestError(`Your remaining Earned Leave is lower than applied`)
         }
     }
-    if (leave_type == 'ordinary_leave') {
+    if (leave_type === 'ordinary_leave') {
         if (user.leave_type.ordinary_leave < total_days) {
             throw new BadRequestError(`Your remaining Ordinary Leave is lower than applied`)
         }
     }
-    if (leave_type == 'medical_leave') {
+    if (leave_type === 'medical_leave') {
         if (user.leave_type.medical_leave < total_days) {
             throw new BadRequestError(`Your remaining Medical Leave is lower than applied`)
         }
@@ -53,18 +53,18 @@ const applyLeave = async (req, res) => {
         req.body.employee_dep = userDep
         req.body.employee_name = userName
 
-        if (designation == 'faculty') {
+        if (designation === 'faculty') {
             const leave = await Leave.create(req.body)
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
         }
-        if (designation == 'HOD') {
+        if (designation === 'HOD') {
             const leave = await Leave.create(req.body)
             leave.HOD_approval = true
             await leave.save()
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
 
         }
-        if (designation == 'principal') {
+        if (designation === 'principal') {
             return res.send('you are principal')
         }
 
@@ -74,4 +74,26 @@ const applyLeave = async (req, res) => {
         throw new NotFound(`Provide the valid credentials while authorization...`)
     }
 }
-module.exports = applyLeave
+const getReferenceName = async (req, res) => {
+    const { userID, userName } = req.user
+    const user = await User.findOne({ _id: userID })
+    if (user) {
+        const designation = user.designation
+        if (designation === 'faculty') {
+            const getuser = await User.find({ department: user.department, designation: 'faculty' }).select('name')
+            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
+        }
+        if (designation === 'HOD') {
+            const getuser = await User.find({ department: user.department}).select('name')
+            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
+        }
+        if (designation === 'principal') {
+            const getuser = await User.find({ designation: ['faculty', 'HOD'] }).select('name')
+            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
+        }
+
+    } else {
+        throw new UnAuthorizedError(`user with id ${userID} doesnt exists...`)
+    }
+}
+module.exports = {applyLeave,getReferenceName}
