@@ -2,6 +2,8 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 const { UnAuthorizedError, NotFound, BadRequestError } = require('../errors')
 const { StatusCodes } = require('http-status-codes')
+const HODLeave = require('../model/HODLeave')
+const nonTechLeave = require('../model/non-techLeave')
 
 const alluser = async (req, res) => {
     const { userID, userName } = req.user
@@ -9,19 +11,19 @@ const alluser = async (req, res) => {
     if (user) {
         const designation = user.designation
         if (designation === 'faculty') {
-            throw new UnAuthorizedError( `You are a ${designation} and cant access any other user`)
+            throw new UnAuthorizedError(`You are a ${designation} and cant access any other user`)
         }
         if (designation === 'HOD') {
             const alluser = await User.find({ department: user.department, designation: 'faculty' }).select(' _id email name contect_type department designation mob_no leave_type')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: alluser.length, data: alluser })
         }
         if (designation === 'principal') {
-            const alluser = await User.find({ department: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil','non-tech'] }).select(' _id email name contect_type department designation mob_no leave_type')
+            const alluser = await User.find({ department: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil', 'non-tech'] }).select(' _id email name contect_type department designation mob_no leave_type')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: alluser.length, data: alluser })
         }
         throw new BadRequestError(`Please provide credentials.`)
     } else {
-        throw new NotFound( `user with id ${userID} doesnt exists...` )
+        throw new NotFound(`user with id ${userID} doesnt exists...`)
     }
 }
 
@@ -46,7 +48,7 @@ const getApprovals = async (req, res) => {
     const { userID, userName } = req.user
     const user = await User.findById(userID)
     if (user) {
-        if (user.designation =='faculty') {
+        if (user.designation === 'faculty') {
             const data1 = await Leave.find({
                 'reference1.name': user.name,
                 status: ['applied', 'rejected']
@@ -74,7 +76,7 @@ const getApprovals = async (req, res) => {
                 }
             })
         }
-        if (user.designation =='HOD') {
+        if (user.designation === 'HOD') {
 
             const data = await Leave.find({
                 employee_dep: user.department,
@@ -86,12 +88,21 @@ const getApprovals = async (req, res) => {
             })
             res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
-        if (user.designation =='principal') {
-            const data = await Leave.find({
+        if (user.designation === 'principal') {
+            const data1 = await Leave.find({
                 HOD_approval: true,
                 status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
-            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
+
+            const data2 = await HODLeave.find({
+                status: ['applied', 'rejected', 'approved']
+            }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
+
+            const data3 = await nonTechLeave.find({
+                status: ['applied', 'rejected', 'approved']
+            }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
+
+            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data1.length + data2.length + data3.length, data: { facultyLeave:data1, HodLeave:data2, nonTechLeave:data3 } })
         }
     }
     else {

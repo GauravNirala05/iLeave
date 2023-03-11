@@ -1,5 +1,6 @@
 const User = require('../model/User')
 const Leave = require('../model/Leave')
+const nonTechLeave = require('../model/non-techLeave')
 
 const approve = async (req, res) => {
     const { userID, userName } = req.user
@@ -88,8 +89,25 @@ const approve = async (req, res) => {
                 return res.status(404).json({ status: 'FAILED', msg: `Leave not found with id ${targetID}` })
             }
         }
-
-
+        if (user.designation === 'non-tech-head') {
+            if (await nonTechLeave.exists({_id: targetID,employee_dep:user.department, status: ['applied'] })) {
+                const { approval } = req.body
+                const approveObject = {}
+                if (approval === true) {
+                    approveObject.Head_approval = approval
+                    approveObject.status = 'applied'
+                }
+                else {
+                    approveObject.Head_approval = approval
+                    approveObject.status = 'rejected'
+                }
+                const data = await nonTechLeave.findOneAndUpdate({_id: targetID }, approveObject, { new: true })
+                return res.status(200).json({ status: 'SUCCESS', data: data })
+            }
+            else {
+                return res.status(404).json({ status: 'FAILED', msg: `Leave not found with id ${targetID}` })
+            }
+        }
 
         if (user.designation === 'principal') {
             const leaveData = await Leave.findOne({ _id: targetID, status: ['applied', 'rejected', 'approved'] })

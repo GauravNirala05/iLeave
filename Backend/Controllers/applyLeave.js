@@ -4,6 +4,8 @@ const { StatusCodes } = require('http-status-codes')
 //models
 const User = require('../model/User')
 const Leave = require('../model/Leave')
+const nonTechLeave = require('../model/non-techLeave')
+const HodLeave = require('../model/HODLeave')
 //Errors
 const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
@@ -58,11 +60,14 @@ const applyLeave = async (req, res) => {
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
         }
         if (designation === 'HOD') {
-            const leave = await Leave.create(req.body)
-            leave.HOD_approval = true
+            const leave = await HodLeave.create(req.body)
             await leave.save()
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
 
+        }
+        if (userDep === 'non-tech') {
+            const leave = await nonTechLeave.create(req.body)
+            return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
         }
         if (designation === 'principal') {
             return res.send('you are principal')
