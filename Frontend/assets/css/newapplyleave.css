@@ -70,3 +70,17 @@
     color: #f57c00
 }
 
+
+.recents-grid{
+  animation: scroll 0.95s;
+}
+@keyframes scroll {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

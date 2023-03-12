@@ -73,3 +73,8 @@
 .orangered{
     color: #f57c00
 }
+
+.img{
+  display: flex;
+  justify-content: center;
+}

@@ -333,3 +333,24 @@ footer a {
 	width: 100px;
 	margin-bottom: 40px;
 }
+/* Define the animation */
+@keyframes up-down-appear {
+	0% {
+	  transform: translateY(-20px);
+	  opacity: 0;
+	}
+	50% {
+	  transform: translateY(10px);
+	  opacity: 0.5;
+	}
+	100% {
+	  transform: translateY(0);
+	  opacity: 1;
+	}
+  }
+  
+  /* Apply the animation to an element */
+  .container {
+	opacity: 0;
+	animation: up-down-appear 1s ease-in-out forwards;
+  }
