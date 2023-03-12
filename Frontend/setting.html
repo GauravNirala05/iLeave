@@ -98,10 +98,9 @@
             <div class="card-body">
               <h4 class="ml-3">Update Profile</h4>
               <div class="row align-items-center">
-                <div class="col-lg-4  mt-0 mb-lg-0">
-                  <img src="images/profile.jpg" alt="">
-                  <div id="profile2">
-                  </div>
+                <div class="row d-flex justify-content-center img col-lg-4  mt-0 mb-lg-0">
+                  <img  id="preview-image" src="images/profile.jpg" alt="My Image" width="230" height="230">
+                  <input  class="mt-3" type="file" id="image-upload" name="image-upload">
                 </div>
 
 
@@ -182,18 +181,7 @@
                       </div>
                     </div>
 
-                    <div class="row mb-0">
-                      <div class="col-md-6 form-group">
-                        <label class="mt-4">Please Enter the Password to confirm the changes</label>
-                      </div>
-                      <div class="col-md-6 form-group">
-                        <!--<label class="mb-0"> password:</label>-->
-                        <!-- To -->
-                        <input type="password" class="form-control error password" name="fromdate" id="confirm_password"
-                          placeholder="Password" aria-required="true"><label id="lname-error" class="error"
-                          for="lname"></label>
-                      </div>
-                    </div>
+                    
                     <div class="row d-flex justify-content-center">
                       <button style="width:200px;height: 50px;" class="update">Update</button>
                     </div>
@@ -244,9 +232,9 @@
               <div class="card">
                 <div class="card-header">
                   <h4>Want to delete your account</h4>
-                  <div class="card-header">
+              
                   <button onclick="delete_acc()">Delete Account</button>
-                </div>
+                
                 </div>
                   </div>
               </div>

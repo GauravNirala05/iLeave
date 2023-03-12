@@ -114,7 +114,7 @@ if (utoken) {
           contect_type:contract_type,
           department: depart,
           designation: desig,
-          image: img,
+          image: img
           
         }),
         headers: {
