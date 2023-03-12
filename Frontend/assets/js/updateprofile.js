@@ -106,9 +106,9 @@ if (utoken) {
       })
       if (!fetcher.ok) {
         const status = fetcher.status
-        // console.log(status);
+        console.log(status);
         const { msg, error } = await fetcher.json()
-        // console.log(msg);
+        console.log(msg);
         throw Error(`${status}`)
       }
       const { token, msg } = await fetcher.json()
@@ -117,12 +117,7 @@ if (utoken) {
       setTimeout(() => {
         location.replace("Dashboard.html")
       }, 1000);
-      // console.log('updated profile')
-      update_designation.value = ``
-      update_department.value = ``
-      update_contact.value = ``
-      update_contract_type.value = ``
-      // confirmPassword.value = ``
+      console.log('updated profile')
     } catch (error) {
       console.log(error)
     }
