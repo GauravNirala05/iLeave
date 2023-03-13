@@ -29,6 +29,9 @@ const login = async (req, res) => {
 const getSingleData = async (req, res) => {
     const { userID, userName } = req.user
     const data = await User.findOne({ _id: userID}).select('profileCompleted _id email name contect_type department designation mob_no leave_type')
+    if(!data){
+        throw new BadRequestError(`Invalid credential passed..(token)`)
+    }
     res.status(StatusCodes.OK).json({ status: 'SUCCESS', data })
 }
 
@@ -44,7 +47,7 @@ const completeProfile = async (req, res) => {
     }
     if (user.profileCompleted==false ) {
         try {
-            
+    
             const user = await User.findOneAndUpdate({_id:userID}, { mob_no, contect_type, department, designation, profileCompleted: true }, { new: true})
             await user.leaveSchema()
             user.save()
