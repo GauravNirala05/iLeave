@@ -140,20 +140,39 @@ if (utoken) {
   })
 }
 
-function delete_acc() {
-  const utoken = localStorage.getItem('token')
-  console.log(localStorage.id)
-  fetch('/deleteProfile/:'+localStorage.id, {
-    method: 'DELETE'
-  })
-    .then(response => {
-      if (response.ok) {
-        console.log("Delete was successful")
-      } else {
-        console.log("Handle error response")
+const delete_account = document.querySelector('.delete')
+const token = localStorage.getItem('token')
+if (utoken) {
+
+  delete_account.addEventListener('click', async (e) => {
+    e.preventDefault()  
+
+    try {
+
+      const user = await fetch('/getUserData', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      if (!user.ok) {
+        throw Error('something went wrong')
       }
-    })
-    .catch(error => {
-      // Handle network error
-    });
+
+      const userData = await user.json()
+      console.log(userData.data._id)
+
+      const deleteuser = await fetch('/deleteProfile/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      if (!user.ok) {
+        throw Error('something went wrong')
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+  })
 }
