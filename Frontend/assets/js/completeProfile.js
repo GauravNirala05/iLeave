@@ -41,37 +41,49 @@ const getuser = async () => {
       {
         // console.log(userData);
         ihtml=`
-        <div class=" user-wrapper ">
-        <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
-        </a>
-        <div class="">
-          <span>
-            <h4 class="name mr-4">Prof.${userData.data.name}</h4>
-          </span>
+        <div class="media align-items-end profile-head">
+                        <div class="profile mr-3"><img src="images/profile.jpg" alt="..." width="130"
+                                class="rounded mb-2 img-thumbnail">
+                            <!-- <a href="#"
+                                class="btn btn-outline-dark btn-sm btn-block">Edit profile</a> -->
+                        </div>
+                        <div class="media-body mb-5 text-white">
+                            <h4 class="mt-0 mb-0" id="Name">${userData.data.name}</h4>
+                            <p class="small mb-4" id="email"> <i class="fa fa-envelope "></i>${userData.data.email}</p>
+                        </div>
+                    </div>`
 
-        </div>
+      //   <div class=" user-wrapper ">
+      //   <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
+      //     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      //     <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
+      //   </a>
+      //   <div class="">
+      //     <span>
+      //       <h4 class="name mr-4">Prof.${userData.data.name}</h4>
+      //     </span>
 
-        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-          <img src="images/profile.jpg" alt="John" style="width:70px;height: 70px;">
-          <div class="card-header" style="margin:10px">
-          <div>
-              <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
-              <p class="title">${userData.data.designation}</p>
-              <p>${userData.data.department}</p>
-          </div>
-          </div>
-        </div>
-      </div>`
+      //   </div>
+
+      //   <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+      //     <img src="images/profile.jpg" alt="John" style="width:70px;height: 70px;">
+      //     <div class="card-header" style="margin:10px">
+      //     <div>
+      //         <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
+      //         <p class="title">${userData.data.designation}</p>
+      //         <p>${userData.data.department}</p>
+      //     </div>
+      //     </div>
+      //   </div>
+      // </div>
         
       }
       document.getElementById("profile").innerHTML=ihtml
-      document.getElementById("Name").innerHTML =`<input type="name" class="form-control Name" name="name" id="name" placeholder="Name" value="${userData.data.name}"
-      aria-required="true" aria-invalid="true">`
+      // document.getElementById("Name").innerHTML =`<input type="name" class="form-control Name" name="name" id="name" placeholder="Name" value="${userData.data.name}"
+      // aria-required="true" aria-invalid="true">`
 
-      document.getElementById("email").innerHTML =`<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
-      aria-required="true" aria-invalid="true">`
+      // document.getElementById("email").innerHTML =`<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
+      // aria-required="true" aria-invalid="true">`
 
     } catch (error) {
       console.log(error);
@@ -101,10 +113,9 @@ if (utoken) {
     const contract_type=update_contract_type.value
     const desig = update_designation.value
     const depart = update_department.value
-    const img = previewImage.value
+    // const img = previewImage.value
     
-    // const mob = mob_no.value
-    // const pass = confirmPassword.value
+   
     try {
       const fetcher = await fetch('/completeProfile', {
         method: 'PATCH',
@@ -114,7 +125,7 @@ if (utoken) {
           contect_type:contract_type,
           department: depart,
           designation: desig,
-          image: img
+          // image: img
           
         }),
         headers: {
@@ -135,12 +146,12 @@ if (utoken) {
       setTimeout(() => {
         location.replace("dashboard.html")
       }, 1000);
-      console.log('updated profile')
+      console.log('completed profile')
       update_designation.value = ``
       update_department.value = ``
       update_contact.value = ``
       update_contract_type.value=``
-      // confirmPassword.value = ``
+      
     } catch (error) {
       console.log(error)
      

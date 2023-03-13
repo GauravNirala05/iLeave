@@ -2,7 +2,7 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 const { UnAuthorizedError, NotFound, BadRequestError } = require('../errors')
 const { StatusCodes } = require('http-status-codes')
-const HODLeave = require('../model/HODLeave')
+const HodLeave = require('../model/HODLeave')
 const nonTechLeave = require('../model/non-techLeave')
 
 const alluser = async (req, res) => {
@@ -49,18 +49,23 @@ const getApprovals = async (req, res) => {
     const user = await User.findById(userID)
     if (user) {
         if (user.designation === 'faculty') {
+            
+            const hod = await HodLeave.find({
+                'reference.name': user.name,
+                status: ['applied', 'rejected']
+            }).select('employee_id employee_dep employee_name from_date to_date status reference leave_type')
             const data1 = await Leave.find({
                 'reference1.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date reference1 leave_type')
+            }).select('employee_id employee_dep employee_name from_date to_date status reference1 leave_type')
             const data2 = await Leave.find({
                 'reference2.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date reference2 leave_type')
+            }).select('employee_id employee_dep employee_name from_date to_date status reference2 leave_type')
             const data3 = await Leave.find({
                 'reference3.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date reference3 leave_type')
+            }).select('employee_id employee_dep employee_name from_date to_date status reference3 leave_type')
             const data4 = await Leave.find({
                 'reference4.name': user.name,
                 status: ['applied', 'rejected']
@@ -69,6 +74,7 @@ const getApprovals = async (req, res) => {
             res.status(StatusCodes.OK).json({
                 status: 'SUCCESS',
                 data: {
+                    HOD:hod,
                     first: { hits: data1.length, data1: data1 },
                     second: { hits: data2.length, data2: data2 },
                     third: { hits: data3.length, data3: data3 },
@@ -94,11 +100,13 @@ const getApprovals = async (req, res) => {
                 status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
 
-            const data2 = await HODLeave.find({
+            const data2 = await HodLeave.find({
+                'reference.approved':true,
                 status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
 
             const data3 = await nonTechLeave.find({
+                head_approval:true,
                 status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
 

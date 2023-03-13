@@ -32,14 +32,8 @@ const nonTechLeaveSchema = new mongoose.Schema({
         type: String,
         enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave']
     },
-    head_approval: {
-        type: Boolean,
-        default: false
-    },
-    principal_approval: {
-        type: Boolean,
-        default: false
-    },
+    head_approval: Boolean,
+    principal_approval: Boolean,
     status: {
         type: String,
         enum: ['applied', 'rejected', 'approved', 'completed'],

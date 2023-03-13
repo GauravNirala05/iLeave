@@ -63,7 +63,7 @@ userSchema.methods.leaveSchema= async function(){
             ordinary_leave:10
         }
     }
-    if(this.department==="Civil"){
+    else{
         this.leave_type={
             casual_leave:20,
             earned_leave:20,

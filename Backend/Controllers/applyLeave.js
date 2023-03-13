@@ -12,42 +12,119 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
 const applyLeave = async (req, res) => {
     const { userID, userName } = req.user
-    const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
-    const fromDate = new Date(req.body.from_date)
-    const toDate = new Date(req.body.to_date)
-    if (fromDate > toDate) {
-        throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
-    }
-    if (availableleave.length > 0) {
-        lastLeaveApplied = availableleave[availableleave.length - 1]
-        if (lastLeaveApplied.to_date >= fromDate) {
-            throw new BadRequestError(`Can't apply another leave of confilicting dates until the applied ones is Done..`)
-        }
-    }
     const user = await User.findOne({ _id: userID })
-    const leave_type = req.body.leave_type
-    const total_days = req.body.total_days
-
-    if (leave_type === 'casual_leave') {
-        if (user.leave_type.casual_leave < total_days) {
-            throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
+    if (user.designation==='faculty') {
+        const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
+        const fromDate = new Date(req.body.from_date)
+        const toDate = new Date(req.body.to_date)
+        if (fromDate > toDate) {
+            throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
+        }
+        if (availableleave.length > 0) {
+            lastLeaveApplied = availableleave[availableleave.length - 1]
+            if (lastLeaveApplied.to_date >= fromDate) {
+                throw new BadRequestError(`Can't apply another leave of confilicting dates until the applied ones is Done..`)
+            }
+        }
+        const leave_type = req.body.leave_type
+        const total_days = req.body.total_days
+    
+        if (leave_type === 'casual_leave') {
+            if (user.leave_type.casual_leave < total_days) {
+                throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'earned_leave') {
+            if (user.leave_type.earned_leave < total_days) {
+                throw new BadRequestError(`Your remaining Earned Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'ordinary_leave') {
+            if (user.leave_type.ordinary_leave < total_days) {
+                throw new BadRequestError(`Your remaining Ordinary Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'medical_leave') {
+            if (user.leave_type.medical_leave < total_days) {
+                throw new BadRequestError(`Your remaining Medical Leave is lower than applied`)
+            }
         }
     }
-    if (leave_type === 'earned_leave') {
-        if (user.leave_type.earned_leave < total_days) {
-            throw new BadRequestError(`Your remaining Earned Leave is lower than applied`)
+    if (user.designation==='HOD') {
+        const availableleave = await HodLeave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
+        const fromDate = new Date(req.body.from_date)
+        const toDate = new Date(req.body.to_date)
+        if (fromDate > toDate) {
+            throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
+        }
+        if (availableleave.length > 0) {
+            lastLeaveApplied = availableleave[availableleave.length - 1]
+            if (lastLeaveApplied.to_date >= fromDate) {
+                throw new BadRequestError(`Can't apply another leave of confilicting dates until the applied ones is Done..`)
+            }
+        }
+        const leave_type = req.body.leave_type
+        const total_days = req.body.total_days
+    
+        if (leave_type === 'casual_leave') {
+            if (user.leave_type.casual_leave < total_days) {
+                throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'earned_leave') {
+            if (user.leave_type.earned_leave < total_days) {
+                throw new BadRequestError(`Your remaining Earned Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'ordinary_leave') {
+            if (user.leave_type.ordinary_leave < total_days) {
+                throw new BadRequestError(`Your remaining Ordinary Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'medical_leave') {
+            if (user.leave_type.medical_leave < total_days) {
+                throw new BadRequestError(`Your remaining Medical Leave is lower than applied`)
+            }
         }
     }
-    if (leave_type === 'ordinary_leave') {
-        if (user.leave_type.ordinary_leave < total_days) {
-            throw new BadRequestError(`Your remaining Ordinary Leave is lower than applied`)
+    if (user.designation==='non-tech-employee') {
+        const availableleave = await nonTechLeave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
+        const fromDate = new Date(req.body.from_date)
+        const toDate = new Date(req.body.to_date)
+        if (fromDate > toDate) {
+            throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
+        }
+        if (availableleave.length > 0) {
+            lastLeaveApplied = availableleave[availableleave.length - 1]
+            if (lastLeaveApplied.to_date >= fromDate) {
+                throw new BadRequestError(`Can't apply another leave of confilicting dates until the applied ones is Done..`)
+            }
+        }
+        const leave_type = req.body.leave_type
+        const total_days = req.body.total_days
+    
+        if (leave_type === 'casual_leave') {
+            if (user.leave_type.casual_leave < total_days) {
+                throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'earned_leave') {
+            if (user.leave_type.earned_leave < total_days) {
+                throw new BadRequestError(`Your remaining Earned Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'ordinary_leave') {
+            if (user.leave_type.ordinary_leave < total_days) {
+                throw new BadRequestError(`Your remaining Ordinary Leave is lower than applied`)
+            }
+        }
+        if (leave_type === 'medical_leave') {
+            if (user.leave_type.medical_leave < total_days) {
+                throw new BadRequestError(`Your remaining Medical Leave is lower than applied`)
+            }
         }
     }
-    if (leave_type === 'medical_leave') {
-        if (user.leave_type.medical_leave < total_days) {
-            throw new BadRequestError(`Your remaining Medical Leave is lower than applied`)
-        }
-    }
+    
     if (user) {
         const userDep = user.department
         const designation = user.designation
