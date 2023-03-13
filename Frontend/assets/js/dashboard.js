@@ -147,5 +147,5 @@ function confirm_logout(){
   location.replace("index.html")
 }
 function complete_profile(){
-  location.replace("Completeprofile.html")
+  location.replace("complete_profile.html")
 }
