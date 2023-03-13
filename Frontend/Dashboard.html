@@ -33,12 +33,28 @@
   <div id="popup" class="popup card-header">
 		<div class="popup-content">
 			<span class="close" onclick="closePopup()">&times;</span>
-			<p>Are You Sure You Want to Logout!</p>
-      <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
+			<div class="d-flex justify-content-center"><p  id="fuck">Are You Sure You Want to Logout!</p></div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
+        <button onclick="closePopup()">Cancel</button>
+      </div>
 		</div>
 	</div>
+
+  <div id="popup2" hidden="true" class="popup2 card-header ">
+		<div class="popup-content2 ">
+			<div class="d-flex justify-content-center"><p  id="fuck">Are You Sure You Want to Logout!</p></div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-outline-warning" onclick="login()"><i class="fa fa-sign-out "></i>ok</button>
+      </div>
+    </div>
+
+	</div>
+
   <input type="checkbox" id="nav-toggle">
-  <div class="sidebar">
+
+  
+  <div class="sidebar mb-2">
     <div class="sidebar-brand">
       <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
       <span><img class="img-logo-name" src="images/name.svg" alt=""></span>
@@ -74,7 +90,7 @@
         <li>
           <a class="logout" onclick="openPopup()">
             <span class="fa fa-sign-out"></span>
-            <span>Logout</span>
+            <span>Sign Out</span>
           </a>
         </li>
       </ul>
@@ -95,9 +111,9 @@
       </div>
     </header>
 
-    <main>
+    <main class="mt-50">
 
-      <div id="only_auth" class="only_auth recents-grid mt-4">
+      <div id="only_auth" class="only_auth recents-grid ">
         
       </div>
       
@@ -238,63 +254,8 @@
           </div>
         </div>
       </div>
-      <!--<div class="cards">
-        <div class="card-header">
-          <h2>Leave Status</h2>
-          <button>See all <span class="fa fa-arrow-right"></span> </button>
-        </div>
-        
-        <div class="card-body">
-          <div class="table-responsive">
-            <table width="100%">
-              <thead>
-                <tr>
-                  <td></td>
-                  <td>Leave</td>
-                  <td>Date</td>
 
 
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-
-                  <td>Medical Leave
-                  </td>
-                  <td> 10/45</td>
-
-                </tr>
-                <tr>
-
-                  <td>Causual Leave
-
-                  </td>
-                  <td> 10/45</td>
-
-                </tr>
-                <tr>
-
-                  <td>Ordinary Leave
-
-                  </td>
-                  <td> 10/45</td>
-
-                </tr>
-                <tr>
-
-                  <td>Causual Leave
-
-                  </td>
-                  <td> 10/45</td>
-
-                </tr>
-
-              </tbody>
-
-            </table>
-          </div>
-         
-        </div>-->
 
       <div class="recent-grid">
         <div class="projects">
@@ -508,20 +469,22 @@
         </div>-->
       </div>
 
-      <footer class="d-flex mt-3 justify-content-center">
-        <p>
-          Created with <i class="fa fa-heart"></i> by
-          <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
-          <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
-          <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
-        </p>
-      </footer>
+    </main>
   </div>
+  
 
-  </div>
+  <footer class="d-flex justify-content-center footer">
+  <p >Copyright ©2023 
+    Created with <i class="fa fa-heart"></i> by
+    <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+    <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+    <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
+  </p>
+  </footer>
 
-  </div>
-  </main>
+
+  
+  
 
 
   <script src="./assets/js/dashboard.js">
