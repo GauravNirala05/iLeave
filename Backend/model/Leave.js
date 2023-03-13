@@ -37,46 +37,28 @@ const leaveSchema = new mongoose.Schema({
         name: {
             type: String,
         },
-        approved: {
-            type: Boolean,
-            default: false
-        }
+        approved:Boolean
     },
     reference2: {
         name: {
             type: String,
         },
-        approved: {
-            type: Boolean,
-            default: false
-        }
+        approved:Boolean
     },
     reference3: {
         name: {
             type: String,
         },
-        approved: {
-            type: Boolean,
-            default: false
-        }
+        approved: Boolean
     },
     reference4: {
         name: {
             type: String,
         },
-        approved: {
-            type: Boolean,
-            default: false
-        }
+        approved:Boolean
     },
-    HOD_approval: {
-        type: Boolean,
-        default: false
-    },
-    principal_approval: {
-        type: Boolean,
-        default: false
-    },
+    HOD_approval:Boolean,
+    principal_approval:Boolean,
     status: {
         type: String,
         enum: ['applied', 'rejected', 'approved', 'completed'],

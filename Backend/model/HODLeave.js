@@ -33,19 +33,13 @@ const HODLeaveSchema = new mongoose.Schema({
         enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave']
     },
     // replacement:refrence,
-    reference1: {
+    reference: {
         name: {
             type: String,
         },
-        approved: {
-            type: Boolean,
-            default: false
-        }
+        approved:Boolean
     },
-    principal_approval: {
-        type: Boolean,
-        default: false
-    },
+    principal_approval:Boolean,
     status: {
         type: String,
         enum: ['applied', 'rejected', 'approved', 'completed'],
