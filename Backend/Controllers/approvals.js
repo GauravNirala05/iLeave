@@ -2,7 +2,7 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 const nonTechLeave = require('../model/non-techLeave')
 const HodLeave = require('../model/HODLeave')
-const { NotFound,UnAuthorizedError,BadRequestError } = require('../errors')
+const { NotFound, UnAuthorizedError, BadRequestError } = require('../errors')
 const { StatusCodes } = require('http-status-codes')
 
 const approve = async (req, res) => {
@@ -64,6 +64,21 @@ const approve = async (req, res) => {
 
                 }
                 const data = await Leave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
+                res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
+            }
+            if (await HodLeave.exists({ _id: targetID, status: ['applied'] })) {
+                const { approval } = req.body
+                const approveObject = {}
+                approveObject.reference={}
+                approveObject.reference.name = user.name
+                approveObject.reference.approved = approval
+                if (approval === true) {
+                    approveObject.status = 'applied'
+                }
+                else {
+                    approveObject.status = 'rejected'
+                }
+                const data = await HodLeave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
                 res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
             }
             else {
