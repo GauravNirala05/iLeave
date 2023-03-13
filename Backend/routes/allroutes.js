@@ -6,7 +6,7 @@ const auth = require('../middlewares/auth')
 
 //All controllers
 const {register,verifyEmail,forgotPassword,verifyOTP,updatePass} = require('../Controllers/regi&verification')
-const {getSingleData,login,completeProfile,updateProfile,deleteProfile} = require('../Controllers/basicControl')
+const {getSingleData,signin,completeProfile,updateProfile,deleteProfile} = require('../Controllers/basicControl')
 const {applyLeave,getReferenceName,deleteLeave} = require('../Controllers/applyLeave')
 const {alluser,leaveStatus,getApprovals} = require('../Controllers/allcontrol')
 const approve = require('../Controllers/approvals')
@@ -16,7 +16,7 @@ const approve = require('../Controllers/approvals')
 //Basics account statblise
 router.route('/registration').post(register)
 router.route('/user/verify/:userid/:uniquestring').get(verifyEmail)
-router.route('/login').post(login)
+router.route('/signin').post(signin)
 router.route('/getUserData').get(auth, getSingleData)
 router.route('/completeProfile').patch(auth, completeProfile)
 router.route('/updateProfile').patch(auth, updateProfile)

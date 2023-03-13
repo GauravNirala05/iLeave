@@ -8,7 +8,7 @@ const Leave = require('../model/Leave')
 const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
 
-const login = async (req, res) => {
+const signin = async (req, res) => {
     const { email, password } = req.body
     const data = await User.findOne({ email })
     if (!data) {
@@ -115,4 +115,4 @@ const deleteProfile = async (req, res) => {
     }
 }
 
-module.exports = {getSingleData, login,completeProfile, updateProfile, deleteProfile }
+module.exports = {getSingleData, signin,completeProfile, updateProfile, deleteProfile }
