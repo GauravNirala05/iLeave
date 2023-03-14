@@ -32,19 +32,21 @@
 </style>
 
 <body>
-  <include src="./applyleave_modal.html"></include>
+  <!-- <include src="./applyleave_modal.html"></include> -->
   <input type="checkbox" id="nav-toggle">
-  
+
   <div id="popup" class="popup card-header">
-		<div class="popup-content">
-			<span class="close" onclick="closePopup()">&times;</span>
-			<div class="d-flex justify-content-center"><p  id="fuck">Are You Sure You Want to Logout!</p></div>
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <div class="d-flex justify-content-center">
+        <p id="fuck">Are You Sure You Want to Logout!</p>
+      </div>
       <div class="modal-footer d-flex justify-content-center">
         <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
         <button onclick="closePopup()">Cancel</button>
       </div>
-		</div>
-	</div>
+    </div>
+  </div>
   <div class="sidebar">
     <div class="sidebar-brand">
       <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
@@ -60,7 +62,7 @@
           </a>
         </li>
         <li>
-          <a href="Applyleave.html" class="active">
+          <a href="applyleave.html" class="active">
             <span class="fa fa-calendar"></span>
             <span>Apply leave</span>
           </a>
@@ -72,7 +74,7 @@
           </a>
         </li>
         <li>
-          <a href="setting.html" >
+          <a href="setting.html">
             <span class="fa fa-cog"></span>
             <span>Setting</span>
           </a>
@@ -87,7 +89,7 @@
 
     </div>
   </div>
-  
+
 
   <div class="main-content">
     <header>
@@ -116,9 +118,9 @@
 
                       <div class="col-md-6 form-group">
                         <!-- name -->
-                        <input type="text" class="form-control error name" name="name" id="name" placeholder="First name"
-                          aria-required="true" aria-invalid="true"><label id="fname-error" class="error"
-                          for="fname"></label>
+                        <input type="text" class="form-control error name" name="name" id="name"
+                          placeholder="First name" aria-required="true" aria-invalid="true"><label id="fname-error"
+                          class="error" for="fname"></label>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
@@ -146,7 +148,7 @@
                       &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <div class="col-md- form-group">
                         <label for=""></label>
-                        <select class="form-control" >
+                        <select class="form-control">
                           <option name="reference3" value="">Full Day</option>
                           <option>Half Day</option>
                         </select>
@@ -154,8 +156,8 @@
                       <div class="col-md-3 form-group">
                         <!-- To -->
                         <label for="">Total days</label>
-                         <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
-                          placeholder="Total days"  aria-required="true"><label id="lname-error" class="error"
+                        <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
+                          placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
                           for="totaldays">
                         </label>
                       </div>
@@ -243,9 +245,11 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="card-header d-flex justify-content-center">
-                          <button style="width:200px;height: 50px;" type="submit" id="btn_apply" class="btn_apply" data-toggle="modal" data-target="#myModal"
-                           >Apply Leave <span class="fa fa-arrow-right"></span>
+                          <button style="width:200px;height: 50px;" type="submit" id="btn_apply" class="btn_apply"
+                            data-toggle="modal" >Apply Leave <span
+                              class="fa fa-arrow-right"></span>
                           </button>
+                          <!-- data-target="#myModal" -->
                         </div>
                         <span class="submitting"></span>
                       </div>
@@ -281,7 +285,7 @@
                 </div>
               </div>
             </div>
-            
+
 
           </div>
 
@@ -298,8 +302,8 @@
       <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
     </p>
   </footer>
-  <script src="assets/js/applyleave.js" async defer></script>
-  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/applyleave.js"></script>
+  <!-- <script src="assets/js/dashboard.js"></script> -->
   <!-- <script>// Data Picker Initialization
     $('.datepicker').datepicker({
       inline: true

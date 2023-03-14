@@ -3,7 +3,6 @@ const sidebar = document.querySelector(".sidebar")
 const foot = document.querySelector(".footer")
 
 const getuser = async () => {
-  console.log("running")
   const token = localStorage.getItem('token')
   if (token == null) {
     const pop2 = document.querySelector("#popup2")
@@ -69,7 +68,7 @@ const getuser = async () => {
     document.getElementById("profile").innerHTML = ihtml
     if(userData.data.department=='non-tech'){
       document.getElementById('All_ref_hide').style.display="none";
-      applyLeave_nontech()
+      // applyLeave_nontech()
       
     }
     else{
