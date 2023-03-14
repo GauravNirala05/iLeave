@@ -87,7 +87,7 @@ const applyLeave = async (req, res) => {
             }
         }
     }
-    if (user.designation === 'non-tech-employee') {
+    if (user.department === 'non-tech') {
         const availableleave = await nonTechLeave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
         const fromDate = new Date(req.body.from_date)
         const toDate = new Date(req.body.to_date)

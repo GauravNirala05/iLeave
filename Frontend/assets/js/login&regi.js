@@ -19,7 +19,7 @@ btn_log.addEventListener('click', async (e) => {
     
     try {
 
-        const loger = await fetch('http://localhost:4000/login', {
+        const loger = await fetch('http://localhost:4000/signin', {
             method: 'POST',
             body: JSON.stringify({
                 email: email,
@@ -33,6 +33,7 @@ btn_log.addEventListener('click', async (e) => {
         if (!loger.ok) {
             const { msg } = loger.json()
             console.log(msg)
+            console.log(loger)
             throw Error(msg + "  " + loger.status)
         }
         else {
