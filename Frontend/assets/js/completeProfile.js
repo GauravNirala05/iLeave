@@ -1,18 +1,18 @@
-var imageUpload = document.getElementById("image-upload");
-var previewImage = document.getElementById("preview-image");
+// var imageUpload = document.getElementById("image-upload");
+// var previewImage = document.getElementById("preview-image");
 
-imageUpload.addEventListener("change", function() {
-  var file = this.files[0];
-  var reader = new FileReader();
+// imageUpload.addEventListener("change", function() {
+//   var file = this.files[0];
+//   var reader = new FileReader();
 
-  reader.addEventListener("load", function() {
-    previewImage.src = reader.result;
-  });
+//   reader.addEventListener("load", function() {
+//     previewImage.src = reader.result;
+//   });
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-});
+//   if (file) {
+//     reader.readAsDataURL(file);
+//   }
+// });
 
 const usertoken = localStorage.getItem('token');
 if (usertoken==null){
