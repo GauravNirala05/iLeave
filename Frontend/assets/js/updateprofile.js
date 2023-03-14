@@ -175,3 +175,25 @@ if (utoken) {
     }
   })
 }
+
+
+function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function confirm_logout() {
+  localStorage.removeItem('token');
+  location.replace("index.html")
+}
+function complete_profile() {
+  location.replace("complete_profile.html")
+}
+function login() {
+  location.replace("login.html")
+}

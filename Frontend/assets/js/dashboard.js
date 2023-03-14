@@ -160,8 +160,6 @@ const getuser = async () => {
 getuser()
 
 function openPopup() {
-  // main.hidden = true
-  // foot.hidden = true
   document.getElementById("popup").style.display = "block";
 }
 
@@ -170,14 +168,11 @@ function openPopup2() {
 }
 
 function closePopup() {
-  // main.hidden = false
-  // foot.hidden = false
   document.getElementById("popup").style.display = "none";
 }
 
 function confirm_logout() {
   localStorage.removeItem('token');
-  // alert(`You have been successfully logged out. Thank you for using our application.`)
   location.replace("index.html")
 }
 function complete_profile() {
