@@ -22,24 +22,27 @@ const HODLeaveSchema = new mongoose.Schema({
     },
     discription: {
         type: String,
-        required: [true, 'must provide ']
+        required: [true, 'must provide the description ']
     },
     contect_no: {
         type: Number,
-        required: [true, 'must provide']
+        required: [true, 'must provide your contect number']
     },
     leave_type: {
         type: String,
-        enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave']
+        enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave'],
+        required: [true, 'Must provide your leave Type you are applying for']
     },
     // replacement:refrence,
     reference: {
         name: {
             type: String,
+            required: true
+
         },
-        approved:Boolean
+        approved: Boolean
     },
-    principal_approval:Boolean,
+    principal_approval: Boolean,
     status: {
         type: String,
         enum: ['applied', 'rejected', 'approved', 'completed'],

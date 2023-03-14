@@ -22,15 +22,17 @@ const nonTechLeaveSchema = new mongoose.Schema({
     },
     discription: {
         type: String,
-        required: [true, 'must provide ']
+        required: [true, 'must provide the discription for your leave ']
     },
     contect_no: {
         type: Number,
-        required: [true, 'must provide']
+        required: [true, 'must provide contect no']
     },
     leave_type: {
         type: String,
-        enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave']
+        enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave'],
+        required: [true, 'must provide leave type for applying leave']
+        
     },
     head_approval: Boolean,
     principal_approval: Boolean,

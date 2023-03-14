@@ -12,6 +12,10 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
 const applyLeave = async (req, res) => {
     const { userID, userName } = req.user
+    const { from_date, to_date, discription, contect_no, leave_type } = req.body
+    if(!from_date|| !to_date|| !discription|| !contect_no|| !leave_type){
+        throw new BadRequestError(`Please provide all credentials`)
+    }
     const user = await User.findOne({ _id: userID })
     if (user.designation === 'faculty') {
         const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
@@ -166,7 +170,7 @@ const getReferenceName = async (req, res) => {
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
         }
         if (designation === 'HOD') {
-            const getuser = await User.find({ department: user.department }).select('name')
+            const getuser = await User.find({ department: user.department,designation:'faculty' }).select('name')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
         }
         if (designation === 'principal') {
@@ -184,23 +188,23 @@ const deleteLeave = async (req, res) => {
     const { leaveId: targetLeaveID } = req.params
     const user = await User.findOne({ _id: userID })
     if (user) {
-        if (await Leave.exists({ _id: targetLeaveID,employee_name:userName,status: applied })) {
-            await Leave.findOneAndDelete({ _id: targetLeaveID,employee_name:userName })
+        if (await Leave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
+            await Leave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
-        if (await HodLeave.exists({ _id: targetLeaveID,employee_name:userName,status: applied  })) {
-            await HodLeave.findOneAndDelete({ _id: targetLeaveID,employee_name:userName })
+        if (await HodLeave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
+            await HodLeave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
-        if (await nonTechLeave.exists({ _id: targetLeaveID,employee_name:userName,status: applied  })) {
-            await nonTechLeave.findOneAndDelete({ _id: targetLeaveID,employee_name:userName })
+        if (await nonTechLeave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
+            await nonTechLeave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
         else {
             throw new NotFound(`The provided leave id does'nt exists.`)
         }
     }
-    else{
+    else {
         throw new NotFound(`User does'nt exists.Plz give valid credentials`)
     }
 }

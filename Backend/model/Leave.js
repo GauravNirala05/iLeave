@@ -22,38 +22,44 @@ const leaveSchema = new mongoose.Schema({
     },
     discription: {
         type: String,
-        required: [true, 'must provide ']
+        required: [true, 'must provide the description ']
     },
     contect_no: {
         type: Number,
-        required: [true, 'must provide']
+        required: [true, 'must provide your contect number']
     },
     leave_type: {
         type: String,
-        enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave']
+        enum: ['medical_leave', 'casual_leave', 'ordinary_leave', 'earned_leave'],
+        required:[true,'Must provide your leave Type you are applying for']
     },
     // replacement:refrence,
     reference1: {
         name: {
             type: String,
+            required:true
         },
         approved:Boolean
     },
     reference2: {
         name: {
             type: String,
+            required:true
         },
         approved:Boolean
     },
     reference3: {
         name: {
             type: String,
+            required:true
         },
         approved: Boolean
     },
     reference4: {
         name: {
             type: String,
+            required:true
+
         },
         approved:Boolean
     },

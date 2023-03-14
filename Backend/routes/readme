@@ -1,8 +1,0 @@
-// 1. register -verify-next //no authentication
-// 2. login --dashboard    //no authentication
-// 3. completeProfile  //authentication required
-// 4. updateProfile    //authentication required
-// 5. delete           //authentication required
-// 6. applyleave --get users      //authentication required
-// 7. status of leave--- applied,rejected //authentication required
-// 8. approvals //authentication required
