@@ -10,19 +10,19 @@ const getReferenceUser=async()=>{
         console.log("Running")
         if(!getRefUser.ok){
             const users=await getRefUser.json()
-            throw Error(userData.msg)
+            throw Error(users.msg)
         }
         const users=await getRefUser.json()
         console.log(users)
         let ihtml=``
         for (item in users){
-            ihtml=` <option>${(users.hits)}</option>
+            ihtml+=` <option>person</option>
             <option>Person 2</option>
             <option>Person 3</option>
             <option>Person 4</option>
             `
         }
-        document.getElementById("reference1").innerHTML=ihtml
+        document.getElementById('reference1').innerHTML=ihtml
 
     }
     catch(error){
