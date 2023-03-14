@@ -116,12 +116,12 @@
                     novalidate="novalidate">
                     <div class="row">
 
-                      <div class="col-md-6 form-group">
-                        <!-- name -->
-                        <input type="text" class="form-control error name" name="name" id="name"
-                          placeholder="First name" aria-required="true" aria-invalid="true"><label id="fname-error"
-                          class="error" for="fname"></label>
-                      </div>
+                      <!-- <div class="col-md-6 form-group">
+                        
+                        <input type="text" class="form-control error name" name="name" id="name" placeholder="First name"
+                          aria-required="true" aria-invalid="true"><label id="fname-error" class="error"
+                          for="fname"></label>
+                      </div> -->
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
                         <input type="number" class="form-control error mob_no" name="number" id="mob_no"
@@ -131,14 +131,14 @@
                     </div>
 
                     <div class="row mb-0">
-                      <div class="col-md-3 form-group">
+                      <div class="col-md-4 form-group">
                         <label class="mb-0">From:</label>
                         <!-- From -->
                         <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
                           placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
                           for="fromdate"></label>
                       </div>
-                      <div class="col-md-3 form-group">
+                      <div class="col-md-4 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
                         <input type="date" class="form-control error todate" name="todate" id="todate"
@@ -146,7 +146,7 @@
                           for="todate"></label>
                       </div>
                       &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <div class="col-md- form-group">
+                      <div class=" form-group">
                         <label for=""></label>
                         <select class="form-control">
                           <option name="reference3" value="">Full Day</option>
@@ -165,22 +165,24 @@
 
                     <div class="row mt-0" id="All_ref_hide">
                       <div class="col-md-3">
-                        <div class=" form-group">
-                          <select class="form-control reference1" id="reference1">
+                        <div class=" form-group" >
+                          <select class="form-control reference1" >
                             <option name="reference3" value="">First Year</option>
-                            <option>Person 1</option>
+                            <div id="reference1">
+                            <!-- <option>Person 1</option>
                             <option>Person 2</option>
                             <option>Person 3</option>
-                            <option>Person 4</option>
-                          </select>
+                            <option>Person 4</option> -->
+                          </div>
+                          </select> 
                           <div class="invalid-feedback">
                             Please provide person name.
                           </div>
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group">
-                          <select class="form-control reference2" id="reference2">
+                        <div class=" form-group" id="reference2">
+                          <select class="form-control reference2" >
                             <option name="reference3" value="">Second Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -193,8 +195,8 @@
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group">
-                          <select class="form-control reference3" id="reference3">
+                        <div class=" form-group" id="reference3">
+                          <select class="form-control reference3" >
                             <option name="reference3" value="">Third Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -207,8 +209,8 @@
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group">
-                          <select class="form-control reference4" id="reference4">
+                        <div class=" form-group" id="reference4">
+                          <select class="form-control reference4" >
                             <option name="reference3" value="">Fourth Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -222,7 +224,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-3 mt-4">
+                      <div class="col-md-4 mt-4">
                         <div class=" form-group">
                           <select class="form-control leavetype" id="leavetype">
                             <option name="reference3" value="">Leave Type</option>
@@ -236,7 +238,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-9 form-group">
+                      <div class="col-md-8 form-group">
                         <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
                           placeholder="Reason For Applying Leave" aria-required="true"></textarea><label
                           id="message-error" class="error" for="message">Please enter a message</label>
@@ -302,8 +304,10 @@
       <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
     </p>
   </footer>
-  <script src="assets/js/applyleave.js"></script>
-  <!-- <script src="assets/js/dashboard.js"></script> -->
+  <script src="assets/js/applyleave.js" async defer></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/getReferenceUser.js"></script>
+
   <!-- <script>// Data Picker Initialization
     $('.datepicker').datepicker({
       inline: true
