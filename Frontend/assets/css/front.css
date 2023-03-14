@@ -59,7 +59,7 @@
 body{
 	background-size: cover;
 	background-position: center;
-	background: #000;
+	background: #000;   
 }
 
 #d451f1d61e{
@@ -246,4 +246,18 @@ footer {
   .footer-copyright p{
 font-size: 20px;
   }
+
+  .button {
+    font: 20px Lato, sans-serif;
+    text-decoration: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: #2bb330;
+    color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  }
   
+  .button:hover {
+    background: #007c04;
+    text-decoration: none;
+  }
