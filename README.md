@@ -16,5 +16,5 @@ AUTH_PASS=vfikkebovtxmnqsu
 ```
 
 After that open terminal go to 'Backend' directory and run the following code:
-```npm install`` and
-```npm start```
+`npm install` and
+`npm start`
