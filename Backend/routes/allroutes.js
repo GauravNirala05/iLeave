@@ -31,7 +31,7 @@ router.route('/forgotPassword/resetPass').patch(auth, updatePass)
 router.route('/applyLeave').post(auth, applyLeave)
 router.route('/getReferenceUser').get(auth, getReferenceName)
 router.route('/leaveStatus').get(auth, leaveStatus).post(auth, leaveStatus)
-router.route('/deleteLeave/:leaveId').get(auth, deleteLeave)
+router.route('/deleteLeave/:leaveId').delete(auth, deleteLeave)
 
 //Leave approving
 router.route('/approvals').get(auth, getApprovals)
