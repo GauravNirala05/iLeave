@@ -8,7 +8,7 @@ const auth = require('../middlewares/auth')
 const {register,verifyEmail,forgotPassword,verifyOTP,updatePass} = require('../Controllers/regi&verification')
 const {getSingleData,signin,completeProfile,updateProfile,deleteProfile} = require('../Controllers/basicControl')
 const {applyLeave,getReferenceName,deleteLeave} = require('../Controllers/applyLeave')
-const {alluser,leaveStatus,getApprovals} = require('../Controllers/allcontrol')
+const {alluser,leaveStatus,getApprovals, leaveHistory} = require('../Controllers/allcontrol')
 const approve = require('../Controllers/approvals')
 
 
@@ -30,7 +30,8 @@ router.route('/forgotPassword/resetPass').patch(auth, updatePass)
 //Leave apply and deletion
 router.route('/applyLeave').post(auth, applyLeave)
 router.route('/getReferenceUser').get(auth, getReferenceName)
-router.route('/leaveStatus').get(auth, leaveStatus).post(auth, leaveStatus)
+router.route('/leaveStatus').post(auth, leaveStatus)
+router.route('/leaveHistory').get(auth, leaveHistory)
 router.route('/deleteLeave/:leaveId').delete(auth, deleteLeave)
 
 //Leave approving

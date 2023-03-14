@@ -3,7 +3,6 @@ const sidebar = document.querySelector(".sidebar")
 const foot = document.querySelector(".footer")
 
 const getuser = async () => {
-  console.log("running")
   const token = localStorage.getItem('token')
   if (token == null) {
     const pop2 = document.querySelector("#popup2")
@@ -69,7 +68,7 @@ const getuser = async () => {
     document.getElementById("profile").innerHTML = ihtml
     if(userData.data.department=='non-tech'){
       document.getElementById('All_ref_hide').style.display="none";
-      applyLeave_nontech()
+      // applyLeave_nontech()
       
     }
     else{
@@ -161,8 +160,6 @@ const getuser = async () => {
 getuser()
 
 function openPopup() {
-  main.hidden = true
-  // foot.hidden = true
   document.getElementById("popup").style.display = "block";
 }
 
@@ -171,14 +168,11 @@ function openPopup2() {
 }
 
 function closePopup() {
-  main.hidden = false
-  // foot.hidden = false
   document.getElementById("popup").style.display = "none";
 }
 
 function confirm_logout() {
   localStorage.removeItem('token');
-  // alert(`You have been successfully logged out. Thank you for using our application.`)
   location.replace("index.html")
 }
 function complete_profile() {

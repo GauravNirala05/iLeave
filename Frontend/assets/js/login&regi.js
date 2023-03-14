@@ -1,6 +1,5 @@
 const usertoken = localStorage.getItem('token');
 if (usertoken!=null){
-  alert(`You are already logged in. If you need to log in with a different account, please log out first.`)
   location.replace("dashboard.html")
 }
 
@@ -101,6 +100,7 @@ btn_regi.addEventListener('click', async (e) => {
             }
             const { msg } = await fetcher.json()
             alert(`${msg}`)
+            showPopup()
             // setTimeout(() => {
             //     location.replace("login.html")
                 
@@ -150,3 +150,21 @@ window.onclick = function (event) {
 }
 
 
+// Get the popup and button elements
+const myPopup = document.getElementById("myPopup");
+const myButton = document.getElementById("myButton");
+const closeButton = document.getElementById("closeButton");
+
+// Add event listeners to the button and close button
+myButton.addEventListener("click", showPopup);
+closeButton.addEventListener("click", hidePopup);
+
+// Show the popup when the button is clicked
+function showPopup() {
+  myPopup.style.display = "block";
+}
+
+// Hide the popup when the close button is clicked
+function hidePopup() {
+  myPopup.style.display = "none";
+}
