@@ -34,6 +34,17 @@
 <body>
   <include src="./applyleave_modal.html"></include>
   <input type="checkbox" id="nav-toggle">
+  
+  <div id="popup" class="popup card-header">
+		<div class="popup-content">
+			<span class="close" onclick="closePopup()">&times;</span>
+			<div class="d-flex justify-content-center"><p  id="fuck">Are You Sure You Want to Logout!</p></div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
+        <button onclick="closePopup()">Cancel</button>
+      </div>
+		</div>
+	</div>
   <div class="sidebar">
     <div class="sidebar-brand">
       <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
@@ -76,13 +87,7 @@
 
     </div>
   </div>
-  <div id="popup" class="popup card-header">
-		<div class="popup-content">
-			<span class="close" onclick="closePopup()">&times;</span>
-			<p>Are You Sure You Want to Logout!</p>
-      <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
-		</div>
-	</div>
+  
 
   <div class="main-content">
     <header>
@@ -276,14 +281,7 @@
                 </div>
               </div>
             </div>
-            <footer class="d-flex mt-3 justify-content-center">
-              <p>
-                Created with <i class="fa fa-heart"></i> by
-                <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
-                <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
-                <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
-              </p>
-            </footer>
+            
 
           </div>
 
@@ -292,6 +290,14 @@
 
     </main>
   </div>
+  <footer class="d-flex mt-3 justify-content-center">
+    <p>
+      Created with <i class="fa fa-heart"></i> by
+      <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
+      <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
+      <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
+    </p>
+  </footer>
   <script src="assets/js/applyleave.js" async defer></script>
   <script src="assets/js/dashboard.js"></script>
   <!-- <script>// Data Picker Initialization

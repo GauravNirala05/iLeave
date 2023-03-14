@@ -38,11 +38,9 @@ btn_log.addEventListener('click', async (e) => {
         else {
             const { data, msg, token } = await loger.json()
             localStorage.setItem("token", token)
-            alert(`${msg}`)
-            setTimeout(() => {
-                location.replace("Dashboard.html")
+            // alert(`${msg}`)
+            location.replace("Dashboard.html")
                 
-            }, 1000);
             
         }
 

@@ -1,36 +1,45 @@
-const usertoken = localStorage.getItem('token');
-if (usertoken==null){
-  alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
-  location.replace("login.html")
-}
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const foot = document.querySelector(".footer")
 
-const getuser=async ()=>{
-  const token =localStorage.getItem('token')
+const getuser = async () => {
+  console.log("running")
+  const token = localStorage.getItem('token')
+  if (token == null) {
+    const pop2 = document.querySelector("#popup2")
+    const f = document.querySelector("#fuck")
+    pop2.hidden = false
+    f.innerHTML = `You Need to Login First`
+    main.hidden = true
+    sidebar.hidden = true
+    openPopup2()
+    return
+  }
 
-  if(token){
-    try {
-      
-      const user=await fetch('/getUserData',{
-        headers:{
-          'Authorization':`Bearer ${token}`
-        }
-      })
-      if(!user.ok){
-        throw Error('something went wrong')
+  try {
+
+    const user = await fetch('/getUserData', {
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
-      const userData=await user.json()
-       console.log(userData)
-      // console.log(userData.data.designation)
-      if(userData.data.profileCompleted==false){
-        $(document).ready(function(){
-          $("#myModal").modal('show');
-        });
-      }
-      let ihtml=``
-      for(item in userData)
-      {
-        // console.log(userData);
-        ihtml=`
+    })
+    console.log(localStorage.getItem('token'))
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+    const userData = await user.json()
+    console.log(userData)
+    // console.log(userData.data.designation)
+    if (userData.data.profileCompleted == false) {
+      $(document).ready(function () {
+        $("#myModal").modal('show');
+      });
+    }
+    let ihtml = ``
+    for (item in userData) {
+      // console.log(userData);
+      ihtml = `
         <div class=" user-wrapper ">
         <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,17 +63,17 @@ const getuser=async ()=>{
           </div>
         </div>
       </div>`
-        
-      }
-      document.getElementById("profile").innerHTML=ihtml
 
-      let hodhtml=``
+    }
+    document.getElementById("profile").innerHTML = ihtml
 
-      // once logic is implemeted it will be == insted of !=
-      if (userData.data.designation !="HOD"){
-        // console.log(userData.data.designation)
-  
-        hodhtml=`<div class="projects">
+    let hodhtml = ``
+
+    // once logic is implemeted it will be == insted of !=
+    if (userData.data.designation != "HOD") {
+      // console.log(userData.data.designation)
+
+      hodhtml = `<div class="projects">
         <div class="card">
           <div class="card-header">
             <h2>On Leave</h2>
@@ -122,30 +131,42 @@ const getuser=async ()=>{
         </div>
 
       </div>`
-      }
-      document.getElementById("only_auth").innerHTML=hodhtml
-
-
-    } catch (error) {
-      console.log(error);
     }
+    document.getElementById("only_auth").innerHTML = hodhtml
+
+
+  } catch (error) {
+    console.log(error);
+
   }
+
 }
 getuser()
 
 function openPopup() {
-	document.getElementById("popup").style.display = "block";
+  main.hidden = true
+  // foot.hidden = true
+  document.getElementById("popup").style.display = "block";
+}
+
+function openPopup2() {
+  document.getElementById("popup2").style.display = "block";
 }
 
 function closePopup() {
-	document.getElementById("popup").style.display = "none";
+  main.hidden = false
+  // foot.hidden = false
+  document.getElementById("popup").style.display = "none";
 }
 
-function confirm_logout(){
+function confirm_logout() {
   localStorage.removeItem('token');
-  alert(`You have been successfully logged out. Thank you for using our application.`)
+  // alert(`You have been successfully logged out. Thank you for using our application.`)
   location.replace("index.html")
 }
-function complete_profile(){
+function complete_profile() {
   location.replace("complete_profile.html")
+}
+function login() {
+  location.replace("login.html")
 }

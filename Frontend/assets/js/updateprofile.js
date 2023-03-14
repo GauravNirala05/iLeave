@@ -1,8 +1,5 @@
-const usertoken = localStorage.getItem('token');
-if (usertoken == null) {
-  alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
-  location.replace("login.html")
-}
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
 
 var imageUpload = document.getElementById("image-upload");
 var previewImage = document.getElementById("preview-image");
@@ -79,9 +76,11 @@ const getuser = async () => {
 getuser()
 
 function openPopup() {
+  main.hidden = true
   document.getElementById("popup").style.display = "block";
 }
 function closePopup() {
+  main.hidden = false
   document.getElementById("popup").style.display = "none";
 }
 const update_profile = document.querySelector('.update')
