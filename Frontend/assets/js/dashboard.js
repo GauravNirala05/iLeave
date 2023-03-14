@@ -22,20 +22,29 @@ const getuser = async () => {
         'Authorization': `Bearer ${token}`
       }
     })
-    console.log(localStorage.getItem('token'))
+
     if (!user.ok) {
       const userData = await user.json()
       throw Error(userData.msg)
     }
     const userData = await user.json()
-    console.log(userData)
     // console.log(userData.data.designation)
     if (userData.data.profileCompleted == false) {
       $(document).ready(function () {
         $("#myModal").modal('show');
       });
     }
+
+    document.querySelector(".casual").innerHTML = userData.data.leave_type.casual_leave
     
+    document.querySelector(".earned").innerHTML = userData.data.leave_type.earned_leave
+    
+    document.querySelector(".medical").innerHTML = userData.data.leave_type.medical_leave
+    
+    document.querySelector(".ordinary").innerHTML = userData.data.leave_type.ordinary_leave
+    
+    console.log(userData.data);
+
     let ihtml = ``
     for (item in userData) {
       // console.log(userData);

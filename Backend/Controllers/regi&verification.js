@@ -1,4 +1,5 @@
 const User = require('../model/User')
+const path=require('path')
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
@@ -86,7 +87,7 @@ const verifyEmail = async (req, res) => {
             if (result) {
                 const user = await User.findOneAndUpdate({ _id: userid }, { verified: true }, { new: true })
                 await UserVerification.deleteMany({ userID: userid })
-                res.status(StatusCodes.OK).json({ user, msg: `you are verified now` })
+                res.status(StatusCodes.OK).sendFile(path.resolve(__dirname,'../','../frontend/emailverified.html'))
             }
             else {
                 throw new BadRequestError(`Invalid verification datails passed. Check your inbox...`)

@@ -99,7 +99,7 @@ btn_regi.addEventListener('click', async (e) => {
                 throw Error(`${status}`)
             }
             const { msg } = await fetcher.json()
-            alert(`${msg}`)
+            // alert(`${msg}`)
             showPopup()
             // setTimeout(() => {
             //     location.replace("login.html")
@@ -155,9 +155,7 @@ const myPopup = document.getElementById("myPopup");
 const myButton = document.getElementById("myButton");
 const closeButton = document.getElementById("closeButton");
 
-// Add event listeners to the button and close button
-myButton.addEventListener("click", showPopup);
-closeButton.addEventListener("click", hidePopup);
+
 
 // Show the popup when the button is clicked
 function showPopup() {
