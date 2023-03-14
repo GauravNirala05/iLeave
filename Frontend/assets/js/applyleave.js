@@ -3,7 +3,7 @@
 //   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
 //   location.replace("login.html")
 // }
-
+const applyLeave=async()=>{
 const button_apply = document.querySelector('.btn_apply')
 const apply_name = document.querySelector('.name')
 const apply_contactno = document.querySelector('.mob_no')
@@ -99,4 +99,5 @@ button_apply.addEventListener('click', async (e) => {
     }
 })
 
+}
 

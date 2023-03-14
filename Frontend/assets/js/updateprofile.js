@@ -50,7 +50,7 @@ const getuser = async () => {
         </div>
 
         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-          <img src="images/profile.jpg" alt="John" style="width:70px;height: 70px;">
+          <img src="images/profile.jpg" alt="John" class="mx-auto d-block" style="width:70px;height: 70px;">
           <div class="card-header" style="margin:10px">
           <div>
               <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
