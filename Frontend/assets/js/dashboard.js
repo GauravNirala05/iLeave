@@ -161,7 +161,7 @@ const getuser = async () => {
 getuser()
 
 function openPopup() {
-  main.hidden = true
+  // main.hidden = true
   // foot.hidden = true
   document.getElementById("popup").style.display = "block";
 }
@@ -171,7 +171,7 @@ function openPopup2() {
 }
 
 function closePopup() {
-  main.hidden = false
+  // main.hidden = false
   // foot.hidden = false
   document.getElementById("popup").style.display = "none";
 }
