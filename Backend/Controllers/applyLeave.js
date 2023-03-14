@@ -12,6 +12,7 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
 const applyLeave = async (req, res) => {
     const { userID, userName } = req.user
+    console.log(req.body);
     const user = await User.findOne({ _id: userID })
     if (user.designation === 'faculty') {
         const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
@@ -134,6 +135,7 @@ const applyLeave = async (req, res) => {
 
         if (designation === 'faculty') {
             const leave = await Leave.create(req.body)
+            console.log(leave);
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
         }
         if (designation === 'HOD') {
