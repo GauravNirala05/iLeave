@@ -13,7 +13,7 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 const applyLeave = async (req, res) => {
     const { userID, userName } = req.user
     const user = await User.findOne({ _id: userID })
-    if (user.designation==='faculty') {
+    if (user.designation === 'faculty') {
         const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
         const fromDate = new Date(req.body.from_date)
         const toDate = new Date(req.body.to_date)
@@ -28,7 +28,7 @@ const applyLeave = async (req, res) => {
         }
         const leave_type = req.body.leave_type
         const total_days = req.body.total_days
-    
+
         if (leave_type === 'casual_leave') {
             if (user.leave_type.casual_leave < total_days) {
                 throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
@@ -50,7 +50,7 @@ const applyLeave = async (req, res) => {
             }
         }
     }
-    if (user.designation==='HOD') {
+    if (user.designation === 'HOD') {
         const availableleave = await HodLeave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
         const fromDate = new Date(req.body.from_date)
         const toDate = new Date(req.body.to_date)
@@ -65,7 +65,7 @@ const applyLeave = async (req, res) => {
         }
         const leave_type = req.body.leave_type
         const total_days = req.body.total_days
-    
+
         if (leave_type === 'casual_leave') {
             if (user.leave_type.casual_leave < total_days) {
                 throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
@@ -87,7 +87,7 @@ const applyLeave = async (req, res) => {
             }
         }
     }
-    if (user.designation==='non-tech-employee') {
+    if (user.department === 'non-tech') {
         const availableleave = await nonTechLeave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
         const fromDate = new Date(req.body.from_date)
         const toDate = new Date(req.body.to_date)
@@ -102,7 +102,7 @@ const applyLeave = async (req, res) => {
         }
         const leave_type = req.body.leave_type
         const total_days = req.body.total_days
-    
+
         if (leave_type === 'casual_leave') {
             if (user.leave_type.casual_leave < total_days) {
                 throw new BadRequestError(`Your remaining Casual Leave is lower than applied`)
@@ -124,7 +124,7 @@ const applyLeave = async (req, res) => {
             }
         }
     }
-    
+
     if (user) {
         const userDep = user.department
         const designation = user.designation
@@ -173,6 +173,7 @@ const getReferenceName = async (req, res) => {
             const getuser = await User.find({ designation: ['faculty', 'HOD'] }).select('name')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
         }
+        throw new UnAuthorizedError(`Plz provide valid credentials...`)
 
     } else {
         throw new UnAuthorizedError(`user with id ${userID} doesnt exists...`)
@@ -183,14 +184,24 @@ const deleteLeave = async (req, res) => {
     const { leaveId: targetLeaveID } = req.params
     const user = await User.findOne({ _id: userID })
     if (user) {
-        const leave = await Leave.findOne({ _id: targetID })
-        if (leave) {
-            await Leave.findOneAndDelete({ _id: targetID })
-            res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+        if (await Leave.exists({ _id: targetLeaveID,employee_name:userName,status: applied })) {
+            await Leave.findOneAndDelete({ _id: targetLeaveID,employee_name:userName })
+            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+        }
+        if (await HodLeave.exists({ _id: targetLeaveID,employee_name:userName,status: applied  })) {
+            await HodLeave.findOneAndDelete({ _id: targetLeaveID,employee_name:userName })
+            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+        }
+        if (await nonTechLeave.exists({ _id: targetLeaveID,employee_name:userName,status: applied  })) {
+            await nonTechLeave.findOneAndDelete({ _id: targetLeaveID,employee_name:userName })
+            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
         else {
             throw new NotFound(`The provided leave id does'nt exists.`)
         }
     }
+    else{
+        throw new NotFound(`User does'nt exists.Plz give valid credentials`)
+    }
 }
-module.exports = { applyLeave, getReferenceName,deleteLeave }
+module.exports = { applyLeave, getReferenceName, deleteLeave }

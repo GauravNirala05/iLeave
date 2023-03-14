@@ -36,11 +36,12 @@ const getuser = async () => {
         $("#myModal").modal('show');
       });
     }
+    
     let ihtml = ``
     for (item in userData) {
       // console.log(userData);
       ihtml = `
-        <div class=" user-wrapper ">
+        <div class="user-wrapper">
         <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
@@ -53,7 +54,7 @@ const getuser = async () => {
         </div>
 
         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-          <img src="images/profile.jpg" alt="John" style="width:70px;height: 70px;">
+          <img src="images/profile.jpg" class="mx-auto d-block" alt="John" style="width:70px;height: 70px;">
           <div class="card-header" style="margin:10px">
           <div>
               <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
@@ -66,6 +67,22 @@ const getuser = async () => {
 
     }
     document.getElementById("profile").innerHTML = ihtml
+    if(userData.data.department=='non-tech'){
+      document.getElementById('All_ref_hide').style.display="none";
+      applyLeave_nontech()
+      
+    }
+    else{
+      if(userData.data.designation=='HOD'){
+        document.getElementById('reference2').style.display="none";
+        document.getElementById('reference3').style.display="none";
+        document.getElementById('reference4').style.display="none";
+        applyLeave_HOD()
+      }
+      if(userData.data.designation=='faculty'){
+        applyLeave()
+      }
+    }
 
     let hodhtml = ``
 
