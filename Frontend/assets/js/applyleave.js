@@ -1,19 +1,3 @@
-
-const token = localStorage.getItem('token')
-console.log(token);
-
-const main = document.querySelector(".main-content")
-const sidebar = document.querySelector(".sidebar")
-const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#logmsg")
-
-if (token == null) {
-    pop2.hidden = false
-    main.hidden = true
-    f.innerHTML = `You Need to Login First`
-    sidebar.hidden = true
-    openPopup2()
-}
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -69,7 +53,25 @@ const getReferenceUser = async () => {
         console.log(error)
     }
 }
-getReferenceUser()
+
+const token = localStorage.getItem('token')
+
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#logmsg")
+
+if (token == null) {
+    pop2.hidden = false
+    main.hidden = true
+    f.innerHTML = `You Need to Login First`
+    sidebar.hidden = true
+    openPopup2()
+}
+else{
+    getReferenceUser()
+}
+
 
 const button_apply = document.querySelector('.btn_apply')
 
