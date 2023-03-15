@@ -1,20 +1,118 @@
 
-const button_apply = document.querySelector('.btn_apply')
-const total_days = document.querySelector('.totaldays')
-const fromdate = document.querySelector('.fromdate').value
-const todate = document.querySelector('.todate').value
 
-if (fromdate != undefined && todate != undefined) {
-    const date2 = new Date(fromdate)
-    const date1 = new Date(todate)
-    console.log(date1 - date2);
-    const totaldays = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
-    console.log(totaldays);
-    total_days.ariaPlaceholder = totaldays
+const token = localStorage.getItem('token')
+const UserDesignation = localStorage.getItem('designation')
+
+const getReferenceUser = async () => {
+    try {
+        const getRefUser = await fetch('/getReferenceUser', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+
+        })
+        if (!getRefUser.ok) {
+            const users = await getRefUser.json()
+            throw Error(users.msg)
+        }
+        const { data, hits } = await getRefUser.json()
+        console.log(data)
+        const ref1 = document.querySelector('.reference1')
+        const ref2 = document.querySelector('.reference2')
+        const ref3 = document.querySelector('.reference3')
+        const ref4 = document.querySelector('.reference4')
+        const ref = document.querySelector('.reference')
+
+        if (UserDesignation === 'HOD') {
+            if (hits == 0) {
+                var opt = document.createElement('option')
+                opt.innerHTML = `--empty--`
+                ref.append(opt)
+            }
+            else {
+                for (item of data) {
+                    var opt = document.createElement('option')
+                    opt.innerHTML = `${item.name}`
+                    ref.append(opt)
+
+                }
+            }
+        }
+        if (UserDesignation === 'faculty') {
+
+            if (hits == 0) {
+                var opt1 = document.createElement('option')
+                opt1.innerHTML = `--empty--`
+                var opt2 = document.createElement('option')
+                opt2.innerHTML = `--empty--`
+                var opt3 = document.createElement('option')
+                opt3.innerHTML = `--empty--`
+                var opt4 = document.createElement('option')
+                opt4.innerHTML = `--empty--`
+                ref1.append(opt1)
+                ref2.append(opt2)
+                ref3.append(opt3)
+                ref4.append(opt4)
+            }
+            else {
+                for (item of data) {
+                    var opt1 = document.createElement('option')
+                    opt1.innerHTML = `${item.name}`
+                    var opt2 = document.createElement('option')
+                    opt2.innerHTML = `${item.name}`
+                    var opt3 = document.createElement('option')
+                    opt3.innerHTML = `${item.name}`
+                    var opt4 = document.createElement('option')
+                    opt4.innerHTML = `${item.name}`
+                    ref1.append(opt1)
+                    ref2.append(opt2)
+                    ref3.append(opt3)
+                    ref4.append(opt4)
+
+                }
+            }
+        }
+
+    }
+    catch (error) {
+        console.log(error)
+    }
 }
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#logmsg")
+
+
+
+if (token == null) {
+    pop2.hidden = false
+    main.hidden = true
+    f.innerHTML = `You Need to Login First`
+    sidebar.hidden = true
+    openPopup2()
+}
+else {
+    if (UserDesignation == 'HOD') {
+        const hodLeaveApply = document.querySelector("#ref_hide_hod")
+        hodLeaveApply.hidden = false
+        getReferenceUser()
+
+    }
+    if (UserDesignation == 'faculty') {
+        const facultyLeaveApply = document.querySelector("#All_ref_hide")
+        facultyLeaveApply.hidden = false
+        getReferenceUser()
+
+    }
+}
+
+
+const button_apply = document.querySelector('.btn_apply')
 
 button_apply.addEventListener('click', async (e) => {
     e.preventDefault()
+
     const contactno = document.querySelector('.mob_no').value
     const fromdate = document.querySelector('.fromdate').value
     const todate = document.querySelector('.todate').value
@@ -24,10 +122,10 @@ button_apply.addEventListener('click', async (e) => {
     const reference4 = document.querySelector('.reference4').value
     const leave_type = document.querySelector('.leavetype').value
     const reason = document.querySelector('.reason').value
-    console.log(leave_type,reason,contactno,fromdate,todate);
-    if (!fromdate || !todate) {
-        throw Error(`please provide dates first`)
-    }
+
+    //for Hod
+    const reference = document.querySelector('.reference').value
+    
     const date2 = new Date(fromdate)
     const date1 = new Date(todate)
     console.log(date1 - date2);
@@ -92,3 +190,26 @@ button_apply.addEventListener('click', async (e) => {
     }
 })
 
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function openPopup2() {
+    document.getElementById("popup2").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+function confirm_logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('designation');
+    location.replace("index.html")
+}
+function complete_profile() {
+    location.replace("complete_profile.html")
+}
+function login() {
+    location.replace("login.html")
+}

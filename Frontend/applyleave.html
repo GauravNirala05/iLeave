@@ -47,16 +47,16 @@
       </div>
     </div>
   </div>
-  <div class="sidebar">
+  <div class="sidebar mb-2">
     <div class="sidebar-brand">
       <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
-      <span><img class="img-logo-name name-logo" src="images/name.svg" alt=""></span>
+      <span><img class="img-logo-name" src="images/name.svg" alt=""></span>
     </div>
 
     <div class="sidebar-menu">
       <ul>
         <li>
-          <a href="Dashboard.html">
+          <a href="dashboard.html">
             <span class="fa fa-clone"></span>
             <span>Dashboard</span>
           </a>
@@ -64,13 +64,20 @@
         <li>
           <a href="applyleave.html" class="active">
             <span class="fa fa-calendar"></span>
-            <span>Apply leave</span>
+            <span>Apply Leave</span>
           </a>
+        </li>
         </li>
         <li>
           <a href="status.html">
+            <span class="fa fa-check-circle-o"></span>
+            <span>Leave Status</span>
+          </a>
+        </li>
+        <li>
+          <a href="approval.html">
             <span class="fa fa-calendar-check-o"></span>
-            <span>Status/Approval</span>
+            <span>Leave Approval</span>
           </a>
         </li>
         <li>
@@ -105,12 +112,12 @@
     </header>
 
     <main>
-      <div class="recents-grid mt-4 mb-0">
+      <div class="recent-grid mt-4 mb-0">
         <div class="projects">
           <div class="card">
-         <div class="card-body ">
+            <div class="card-body ">
               <div class="row align-items-center">
-                
+
                 <div class="col-lg-8 mb-5 mb-lg-0">
                   <form class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm"
                     novalidate="novalidate">
@@ -145,10 +152,10 @@
                         <!-- Phone Number -->
                         <label for="">Contact No:</label>
                         <input type="number" class="form-control error mob_no" name="number" id="mob_no"
-                          placeholder="Enter your mobile number" aria-required="true" required="true"><label id="lname-error" class="error"
-                          for="contactno"></label>
+                          placeholder="Enter your mobile number" aria-required="true" required><label id="lname-error"
+                          class="error" for="contactno"></label>
                       </div>
-                      
+
                     </div>
                     <div class="row">
                       <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -160,15 +167,15 @@
                           </select>
                         </div>
                       </div>
-                      
+
                       <div class="col-md-6">
                         <div class=" form-group">
                           <select class="form-control leavetype" id="leavetype">
                             <option name="reference3" value="">Leave Type</option>
-                            <option>medical_leave</option>
-                            <option>casual_leave</option>
-                            <option>ordinary_leave</option>
-                            <option>earned_leave</option>
+                            <option value="medical_leave">Medical leave</option>
+                            <option value="casual_leave">Casual leave</option>
+                            <option value="ordinary_leave">Ordinary leave</option>
+                            <option value="earned_leave">Earned leave</option>
                           </select>
                           <div class="invalid-feedback">
                             Please provide person name.
@@ -177,17 +184,11 @@
                       </div>
                     </div>
 
-                    <div class="row mt-0" id="All_ref_hide">
+                    <div class="row mt-0" hidden="true" id="All_ref_hide">
                       <div class="col-md-3">
                         <div class=" form-group  mt-4">
                           <select class="form-control reference1">
                             <option name="reference1" value="">First Year</option>
-                            <div id="reference1">
-                              <option>Person 1</option>
-                              <option>Person 2</option>
-                              <option>Person 3</option>
-                              <option>Person 4</option>
-                            </div>
                           </select>
                           <div class="invalid-feedback">
                             Please provide person name.
@@ -197,11 +198,7 @@
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference2">
                           <select class="form-control reference2">
-                            <option name="reference3" value="">Second Year</option>
-                            <option>Person 1</option>
-                            <option>Person 2</option>
-                            <option>Person 3</option>
-                            <option>Person 4</option>
+                            <option name="reference2" value="">Second Year</option>
                           </select>
                           <div class="invalid-feedback">
                             Please provide person name.
@@ -209,13 +206,9 @@
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group mt-4" id="reference3">
+                        <div class=" form-group mt-4" id="reference">
                           <select class="form-control reference3">
                             <option name="reference3" value="">Third Year</option>
-                            <option>Person 1</option>
-                            <option>Person 2</option>
-                            <option>Person 3</option>
-                            <option>Person 4</option>
                           </select>
                           <div class="invalid-feedback">
                             Please provide person name.
@@ -226,10 +219,6 @@
                         <div class=" form-group mt-4" id="reference4">
                           <select class="form-control reference4">
                             <option name="reference3" value="">Fourth Year</option>
-                            <option>Person 1</option>
-                            <option>Person 2</option>
-                            <option>Person 3</option>
-                            <option>Person 4</option>
                           </select>
                           <div class="invalid-feedback">
                             Please provide person name.
@@ -237,15 +226,24 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-
+                    <div class="row mt-0 " hidden="true" id="ref_hide_hod">
+                      <div class="col-md-12">
+                        <div class=" form-group  mt-4">
+                          <select class="form-control reference">
+                            <option name="reference" value="">Active Head</option>
+                          </select>
+                          <div class="invalid-feedback">
+                            Please provide person name.
+                          </div>
+                        </div>
+                      </div>
                     </div>
+
                     <div class="row">
                       <div class="col-md-12 form-group mt-4">
                         <label for="">Reason:</label>
                         <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
-                          placeholder="Reason For Applying Leave" aria-required="true" required="true"></textarea><label
-                          id="message-error" class="error" for="message">Please enter a message</label>
+                          placeholder="Reason For Applying Leave" aria-required="true"></textarea>
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
@@ -301,8 +299,6 @@
     </p>
   </footer>
   <script src="assets/js/applyleave.js" async defer></script>
-  <script src="assets/js/dashboard.js"></script>
-  <script src="assets/js/getReferenceUser.js"></script>
 
   <!-- <script>// Data Picker Initialization
     $('.datepicker').datepicker({

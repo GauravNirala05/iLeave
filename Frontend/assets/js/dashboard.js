@@ -1,3 +1,70 @@
+const getuser = async () => {
+  try {
+    const user = await fetch('/getUserData', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+
+    const { data } = await user.json()
+
+    if (data.profileCompleted == false) {
+      $(document).ready(function () {
+        $("#myModal").modal('show');
+      });
+    }
+    else {
+      document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+      document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+      document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+      document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+      localStorage.setItem('designation', data.designation)
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+const getleavestatus = async () => {
+  const stat = []
+  stat.push('applied')
+  console.log(stat);
+  try {
+    const user = await fetch('/leaveStatus', {
+      method: 'POST',
+      body: JSON.stringify({
+        status: stat
+      }),
+      headers: {
+        'Content-type': 'Application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    })
+
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+    const { data, hits } = await user.json()
+    if (hits == 0) {
+      console.log(`no leaves yet...`);
+    }
+    else {
+      console.log(leaveData)
+    }
+
+  } catch (error) {
+    console.log(error);
+
+  }
+
+}
+
+
 const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const foot = document.querySelector(".footer")
@@ -12,7 +79,6 @@ if (token == null) {
   f.innerHTML = `You Need to Login First`
   sidebar.hidden = true
   openPopup2()
-  return
 }
 const getuser = async () => {
   
@@ -166,9 +232,13 @@ const getuser = async () => {
   } catch (error) {
     console.log(error);
   }
+else {
+  getuser()
+  console.log(`its running`);
+  getleavestatus()
 
 }
-getuser()
+
 
 function openPopup() {
   document.getElementById("popup").style.display = "block";
@@ -184,6 +254,8 @@ function closePopup() {
 
 function confirm_logout() {
   localStorage.removeItem('token');
+  localStorage.removeItem('designation');
+
   location.replace("index.html")
 }
 function complete_profile() {
@@ -193,35 +265,3 @@ function login() {
   location.replace("login.html")
 }
 
-
-const getleavestatus = async () => {
-  const token = localStorage.getItem('token')
-  const stat=[]
-  stat.push('applied')
-  console.log(stat);
-  try {
-    const user = await fetch('/leaveStatus', {
-      method: 'POST',
-      body: JSON.stringify({
-        status:stat
-      }),
-      headers: {
-        'Content-type':'Application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    })
-
-    if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
-    }
-    const leaveData = await user.json()
-    console.log(leaveData)
-
-  } catch (error) {
-    console.log(error);
-
-  }
-
-}
-getleavestatus()

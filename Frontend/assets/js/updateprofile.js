@@ -189,6 +189,7 @@ function closePopup() {
 
 function confirm_logout() {
   localStorage.removeItem('token');
+  localStorage.removeItem('designation');
   location.replace("index.html")
 }
 function complete_profile() {
