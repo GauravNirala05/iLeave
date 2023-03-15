@@ -29,8 +29,9 @@ const getuser = async () => {
       throw Error(userData.msg)
     }
     const userData = await user.json()
-    // console.log(userData.data.designation)
+
     if (userData.data.profileCompleted == false) {
+      
       $(document).ready(function () {
         $("#myModal").modal('show');
       });
@@ -48,7 +49,7 @@ const getuser = async () => {
 
     let ihtml = ``
     for (item in userData) {
-      // console.log(userData);
+       console.log(userData);
       ihtml = `
         <div class="user-wrapper">
         <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
