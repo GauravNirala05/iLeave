@@ -125,10 +125,7 @@ button_apply.addEventListener('click', async (e) => {
 
     //for Hod
     const reference = document.querySelector('.reference').value
-
-    if (!fromdate || !todate) {
-        throw Error(`please provide dates first`)
-    }
+    
     const date2 = new Date(fromdate)
     const date1 = new Date(todate)
     console.log(date1 - date2);
