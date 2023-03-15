@@ -1,4 +1,8 @@
 
+
+const token = localStorage.getItem('token')
+const UserDesignation = localStorage.getItem('designation')
+
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -17,35 +21,55 @@ const getReferenceUser = async () => {
         const ref2 = document.querySelector('.reference2')
         const ref3 = document.querySelector('.reference3')
         const ref4 = document.querySelector('.reference4')
-        if (hits == 0) {
-            var opt1 = document.createElement('option')
-            opt1.innerHTML = `--empty--`
-            var opt2 = document.createElement('option')
-            opt2.innerHTML = `--empty--`
-            var opt3 = document.createElement('option')
-            opt3.innerHTML = `--empty--`
-            var opt4 = document.createElement('option')
-            opt4.innerHTML = `--empty--`
-            ref1.append(opt1)
-            ref2.append(opt2)
-            ref3.append(opt3)
-            ref4.append(opt4)
+        const ref = document.querySelector('.reference')
+
+        if (UserDesignation === 'HOD') {
+            if (hits == 0) {
+                var opt = document.createElement('option')
+                opt.innerHTML = `--empty--`
+                ref.append(opt)
+            }
+            else {
+                for (item of data) {
+                    var opt = document.createElement('option')
+                    opt.innerHTML = `${item.name}`
+                    ref.append(opt)
+
+                }
+            }
         }
-        else {
-            for (item of data) {
+        if (UserDesignation === 'faculty') {
+
+            if (hits == 0) {
                 var opt1 = document.createElement('option')
-                opt1.innerHTML = `${item.name}`
+                opt1.innerHTML = `--empty--`
                 var opt2 = document.createElement('option')
-                opt2.innerHTML = `${item.name}`
+                opt2.innerHTML = `--empty--`
                 var opt3 = document.createElement('option')
-                opt3.innerHTML = `${item.name}`
+                opt3.innerHTML = `--empty--`
                 var opt4 = document.createElement('option')
-                opt4.innerHTML = `${item.name}`
+                opt4.innerHTML = `--empty--`
                 ref1.append(opt1)
                 ref2.append(opt2)
                 ref3.append(opt3)
                 ref4.append(opt4)
+            }
+            else {
+                for (item of data) {
+                    var opt1 = document.createElement('option')
+                    opt1.innerHTML = `${item.name}`
+                    var opt2 = document.createElement('option')
+                    opt2.innerHTML = `${item.name}`
+                    var opt3 = document.createElement('option')
+                    opt3.innerHTML = `${item.name}`
+                    var opt4 = document.createElement('option')
+                    opt4.innerHTML = `${item.name}`
+                    ref1.append(opt1)
+                    ref2.append(opt2)
+                    ref3.append(opt3)
+                    ref4.append(opt4)
 
+                }
             }
         }
 
@@ -59,8 +83,6 @@ const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
 const f = document.querySelector("#logmsg")
 
-const token = localStorage.getItem('token')
-const UserDesignation = localStorage.getItem('designation')
 
 
 if (token == null) {
@@ -73,13 +95,13 @@ if (token == null) {
 else {
     if (UserDesignation == 'HOD') {
         const hodLeaveApply = document.querySelector("#ref_hide_hod")
-        hodLeaveApply.hidden=false
+        hodLeaveApply.hidden = false
         getReferenceUser()
 
     }
     if (UserDesignation == 'faculty') {
         const facultyLeaveApply = document.querySelector("#All_ref_hide")
-        facultyLeaveApply.hidden=false
+        facultyLeaveApply.hidden = false
         getReferenceUser()
 
     }
@@ -185,6 +207,7 @@ function closePopup() {
 
 function confirm_logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('designation');
     location.replace("index.html")
 }
 function complete_profile() {
