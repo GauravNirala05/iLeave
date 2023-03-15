@@ -31,7 +31,7 @@ transporter.verify((error, success) => {
 
 const register = async (req, res) => {
     console.log(req.body);
-    const { email, name, password } = req.body
+    const { email, password } = req.body
     if (await User.exists({ email })) {
         const data = await User.findOne({ email })
         if (data.verified == false) {
@@ -44,7 +44,7 @@ const register = async (req, res) => {
 
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
-        const data = await User.create({ email, name, password:hashedPassword })
+        const data = await User.create({ email, password:hashedPassword })
         console.log(`User created`);
         sendVerificationEmail(data, res)
         res.status(StatusCodes.CREATED).json({ status: 'PENDING', msg: `Email has been sent to your email: ${email}` })

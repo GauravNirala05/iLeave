@@ -23,6 +23,12 @@
   <link rel="stylesheet" href="assets/css/updateprofile.css">
   <link rel="stylesheet" href="assets/css/completeprofile.css">
   <link rel="stylesheet" href="assets/css/newapplyleave.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 
 <body>
@@ -95,9 +101,7 @@
         </label>
         Setting
       </h2>
-
-      <div class="dropdown" id="profile">
-      </div>
+      <div id="profilecontent"></div>
     </header>
 
     <main>

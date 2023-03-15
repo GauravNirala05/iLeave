@@ -23,6 +23,12 @@
   <link rel="icon" href="images/logo.svg">
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/newstatus.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 <style>
 </style>
@@ -110,11 +116,7 @@
         </label>
         Leave Status
       </h2>
-      <div class="dropdown" id="profile">
-      </div>
-
-
-
+      <div id="profilecontent"></div>
     </header>
 
     <main>
@@ -186,16 +188,7 @@
               <h3>Leave History</h3>
 
               <div>
-                <i type="button" onclick="toggleDropdown()" class="fa fa-sliders mr-2" aria-hidden="true"> filter</i>
-
-                <div id="myDropdown" style="display: none;">
-                  <a href="#">Link 1</a>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
-                </div>
-
-
-                <button>Go <span class="fa fa-arrow-down"></span> </button>
+                <button>show all <span class="fa fa-arrow-down"></span> </button>
               </div>
             </div>
 

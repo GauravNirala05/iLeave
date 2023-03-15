@@ -27,6 +27,12 @@
 
   <!--script to include an html page to another page-->
   <script src="https://unpkg.com/htmlincludejs"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 <style>
 </style>
@@ -107,8 +113,7 @@
         Apply Leave
       </h2>
 
-      <div class="dropdown" id="profile">
-      </div>
+      <include src="profile.html"></include>
     </header>
 
     <main>
@@ -127,14 +132,13 @@
                       <div class="col-md-6 form-group">
                         <label class="mb-0">From:</label>
                         <!-- From -->
-                        <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
-                          placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
-                          for="fromdate"></label>
+                        <input required title="Please enter your username" type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
+                          placeholder="From Date" >
                       </div>
                       <div class="col-md-6 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
-                        <input type="date" class="form-control error todate" name="todate" id="todate"
+                        <input required type="date" class="form-control error todate" name="todate" id="todate"
                           placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
                           for="todate"></label>
                       </div>
@@ -143,7 +147,7 @@
                       <div class="col-md-6 form-group">
                         <!-- To -->
                         <label for="">Total days:</label>
-                        <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
+                        <input required type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
                           placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
                           for="totaldays">
                         </label>

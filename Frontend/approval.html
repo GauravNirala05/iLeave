@@ -23,6 +23,12 @@
   <link rel="icon" href="images/logo.svg">
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/newstatus.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 <style>
 </style>
@@ -97,11 +103,7 @@
         </label>
         Leave Status
       </h2>
-      <div class="dropdown" id="profile">
-      </div>
-
-
-
+      <div id="profilecontent"></div>
   </header>
 
   <main>
