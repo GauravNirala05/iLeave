@@ -32,7 +32,7 @@ const getReferenceUser = async () => {
             ref4.append(opt4)
         }
         else {
-            for (item in data) {
+            for (item of data) {
                 var opt1 = document.createElement('option')
                 opt1.innerHTML = `${item.name}`
                 var opt2 = document.createElement('option')
@@ -100,7 +100,7 @@ button_apply.addEventListener('click', async (e) => {
     const reference4 = document.querySelector('.reference4').value
     const leave_type = document.querySelector('.leavetype').value
     const reason = document.querySelector('.reason').value
-    
+
     //for Hod
     const reference = document.querySelector('.reference').value
 
