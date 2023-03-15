@@ -33,19 +33,20 @@
         border-bottom: 3px solid transparent;
 	}
 	.nav-nav:hover{
-		color:rgb(35, 67, 79);
+		color:rgb(0, 0, 0);
         border-bottom: 3px solid #fff;
+        text-decoration: none;
 	}
 	.navbtn{
         font-family:sans-serif;
         font-weight: bold;
-		color:#fff;
+		color:#ffffff;
         font-size: 15px;
 		border-radius:100px;
 		transition: transform .2s; 
 	}
 	.navbtn:hover{
-		background-color:#083f7a;
+		background-color:#eeeeee;
 		zoom: 1.2;
 	}
     .custom-toggler.navbar-toggler {
@@ -240,8 +241,8 @@ footer {
   }
   
   footer ul li a:hover {
-    color: #333;
-    text-decoration: underline;
+    color: #dddddd;
+    text-decoration: none;
   }
   .footer-copyright p{
 font-size: 20px;

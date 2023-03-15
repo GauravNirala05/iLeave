@@ -22,7 +22,7 @@
 }
 
 .sidebar{
-  width: 345px;
+  width: 20%;
   position: fixed;
   left: 0;
   top: 0;
@@ -141,7 +141,7 @@
 }
 .main-content{
   transition: margin-left 300ms;
-  margin-left: 345px;
+  margin-left: 20%;
 }
 header{
   background: #fff;
@@ -150,7 +150,7 @@ header{
   padding: 1rem 1.5rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   position: fixed;
-  left: 345px;
+  left: 20%;
   top:0;
   z-index: 100; 
   width: calc(100% - 345px);
@@ -297,12 +297,13 @@ main{
 }
 .card-header3{
   /* display:flex; */
-  width: 270px;
+  width: 248px;
+  height: 140px;
   padding: 1.5rem;
   justify-content: space-between;
   align-items: center;
   background-color: #f57c00;
-  margin-left: 3%;
+  margin-left: 20px;
   margin-bottom: 1%;
   border-radius: 3%;
   font-size: 1px;
@@ -310,7 +311,7 @@ main{
 }
 
 .card-header3 td{
-  font-size: 25px;
+  font-size: 22px;
   color: #f0f0f0;
   
 }
@@ -330,11 +331,12 @@ table{
 thead tr{
   border-top: 1px solid #f0f0f0;
   border-bottom:2px solid #f0f0f0;
+  
 
 }
 thead td{
   font-weight: 550;
-  font-size: 26px;
+  font-size: 20px;
 }
 td{
   padding: .5rem 1rem ;
@@ -347,6 +349,7 @@ td{
 tr td:last-child{
   display: flex;
   align-items: center;
+  
 
 
 }
