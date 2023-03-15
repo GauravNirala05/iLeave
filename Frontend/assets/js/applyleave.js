@@ -1,4 +1,20 @@
 
+const token = localStorage.getItem('token')
+console.log(token);
+
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#logmsg")
+
+if (token == null) {
+    pop2.hidden = false
+    main.hidden = true
+    f.innerHTML = `You Need to Login First`
+    sidebar.hidden = true
+    openPopup2()
+}
+
 const button_apply = document.querySelector('.btn_apply')
 
 button_apply.addEventListener('click', async (e) => {
@@ -81,3 +97,25 @@ button_apply.addEventListener('click', async (e) => {
     }
 })
 
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function openPopup2() {
+    document.getElementById("popup2").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+function confirm_logout() {
+    localStorage.removeItem('token');
+    location.replace("index.html")
+}
+function complete_profile() {
+    location.replace("complete_profile.html")
+}
+function login() {
+    location.replace("login.html")
+}
