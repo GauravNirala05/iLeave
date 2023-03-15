@@ -217,3 +217,37 @@
     width: 280px;
     height: 720px;
 }
+
+/* Style the label element to look like a button */
+.toggle {
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  background-color: #ccc;
+  border-radius: 20px;
+  margin: 10px;
+  position: relative;
+}
+
+/* Style the checkbox input element */
+.toggle input {
+  display: none;
+}
+
+/* Style the slider element */
+.slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+/* Style the slider element for the checked state */
+.toggle input:checked + .slider {
+  background-color: green;
+  transform: translateX(26px);
+}
