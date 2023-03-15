@@ -1,19 +1,21 @@
 const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const foot = document.querySelector(".footer")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#logmsg")
 
+const token = localStorage.getItem('token')
+
+if (token == null) {
+  pop2.hidden = false
+  main.hidden = true
+  f.innerHTML = `You Need to Login First`
+  sidebar.hidden = true
+  openPopup2()
+  return
+}
 const getuser = async () => {
-  const token = localStorage.getItem('token')
-  if (token == null) {
-    const pop2 = document.querySelector("#popup2")
-    const f = document.querySelector("#fuck")
-    pop2.hidden = false
-    f.innerHTML = `You Need to Login First`
-    main.hidden = true
-    sidebar.hidden = true
-    openPopup2()
-    return
-  }
+  
 
   try {
 
@@ -193,14 +195,17 @@ function login() {
 
 const getleavestatus = async () => {
   const token = localStorage.getItem('token')
-
+  const stat=[]
+  stat.push('applied')
+  console.log(stat);
   try {
     const user = await fetch('/leaveStatus', {
       method: 'POST',
       body: JSON.stringify({
-        "status": ["applied"]
+        status:stat
       }),
       headers: {
+        'Content-type':'Application/json',
         'Authorization': `Bearer ${token}`
       },
     })
