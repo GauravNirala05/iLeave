@@ -1,6 +1,6 @@
 const usertoken = localStorage.getItem('token');
 if (usertoken!=null){
-  location.replace("dashboard.html")
+  location.replace("Dashboard.html")
 }
 
 
@@ -74,7 +74,7 @@ btn_regi.addEventListener('click', async (e) => {
         return;
       }
     e.preventDefault()
-    validateInputs();
+    // validateInputs();
     if (password_regi.value == confirmPassword_regi.value) {
         document.getElementById("errormsg").innerHTML = ``
         const email = email_regi.value

@@ -132,14 +132,15 @@
                       <div class="col-md-6 form-group">
                         <label class="mb-0">From:</label>
                         <!-- From -->
-                        <input required title="Please enter your username" type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
-                          placeholder="From Date" >
+                        <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
+                          placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
+                          for="fromdate"  required="true"></label>
                       </div>
                       <div class="col-md-6 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
-                        <input required type="date" class="form-control error todate" name="todate" id="todate"
-                          placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
+                        <input type="date" class="form-control error todate" name="todate" id="todate"
+                          placeholder="To Date" aria-required="true"  required="true"><label id="lname-error" class="error"
                           for="todate"></label>
                       </div>
                     </div>
@@ -147,8 +148,8 @@
                       <div class="col-md-6 form-group">
                         <!-- To -->
                         <label for="">Total days:</label>
-                        <input required type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
-                          placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
+                        <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
+                          placeholder="Total days" aria-required="true"  required="true"><label id="lname-error" class="error"
                           for="totaldays">
                         </label>
                       </div>
@@ -251,7 +252,7 @@
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                      <button style="width:200px;height: 50px;" class="btn_apply">Apply leave</button>
+                      <button style="width:200px;height: 50px;" class="btn_apply" type="submit">Apply leave</button>
                     </div>
                     <!-- data-target="#myModal" -->
                   </form>
