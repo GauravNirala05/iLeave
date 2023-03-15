@@ -22,13 +22,12 @@ const getuser = async () => {
         'Authorization': `Bearer ${token}`
       }
     })
-    console.log(localStorage.getItem('token'))
+
     if (!user.ok) {
       const userData = await user.json()
       throw Error(userData.msg)
     }
     const userData = await user.json()
-    console.log(userData)
     // console.log(userData.data.designation)
     if (userData.data.profileCompleted == false) {
       
@@ -36,7 +35,17 @@ const getuser = async () => {
         $("#myModal").modal('show');
       });
     }
-    
+
+    document.querySelector(".casual").innerHTML = userData.data.leave_type.casual_leave
+
+    document.querySelector(".earned").innerHTML = userData.data.leave_type.earned_leave
+
+    document.querySelector(".medical").innerHTML = userData.data.leave_type.medical_leave
+
+    document.querySelector(".ordinary").innerHTML = userData.data.leave_type.ordinary_leave
+
+    // console.log(userData.data);
+
     let ihtml = ``
     for (item in userData) {
       // console.log(userData);
@@ -67,19 +76,19 @@ const getuser = async () => {
 
     }
     document.getElementById("profile").innerHTML = ihtml
-    if(userData.data.department=='non-tech'){
-      document.getElementById('All_ref_hide').style.display="none";
+    if (userData.data.department == 'non-tech') {
+      document.getElementById('All_ref_hide').style.display = "none";
       // applyLeave_nontech()
-      
+
     }
-    else{
-      if(userData.data.designation=='HOD'){
-        document.getElementById('reference2').style.display="none";
-        document.getElementById('reference3').style.display="none";
-        document.getElementById('reference4').style.display="none";
+    else {
+      if (userData.data.designation == 'HOD') {
+        document.getElementById('reference2').style.display = "none";
+        document.getElementById('reference3').style.display = "none";
+        document.getElementById('reference4').style.display = "none";
         applyLeave_HOD()
       }
-      if(userData.data.designation=='faculty'){
+      if (userData.data.designation == 'faculty') {
         applyLeave()
       }
     }
@@ -154,7 +163,6 @@ const getuser = async () => {
 
   } catch (error) {
     console.log(error);
-
   }
 
 }
@@ -182,3 +190,33 @@ function complete_profile() {
 function login() {
   location.replace("login.html")
 }
+
+
+const getleavestatus = async () => {
+  const token = localStorage.getItem('token')
+
+  try {
+    const user = await fetch('/leaveStatus', {
+      method: 'POST',
+      body: JSON.stringify({
+        "status": ["applied"]
+      }),
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    })
+
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+    const leaveData = await user.json()
+    console.log(leaveData)
+
+  } catch (error) {
+    console.log(error);
+
+  }
+
+}
+getleavestatus()
