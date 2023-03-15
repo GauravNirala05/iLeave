@@ -33,17 +33,18 @@ const alluser = async (req, res) => {
 
 const leaveStatus = async (req, res) => {
     const { userID, userName } = req.user
-    const { status: stat } = req.body
+    const {status} = req.body
+    console.log(req.user);
     if (await User.exists({ _id: userID, designation: 'faculty' })) {
-        const facultyLeave = await Leave.find({ employee_id: userID,status:stat }).sort('createdAt')
+        const facultyLeave = await Leave.find({ employee_id: userID,status }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: facultyLeave.length, data: facultyLeave })
     }
     if (await User.exists({ _id: userID, designation: 'HOD' })) {
-        const hodLeave = await HodLeave.find({ employee_id: userID,status:stat }).sort('createdAt')
+        const hodLeave = await HodLeave.find({ employee_id: userID,status }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: hodLeave.length, data: hodLeave })
     }
     if (await User.exists({ _id: userID, department: 'non-tech' })) {
-        const nontechLeave = await nonTechLeave.find({ employee_id: userID,status:stat }).sort('createdAt')
+        const nontechLeave = await nonTechLeave.find({ employee_id: userID,status }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: nontechLeave.length, data: nontechLeave })
     }
 
