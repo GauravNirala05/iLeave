@@ -28,7 +28,7 @@ const getuser = async () => {
       throw Error(userData.msg)
     }
     const userData = await user.json()
-    // console.log(userData.data.designation)
+
     if (userData.data.profileCompleted == false) {
       
       $(document).ready(function () {
@@ -199,7 +199,7 @@ const getleavestatus = async () => {
     const user = await fetch('/leaveStatus', {
       method: 'POST',
       body: JSON.stringify({
-        "status": ["applied"]
+        status: ["applied"]
       }),
       headers: {
         'Authorization': `Bearer ${token}`
