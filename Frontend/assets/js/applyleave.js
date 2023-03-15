@@ -1,3 +1,4 @@
+
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -53,13 +54,14 @@ const getReferenceUser = async () => {
         console.log(error)
     }
 }
-
-const token = localStorage.getItem('token')
-
 const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
 const f = document.querySelector("#logmsg")
+
+const token = localStorage.getItem('token')
+const UserDesignation = localStorage.getItem('designation')
+
 
 if (token == null) {
     pop2.hidden = false
@@ -68,8 +70,19 @@ if (token == null) {
     sidebar.hidden = true
     openPopup2()
 }
-else{
-    getReferenceUser()
+else {
+    if (UserDesignation == 'HOD') {
+        const hodLeaveApply = document.querySelector("#ref_hide_hod")
+        hodLeaveApply.hidden=false
+        getReferenceUser()
+
+    }
+    if (UserDesignation == 'faculty') {
+        const facultyLeaveApply = document.querySelector("#All_ref_hide")
+        facultyLeaveApply.hidden=false
+        getReferenceUser()
+
+    }
 }
 
 
@@ -87,6 +100,9 @@ button_apply.addEventListener('click', async (e) => {
     const reference4 = document.querySelector('.reference4').value
     const leave_type = document.querySelector('.leavetype').value
     const reason = document.querySelector('.reason').value
+    
+    //for Hod
+    const reference = document.querySelector('.reference').value
 
     if (!fromdate || !todate) {
         throw Error(`please provide dates first`)

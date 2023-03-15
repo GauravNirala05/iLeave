@@ -10,17 +10,20 @@ const getuser = async () => {
       throw Error(userData.msg)
     }
 
-    const userData = await user.json()
+    const { data } = await user.json()
 
-    if (userData.data.profileCompleted == false) {
+    if (data.profileCompleted == false) {
       $(document).ready(function () {
         $("#myModal").modal('show');
       });
     }
-    document.querySelector(".casual").innerHTML = userData.data.leave_type.casual_leave
-    document.querySelector(".earned").innerHTML = userData.data.leave_type.earned_leave
-    document.querySelector(".medical").innerHTML = userData.data.leave_type.medical_leave
-    document.querySelector(".ordinary").innerHTML = userData.data.leave_type.ordinary_leave
+    else {
+      document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+      document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+      document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+      document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+      localStorage.setItem('designation', data.designation)
+    }
   } catch (error) {
     console.log(error);
   }
