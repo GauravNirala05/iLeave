@@ -12,7 +12,6 @@ if (token == null) {
   f.innerHTML = `You Need to Login First`
   sidebar.hidden = true
   openPopup2()
-  return
 }
 const getuser = async () => {
   

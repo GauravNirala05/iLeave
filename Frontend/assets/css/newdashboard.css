@@ -117,6 +117,7 @@
   padding-bottom: 1rem;
   color: var(--main-color);
   border-radius: 30px 0px 0px 30px;
+  text-decoration: none;
 
 }
 
@@ -257,7 +258,7 @@ main{
   margin-top: 1.5rem;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 65% auto;
+  grid-template-columns: 100% auto;
   /* animation: top-bottom2 300ms */
   animation: scroll 0.95s ease-in-out;
  
@@ -279,6 +280,40 @@ main{
   align-items: center;
   border-bottom: 1px solid #f0f0f0;
 }
+.card-header2
+{
+  padding: 1rem;
+}
+.card-header2{
+  /* display:flex; */
+  padding: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c9c8c8;
+}
+.card-header3
+{
+  padding: 1rem;
+}
+.card-header3{
+  /* display:flex; */
+  width: 270px;
+  padding: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f57c00;
+  margin-left: 3%;
+  margin-bottom: 1%;
+  border-radius: 3%;
+  font-size: 1px;
+  border-bottom: 1px solid #f57c00;
+}
+
+.card-header3 td{
+  font-size: 25px;
+  color: #f0f0f0;
+  
+}
 
 
 .card-header button{
@@ -298,12 +333,14 @@ thead tr{
 
 }
 thead td{
-  font-weight: 700;
+  font-weight: 550;
+  font-size: 26px;
 }
 td{
   padding: .5rem 1rem ;
-  font-size: .9rem ;
+  font-size: 2rem ;
   color: #222;
+  font-size: 20px;
   
 }
 
@@ -327,6 +364,8 @@ td .status{
   background: deeppink;
 }
 .status.orange{
+  width: 25px;
+  height: 25px;
   background: orangered;
 }
 .table-responsive{
@@ -656,4 +695,9 @@ footer{
   color: #fff;
   text-align: center;
   padding: 10px;
+}
+
+.dep{
+  border: #1D2231;
+  border-radius: 5%;
 }
