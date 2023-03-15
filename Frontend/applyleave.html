@@ -122,13 +122,13 @@
                         <!-- From -->
                         <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
                           placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
-                          for="fromdate"></label>
+                          for="fromdate"  required="true"></label>
                       </div>
                       <div class="col-md-6 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
                         <input type="date" class="form-control error todate" name="todate" id="todate"
-                          placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
+                          placeholder="To Date" aria-required="true"  required="true"><label id="lname-error" class="error"
                           for="todate"></label>
                       </div>
                     </div>
@@ -137,7 +137,7 @@
                         <!-- To -->
                         <label for="">Total days:</label>
                         <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
-                          placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
+                          placeholder="Total days" aria-required="true"  required="true"><label id="lname-error" class="error"
                           for="totaldays">
                         </label>
                       </div>
@@ -145,7 +145,7 @@
                         <!-- Phone Number -->
                         <label for="">Contact No:</label>
                         <input type="number" class="form-control error mob_no" name="number" id="mob_no"
-                          placeholder="Enter your mobile number" aria-required="true" required><label id="lname-error" class="error"
+                          placeholder="Enter your mobile number" aria-required="true" required="true"><label id="lname-error" class="error"
                           for="contactno"></label>
                       </div>
                       
@@ -244,12 +244,12 @@
                       <div class="col-md-12 form-group mt-4">
                         <label for="">Reason:</label>
                         <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
-                          placeholder="Reason For Applying Leave" aria-required="true"></textarea><label
+                          placeholder="Reason For Applying Leave" aria-required="true" required="true"></textarea><label
                           id="message-error" class="error" for="message">Please enter a message</label>
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                      <button style="width:200px;height: 50px;" class="btn_apply">Apply leave</button>
+                      <button style="width:200px;height: 50px;" class="btn_apply" type="submit">Apply leave</button>
                     </div>
                     <!-- data-target="#myModal" -->
                   </form>

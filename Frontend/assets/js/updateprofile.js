@@ -197,3 +197,8 @@ function complete_profile() {
 function login() {
   location.replace("login.html")
 }
+
+var loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};

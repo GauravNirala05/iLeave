@@ -46,7 +46,7 @@ const getuser = async () => {
 
     document.querySelector(".ordinary").innerHTML = userData.data.leave_type.ordinary_leave
 
-    // console.log(userData.data);
+    console.log(userData.data);
 
     let ihtml = ``
     for (item in userData) {

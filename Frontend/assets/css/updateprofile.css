@@ -73,8 +73,40 @@
 .orangered{
     color: #f57c00
 }
-
 .img{
   display: flex;
   justify-content: center;
+}
+/*Image upload css*/
+.upload {
+  width: 100px;
+  position: relative;
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+.upload img {
+  border-radius: 50%;
+  border: 6px solid black;
+}
+
+.upload .round {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  overflow: hidden;
+
+}
+
+.upload .round input[type='file'] {
+  
+  position: absolute;
+  transform: scale(3);
+  opacity: 0;
 }

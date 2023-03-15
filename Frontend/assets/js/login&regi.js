@@ -1,6 +1,6 @@
 const usertoken = localStorage.getItem('token');
 if (usertoken!=null){
-  location.replace("dashboard.html")
+  location.replace("Dashboard.html")
 }
 
 
@@ -72,7 +72,7 @@ const errorElement=document.getElementById("error")
 
 btn_regi.addEventListener('click', async (e) => {
     e.preventDefault()
-    validateInputs();
+    // validateInputs();
     if (password_regi.value == confirmPassword_regi.value) {
         document.getElementById("errormsg").innerHTML = ``
         const name = name_regi.value
