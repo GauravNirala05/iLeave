@@ -17,7 +17,6 @@ const getuser = async () => {
         $("#myModal").modal('show');
       });
     }
-
     document.querySelector(".casual").innerHTML = userData.data.leave_type.casual_leave
     document.querySelector(".earned").innerHTML = userData.data.leave_type.earned_leave
     document.querySelector(".medical").innerHTML = userData.data.leave_type.medical_leave
@@ -80,6 +79,7 @@ if (token == null) {
 }
 else {
   getuser()
+  console.log(`its running`);
   getleavestatus()
 
 }

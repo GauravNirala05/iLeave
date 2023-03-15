@@ -1,6 +1,60 @@
+const getReferenceUser = async () => {
+    try {
+        const getRefUser = await fetch('/getReferenceUser', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+
+        })
+        if (!getRefUser.ok) {
+            const users = await getRefUser.json()
+            throw Error(users.msg)
+        }
+        const { data, hits } = await getRefUser.json()
+        console.log(data)
+        const ref1 = document.querySelector('.reference1')
+        const ref2 = document.querySelector('.reference2')
+        const ref3 = document.querySelector('.reference3')
+        const ref4 = document.querySelector('.reference4')
+        if (hits == 0) {
+            var opt1 = document.createElement('option')
+            opt1.innerHTML = `--empty--`
+            var opt2 = document.createElement('option')
+            opt2.innerHTML = `--empty--`
+            var opt3 = document.createElement('option')
+            opt3.innerHTML = `--empty--`
+            var opt4 = document.createElement('option')
+            opt4.innerHTML = `--empty--`
+            ref1.append(opt1)
+            ref2.append(opt2)
+            ref3.append(opt3)
+            ref4.append(opt4)
+        }
+        else {
+            for (item in data) {
+                var opt1 = document.createElement('option')
+                opt1.innerHTML = `${item.name}`
+                var opt2 = document.createElement('option')
+                opt2.innerHTML = `${item.name}`
+                var opt3 = document.createElement('option')
+                opt3.innerHTML = `${item.name}`
+                var opt4 = document.createElement('option')
+                opt4.innerHTML = `${item.name}`
+                ref1.append(opt1)
+                ref2.append(opt2)
+                ref3.append(opt3)
+                ref4.append(opt4)
+
+            }
+        }
+
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
 
 const token = localStorage.getItem('token')
-console.log(token);
 
 const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
@@ -14,6 +68,10 @@ if (token == null) {
     sidebar.hidden = true
     openPopup2()
 }
+else{
+    getReferenceUser()
+}
+
 
 const button_apply = document.querySelector('.btn_apply')
 
