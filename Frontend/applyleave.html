@@ -105,16 +105,16 @@
     </header>
 
     <main>
-      <div class="recents-grid mt-4">
+      <div class="recents-grid mt-4 mb-0">
         <div class="projects">
           <div class="card">
-
-            <div class="card-body ">
-              <div class="  row align-items-center">
+         <div class="card-body ">
+              <div class="row align-items-center">
+                
                 <div class="col-lg-8 mb-5 mb-lg-0">
                   <form class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm"
                     novalidate="novalidate">
-                 
+
 
                     <div class="row mb-0">
                       <div class="col-md-6 form-group">
@@ -131,27 +131,37 @@
                           placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
                           for="todate"></label>
                       </div>
-                     </div>
-                     <div class="row">
-                      <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-                      <div class="col-md-4">
-                      <div class=" form-group">
-                        <label for=""></label>
-                        <select class="form-control">
-                          <option name="reference3" value="">Full Day</option>
-                          <option>Half Day</option>
-                        </select>
-                      </div>
                     </div>
-                      <div class="col-md-4 form-group">
+                    <div class="row">
+                      <div class="col-md-6 form-group">
                         <!-- To -->
-                        <label for="">Total days</label>
+                        <label for="">Total days:</label>
                         <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
                           placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
                           for="totaldays">
                         </label>
                       </div>
-                      <div class="col-md-4 mt-4">
+                      <div class="col-md-6 form-group">
+                        <!-- Phone Number -->
+                        <label for="">Contact No:</label>
+                        <input type="number" class="form-control error mob_no" name="number" id="mob_no"
+                          placeholder="Enter your mobile number" aria-required="true" required><label id="lname-error" class="error"
+                          for="contactno"></label>
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                      <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <select class="form-control">
+                            <option name="reference3" value="">Full Day</option>
+                            <option>Half Day</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
                         <div class=" form-group">
                           <select class="form-control leavetype" id="leavetype">
                             <option name="reference3" value="">Leave Type</option>
@@ -166,35 +176,27 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12 form-group">
-                        <!-- Phone Number -->
-                        <input type="number" class="form-control error mob_no" name="number" id="mob_no"
-                          placeholder="Contact No." aria-required="true" required><label id="lname-error" class="error"
-                          for="contactno"></label>
-                      </div>
-                    </div>
 
                     <div class="row mt-0" id="All_ref_hide">
                       <div class="col-md-3">
-                        <div class=" form-group" >
-                          <select class="form-control reference1" >
+                        <div class=" form-group  mt-4">
+                          <select class="form-control reference1">
                             <option name="reference1" value="">First Year</option>
                             <div id="reference1">
-                            <option>Person 1</option>
-                            <option>Person 2</option>
-                            <option>Person 3</option>
-                            <option>Person 4</option>
-                          </div>
-                          </select> 
+                              <option>Person 1</option>
+                              <option>Person 2</option>
+                              <option>Person 3</option>
+                              <option>Person 4</option>
+                            </div>
+                          </select>
                           <div class="invalid-feedback">
                             Please provide person name.
                           </div>
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group" id="reference2">
-                          <select class="form-control reference2" >
+                        <div class=" form-group mt-4" id="reference2">
+                          <select class="form-control reference2">
                             <option name="reference3" value="">Second Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -207,8 +209,8 @@
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group" id="reference3">
-                          <select class="form-control reference3" >
+                        <div class=" form-group mt-4" id="reference3">
+                          <select class="form-control reference3">
                             <option name="reference3" value="">Third Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -221,8 +223,8 @@
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class=" form-group" id="reference4">
-                          <select class="form-control reference4" >
+                        <div class=" form-group mt-4" id="reference4">
+                          <select class="form-control reference4">
                             <option name="reference3" value="">Fourth Year</option>
                             <option>Person 1</option>
                             <option>Person 2</option>
@@ -236,27 +238,20 @@
                       </div>
                     </div>
                     <div class="row">
-                      
+
                     </div>
                     <div class="row">
-                      <div class="col-md-12 form-group">
+                      <div class="col-md-12 form-group mt-4">
+                        <label for="">Reason:</label>
                         <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
                           placeholder="Reason For Applying Leave" aria-required="true"></textarea><label
                           id="message-error" class="error" for="message">Please enter a message</label>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card-headerx  d-flex justify-content-center">
-                          <button style="width:200px;height: 50px;" type="submit" id="btn_apply" class="btn_apply"
-                            data-toggle="modal" >Apply Leave <span
-                              class="fa fa-arrow-right"></span>
-                          </button>
-                          <!-- data-target="#myModal" -->
-                        </div>
-                        <span class="submitting"></span>
-                      </div>
+                    <div class="row d-flex justify-content-center">
+                      <button style="width:200px;height: 50px;" class="btn_apply">Apply leave</button>
                     </div>
+                    <!-- data-target="#myModal" -->
                   </form>
                   <div id="form-message-warning mt-4"></div>
                   <div id="form-message-success">
@@ -298,7 +293,7 @@
     </main>
   </div>
   <footer class="d-flex mt-3 justify-content-center">
-    <p>Copyright ©2023 
+    <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by
       <a target="_blank" href="https://github.com/GauravNirala05">Gaurav</a>,
       <a target="_blank" href="https://github.com/dewanganRachna">Rachna</a> and
