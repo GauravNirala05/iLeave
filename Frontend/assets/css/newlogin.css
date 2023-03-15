@@ -448,3 +448,6 @@ footer a {
   #button:hover {
 	background: #007c04;
   }
+  .name{
+	width: 280px;
+  }

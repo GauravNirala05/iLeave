@@ -114,32 +114,27 @@
                 <div class="col-lg-8 mb-5 mb-lg-0">
                   <form class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm"
                     novalidate="novalidate">
-                    <div class="row">
-
-                      <div class="col-md-6 form-group">
-                        <!-- Phone Number -->
-                        <input type="number" class="form-control error mob_no" name="number" id="mob_no"
-                          placeholder="Contact No." aria-required="true" required><label id="lname-error" class="error"
-                          for="contactno"></label>
-                      </div>
-                    </div>
+                 
 
                     <div class="row mb-0">
-                      <div class="col-md-4 form-group">
+                      <div class="col-md-6 form-group">
                         <label class="mb-0">From:</label>
                         <!-- From -->
                         <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
                           placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
                           for="fromdate"></label>
                       </div>
-                      <div class="col-md-4 form-group">
+                      <div class="col-md-6 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
                         <input type="date" class="form-control error todate" name="todate" id="todate"
                           placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
                           for="todate"></label>
                       </div>
-                      &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     </div>
+                     <div class="row">
+                      <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                      <div class="col-md-4">
                       <div class=" form-group">
                         <label for=""></label>
                         <select class="form-control">
@@ -147,13 +142,36 @@
                           <option>Half Day</option>
                         </select>
                       </div>
-                      <div class="col-md-3 form-group">
+                    </div>
+                      <div class="col-md-4 form-group">
                         <!-- To -->
                         <label for="">Total days</label>
                         <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
                           placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
                           for="totaldays">
                         </label>
+                      </div>
+                      <div class="col-md-4 mt-4">
+                        <div class=" form-group">
+                          <select class="form-control leavetype" id="leavetype">
+                            <option name="reference3" value="">Leave Type</option>
+                            <option>medical_leave</option>
+                            <option>casual_leave</option>
+                            <option>ordinary_leave</option>
+                            <option>earned_leave</option>
+                          </select>
+                          <div class="invalid-feedback">
+                            Please provide person name.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        <!-- Phone Number -->
+                        <input type="number" class="form-control error mob_no" name="number" id="mob_no"
+                          placeholder="Contact No." aria-required="true" required><label id="lname-error" class="error"
+                          for="contactno"></label>
                       </div>
                     </div>
 
@@ -218,21 +236,10 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-4 mt-4">
-                        <div class=" form-group">
-                          <select class="form-control leavetype" id="leavetype">
-                            <option name="reference3" value="">Leave Type</option>
-                            <option>medical_leave</option>
-                            <option>casual_leave</option>
-                            <option>ordinary_leave</option>
-                            <option>earned_leave</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please provide person name.
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-8 form-group">
+                      
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 form-group">
                         <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
                           placeholder="Reason For Applying Leave" aria-required="true"></textarea><label
                           id="message-error" class="error" for="message">Please enter a message</label>
@@ -240,7 +247,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="card-header d-flex justify-content-center">
+                        <div class="card-headerx  d-flex justify-content-center">
                           <button style="width:200px;height: 50px;" type="submit" id="btn_apply" class="btn_apply"
                             data-toggle="modal" >Apply Leave <span
                               class="fa fa-arrow-right"></span>
