@@ -67,10 +67,12 @@ const email_regi = document.querySelector('.email_regi')
 const password_regi = document.querySelector('.password_regi')
 const confirmPassword_regi = document.querySelector('.confirmPassword_regi')
 var errorhtml = document.getElementById("errormsg").innerHTML;
+const errorElement=document.getElementById("error")
 
 
 btn_regi.addEventListener('click', async (e) => {
     e.preventDefault()
+    validateInputs();
     if (password_regi.value == confirmPassword_regi.value) {
         document.getElementById("errormsg").innerHTML = ``
         const name = name_regi.value
@@ -126,7 +128,48 @@ btn_regi.addEventListener('click', async (e) => {
     }
 
 })
-
+//for validation
+const setError=(element,message)=>{
+    const inputControl=element.parentElement;
+    const errorDisplay=inputControl.querySelector(".error")
+    errorDisplay.innerText=message
+    inputControl.classList.add("error")
+    inputControl.classList.remove("success")
+}
+const setSuccess=(element)=>{
+    const inputControl=element.parentElement;
+    const errorDisplay=inputControl.querySelector(".error")
+    errorDisplay.innerText=''
+    inputControl.classList.add("success")
+    inputControl.classList.remove("error")
+}
+const isValidEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+const validateInputs=()=>{
+    const name_regiValue=name_regi.value.trim()
+    const email_regiValue=email_regi.value.trim()
+    const password_regiValue=password_regi.value.trim()
+    if (name_regiValue==''){
+    setError(name_regi,'Username is required')
+    }else{
+        setSuccess(name_regi)
+    }
+    if (email_regiValue==''){
+        setError(email_regi,'Email is required')
+    }else{
+            setSuccess(email_regi)
+    }
+    if (password_regiValue==''){
+        setError(password_regi,'Password is required')
+    }else if(password_regiValue.length<8){
+            setError(password_regi,'Password must be at least 8 character')
+    }else{
+        setSuccess(password_regi)
+    }
+}
+//for validation
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
