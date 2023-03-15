@@ -24,6 +24,12 @@
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <!--script to include an html page to another page-->
   <script src="https://unpkg.com/htmlincludejs"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 <style>
 </style>
@@ -115,7 +121,8 @@
         </label>
         Dashboard
       </h2>
-          <include src="profile.html"></include>
+      <div id="profilecontent"></div>
+
 
     </header>
 
