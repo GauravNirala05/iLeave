@@ -153,7 +153,7 @@ header{
   left: 20%;
   top:0;
   z-index: 100; 
-  width: calc(100% - 345px);
+  width: calc(80%);
   transition: left 300ms;
   }
 
@@ -313,6 +313,7 @@ main{
 .card-header3 td{
   font-size: 22px;
   color: #f0f0f0;
+  justify-content: center;
   
 }
 
@@ -334,6 +335,7 @@ thead tr{
   
 
 }
+
 thead td{
   font-weight: 550;
   font-size: 20px;
@@ -342,16 +344,23 @@ td{
   padding: .5rem 1rem ;
   font-size: 2rem ;
   color: #222;
-  font-size: 20px;
+  font-size: 17px;
+  text-align: center;
   
+  
+}
+
+.ttt th{
+  font-size: small;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 580;
+  margin-left: 2%;
 }
 
 tr td:last-child{
   display: flex;
   align-items: center;
-  
-
-
 }
 td .status{
   display: inline-block;
