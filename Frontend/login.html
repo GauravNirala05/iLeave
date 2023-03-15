@@ -13,16 +13,19 @@
 
 <body>
   <div class="container" id="container">
-    <div class="form-container sign-up-container">
-
+    <div class="form-container sign-up-container" >
+<!-- <div id="error"></div> -->
       <form>
         <!--           REGISTER              -->
         <h1>Create Account</h1>
         <span>use your email for registration</span>
         <input type="text" class="name_regi" placeholder="Name" />
+        <div class="error"></div>
         <input type="email" class="email_regi" placeholder="Email" />
+        <div class="error"></div>
         <!-- <input type="number" class="mob_no" placeholder="Mobile Number" />-->
         <input type="password" class="password_regi" placeholder="Password" />
+        <div class="error"></div>
         <input type="password" class="confirmPassword_regi" placeholder="Confirm Password" />
         <button class="btn_regi">Register</button>
         <p class="red" id="errormsg"></p>

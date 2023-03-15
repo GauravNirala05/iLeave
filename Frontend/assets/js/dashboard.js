@@ -50,7 +50,7 @@ const getuser = async () => {
 
     let ihtml = ``
     for (item in userData) {
-      // console.log(userData);
+       console.log(userData);
       ihtml = `
         <div class="user-wrapper">
         <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
