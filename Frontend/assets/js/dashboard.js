@@ -31,6 +31,7 @@ const getuser = async () => {
     console.log(userData)
     // console.log(userData.data.designation)
     if (userData.data.profileCompleted == false) {
+      
       $(document).ready(function () {
         $("#myModal").modal('show');
       });
