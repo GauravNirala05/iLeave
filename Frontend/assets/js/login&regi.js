@@ -2,7 +2,7 @@ const usertoken = localStorage.getItem('token');
 
 
 if (usertoken!=null){
-  location.replace("dashboard.html")
+  location.replace("Dashboard.html")
 }
 
 
@@ -64,7 +64,6 @@ btn_log.addEventListener('click', async (e) => {
 
 
 const btn_regi = document.querySelector('.btn_regi')
-const name_regi = document.querySelector('.name_regi')
 const email_regi = document.querySelector('.email_regi')
 const password_regi = document.querySelector('.password_regi')
 const confirmPassword_regi = document.querySelector('.confirmPassword_regi')
@@ -73,11 +72,13 @@ const errorElement=document.getElementById("error")
 
 
 btn_regi.addEventListener('click', async (e) => {
+    if (!form.checkValidity()) {
+        return;
+      }
     e.preventDefault()
-    validateInputs();
+    // validateInputs();
     if (password_regi.value == confirmPassword_regi.value) {
         document.getElementById("errormsg").innerHTML = ``
-        const name = name_regi.value
         const email = email_regi.value
         // const mob = mob_no.value
         const password = password_regi.value
@@ -85,9 +86,7 @@ btn_regi.addEventListener('click', async (e) => {
             const fetcher = await fetch('http://localhost:4000/registration', {
                 method: 'POST',
                 body: JSON.stringify({
-                    name: name,
                     email: email,
-                    // mob_no: mob,
                     password: password
                 }),
                 headers: {
@@ -103,16 +102,8 @@ btn_regi.addEventListener('click', async (e) => {
                 throw Error(`${status}`)
             }
             const { msg } = await fetcher.json()
-            // alert(`${msg}`)
             showPopup()
-            // setTimeout(() => {
-            //     location.replace("login.html")
-                
-            // }, 1000);
-            // name_regi.value = ``
-            // email_regi.value = ``
-            // password_regi.value = ``
-            // confirmPassword_regi.value = ``
+
         } catch (error) {
             console.log(error)
             if (error == "Error: 500"){
@@ -150,14 +141,8 @@ const isValidEmail = email => {
     return re.test(String(email).toLowerCase());
 }
 const validateInputs=()=>{
-    const name_regiValue=name_regi.value.trim()
     const email_regiValue=email_regi.value.trim()
-    const password_regiValue=password_regi.value.trim()
-    if (name_regiValue==''){
-    setError(name_regi,'Username is required')
-    }else{
-        setSuccess(name_regi)
-    }
+    const password_regiValue=password_regi.value.trim() 
     if (email_regiValue==''){
         setError(email_regi,'Email is required')
     }else{

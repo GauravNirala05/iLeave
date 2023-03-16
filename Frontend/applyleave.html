@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -27,6 +27,12 @@
 
   <!--script to include an html page to another page-->
   <script src="https://unpkg.com/htmlincludejs"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 <style>
 </style>
@@ -107,8 +113,8 @@
         Apply Leave
       </h2>
 
-      <div class="dropdown" id="profile">
-      </div>
+      <div id="profilecontent"></div>
+
     </header>
 
     <main>
@@ -119,41 +125,40 @@
               <div class="row align-items-center">
 
                 <div class="col-lg-8 mb-5 mb-lg-0">
-                  <form class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm"
-                    novalidate="novalidate">
+                  <form class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm">
 
 
                     <div class="row mb-0">
+
                       <div class="col-md-6 form-group">
-                        <label class="mb-0">From:</label>
+                        <label class="  mb-0">From:</label>
                         <!-- From -->
-                        <input type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
-                          placeholder="From Date" aria-required="true"><label id="lname-error" class="error"
-                          for="fromdate"></label>
+                        <input required type="date" class="form-control error fromdate" name="fromdate" id="fromdate"
+                          placeholder="From Date">
                       </div>
+
                       <div class="col-md-6 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
-                        <input type="date" class="form-control error todate" name="todate" id="todate"
-                          placeholder="To Date" aria-required="true"><label id="lname-error" class="error"
-                          for="todate"></label>
+                        <input  type="date" class="form-control error todate" name="todate" id="todate"
+                          placeholder="To Date" required>
                       </div>
+
                     </div>
+
                     <div class="row">
                       <div class="col-md-6 form-group">
                         <!-- To -->
                         <label for="">Total days:</label>
-                        <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
-                          placeholder="Total days" aria-required="true"><label id="lname-error" class="error"
-                          for="totaldays">
+                        <input type="number" required class="form-control error totaldays" name="totaldays" id="totaldays"
+                          placeholder="Total days" aria-required="true"  required>
                         </label>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
                         <label for="">Contact No:</label>
                         <input type="number" class="form-control error mob_no" name="number" id="mob_no"
-                          placeholder="Enter your mobile number" aria-required="true" required><label id="lname-error"
-                          class="error" for="contactno"></label>
+                          placeholder="Enter your mobile number" aria-required="true">
                       </div>
 
                     </div>
@@ -161,8 +166,8 @@
                       <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                       <div class="col-md-6">
                         <div class="form-group">
-                          <select class="form-control">
-                            <option name="reference3" value="">Full Day</option>
+                          <select class="form-control" required>
+                            <option name="reference3">Full Day</option>
                             <option>Half Day</option>
                           </select>
                         </div>
@@ -170,7 +175,7 @@
 
                       <div class="col-md-6">
                         <div class=" form-group">
-                          <select class="form-control leavetype" id="leavetype">
+                          <select class="form-control leavetype" id="leavetype" required>
                             <option name="reference3" value="">Leave Type</option>
                             <option value="medical_leave">Medical leave</option>
                             <option value="casual_leave">Casual leave</option>
@@ -187,7 +192,7 @@
                     <div class="row mt-0" hidden="true" id="All_ref_hide">
                       <div class="col-md-3">
                         <div class=" form-group  mt-4">
-                          <select class="form-control reference1">
+                          <select class="form-control reference1" required>
                             <option name="reference1" value="">First Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -197,7 +202,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference2">
-                          <select class="form-control reference2">
+                          <select class="form-control reference2" required>
                             <option name="reference2" value="">Second Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -207,7 +212,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference">
-                          <select class="form-control reference3">
+                          <select class="form-control reference3" required>
                             <option name="reference3" value="">Third Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -217,7 +222,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference4">
-                          <select class="form-control reference4">
+                          <select class="form-control reference4" required>
                             <option name="reference3" value="">Fourth Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -243,11 +248,11 @@
                       <div class="col-md-12 form-group mt-4">
                         <label for="">Reason:</label>
                         <textarea class="form-control error reason" name="message" id="reason" cols="30" rows="3"
-                          placeholder="Reason For Applying Leave" aria-required="true"></textarea>
+                          placeholder="Reason For Applying Leave" required></textarea>
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                      <button style="width:200px;height: 50px;" class="btn_apply">Apply leave</button>
+                      <button style="width:200px;height: 50px;" class="btn_apply" type="submit">Apply leave</button>
                     </div>
                     <!-- data-target="#myModal" -->
                   </form>

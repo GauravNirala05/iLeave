@@ -24,6 +24,12 @@
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <!--script to include an html page to another page-->
   <script src="https://unpkg.com/htmlincludejs"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script>
+      $(function() {
+         $("#profilecontent").load("profile.html");
+      });
+   </script> 
 </head>
 <style>
 </style>
@@ -115,36 +121,9 @@
         </label>
         Dashboard
       </h2>
-      <div class="dropdown" id="profile">
-      </div>
-      <div id="only_auth" class="only_auth recents-grid ">
-        
-        <div class="user-wrapper">
-          <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
-          </a>
+      <div id="profilecontent"></div>
 
-          <div class="">
-            <span class="row">
-              <h4 class="prof">Mr.</h4><h4 class="name mr-4">Joker</h4>
-            </span>
-          </div>
-  
-          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-            <img src="images/profile.jpg" class="mx-auto d-block" alt="John" style="width:70px;height: 70px;">
-            <div class="card-header" style="margin:10px">
-            <div>
-              <h3 class="title mb-4">@degignation</h3>
-              <div class="card-header2">
-                <h5>@department</h5>
-                <h5><i class="fa fa-envelope"></i>@email.com</h5>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </header>
 
     <main class="mt-50">

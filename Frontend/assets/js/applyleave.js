@@ -111,6 +111,9 @@ else {
 const button_apply = document.querySelector('.btn_apply')
 
 button_apply.addEventListener('click', async (e) => {
+    if (!contactForm.checkValidity()) {
+        return;
+      }
     e.preventDefault()
 
     const contactno = document.querySelector('.mob_no').value
