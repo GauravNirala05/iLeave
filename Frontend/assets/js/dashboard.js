@@ -1,5 +1,4 @@
 const token = localStorage.getItem('token')
-console.log(token);
 const getuser = async () => {
   try {
     const user = await fetch('/getUserData', {
@@ -34,7 +33,6 @@ const getuser = async () => {
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
-  console.log(stat);
   try {
     const user = await fetch('/leaveStatus', {
       method: 'POST',
