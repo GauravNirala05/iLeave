@@ -24,20 +24,22 @@
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/newstatus.css">
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-   <script>
-      $(function() {
-         $("#profilecontent").load("profile.html");
-      });
-   </script> 
+  <script>
+    $(function () {
+      $("#profilecontent").load("profile.html");
+    });
+  </script>
 </head>
 <style>
 </style>
 
 <body>
-    <div id="popup" class="popup card-header">
-		<div class="popup-content">
-			<span class="close" onclick="closePopup()">&times;</span>
-			<div class="d-flex justify-content-center"><p  id="logmsg">Are You Sure You Want to Logout!</p></div>
+  <div id="popup" class="popup card-header">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <div class="d-flex justify-content-center">
+        <p id="logmsg">Are You Sure You Want to Logout!</p>
+      </div>
       <div class="modal-footer d-flex justify-content-center">
         <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
         <button onclick="closePopup()">Cancel</button>
@@ -121,11 +123,11 @@
 
     <main>
 
-      <label class="toggle">
+      <!-- <label class="toggle">
         <input type="checkbox">
         <span class="slider"></span>
-      </label>
-    
+      </label> -->
+
       <div class="recents-grid mt-4">
         <div class="projects">
           <div class="card">
@@ -136,7 +138,7 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table width="100%">
-                  <thead>
+                  <thead class="ttt">
                     <tr>
                       <td>Sr.No</td>
                       <td>Application Date</td>

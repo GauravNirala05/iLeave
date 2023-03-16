@@ -143,7 +143,7 @@ const getuser = async () => {
       </div>`
 
     }
-    document.getElementById("profile").innerHTML = ihtml
+    document.getElementById("profilecontent").innerHTML = ihtml
     if (userData.data.department == 'non-tech') {
       document.getElementById('All_ref_hide').style.display = "none";
       // applyLeave_nontech()
