@@ -31,3 +31,28 @@ function toggleDropdown() {
   function login() {
     location.replace("login.html")
   }
+
+  var content1 = document.getElementById("content-1");
+  var content2 = document.getElementById("content-2");
+  var button1 = document.getElementById("toggle-button-1");
+  var button2 = document.getElementById("toggle-button-2");
+  
+  content1.style.display = "block";
+  content2.style.display = "none";
+  button1.classList.add("active");
+
+
+  function toggleContentstatus() {
+      content1.style.display = "block";
+      content2.style.display = "none";
+      button1.classList.add("active");
+      button2.classList.remove("active");
+  }
+
+  function toggleContenthistory() {
+      content1.style.display = "none";
+      content2.style.display = "block";
+      button1.classList.remove("active");
+      button2.classList.add("active");
+  }
+  
