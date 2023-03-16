@@ -1,3 +1,128 @@
+const token = localStorage.getItem('token')
+console.log(token);
+
+const getleavestatus = async () => {
+  const stat = []
+  stat.push('applied')
+  console.log(stat);
+  try {
+    const user = await fetch('/leaveStatus', {
+      method: 'POST',
+      body: JSON.stringify({
+        status: stat
+      }),
+      headers: {
+        'Content-type': 'Application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    })
+
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+    const { data, hits } = await user.json()
+    if (hits == 0) {
+      const table = document.querySelector('#leavePending')
+      table.innerHTML = `<tr style="text-align: center;font-size: 30px;font-weight: 100;">
+      <th>No Leaves applied yet...</th>
+      </tr>`
+    }
+    else {
+      const pendingLeaveBody = document.querySelector('#pendingLeaveBody')
+      const defaultPendingLeave = document.querySelector('#defaultPendingLeave')
+      defaultPendingLeave.hidden = true
+      let counter = 1
+      data.forEach(element => {
+        dateCreated=new Date(element.createdAt).toDateString()
+        dateFrom=new Date(element.from_date).toDateString()
+        dateTo=new Date(element.to_date).toDateString()
+        var ihtml = ``
+        var tr = document.createElement('tr')
+        ihtml += `<td>${counter}</td>
+        <td>${dateCreated}</td>
+        <td>${element.leave_type}</td>
+        <td>${dateFrom}</td>
+        <td>${dateTo}</td>`
+
+        if (element.employee_dep == 'non-tech') {
+          const pendingLeaveReference = document.querySelector('#pendingLeaveReference')
+          pendingLeaveReference.hidden = true
+          if (element.head_approval) {
+            ihtml += `<td>${element.head_approval}</td>`
+          }
+          else {
+            ihtml += `<td>Pending</td>`
+          }
+          if (element.principal_approval) {
+            ihtml += `<td>${element.principal_approval}</td>`
+          }
+          else {
+            ihtml += `<td>Pending</td>`
+          }
+          ihtml += `<td>${element.status}</td>`
+        }
+        else {
+          ihtml += `<td>
+          <div>${element.reference1.name}</div>
+          <div>${element.reference2.name}</div>
+          <div>${element.reference3.name}</div>
+          <div>${element.reference4.name}</div>
+        </td>`
+          if (element.head_approval) {
+            ihtml += `<td>${element.head_approval}</td>`
+          }
+          else {
+            ihtml += `<td>Pending</td>`
+          }
+          if (element.principal_approval) {
+            ihtml += `<td>${element.principal_approval}</td>`
+          }
+          else {
+            ihtml += `<td>Pending</td>`
+          }
+          ihtml += `<td>${element.status}</td>`
+        }
+        tr.innerHTML=ihtml
+        pendingLeaveBody.append(tr)
+        counter++
+      });
+      console.log(data)
+    }
+
+  } catch (error) {
+    console.log(error);
+
+  }
+
+}
+
+if (token == null) {
+  pop2.hidden = false
+  main.hidden = true
+  f.innerHTML = `You Need to Login First`
+  sidebar.hidden = true
+  openPopup2()
+}
+else {
+  getleavestatus()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function toggleDropdown() {
     var dropdown = document.getElementById("myDropdown");
     if (dropdown.style.display === "none") {
