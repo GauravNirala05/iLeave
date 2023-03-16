@@ -12,11 +12,11 @@ const email_log = document.querySelector('.email_log')
 const password_log = document.querySelector('.password_log')
 
 btn_log.addEventListener('click', async (e) => {
+    e.preventDefault()
     document.getElementById("loginerrormsg").innerHTML = ``
     if (!LOGform.checkValidity()) {
         return;
       }
-    e.preventDefault()
 
     const email = email_log.value
     const password = password_log.value
@@ -44,7 +44,7 @@ btn_log.addEventListener('click', async (e) => {
             const { data, msg, token } = await loger.json()
             localStorage.setItem("token", token)
             // alert(`${msg}`)
-            location.replace("Dashboard.html")
+            location.replace("dashboard.html")
                 
             
         }
