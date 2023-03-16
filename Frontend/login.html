@@ -30,17 +30,17 @@
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form>
+      <form id="LOGform">
         <span class="row">
           <h1>Sign in to</h1><img class="logo" src="images/name.svg">
         </span>
 
         <span class="span-1">or use your account</span>
-        <input type="email" class="email_log" placeholder="Email" />
-        <input type="password" class="password_log" placeholder="Password" />
+        <input required type="email" class="email_log" placeholder="Email" />
+        <input required type="password" class="password_log" placeholder="Password" />
         <!-- Trigger/Open The Modal -->
         <a class="button2" href="changepassword.html">Forgot your password?</a>
-        <button class="btn_log">Sign In</button>
+        <button class="btn_log" type="submit">Sign In</button>
         <p class="red" id="loginerrormsg"></p>
       </form>
 

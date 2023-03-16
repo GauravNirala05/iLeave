@@ -241,6 +241,7 @@ main{
   grid-template-columns: 100% auto;
   /* animation: top-bottom2 300ms */
   animation: scroll 0.95s ease-in-out;
+  width: auto;
  
 }
 .card{

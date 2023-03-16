@@ -25,11 +25,11 @@
   <!--script to include an html page to another page-->
   <script src="https://unpkg.com/htmlincludejs"></script>
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-   <script>
-      $(function() {
-         $("#profilecontent").load("profile.html");
-      });
-   </script> 
+  <script>
+    $(function () {
+      $("#profilecontent").load("profile.html");
+    });
+  </script>
 </head>
 <style>
 </style>
@@ -37,9 +37,11 @@
 <body>
   <include src="./dashboard_modal.html"></include>
   <div id="popup" class="popup card-header">
-		<div class="popup-content">
-			<span class="close" onclick="closePopup()">&times;</span>
-			<div class="d-flex justify-content-center"><p  id="logmsg">Are You Sure You Want to Logout!</p></div>
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <div class="d-flex justify-content-center">
+        <p id="logmsg">Are You Sure You Want to Logout!</p>
+      </div>
       <div class="modal-footer d-flex justify-content-center">
         <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
         <button onclick="closePopup()">Cancel</button>
@@ -127,8 +129,8 @@
 
     <main class="mt-50">
 
-      
-      
+
+
       <div class="recent-grid">
         <div class="customers">
           <div class="card">
@@ -139,7 +141,7 @@
               <div class="table-responsive">
                 <table width="98%">
                   <tbody class="row  d-flex justify-content-center">
-                    
+
                     <tr class="card-header3">
                       <td>
                         Medical Leave
@@ -188,28 +190,30 @@
               <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table width="100%">
-                  <thead class="ttt">
+              <div class="table">
+                <table width="100%"id="leavePending" class="table table-striped-columns">
+                  <thead class="ttt table table-striped-columns table-info">
                     <tr>
                       <th>Sr.No</th>
                       <th>Application Date</th>
                       <th>Leave Name</td>
                       <th>From:</th>
                       <th>To:</th>
-                      <th>Replacement Person</th>
+                      <th>Total Days</th>
+                      <th id="pendingLeaveReference">Replacement Person</th>
                       <th>HOD Appoval</th>
                       <th>Principal Approval</th>
                       <th>Status</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
+                  <tbody class="table table-group-divider" id="pendingLeaveBody">
+                    <tr id="defaultPendingLeave">
                       <td>1</td>
-                      <td>27-Feb 2023</td>
-                      <td>Medical Leave</td>
-                      <td>28 Feb 2023</td>
-                      <td>2 Mar 2023</td>
+                      <td>XX-XX-20XX</td>
+                      <td>Leave Type</td>
+                      <td>XX-XX-20XX</td>
+                      <td>XX-XX-20XX</td>
+                      <td>XX</td>
                       <td>
                         <div>Person 1</div>
                         <div>Person 2</div>
@@ -220,16 +224,16 @@
                       <td>Pending</td>
                       <td>Pending</td>
                       <td></td>
-  
+
                     </tr>
                   </tbody>
-  
+
                 </table>
               </div>
             </div>
-  
+
           </div>
-  
+
         </div>
       </div>
     </main>
