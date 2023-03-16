@@ -1,3 +1,6 @@
+const token = localStorage.getItem('token')
+console.log(token);
+console.log(`usertoken`);
 const getuser = async () => {
   try {
     const user = await fetch('/getUserData', {
@@ -71,7 +74,6 @@ const foot = document.querySelector(".footer")
 const pop2 = document.querySelector("#popup2")
 const f = document.querySelector("#logmsg")
 
-const token = localStorage.getItem('token')
 
 if (token == null) {
   pop2.hidden = false

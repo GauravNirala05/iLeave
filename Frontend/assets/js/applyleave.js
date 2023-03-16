@@ -125,7 +125,7 @@ button_apply.addEventListener('click', async (e) => {
 
     //for Hod
     const reference = document.querySelector('.reference').value
-    
+
     const date2 = new Date(fromdate)
     const date1 = new Date(todate)
     console.log(date1 - date2);
@@ -144,6 +144,7 @@ button_apply.addEventListener('click', async (e) => {
                 from_date: fromdate,
                 to_date: todate,
                 total_days: totaldays,
+                reference: { name: reference },
                 reference1: { name: reference1 },
                 reference2: { name: reference2 },
                 reference3: { name: reference3 },
@@ -167,24 +168,6 @@ button_apply.addEventListener('click', async (e) => {
             const { leave, status } = await fetcher.json()
             alert(`${leave.employee_name} your leave is applied`)
         }
-        // setTimeout(() => {
-        //     $(document).ready(function () {
-        //         $("#btn_apply").click(function () {
-        //             $("#myModal").modal();
-        //         });
-        //     });
-        // }, 3000)
-        // apply_name.value=``
-        // apply_contactno.value=``
-        // apply_fromdate.value=``
-        // apply_todate.value=``
-        // apply_totaldays.value=``
-        // reference1.value=``
-        // reference2.value=``
-        // reference3.value=``
-        // reference4.value=``
-        // apply_type.value=``
-        // apply_reason.value=``
     } catch (error) {
         alert(error)
     }

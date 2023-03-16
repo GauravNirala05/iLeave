@@ -1,4 +1,6 @@
 const usertoken = localStorage.getItem('token');
+
+
 if (usertoken!=null){
   location.replace("dashboard.html")
 }
