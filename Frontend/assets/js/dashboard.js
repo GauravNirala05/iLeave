@@ -73,7 +73,8 @@ const getleavestatus = async () => {
         <td>${dateCreated}</td>
         <td>${element.leave_type}</td>
         <td>${dateFrom}</td>
-        <td>${dateTo}</td>`
+        <td>${dateTo}</td>
+        <td>${element.total_days}</td>`
 
         if (element.employee_dep == 'non-tech') {
           const pendingLeaveReference = document.querySelector('#pendingLeaveReference')
