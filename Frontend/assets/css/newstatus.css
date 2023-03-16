@@ -8,6 +8,7 @@
     grid-gap: 2rem;
     grid-template-columns: 65% auto;
     animation: scroll 0.95s;
+    width: 65%;
    
   }
 
@@ -54,3 +55,31 @@
       transform: translateY(0);
     }
   }
+
+  .toggle-button {
+    color: #000;
+    padding: 10px;
+    font: 12.8px Poppins, sans-serif;
+    padding: 8px 16px;
+    border-radius: 7px;
+    animation: scroll 0.95s;
+  }
+  
+  #content-container {
+    margin-top: 20px;
+  }
+
+.toggle-button{
+  width: 50%;
+}
+
+
+
+.toggle-button.active {
+  background-color: #f57c00;
+  color: #fff;
+}
+
+#content-container {
+  margin-top: 20px;
+}

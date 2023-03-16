@@ -13,6 +13,9 @@ const password_log = document.querySelector('.password_log')
 
 btn_log.addEventListener('click', async (e) => {
     document.getElementById("loginerrormsg").innerHTML = ``
+    if (!LOGform.checkValidity()) {
+        return;
+      }
     e.preventDefault()
 
     const email = email_log.value
