@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    gender: {
+        type: String,
+        enum:['male','female']
+    },
     email: {
         type: String,
         trim: true,
@@ -46,13 +50,6 @@ const userSchema = new mongoose.Schema({
     },
 })
 
-
-// userSchema.pre('save', async function () {
-//     const salt = await bcrypt.genSalt(10)
-//     const hashedPassword = await bcrypt.hash(this.password, salt)
-//     this.password=hashedPassword
-// })
-
 userSchema.methods.leaveSchema= async function(){
     if(this.department==="non-tech"){
         this.leave_type={
@@ -81,6 +78,8 @@ userSchema.methods.CompPass = async function (userPassword) {
     return match
 }
 module.exports = mongoose.model('UserData', userSchema)
+
+
     //it will not work
     
     
