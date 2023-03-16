@@ -451,3 +451,8 @@ footer a {
   .name{
 	width: 280px;
   }
+
+  .email{
+	margin-right: 20%;
+	margin-left: 20%;
+  }
