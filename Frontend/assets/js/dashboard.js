@@ -1,3 +1,5 @@
+
+
 const getuser = async () => {
   try {
     const user = await fetch('/getUserData', {
@@ -179,3 +181,10 @@ function login() {
   location.replace("login.html")
 }
 
+window.onload = function() {
+  document.getElementById('loading-screen').style.display = 'none';
+};
+
+$(window).on('load', function() {
+  $('#loading-screen').fadeOut('slow');
+});
