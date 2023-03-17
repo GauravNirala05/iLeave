@@ -18,7 +18,6 @@ imageUpload.addEventListener("change", function() {
 });
 
 const getuser = async () => {
-  const token = localStorage.getItem('token')
   if (token) {
     try {
 

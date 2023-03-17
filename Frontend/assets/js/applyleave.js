@@ -1,8 +1,39 @@
 
-
-const token = localStorage.getItem('token')
 const UserDesignation = localStorage.getItem('designation')
 
+const getuser = async () => {
+    try {
+        const user = await fetch('/getUserData', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        if (!user.ok) {
+            const userData = await user.json()
+            throw Error(userData.msg)
+        }
+
+        const { data } = await user.json()
+
+        if (data.profileCompleted == false) {
+            // $(document).ready(function () {
+            //   $("#myModal").modal('show');
+            // });
+            complete_profile()
+        }
+        else {
+            document.querySelector(".applyLeaveCasual").innerHTML = data.leave_type.casual_leave
+            document.querySelector(".applyLeaveEarned").innerHTML = data.leave_type.earned_leave
+            document.querySelector(".applyLeaveMedical").innerHTML = data.leave_type.medical_leave
+            document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
+            document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -83,8 +114,6 @@ const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
 const f = document.querySelector("#logmsg")
 
-
-
 if (token == null) {
     pop2.hidden = false
     main.hidden = true
@@ -93,6 +122,7 @@ if (token == null) {
     openPopup2()
 }
 else {
+    getuser()
     if (UserDesignation == 'HOD') {
         const hodLeaveApply = document.querySelector("#ref_hide_hod")
         hodLeaveApply.hidden = false
@@ -113,7 +143,7 @@ const button_apply = document.querySelector('.btn_apply')
 button_apply.addEventListener('click', async (e) => {
     if (!contactForm.checkValidity()) {
         return;
-      }
+    }
     e.preventDefault()
 
     const contactno = document.querySelector('.mob_no').value
