@@ -11,7 +11,8 @@ const getuser = async () => {
     }
 
     const { data } = await user.json()
-
+    console.log(data)
+    console.log($(data[1]))
     if (data.profileCompleted == false) {
       console.log(`hello there...`)
 
@@ -23,7 +24,6 @@ const getuser = async () => {
       // complete_profile()
     }
     else {
-      localStorage.setItem('designation', data.designation)
       document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
       document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave

@@ -63,6 +63,12 @@
     padding: 8px 16px;
     border-radius: 7px;
     animation: scroll 0.95s;
+    transition: background-color 0.95s ease-in-out;
+    
+  }
+
+  .toggle-button.clicked {
+    transform: translate(100px, 0);
   }
   
   #content-container {
@@ -74,11 +80,12 @@
 }
 
 
-
 .toggle-button.active {
   background-color: #f57c00;
-  color: #fff;
+  color: #fff;  
+  animation: scroll 0.95s;
 }
+
 
 #content-container {
   margin-top: 20px;
