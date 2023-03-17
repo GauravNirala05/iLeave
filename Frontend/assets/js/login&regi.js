@@ -184,6 +184,9 @@ const closeButton = document.getElementById("closeButton");
 // Show the popup when the button is clicked
 function showPopup() {
   myPopup.style.display = "block";
+  setTimeout(() => {
+    location.replace('index.html')
+  }, 5000);
 }
 
 // Hide the popup when the close button is clicked
