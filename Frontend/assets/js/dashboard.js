@@ -12,13 +12,16 @@ const getuser = async () => {
     }
 
     const { data } = await user.json()
-
+    console.log(data)
+    console.log($(data[1]))
     if (data.profileCompleted == false) {
-      $(document).ready(function () {
+      $(window).on('load', function (){
+      // $(document).ready(function () {
         $("#myModal").modal('show');
+        
       });
     }
-    else {
+    else{
       document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
       document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
