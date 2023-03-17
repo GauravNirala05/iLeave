@@ -42,7 +42,7 @@ const getuser = async () => {
         // console.log(userData);
         ihtml=`
         <div class="media align-items-end profile-head">
-                        <div class="profile mr-3"><img src="images/profile.jpg" alt="..." width="130"
+                        <div class="profile mr-3"><img src="images/profile.png" alt="..." width="130"
                                 class="rounded mb-2 img-thumbnail">
                             <!-- <a href="#"
                                 class="btn btn-outline-dark btn-sm btn-block">Edit profile</a> -->

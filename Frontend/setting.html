@@ -116,7 +116,7 @@
               <div class="row align-items-center">
                 <div class="col-lg-4  mb-lg-0">
                   <div class="upload ml-4">
-                    <img src="images/profile.jpg" width="200" height="200" alt="...">
+                    <img src="images/profile.png" width="200" height="200" alt="...">
                     <div class="round">
                       <input id="file" type="file" />
                       <i class="fa fa-edit" style="color:black;font-size: 32px;"></i>
@@ -132,8 +132,8 @@
                         <!-- name -->
                         <label class="mb-0">Name</label>
                         <div id="Name">
-                          <!-- <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
-                          aria-required="true" aria-invalid="true"> -->
+                          <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+                          aria-required="true" aria-invalid="true">
                         </div>
                       </div>
                       <div class="col-md-6 form-group">
@@ -216,32 +216,11 @@
         <div class="recents-grid mt-4 mb-4">
           <div class="projects">
             <div class="card">
-              <div class="card-body">
-                <form action="">
-                  <h4 calss="mt-2 ml-2">Change Password</h4>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <!-- New Password -->
-                      <input class="form-control newpass" placeholder="New-Passwprd" id="new_password"
-                        aria-required="true" aria-invalid="true">
-                    </div>
+              <div class="card-header">
+                <h4>Want to change your password</h4>
 
-                    <div class="col-md-6 form-group">
-                      <!-- Old Password -->
-                      <input class="form-control pass" placeholder="Old-Passwprd" id="password" aria-required="true"
-                        aria-invalid="true">
-                    </div>
+                <button onclick="changepassword()">change Password</button>
 
-                    <div class="col-md-6 form-group">
-                      <!-- Confirm New Password -->
-                      <input class="form-control newpasscon" placeholder="Confirm New Password"
-                        id="new_confirm_password" aria-required="true" aria-invalid="true">
-                    </div>
-
-                </form>
-                <div class="d-flex ">
-                  <button style="width:200px;height: 50px;" class="savepass">Save</button>
-                </div>
               </div>
             </div>
           </div>
