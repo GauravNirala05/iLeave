@@ -1,4 +1,3 @@
-const token = localStorage.getItem('token')
 const getuser = async () => {
   try {
     const user = await fetch('/getUserData', {
@@ -21,12 +20,16 @@ const getuser = async () => {
         
       });
     }
-    else{
+    else {
       document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
       document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
       document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
-      localStorage.setItem('designation', data.designation)
+      document.querySelector(".userName").innerHTML = data.name
+      document.querySelector(".userDepartment").innerHTML = data.department
+      document.querySelector(".userDesignation").innerHTML = data.designation
+      document.querySelector(".userEmail").innerHTML = data.email
+      document.querySelector(".userGreet").innerHTML = `Mr.`
     }
   } catch (error) {
     console.log(error);

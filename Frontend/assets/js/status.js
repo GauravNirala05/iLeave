@@ -1,6 +1,3 @@
-const token = localStorage.getItem('token')
-console.log(token);
-
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
