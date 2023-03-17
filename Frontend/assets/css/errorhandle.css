@@ -20,23 +20,24 @@ body {
 .text-center {
     text-align: center;
 }
-    .text-center h1,
-    h3 {
-        margin: 10px;
-        cursor: default;
-    }
 
-    .fade-in {
-        animation: fadeIn 2s ease infinite;
-    }
+.text-center h1,
+h3 {
+    margin: 10px;
+    cursor: default;
+}
+
+.fade-in {
+    animation: fadeIn 2s ease infinite;
+}
 
 
-    h1 {
-        font-size: 8em;
-        transition: font-size 200ms ease-in-out;
-        border-bottom: 1px dashed white;
+h1 {
+    font-size: 8em;
+    transition: font-size 200ms ease-in-out;
+    border-bottom: 1px dashed white;
 
-        /* span#digit1 {
+    /* span#digit1 {
             animation-delay: 200ms;
         }
 
@@ -47,29 +48,30 @@ body {
         span#digit3 {
             animation-delay: 400ms;
         } */
-    }
+}
 
-    button {
-        border: 1px solid white;
-        background: transparent;
-        outline: none;
-        padding: 10px 20px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: white;
-        text-transform: uppercase;
-        transition: background-color 200ms ease-in;
-        margin: 20px 0;
+button {
+    border: 1px solid white;
+    background: transparent;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    transition: background-color 200ms ease-in;
+    margin: 20px 0;
 
-        /* &:hover {
+    /* &:hover {
             background-color: white;
             color: #555;
             cursor: pointer;
         } */
-    }
-    button:hover{
-        background:black;
-    }
+}
+
+button:hover {
+    background: black;
+}
 
 
 
