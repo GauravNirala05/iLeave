@@ -9,11 +9,11 @@ const email_log = document.querySelector('.email_log')
 const password_log = document.querySelector('.password_log')
 
 btn_log.addEventListener('click', async (e) => {
-    e.preventDefault()
-    document.getElementById("loginerrormsg").innerHTML = ``
     if (!LOGform.checkValidity()) {
         return;
       }
+    e.preventDefault()
+    document.getElementById("loginerrormsg").innerHTML = ``
 
     const email = email_log.value
     const password = password_log.value
@@ -44,14 +44,13 @@ btn_log.addEventListener('click', async (e) => {
     }
     catch (error) {
         console.log(error)
-        if (error=="Error: undefined  400"){
+        // console.log(error.status)
+        if (error=="Error: undefined,400"){
+            console.log(error.status)
             document.getElementById("loginerrormsg").innerHTML = `User not Registered`
         }
-        if (error=="Error: undefined  401"){
+        if (error=="Error: undefined,401"){
             document.getElementById("loginerrormsg").innerHTML = `Wrong Password`
-        }
-        if (email=='' || password ==''){
-            document.getElementById("loginerrormsg").innerHTML = `Fill all the information`
         }
     }
 })
