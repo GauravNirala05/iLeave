@@ -17,62 +17,6 @@
 //   }
 // });
 
-const getuser = async () => {
-  if (token) {
-    try {
-
-      const user = await fetch('/getUserData', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      if (!user.ok) {
-        throw Error('something went wrong')
-      }
-      const userData = await user.json()
-      console.log(userData)
-      let ihtml=``
-      for(item in userData)
-      {
-        // console.log(userData);
-        ihtml = `
-        <div class=" user-wrapper ">
-        <a class="btn  dropdown-toggle" style="border:none" type="button" id="dropdownMenuButton"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="images/profile.jpg" width="40px" height="40px" alt="profile-img">
-        </a>
-        <div class="">
-          <span>
-            <h4 class="name mr-4">Prof.${userData.data.name}</h4>
-          </span>
-
-        </div>
-
-        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-          <img src="images/profile.jpg" alt="John" class="mx-auto d-block" style="width:70px;height: 70px;">
-          <div class="card-header" style="margin:10px">
-          <div>
-              <h4 class="fa fa-envelope" style="font-size: 20px;">&nbsp;&nbsp;${userData.data.email}</h4>
-              <p class="title">${userData.data.designation}</p>
-              <p>${userData.data.department}</p>
-          </div>
-          </div>
-        </div>
-      </div>`
-
-      }
-      document.getElementById("profile").innerHTML = ihtml
-      document.getElementById("Name").innerHTML = `<input type="name" class="form-control Name" name="name" id="name" placeholder="Name" value="${userData.data.name}"
-      aria-required="true" aria-invalid="true">`
-
-      document.getElementById("email").innerHTML = `<input type="email" class="form-control Name" name="email" id="email" placeholder="Email" value="${userData.data.email}"
-      aria-required="true" aria-invalid="true">`
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
-getuser()
 
 function openPopup() {
   main.hidden = true
@@ -175,12 +119,13 @@ if (utoken) {
   })
 }
 
-
 function openPopup() {
   document.getElementById("popup").style.display = "block";
 }
 
-
+function openPopup2() {
+  document.getElementById("popup2").style.display = "block";
+}
 
 function closePopup() {
   document.getElementById("popup").style.display = "none";
