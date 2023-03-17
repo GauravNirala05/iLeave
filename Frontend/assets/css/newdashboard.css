@@ -694,3 +694,8 @@ footer{
   border: #1D2231;
   border-radius: 5%;
 }
+
+.card-header2 label,h5{
+  font: 1em sans-serif;
+  font-size: large;
+}
