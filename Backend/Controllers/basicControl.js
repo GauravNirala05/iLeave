@@ -47,7 +47,6 @@ const completeProfile = async (req, res) => {
     }
     if (user.profileCompleted==false ) {
         try {
-    
             const user = await User.findOneAndUpdate({_id:userID}, { mob_no, contect_type, department, designation, profileCompleted: true }, { new: true})
             await user.leaveSchema()
             user.save()

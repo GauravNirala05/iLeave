@@ -1,11 +1,8 @@
 const usertoken = localStorage.getItem('token');
 
-
 if (usertoken!=null){
-  location.replace("Dashboard.html")
+  location.replace("dashboard.html")
 }
-
-
 
 const btn_log = document.querySelector('.btn_log')
 const email_log = document.querySelector('.email_log')
@@ -22,7 +19,6 @@ btn_log.addEventListener('click', async (e) => {
     const password = password_log.value
     
     try {
-
         const loger = await fetch('http://localhost:4000/signin', {
             method: 'POST',
             body: JSON.stringify({
@@ -38,19 +34,14 @@ btn_log.addEventListener('click', async (e) => {
             const { msg } = loger.json()
             console.log(msg)
             console.log(loger)
-            throw Error(msg + "  " + loger.status)
+            throw Error(`${msg},${loger.status}`)
         }
         else {
             const { data, msg, token } = await loger.json()
             localStorage.setItem("token", token)
-            // alert(`${msg}`)
             location.replace("dashboard.html")
-                
-            
         }
-
     }
-
     catch (error) {
         console.log(error)
         if (error=="Error: undefined  400"){
