@@ -12,13 +12,9 @@ const getuser = async () => {
 
     const { data } = await user.json()
     console.log(data)
-    console.log($(data[1]))
     if (data.profileCompleted == false) {
-      $(window).on('load', function (){
-      // $(document).ready(function () {
-        $("#myModal").modal('show');
-        
-      });
+      openmodal()
+      
     }
     else {
       document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
@@ -153,6 +149,12 @@ else {
 }
 
 
+function openmodal() {
+  document.getElementById("popup3").style.display = "block";
+}
+function closePopup() {
+  document.getElementById("popup3").style.display = "none";
+}
 function openPopup() {
   document.getElementById("popup").style.display = "block";
 }
