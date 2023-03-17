@@ -13,10 +13,14 @@ const getuser = async () => {
     const { data } = await user.json()
 
     if (data.profileCompleted == false) {
-      // $(document).ready(function () {
-      //   $("#myModal").modal('show');
-      // });
-      complete_profile()
+      console.log(`hello there...`)
+
+      $(document).ready(function () {
+
+        $("#myModalName").modal('show');
+        
+      });
+      // complete_profile()
     }
     else {
       localStorage.setItem('designation', data.designation)
