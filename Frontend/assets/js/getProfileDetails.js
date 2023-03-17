@@ -1,4 +1,4 @@
-const token=localStorage.getItem('token')
+const token = localStorage.getItem('token')
 const getUserDetails = async () => {
     try {
         const user = await fetch('/getUserData', {
@@ -13,12 +13,16 @@ const getUserDetails = async () => {
 
         else {
             const { data } = await user.json()
-            document.querySelector(".userName").innerHTML = data.name
-            document.querySelector(".userDepartment").innerHTML = data.department
-            document.querySelector(".userDesignation").innerHTML = data.designation
-            document.querySelector(".userEmail").innerHTML = data.email
-            document.querySelector(".userGreet").innerHTML = `Mr.`
-
+            if (data.profileCompleted == false) {
+                openmodal()
+            }
+            else {
+                document.querySelector(".userName").innerHTML = data.name
+                document.querySelector(".userDepartment").innerHTML = data.department
+                document.querySelector(".userDesignation").innerHTML = data.designation
+                document.querySelector(".userEmail").innerHTML = data.email
+                document.querySelector(".userGreet").innerHTML = `Mr.`
+            }
         }
     } catch (error) {
         console.log(error);
@@ -26,3 +30,7 @@ const getUserDetails = async () => {
 
 }
 getUserDetails()
+
+function openmodal() {
+    document.getElementById("popup3").style.display = "block";
+}

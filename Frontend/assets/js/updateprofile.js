@@ -1,13 +1,42 @@
 
-
 const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
+const update_email = document.querySelector('#emailOfUpdateProfile')
+const update_name = document.querySelector('#name')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
 const update_contract_type = document.querySelector('.contract_type')
 
+const userData = async () => {
+  try {
+    const user = await fetch('/getUserData', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+
+    else {
+      const { data } = await user.json()
+      update_contact.placeholder=data.mob_no
+      update_name.placeholder=data.name
+      update_email.placeholder=data.email
+      update_designation.placeholder=data.designation
+      update_department.placeholder=data.department
+      update_contract_type.placeholder=data.contect_type
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+userData()
+
 update_profile.addEventListener('click', async (e) => {
   e.preventDefault()
+  const name = update_name.value
   const contact_no = update_contact.value
   const contract_type = update_contract_type.value
   const desig = update_designation.value
@@ -19,13 +48,11 @@ update_profile.addEventListener('click', async (e) => {
     const fetcher = await fetch('/updateProfile', {
       method: 'PATCH',
       body: JSON.stringify({
-
+        name: name,
         mob_no: contact_no,
         contect_type: contract_type,
         department: depart,
         designation: desig,
-
-        // password: pass
       }),
       headers: {
         'Content-Type': `application/json`,
@@ -39,11 +66,11 @@ update_profile.addEventListener('click', async (e) => {
       console.log(msg);
       throw Error(`${status}`)
     }
-    const { token, msg } = await fetcher.json()
+    const {msg } = await fetcher.json()
     alert(`${msg}`)
 
     setTimeout(() => {
-      location.replace("Dashboard.html")
+      location.replace("dashboard.html")
     }, 1000);
     console.log('updated profile')
   } catch (error) {
@@ -108,9 +135,6 @@ function confirm_logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('designation');
   location.replace("index.html")
-}
-function complete_profile() {
-  location.replace("complete_profile.html")
 }
 function login() {
   location.replace("login.html")
