@@ -11,14 +11,12 @@ const getuser = async () => {
     }
 
     const { data } = await user.json()
-    console.log(data)
-    console.log($(data[1]))
+    console.log((data))
     if (data.profileCompleted == false) {
-      $(window).on('load', function (){
-      // $(document).ready(function () {
-        $("#myModal").modal('show');
-        
-      });
+      openCompletePopup()
+    }
+    else if(data.profileCompleted == true){
+        closeCompletePopup()
     }
     else {
       document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
@@ -175,5 +173,36 @@ function complete_profile() {
 }
 function login() {
   location.replace("login.html")
+}
+
+// let popup=document.getElementById("popup")
+// function openCompletePopup(){
+//   console.log("Running")
+//   popup.classList.add("open-popup")
+// }
+// function closeCompletePopup(){
+//   popup.classList.remove("open-popup")
+// }
+ 
+function openCompletePopup(){
+  window.addEventListener("load", function () {
+  setTimeout(
+      function open(event) {
+          document.querySelector(".completePopup").style.display = "block"
+
+      },
+      2000
+  )
+})
+document.querySelector("#close").addEventListener("click", function () {
+  document.querySelector(".completePopup").style.display = "none"
+});
+document.querySelector(".open").addEventListener("click", function () {
+  location.replace("complete_profile.html")
+});
+}
+function closeCompletePopup(){
+  document.getElementById("completePopup").style.display = "none";
+
 }
 
