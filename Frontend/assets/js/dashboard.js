@@ -111,6 +111,7 @@ const getuser = async () => {
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
       document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
       getleavestatus()
+      off()
     }
   }
   catch (error) {
@@ -122,10 +123,10 @@ if (token) {
 }
 
 window.onload = function () {
+  document.getElementById('loading-screen').style.display = 'block';
+};
+function off () {
   document.getElementById('loading-screen').style.display = 'none';
 };
 
-$(window).on('load', function () {
-  $('#loading-screen').fadeOut('slow');
-}
-)
+

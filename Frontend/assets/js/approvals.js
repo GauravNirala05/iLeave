@@ -1,26 +1,27 @@
 
-async function approveUser(id,approval,refer){
+async function approveUser(id, approval, refer) {
     console.log(`its running`);
     try {
         const user = await fetch(`/approvals/${id}`, {
-            method:'PATCH',
-            body:JSON.stringify({
-                refer:refer,
-                approval:approval
+            method: 'PATCH',
+            body: JSON.stringify({
+                refer: refer,
+                approval: approval
             }),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-type':'application/json'
+                'Content-type': 'application/json'
             }
         })
         if (!user.ok) {
-            const{msg}=await user.json()
+            const { msg } = await user.json()
             throw Error(msg)
         }
-        else{
-            const data=await user.json()
+        else {
+            const data = await user.json()
 
             console.log(data)
+            
         }
     } catch (error) {
         console.log(error);
@@ -166,6 +167,7 @@ const getLeaveApprovals = async () => {
                 appliedTable.append(tr)
                 num++;
             });
+            off()
         }
     } catch (error) {
         console.log(error);
@@ -176,3 +178,12 @@ const getLeaveApprovals = async () => {
 if (token) {
     getLeaveApprovals()
 }
+
+window.onload = function () {
+    document.getElementById('loading-screen').style.display = 'block';
+};
+function off () {
+    document.getElementById('loading-screen').style.display = 'none';
+};
+
+

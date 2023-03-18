@@ -149,3 +149,8 @@ var loadFile = function (event) {
 function changepassword() {
   location.replace('changepassword.html')
 }
+window.onload = function () {
+  document.getElementById('loading-screen').style.display = 'none';
+};
+
+

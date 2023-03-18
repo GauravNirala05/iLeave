@@ -86,7 +86,10 @@ const getleavestatus = async () => {
         counter++
       });
       console.log(data)
+      
     }
+    off()
+
 
   } catch (error) {
     console.log(error);
@@ -176,6 +179,8 @@ const getleaveHistory = async () => {
       });
       console.log(data)
     }
+    off()
+
 
   } catch (error) {
     console.log(error);
@@ -253,4 +258,13 @@ function toggleDropdown() {
       button1.classList.remove("active");
       button2.classList.add("active");
   }
+ 
   
+window.onload = function () {
+  document.getElementById('loading-screen').style.display = 'block';
+};
+function off () {
+  document.getElementById('loading-screen').style.display = 'none';
+};
+
+

@@ -70,6 +70,8 @@ const getReferenceUser = async () => {
                 }
             }
         }
+        off()
+
 
     }
     catch (error) {
@@ -158,3 +160,13 @@ button_apply.addEventListener('click', async (e) => {
         alert(error)
     }
 })
+
+window.onload = function () {
+    document.getElementById('loading-screen').style.display = 'block';
+  };
+  function off () {
+    document.getElementById('loading-screen').style.display = 'none';
+  };
+  
+  
+  
