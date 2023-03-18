@@ -6,7 +6,7 @@ const { NotFound, UnAuthorizedError, BadRequestError } = require('../errors')
 const { StatusCodes } = require('http-status-codes')
 
 const approve = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const { leaveId: targetID } = req.params
     const user = await User.findById(userID)
     if (user) {
