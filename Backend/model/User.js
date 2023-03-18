@@ -70,7 +70,7 @@ userSchema.methods.leaveSchema= async function(){
 }
 
 userSchema.methods.generateJWT = function () {
-    const token = jwt.sign({ userID: this._id, userName: this.name }, process.env.JWT_SECRET, { expiresIn: process.env.EXPIRE })
+    const token = jwt.sign({ userID: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.EXPIRE })
     return token
 }
 userSchema.methods.CompPass = async function (userPassword) {

@@ -59,6 +59,7 @@ complete_profile.addEventListener('click', async (e) => {
   const depart = update_department.value
   const name = update_name.value
   const gender = update_gender.value
+  console.log(gender);
   // const img = previewImage.value
 
   try {

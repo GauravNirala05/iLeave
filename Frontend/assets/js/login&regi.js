@@ -3,12 +3,11 @@ const usertoken = localStorage.getItem('token');
 if (usertoken != null) {
     location.replace("dashboard.html")
 }
-function errorHandler(msg) {
 
+function errorHandler(msg) {
     document.getElementById("error_warn").innerHTML = `${msg[0]}`
     document.getElementById("error_msg").innerHTML = `${msg[1]}`
     openerrorPopup()
-
 }
 const btn_log = document.querySelector('.btn_log')
 const email_log = document.querySelector('.email_log')
@@ -57,9 +56,12 @@ btn_log.addEventListener('click', async (e) => {
 })
 let popup = document.getElementById("popupError")
 function openerrorPopup() {
+    document.getElementById("overlay").style.display = "block";
     popup.classList.add("open-popup")
 }
 function closeerrorPopup() {
+    document.getElementById("overlay").style.display = "none";
+
     popup.classList.remove("open-popup")
 }
 
@@ -179,9 +181,6 @@ const myPopup = document.getElementById("myPopup");
 const myButton = document.getElementById("myButton");
 const closeButton = document.getElementById("closeButton");
 
-
-
-// Show the popup when the button is clicked
 function showPopup() {
     myPopup.style.display = "block";
     setTimeout(() => {
@@ -195,12 +194,13 @@ function hidePopup() {
 }
 
 let error_popup = document.getElementById("popupError")
-console.log("Running")
 function openerrorPopup() {
+    document.getElementById("overlay").style.display = "block";
     console.log("Running")
     error_popup.classList.add("open-popup")
 }
 function closeerrorPopup() {
+    document.getElementById("overlay").style.display = "none";
     error_popup.classList.remove("open-popup")
 }
 

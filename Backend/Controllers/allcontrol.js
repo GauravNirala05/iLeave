@@ -9,7 +9,7 @@ const { StatusCodes } = require('http-status-codes')
 
 
 const alluser = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const user = await User.findOne({ _id: userID })
     if (user) {
         const designation = user.designation
@@ -32,7 +32,7 @@ const alluser = async (req, res) => {
 
 
 const leaveStatus = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const { status } = req.body
     console.log(req.user);
     if (await User.exists({ _id: userID, designation: 'faculty' })) {
@@ -54,7 +54,7 @@ const leaveStatus = async (req, res) => {
 
 }
 const leaveHistory = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
 
     if (await User.exists({ _id: userID, designation: 'faculty' })) {
         const facultyLeave = await Leave.find({ employee_id: userID }).sort('createdAt')
@@ -74,7 +74,7 @@ const leaveHistory = async (req, res) => {
 
 }
 const getApprovals = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID} = req.user
     const user = await User.findById(userID)
     if (user) {
         if (user.designation === 'faculty') {
