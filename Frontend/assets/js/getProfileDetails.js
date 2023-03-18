@@ -50,6 +50,7 @@ const getUserDetails = async () => {
         }
     } catch (error) {
         console.log(error);
+        off
     }
 
 }

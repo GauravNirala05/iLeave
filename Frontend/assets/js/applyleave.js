@@ -92,6 +92,10 @@ if (UserDesignation == 'faculty') {
     facultyLeaveApply.hidden = false
     getReferenceUser()
 }
+if (UserDesignation == 'principal') {
+    console.log(`its running`);
+    off()
+}
 
 
 
@@ -148,13 +152,14 @@ button_apply.addEventListener('click', async (e) => {
                 'Authorization': `Bearer ${token}`
             }
 
-
         })
         if (!fetcher.ok) {
             const { msg } = await fetcher.json()
+            off()
             throw Error(`${msg}`)
         }
         else {
+            off()
             const { leave, status } = await fetcher.json()
             alert(`${leave.employee_name} your leave is applied`)
         }
@@ -162,12 +167,5 @@ button_apply.addEventListener('click', async (e) => {
         alert(error)
     }
 })
-
-window.onload = function () {
-    document.getElementById('loading-screen').style.display = 'block';
-};
-function off() {
-    document.getElementById('loading-screen').style.display = 'none';
-};
 
 

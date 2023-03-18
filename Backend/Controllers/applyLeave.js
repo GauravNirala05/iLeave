@@ -154,7 +154,7 @@ const applyLeave = async (req, res) => {
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
         }
         if (designation === 'principal') {
-            return res.send('you are principal')
+            return res.status(StatusCodes.BAD_REQUEST).json({msg:'you are principal'})
         }
 
         throw new NotFound(`the credential ${user.designation} doesnt exists...`)
