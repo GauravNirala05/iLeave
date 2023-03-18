@@ -13,12 +13,12 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 const applyLeave = async (req, res) => {
     const { userID } = req.user
     const { from_date, to_date, discription, contect_no, leave_type } = req.body
-    
-    if(!from_date|| !to_date|| !discription|| !contect_no|| !leave_type){
+
+    if (!from_date || !to_date || !discription || !contect_no || !leave_type) {
         throw new BadRequestError(`Please provide all credentials`)
     }
     const user = await User.findOne({ _id: userID })
-    const userName=user.name
+    const userName = user.name
     if (user.designation === 'faculty') {
         const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
         const fromDate = new Date(req.body.from_date)
@@ -154,7 +154,7 @@ const applyLeave = async (req, res) => {
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
         }
         if (designation === 'principal') {
-            return res.status(StatusCodes.BAD_REQUEST).json({msg:'you are principal'})
+            return res.status(StatusCodes.BAD_REQUEST).json({ msg: 'you are principal' })
         }
 
         throw new NotFound(`the credential ${user.designation} doesnt exists...`)
@@ -170,10 +170,13 @@ const getReferenceName = async (req, res) => {
         const designation = user.designation
         if (designation === 'faculty') {
             const getuser = await User.find({ department: user.department, designation: 'faculty' }).select('name')
-            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
+            const refUser = getuser.filter((element) => {
+                return element.name != user.name
+            })
+            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: refUser.length, data: refUser })
         }
         if (designation === 'HOD') {
-            const getuser = await User.find({ department: user.department,designation:'faculty' }).select('name')
+            const getuser = await User.find({ department: user.department, designation: 'faculty' }).select('name')
             return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: getuser.length, data: getuser })
         }
         if (designation === 'principal') {
@@ -190,7 +193,7 @@ const deleteLeave = async (req, res) => {
     const { userID } = req.user
     const { leaveId: targetLeaveID } = req.params
     const user = await User.findOne({ _id: userID })
-    const userName=user.name
+    const userName = user.name
     if (user) {
         if (await Leave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
             await Leave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
