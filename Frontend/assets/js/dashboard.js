@@ -1,9 +1,7 @@
 function errorHandler(msg) {
-
   document.getElementById("error_warn").innerHTML = `${msg[0]}`
   document.getElementById("error_msg").innerHTML = `${msg[1]}`
   openerrorPopup()
-
 }
 const getleavestatus = async () => {
   const stat = []
@@ -21,7 +19,6 @@ const getleavestatus = async () => {
     })
 
     if (!user.ok) {
-      
       const status = user.status
       const { msg } = await user.json()
       var arraryError = []
@@ -119,6 +116,7 @@ const getuser = async () => {
       arraryError.push(status)
       arraryError.push(msg)
       errorHandler(arraryError)
+      off()
     }
     else {
       const { data } = await user.json()
@@ -132,6 +130,7 @@ const getuser = async () => {
   }
   catch (error) {
     console.log(error);
+    off()
   }
 }
 if (token) {
@@ -144,13 +143,4 @@ window.onload = function () {
 function off () {
   document.getElementById('loading-screen').style.display = 'none';
 };
-let error_popup = document.getElementById("popupError")
-console.log("Running")
-function openerrorPopup() {
-    console.log("Running")
-    error_popup.classList.add("open-popup")
-}
-function closeerrorPopup() {
-    error_popup.classList.remove("open-popup")
-}
 

@@ -22,7 +22,6 @@ const getUserDetails = async () => {
             arraryError.push(msg)
             errorHandler(arraryError)
         }
-
         else {
             const { data } = await user.json()
             if (data.profileCompleted == false) {
@@ -69,6 +68,7 @@ if (token == null) {
 }
 else {
     getUserDetails()
+    off()
 }
 
 function openmodal() {
@@ -100,3 +100,20 @@ function complete_profile() {
 function login() {
     location.replace("login.html")
 }
+
+
+const error_popup = document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup() {
+    console.log("Running")
+    error_popup.classList.add("open-popup")
+}
+function closeerrorPopup() {
+    error_popup.classList.remove("open-popup")
+}
+window.onload = function () {
+    document.getElementById('loading-screen').style.display = 'block';
+  };
+  function off () {
+    document.getElementById('loading-screen').style.display = 'none';
+  };
