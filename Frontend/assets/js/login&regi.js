@@ -1,28 +1,24 @@
 const usertoken = localStorage.getItem('token');
 
-
 if (usertoken!=null){
-  location.replace("Dashboard.html")
+  location.replace("dashboard.html")
 }
-
-
 
 const btn_log = document.querySelector('.btn_log')
 const email_log = document.querySelector('.email_log')
 const password_log = document.querySelector('.password_log')
 
 btn_log.addEventListener('click', async (e) => {
-    e.preventDefault()
-    document.getElementById("loginerrormsg").innerHTML = ``
     if (!LOGform.checkValidity()) {
         return;
       }
+    e.preventDefault()
+    document.getElementById("loginerrormsg").innerHTML = ``
 
     const email = email_log.value
     const password = password_log.value
     
     try {
-
         const loger = await fetch('http://localhost:4000/signin', {
             method: 'POST',
             body: JSON.stringify({
@@ -38,19 +34,14 @@ btn_log.addEventListener('click', async (e) => {
             const { msg } = loger.json()
             console.log(msg)
             console.log(loger)
-            throw Error(msg + "  " + loger.status)
+            throw Error(`${msg},${loger.status}`)
         }
         else {
             const { data, msg, token } = await loger.json()
             localStorage.setItem("token", token)
-            // alert(`${msg}`)
             location.replace("dashboard.html")
-                
-            
         }
-
     }
-
     catch (error) {
         console.log(error)
         
@@ -214,6 +205,9 @@ const closeButton = document.getElementById("closeButton");
 // Show the popup when the button is clicked
 function showPopup() {
   myPopup.style.display = "block";
+  setTimeout(() => {
+    location.replace('index.html')
+  }, 5000);
 }
 
 // Hide the popup when the close button is clicked

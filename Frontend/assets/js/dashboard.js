@@ -1,37 +1,3 @@
-const getuser = async () => {
-  try {
-    const user = await fetch('/getUserData', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
-    }
-
-    const { data } = await user.json()
-    console.log(data)
-    if (data.profileCompleted == false) {
-      openmodal()
-      
-    }
-    else {
-      document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
-      document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
-      document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
-      document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
-      document.querySelector(".userName").innerHTML = data.name
-      document.querySelector(".userDepartment").innerHTML = data.department
-      document.querySelector(".userDesignation").innerHTML = data.designation
-      document.querySelector(".userEmail").innerHTML = data.email
-      document.querySelector(".userGreet").innerHTML = `Mr.`
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
-}
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
@@ -64,9 +30,9 @@ const getleavestatus = async () => {
       defaultPendingLeave.hidden = true
       let counter = 1
       data.forEach(element => {
-        dateCreated=new Date(element.createdAt).toDateString()
-        dateFrom=new Date(element.from_date).toDateString()
-        dateTo=new Date(element.to_date).toDateString()
+        dateCreated = new Date(element.createdAt).toDateString()
+        dateFrom = new Date(element.from_date).toDateString()
+        dateTo = new Date(element.to_date).toDateString()
         var ihtml = ``
         var tr = document.createElement('tr')
         ihtml += `<td>${counter}</td>
@@ -114,7 +80,7 @@ const getleavestatus = async () => {
           }
           ihtml += `<td>${element.status}</td>`
         }
-        tr.innerHTML=ihtml
+        tr.innerHTML = ihtml
         pendingLeaveBody.append(tr)
         counter++
       });
@@ -127,6 +93,43 @@ const getleavestatus = async () => {
   }
 
 }
+const getuser = async () => {
+  try {
+    const user = await fetch('/getUserData', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!user.ok) {
+      const userData = await user.json()
+      throw Error(userData.msg)
+    }
+    else {
+      const { data } = await user.json()
+      document.querySelector(".userEmail").innerHTML = data.email
+      if (data.profileCompleted == true) {
+        document.querySelector(".userName").innerHTML = data.name
+        document.querySelector(".userDepartment").innerHTML = data.department
+        document.querySelector(".userDesignation").innerHTML = data.designation
+        if (data.gender=='male') {
+          document.querySelector(".userGreet").innerHTML = `Mr. `
+        }
+        if (data.gender=='female') {
+          document.querySelector(".userGreet").innerHTML = `Miss. `
+        }
+        document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+        document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+        document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+        document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+        getleavestatus()
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
 
 
 const main = document.querySelector(".main-content")
@@ -145,13 +148,8 @@ if (token == null) {
 }
 else {
   getuser()
-  getleavestatus()
 }
 
-
-function openmodal() {
-  document.getElementById("popup3").style.display = "block";
-}
 function closePopup() {
   document.getElementById("popup3").style.display = "none";
 }
@@ -178,7 +176,4 @@ function complete_profile() {
 function login() {
   location.replace("login.html")
 }
-
- 
-
 

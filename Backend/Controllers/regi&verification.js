@@ -80,17 +80,18 @@ const verifyEmail = async (req, res) => {
         if (expiresAt < Date.now()) {
             await UserVerification.deleteOne({ userID: userid })
             await User.deleteMany({ _id: userid })
-            throw new BadRequestError(`Link has been expired. Please sign up again...`)
+            res.status(StatusCodes.GATEWAY_TIMEOUT).sendFile(path.resolve(__dirname,'../','../frontend/email/emailtimelimit.html'))
+            
         }
         else {
             const result = await userverify.compString(uniquestring)
             if (result) {
                 const user = await User.findOneAndUpdate({ _id: userid }, { verified: true }, { new: true })
                 await UserVerification.deleteMany({ userID: userid })
-                res.status(StatusCodes.OK).sendFile(path.resolve(__dirname,'../','../frontend/emailverified.html'))
+                return res.status(StatusCodes.OK).sendFile(path.resolve(__dirname,'../','../frontend/email/emailverified.html'))
             }
             else {
-                throw new BadRequestError(`Invalid verification datails passed. Check your inbox...`)
+                return res.status(StatusCodes.BAD_REQUEST).sendFile(path.resolve(__dirname,'../','../frontend/email/anotheremail.html'))
             }
 
         }
