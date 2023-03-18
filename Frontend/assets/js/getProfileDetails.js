@@ -36,7 +36,6 @@ const getUserDetails = async () => {
                 document.querySelector(".userDepartment").innerHTML = data.department
                 document.querySelector(".userDesignation").innerHTML = data.designation
                 document.querySelector(".userEmail").innerHTML = data.email
-                console.log(data.gender);
                 if (data.gender === 'male') {
                     document.querySelector(".userGreet").innerHTML = `Mr.`
                 }
@@ -68,15 +67,13 @@ const f = document.querySelector("#logmsg")
 const footer = document.querySelector("#footer")
 
 if (token == null) {
-    console.log(`hello`);
-    off()
     pop2.hidden = false
     main.hidden = true
     f.innerHTML = `You Need to Login First`
     sidebar.hidden = true
-    // footer.hidden = true
     openPopup2()
-
+    document.getElementById('loading-screen').hidden = true;
+    
 }
 else {
     getUserDetails()
@@ -126,4 +123,5 @@ window.onload = function () {
 };
 function off() {
     document.getElementById('loading-screen').style.display = 'none';
-};
+    
+}

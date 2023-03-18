@@ -130,7 +130,8 @@ const getuser = async () => {
     off()
   }
 }
-if (token) {
+var UserDesignation=localStorage.getItem('UserDesignation')
+if (token && UserDesignation) {
   getuser()
   off()
 }

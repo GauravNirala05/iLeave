@@ -92,6 +92,9 @@ if (UserDesignation == 'faculty') {
     facultyLeaveApply.hidden = false
     getReferenceUser()
 }
+if (UserDesignation == 'principal') {
+    console.log(`its running`);
+}
 
 
 
@@ -148,13 +151,14 @@ button_apply.addEventListener('click', async (e) => {
                 'Authorization': `Bearer ${token}`
             }
 
-
         })
         if (!fetcher.ok) {
             const { msg } = await fetcher.json()
+            off()
             throw Error(`${msg}`)
         }
         else {
+            off()
             const { leave, status } = await fetcher.json()
             alert(`${leave.employee_name} your leave is applied`)
         }
