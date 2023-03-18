@@ -74,7 +74,7 @@ const leaveHistory = async (req, res) => {
 
 }
 const getApprovals = async (req, res) => {
-    const { userID} = req.user
+    const { userID } = req.user
     const user = await User.findById(userID)
     if (user) {
         if (user.designation === 'faculty') {
@@ -101,6 +101,7 @@ const getApprovals = async (req, res) => {
             })
             res.status(StatusCodes.OK).json({
                 status: 'SUCCESS',
+                hits: hod.length + firstYear.length + secondYear.length + thirdYear.length + fourthYear.length,
                 data: {
                     HOD: { hits: hod.length, hod: hod },
                     first: { hits: firstYear.length, firstYear: firstYear },

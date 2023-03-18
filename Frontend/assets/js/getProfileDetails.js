@@ -18,7 +18,6 @@ const getUserDetails = async () => {
             arraryError.push(status)
             arraryError.push(msg)
             errorHandler(arraryError)
-            throw Error(msg)
         }
         else {
             const { data } = await user.json()
