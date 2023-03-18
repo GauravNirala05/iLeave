@@ -125,7 +125,8 @@ const getuser = async () => {
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
       document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
       getleavestatus()
-      off()
+    off()
+
     }
   }
   catch (error) {
@@ -135,6 +136,7 @@ const getuser = async () => {
 }
 if (token) {
   getuser()
+  off()
 }
 
 window.onload = function () {

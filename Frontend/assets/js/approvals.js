@@ -3,6 +3,7 @@ function errorHandler(msg) {
     document.getElementById("error_warn").innerHTML = `${msg[0]}`
     document.getElementById("error_msg").innerHTML = `${msg[1]}`
     openerrorPopup()
+    off()
 
 }
 async function approveUser(id, approval, refer) {
@@ -47,6 +48,7 @@ const getLeaveApprovals = async () => {
             arraryError.push(status)
             arraryError.push(msg)
             errorHandler(arraryError)
+            off()
         }
         else {
             const { data } = await user.json()
@@ -172,9 +174,11 @@ const getLeaveApprovals = async () => {
                 appliedTable.append(tr)
                 num++;
             });
+            off()
         }
     } catch (error) {
         console.log(error);
+        off()
     }
 
 }

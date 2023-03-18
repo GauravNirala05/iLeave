@@ -1,3 +1,16 @@
+document.getElementById("contactForm").style.display='none'
+document.getElementById("profileform").style.display='block'
+
+
+const editProfile=document.querySelector(".editProfile")
+const div=document.getElementById("profileform")
+editProfile.addEventListener('click', () => {
+
+div.parentNode.removeChild(div);
+// document.getElementById("profileform").style.display='none'
+document.getElementById("contactForm").style.display='block'
+
+});
 function errorHandler(msg) {
 
   document.getElementById("error_warn").innerHTML = `${msg[0]}`
