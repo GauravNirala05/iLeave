@@ -65,8 +65,20 @@ a {
 	margin-top: 0%;
 
 }
-
 button {
+	border-radius: 20px;
+	border: 1px solid #218380;
+	background-color: #218380;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	margin-top: 10%;
+}
+button{
 	border-radius: 20px;
 	border: 1px solid #218380;
 	background-color: #218380;
@@ -456,3 +468,66 @@ footer a {
 	margin-right: 20%;
 	margin-left: 20%;
   }
+
+  *{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family:sans-serif;
+}
+
+.popupError{
+	width: 400px;
+	background: #fff;
+	border-radius: 10px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%) scale(0.1);
+	text-align: center;
+	padding: 0 30px 30px;
+	color: #333;
+	visibility: hidden;
+	transition: transform 0.4s,top 0,4s;
+}
+.open-popup{
+	visibility: visible;
+	top: 50%;
+	transform: translate(-50%,-50%) scale(1);
+
+}
+.popupError img {
+	width: 100px;
+	margin-top:-50px;
+	margin-left: 70px;
+	border-radius: 50%;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.popupError h2{
+	font-size: 38px;
+	font-weight: 500;
+	margin: 30px 0 10px;
+}
+.close_btn{
+	margin-top: 0;
+	margin-left: 0;
+	width: 40px;
+	height: 40px;
+	background:none;
+	border: none;
+	color: rgb(219, 214, 214);
+	font-size: 40px;
+	
+}
+.btn_close{
+	width: 100%;
+	margin-top: 50px;
+	padding: 10px 0;
+	background: #6fd649;
+	color: #fff;
+	border: 0;
+	outline:none;
+	font-size: 18px;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);    }

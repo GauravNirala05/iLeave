@@ -53,18 +53,39 @@ btn_log.addEventListener('click', async (e) => {
 
     catch (error) {
         console.log(error)
+        
         if (error=="Error: undefined  400"){
-            document.getElementById("loginerrormsg").innerHTML = `User not Registered`
+            // document.getElementById("loginerrormsg").innerHTML = `User not Registered`
+             document.getElementById("error_warn").innerHTML = `Error: undefined  400`
+             document.getElementById("error_msg").innerHTML = `User not Registered`
+             openerrorPopup()
+             
         }
         if (error=="Error: undefined  401"){
-            document.getElementById("loginerrormsg").innerHTML = `Wrong Password`
+            // document.getElementById("loginerrormsg").innerHTML = `Wrong Password`
+            document.getElementById("error_warn").innerHTML = `Error: undefined  401`
+            document.getElementById("error_msg").innerHTML = `Wrong Password`
+            openerrorPopup()
+
         }
         if (email=='' || password ==''){
-            document.getElementById("loginerrormsg").innerHTML = `Fill all the information`
+            // document.getElementById("loginerrormsg").innerHTML = `Fill all the information`
+            document.getElementById("error_warn").innerHTML = ''
+            document.getElementById("error_msg").innerHTML = `Fill all the information`
+            openerrorPopup()
+
         }
     }
 })
-
+let popup=document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup(){
+    console.log("Running")
+    popup.classList.add("open-popup")
+}
+function closeerrorPopup(){
+    popup.classList.remove("open-popup")
+}
 
 const btn_regi = document.querySelector('.btn_regi')
 const email_regi = document.querySelector('.email_regi')
@@ -198,4 +219,14 @@ function showPopup() {
 // Hide the popup when the close button is clicked
 function hidePopup() {
   myPopup.style.display = "none";
+}
+
+let error_popup=document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup(){
+    console.log("Running")
+    error_popup.classList.add("open-popup")
+}
+function closeerrorPopup(){
+    error_popup.classList.remove("open-popup")
 }

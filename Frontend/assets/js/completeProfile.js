@@ -13,7 +13,7 @@
 //     reader.readAsDataURL(file);
 //   }
 // });
-
+// document.getElementById('Name').hidden = true
 const usertoken = localStorage.getItem('token');
 if (usertoken==null){
   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
@@ -42,14 +42,13 @@ const getuser = async () => {
         // console.log(userData);
         ihtml=`
         <div class="media align-items-end profile-head">
-                        <div class="profile mr-3"><img src="images/profile.jpg" alt="..." width="130"
+                        <div class="profile mr-3"><img src="images/profile.png" alt="..." width="130"
                                 class="rounded mb-2 img-thumbnail">
                             <!-- <a href="#"
                                 class="btn btn-outline-dark btn-sm btn-block">Edit profile</a> -->
                         </div>
                         <div class="media-body mb-5 text-white">
-                            <h4 class="mt-0 mb-0" id="Name">${userData.data.name}</h4>
-                            <p class="small mb-4" id="email"> <i class="fa fa-envelope "></i>${userData.data.email}</p>
+                            <p class="small mb-4" id="email"> <i class="fa fa-envelope "></i>  ${userData.data.email}</p>
                         </div>
                     </div>`
 

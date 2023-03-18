@@ -10,28 +10,27 @@ const approve = async (req, res) => {
     const { leaveId: targetID } = req.params
     const user = await User.findById(userID)
     if (user) {
-
-
         if (user.designation === 'faculty') {
             if (await Leave.exists({ _id: targetID, status: ['applied', 'rejected'] })) {
                 const { refer, approval } = req.body
+                console.log(refer,approval);
                 const approveObject = {}
-                if (refer === 1) {
+                if (refer === '1') {
                     approveObject.reference1 = {}
                     approveObject.reference1.name = user.name
                     approveObject.reference1.approved = approval
-                    if (approval === true) {
+                    if (approval === 'true') {
                         approveObject.status = 'applied'
                     }
                     else {
                         approveObject.status = 'rejected'
                     }
                 }
-                if (refer === 2) {
+                if (refer === '2') {
                     approveObject.reference2 = {}
                     approveObject.reference2.name = user.name
                     approveObject.reference2.approved = approval
-                    if (approval === true) {
+                    if (approval === 'true') {
                         approveObject.status = 'applied'
                     }
                     else {
@@ -39,11 +38,11 @@ const approve = async (req, res) => {
                     }
 
                 }
-                if (refer === 3) {
+                if (refer === '3') {
                     approveObject.reference3 = {}
                     approveObject.reference3.name = user.name
                     approveObject.reference3.approved = approval
-                    if (approval === true) {
+                    if (approval === 'true') {
                         approveObject.status = 'applied'
                     }
                     else {
@@ -51,11 +50,11 @@ const approve = async (req, res) => {
                     }
 
                 }
-                if (refer === 4) {
+                if (refer === '4') {
                     approveObject.reference4 = {}
                     approveObject.reference4.name = user.name
                     approveObject.reference4.approved = approval
-                    if (approval === true) {
+                    if (approval === 'true') {
                         approveObject.status = 'applied'
                     }
                     else {
@@ -63,8 +62,9 @@ const approve = async (req, res) => {
                     }
 
                 }
+                console.log(approveObject);
                 const data = await Leave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
-                res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
+                return res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
             }
             if (await HodLeave.exists({ _id: targetID, status: ['applied'] })) {
                 const { approval } = req.body
@@ -72,14 +72,15 @@ const approve = async (req, res) => {
                 approveObject.reference={}
                 approveObject.reference.name = user.name
                 approveObject.reference.approved = approval
-                if (approval === true) {
+                if (approval === 'true') {
                     approveObject.status = 'applied'
                 }
                 else {
                     approveObject.status = 'rejected'
                 }
+                console.log(approveObject);
                 const data = await HodLeave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
-                res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
+                return res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
             }
             else {
                 throw new NotFound(`Leave not found with id ${targetID}`)
@@ -91,7 +92,7 @@ const approve = async (req, res) => {
             if (await Leave.exists({ _id: targetID, employee_dep: user.department, status: ['applied'] })) {
                 const { approval } = req.body
                 const approveObject = {}
-                if (approval === true) {
+                if (approval === 'true') {
                     approveObject.HOD_approval = approval
                     approveObject.status = 'applied'
                 }
@@ -110,7 +111,7 @@ const approve = async (req, res) => {
             if (await nonTechLeave.exists({ _id: targetID, employee_dep: user.department, status: ['applied'] })) {
                 const { approval } = req.body
                 const approveObject = {}
-                if (approval === true) {
+                if (approval === 'true') {
                     approveObject.head_approval = approval
                     approveObject.status = 'applied'
                 }
@@ -132,7 +133,7 @@ const approve = async (req, res) => {
                 const { approval, confirmation } = req.body
                 const approveObject = {}
                 const updateObj = {}
-                if (confirmation === true && approval === true) {
+                if (confirmation === 'true' && approval === 'true') {
                     const type = leaveData.leave_type
                     const totalDay = leaveData.total_days
                     const leaveUser = await User.findOne({ _id: leaveData.employee_id })
@@ -173,7 +174,7 @@ const approve = async (req, res) => {
                     const data2 = await User.findOneAndUpdate({ _id: leaveData.employee_id }, updateObj, { new: true })
                     return res.status(StatusCodes.OK).json({ status: 'SUCCESS', userUpadated: 'TRUE', data: data3, user: data2 })
                 }
-                if (approval === true) {
+                if (approval === 'true') {
                     approveObject.principal_approval = approval
                     approveObject.status = 'approved'
                 }

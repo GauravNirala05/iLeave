@@ -33,18 +33,18 @@ const alluser = async (req, res) => {
 
 const leaveStatus = async (req, res) => {
     const { userID, userName } = req.user
-    const {status} = req.body
+    const { status } = req.body
     console.log(req.user);
     if (await User.exists({ _id: userID, designation: 'faculty' })) {
-        const facultyLeave = await Leave.find({ employee_id: userID,status }).sort('createdAt')
+        const facultyLeave = await Leave.find({ employee_id: userID, status }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: facultyLeave.length, data: facultyLeave })
     }
     if (await User.exists({ _id: userID, designation: 'HOD' })) {
-        const hodLeave = await HodLeave.find({ employee_id: userID,status }).sort('createdAt')
+        const hodLeave = await HodLeave.find({ employee_id: userID, status }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: hodLeave.length, data: hodLeave })
     }
     if (await User.exists({ _id: userID, department: 'non-tech' })) {
-        const nontechLeave = await nonTechLeave.find({ employee_id: userID,status }).sort('createdAt')
+        const nontechLeave = await nonTechLeave.find({ employee_id: userID, status }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: nontechLeave.length, data: nontechLeave })
     }
 
@@ -55,7 +55,7 @@ const leaveStatus = async (req, res) => {
 }
 const leaveHistory = async (req, res) => {
     const { userID, userName } = req.user
-    
+
     if (await User.exists({ _id: userID, designation: 'faculty' })) {
         const facultyLeave = await Leave.find({ employee_id: userID }).sort('createdAt')
         return res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: facultyLeave.length, data: facultyLeave })
@@ -82,32 +82,31 @@ const getApprovals = async (req, res) => {
             const hod = await HodLeave.find({
                 'reference.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date status reference leave_type')
-            const data1 = await Leave.find({
+            }).select('employee_id employee_dep employee_name from_date to_date status leave_type discription')
+            const firstYear = await Leave.find({
                 'reference1.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date status reference1 leave_type')
-            const data2 = await Leave.find({
+            })
+            const secondYear = await Leave.find({
                 'reference2.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date status reference2 leave_type')
-            const data3 = await Leave.find({
+            })
+            const thirdYear = await Leave.find({
                 'reference3.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date status reference3 leave_type')
-            const data4 = await Leave.find({
+            })
+            const fourthYear = await Leave.find({
                 'reference4.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date reference4 leave_type')
-
+            })
             res.status(StatusCodes.OK).json({
                 status: 'SUCCESS',
                 data: {
-                    HOD: hod,
-                    first: { hits: data1.length, data1: data1 },
-                    second: { hits: data2.length, data2: data2 },
-                    third: { hits: data3.length, data3: data3 },
-                    forth: { hits: data4.length, data4: data4 }
+                    HOD: { hits: hod.length, hod: hod },
+                    first: { hits: firstYear.length, firstYear: firstYear },
+                    second: { hits: secondYear.length, secondYear: secondYear },
+                    third: { hits: thirdYear.length, thirdYear: thirdYear },
+                    fourth: { hits: fourthYear.length, fourthYear: fourthYear }
                 }
             })
         }
@@ -148,4 +147,4 @@ const getApprovals = async (req, res) => {
 }
 
 
-module.exports = { alluser, leaveStatus, getApprovals,leaveHistory }
+module.exports = { alluser, leaveStatus, getApprovals, leaveHistory }
