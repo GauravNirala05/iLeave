@@ -35,6 +35,7 @@ btn_log.addEventListener('click', async (e) => {
             console.log(msg)
             console.log(loger)
             throw Error(`${msg},${loger.status}`)
+            
         }
         else {
             const { data, msg, token } = await loger.json()

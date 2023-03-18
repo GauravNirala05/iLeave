@@ -1,4 +1,16 @@
+document.getElementById("contactForm").style.display='none'
+document.getElementById("profileform").style.display='block'
 
+
+const editProfile=document.querySelector(".editProfile")
+const div=document.getElementById("profileform")
+editProfile.addEventListener('click', () => {
+
+div.parentNode.removeChild(div);
+// document.getElementById("profileform").style.display='none'
+document.getElementById("contactForm").style.display='block'
+
+});
 const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
 const update_email = document.querySelector('#emailOfUpdateProfile')
