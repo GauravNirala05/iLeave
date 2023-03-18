@@ -58,13 +58,16 @@ const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
 const f = document.querySelector("#logmsg")
+const footer = document.querySelector("#footer")
 
 if (token == null) {
     pop2.hidden = false
     main.hidden = true
     f.innerHTML = `You Need to Login First`
     sidebar.hidden = true
+    // footer.hidden = true
     openPopup2()
+    
 }
 else {
     getUserDetails()
