@@ -11,6 +11,13 @@ div.parentNode.removeChild(div);
 document.getElementById("contactForm").style.display='block'
 
 });
+function errorHandler(msg) {
+
+  document.getElementById("error_warn").innerHTML = `${msg[0]}`
+  document.getElementById("error_msg").innerHTML = `${msg[1]}`
+  openerrorPopup()
+
+}
 const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
 const update_email = document.querySelector('#emailOfUpdateProfile')
