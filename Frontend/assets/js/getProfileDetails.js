@@ -48,8 +48,10 @@ const getUserDetails = async () => {
                 }
             }
         }
+        off()
     } catch (error) {
         console.log(error);
+        off()
     }
 
 }
