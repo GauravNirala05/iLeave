@@ -116,7 +116,7 @@ delete_account.addEventListener('click', async (e) => {
       errorHandler(arraryError)
     }
 
-    const {data} = await user.json()
+    const { data } = await user.json()
     const userId = data._id
     console.log((userId));
     const deleteuser = await fetch(`/deleteProfile/${userId}`, {
@@ -136,10 +136,17 @@ delete_account.addEventListener('click', async (e) => {
     else {
       const data = await deleteuser.json()
       console.log(data);
+
+      localStorage.removeItem('token');
+      localStorage.removeItem('designation');
+      location.replace("index.html")
+      alert(data)
     }
 
   } catch (error) {
     console.log(error);
+    alert(data)
+
   }
 })
 function openPopup() {
@@ -149,22 +156,20 @@ function openPopup() {
 function closePopup() {
   main.hidden = false
   document.getElementById("popup").style.display = "none";
-}
+  document.getElementById("deletepopup").style.display = "none";
 
-function openPopup() {
-  document.getElementById("popup").style.display = "block";
-}
-function deletepopup() {
-  document.getElementById("deletepopup").style.display = "block";
 }
 
 function openPopup2() {
   document.getElementById("popup2").style.display = "block";
 }
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+function deletepopup() {
+  document.getElementById("deletepopup").style.display = "block";
 }
+
+
+
 
 function confirm_logout() {
   localStorage.removeItem('token');
