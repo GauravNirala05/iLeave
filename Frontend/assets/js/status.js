@@ -48,13 +48,23 @@ const getleavestatus = async () => {
           const pendingLeaveReference = document.querySelector('#pendingLeaveReference')
           pendingLeaveReference.hidden = true
           if (element.head_approval) {
-            ihtml += `<td>${element.head_approval}</td>`
+            if (element.head_approval === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.head_approval === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
           }
           if (element.principal_approval) {
-            ihtml += `<td>${element.principal_approval}</td>`
+            if (element.principal_approval === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.principal_approval === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
@@ -62,20 +72,74 @@ const getleavestatus = async () => {
           ihtml += `<td>${element.status}</td>`
         }
         else {
-          ihtml += `<td>
-          <div>${element.reference1.name}</div>
-          <div>${element.reference2.name}</div>
-          <div>${element.reference3.name}</div>
-          <div>${element.reference4.name}</div>
+          if (element.reference) {
+            ihtml += `<td>${element.reference1.name}`
+            if (element.reference.approved === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `</td>`
+            }
+            if (element.reference.approved === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `</td>`
+            }
+            else {
+              ihtml += `<td>Pending</td>`
+            }
+          }
+          else {
+            ihtml += `<td><div>${element.reference1.name}`
+            if (element.reference1.approved === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.reference1.approved === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
+            ihtml += `</div>
+          <div>${element.reference2.name}`
+            if (element.reference2.approved === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.reference2.approved === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
+            ihtml += `</div>
+          <div>${element.reference3.name}`
+            if (element.reference3.approved === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.reference3.approved === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
+            ihtml += `</div>
+          <div>${element.reference4.name}`
+            if (element.reference4.approved === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.reference4.approved === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
+            ihtml += `</div>
         </td>`
-          if (element.head_approval) {
-            ihtml += `<td>${element.head_approval}</td>`
+          }
+
+          if (element.HOD_approval) {
+            if (element.HOD_approval === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.HOD_approval === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
           }
           if (element.principal_approval) {
-            ihtml += `<td>${element.principal_approval}</td>`
+            if (element.principal_approval === true) {
+              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+            }
+            if (element.principal_approval === false) {
+              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
@@ -87,7 +151,7 @@ const getleavestatus = async () => {
         counter++
       });
       console.log(data)
-      
+
     }
     off()
 
@@ -257,18 +321,18 @@ function toggleContentstatus() {
   button2.classList.remove("active");
 }
 
-  function toggleContenthistory() {
-      content1.style.display = "none";
-      content2.style.display = "block";
-      button1.classList.remove("active");
-      button2.classList.add("active");
-  }
- 
-  
+function toggleContenthistory() {
+  content1.style.display = "none";
+  content2.style.display = "block";
+  button1.classList.remove("active");
+  button2.classList.add("active");
+}
+
+
 window.onload = function () {
   document.getElementById('loading-screen').style.display = 'block';
 };
-function off () {
+function off() {
   document.getElementById('loading-screen').style.display = 'none';
 };
 
