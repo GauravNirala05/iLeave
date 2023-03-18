@@ -57,9 +57,12 @@ btn_log.addEventListener('click', async (e) => {
 })
 let popup = document.getElementById("popupError")
 function openerrorPopup() {
+    document.getElementById("overlay").style.display = "block";
     popup.classList.add("open-popup")
 }
 function closeerrorPopup() {
+    document.getElementById("overlay").style.display = "none";
+
     popup.classList.remove("open-popup")
 }
 
@@ -197,10 +200,12 @@ function hidePopup() {
 let error_popup = document.getElementById("popupError")
 console.log("Running")
 function openerrorPopup() {
+    document.getElementById("overlay").style.display = "block";
     console.log("Running")
     error_popup.classList.add("open-popup")
 }
 function closeerrorPopup() {
+    document.getElementById("overlay").style.display = "none";
     error_popup.classList.remove("open-popup")
 }
 
