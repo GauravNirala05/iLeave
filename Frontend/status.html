@@ -36,6 +36,12 @@
 </style>
 
 <body>
+  <div id="loading-screen">
+    <div id="loader">
+      <div id="shadow"></div>
+      <div id="box"></div>
+    </div>
+ </div>  
   <div id="popup" class="popup card-header">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
@@ -246,6 +252,15 @@
 
     </main>
   </div>
+  <div class="popupError" id="popupError">
+    
+    <img src="images/error_img.jpg">
+    <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+    <h2 id="error_warn">OOpps!</h2>
+    <p id="error_msg">ERROR 400.Reload!</p>
+    
+    <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
+</div>
   <footer class="d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by

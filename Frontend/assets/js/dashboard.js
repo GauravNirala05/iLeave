@@ -1,3 +1,10 @@
+function errorHandler(msg) {
+
+  document.getElementById("error_warn").innerHTML = `${msg[0]}`
+  document.getElementById("error_msg").innerHTML = `${msg[1]}`
+  openerrorPopup()
+
+}
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
@@ -14,8 +21,13 @@ const getleavestatus = async () => {
     })
 
     if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
+      
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
     const { data, hits } = await user.json()
     if (hits == 0) {
@@ -101,8 +113,12 @@ const getuser = async () => {
       }
     })
     if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
     else {
       const { data } = await user.json()
@@ -111,6 +127,7 @@ const getuser = async () => {
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
       document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
       getleavestatus()
+      off()
     }
   }
   catch (error) {
@@ -122,10 +139,18 @@ if (token) {
 }
 
 window.onload = function () {
+  document.getElementById('loading-screen').style.display = 'block';
+};
+function off () {
   document.getElementById('loading-screen').style.display = 'none';
 };
-
-$(window).on('load', function () {
-  $('#loading-screen').fadeOut('slow');
+let error_popup = document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup() {
+    console.log("Running")
+    error_popup.classList.add("open-popup")
 }
-)
+function closeerrorPopup() {
+    error_popup.classList.remove("open-popup")
+}
+

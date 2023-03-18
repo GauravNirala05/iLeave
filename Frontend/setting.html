@@ -32,6 +32,12 @@
 </head>
 
 <body>
+  <div id="loading-screen">
+    <div id="loader">
+      <div id="shadow"></div>
+      <div id="box"></div>
+    </div>
+ </div>  
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
@@ -228,9 +234,9 @@
                         <div id="Designation">
                           <select class="form-control designation" id="designation">
                             <option name="reference3" value="">Designation</option>
-                            <option>Faculty</option>
-                            <option>HOD</option>
-                            <option>principal</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="HOD">HOD</option>
+                            <option value="principal">Principal</option>
                           </select>
                         </div>
                       </div>
@@ -313,6 +319,15 @@
 
   </main>
   </div>
+  <div class="popupError" id="popupError">
+    
+    <img src="images/error_img.jpg">
+    <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+    <h2 id="error_warn">OOpps!</h2>
+    <p id="error_msg">ERROR 400.Reload!</p>
+    
+    <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
+</div>
   <footer class="d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by

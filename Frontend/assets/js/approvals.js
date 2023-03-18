@@ -1,26 +1,33 @@
+function errorHandler(msg) {
 
-async function approveUser(id,approval,refer){
+    document.getElementById("error_warn").innerHTML = `${msg[0]}`
+    document.getElementById("error_msg").innerHTML = `${msg[1]}`
+    openerrorPopup()
+
+}
+async function approveUser(id, approval, refer) {
     console.log(`its running`);
     try {
         const user = await fetch(`/approvals/${id}`, {
-            method:'PATCH',
-            body:JSON.stringify({
-                refer:refer,
-                approval:approval
+            method: 'PATCH',
+            body: JSON.stringify({
+                refer: refer,
+                approval: approval
             }),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-type':'application/json'
+                'Content-type': 'application/json'
             }
         })
         if (!user.ok) {
-            const{msg}=await user.json()
+            const { msg } = await user.json()
             throw Error(msg)
         }
-        else{
-            const data=await user.json()
+        else {
+            const data = await user.json()
 
             console.log(data)
+            
         }
     } catch (error) {
         console.log(error);
@@ -34,16 +41,15 @@ const getLeaveApprovals = async () => {
             }
         })
         if (!user.ok) {
-            const userData = await user.json()
-            throw Error(userData.msg)
-        }
-
-        const { data } = await user.json()
-
-        if (data.profileCompleted == false) {
-            complete_profile()
+            const status = user.status
+            const { msg } = await user.json()
+            var arraryError = []
+            arraryError.push(status)
+            arraryError.push(msg)
+            errorHandler(arraryError)
         }
         else {
+            const { data } = await user.json()
             const { HOD, first, second, third, fourth } = data
             let num = 1
             const appliedTable = document.querySelector('.userAppliedTable')
@@ -175,4 +181,17 @@ const getLeaveApprovals = async () => {
 
 if (token) {
     getLeaveApprovals()
+    off()
+
+}
+
+
+let error_popup = document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup() {
+    console.log("Running")
+    error_popup.classList.add("open-popup")
+}
+function closeerrorPopup() {
+    error_popup.classList.remove("open-popup")
 }
