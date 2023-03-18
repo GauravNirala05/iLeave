@@ -70,8 +70,8 @@ const getLeaveApprovals = async () => {
                         <td >${toDate}</td>
                         <td >${element.discription}</td>
                         <td>
-                            <span type="button" onclick="approveUser('${element._id}','true','1')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" onclick="approveUser('${element._id}','false','1')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                            <span type="button" onclick="approveUserHOD('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                            <span type="button" onclick="approveUserHOD('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
                         </td>
                         <td></td>`
                         tr.innerHTML = ihtml
@@ -91,8 +91,12 @@ const getLeaveApprovals = async () => {
                         <td >${toDate}</td>
                         <td >${element.discription}</td>
                         <td>
-                            <span type="button" onclick="approveUser('${element._id}','true','1')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" onclick="approveUser('${element._id}','false','1')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                            <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                            <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                        </td>
+                        <td>
+                            <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                            <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
                         </td>
                         <td></td>`
                         tr.innerHTML = ihtml
@@ -100,23 +104,20 @@ const getLeaveApprovals = async () => {
                         num++;
                     });
                 }
+                if (UserDesignation == 'faculty') {
+                    const { HOD, first, second, third, fourth } = data
+                    let num = 1
+                    if (HOD.hits > 0) {
 
-            }
-
-            if (UserDesignation == 'faculty') {
-                const { HOD, first, second, third, fourth } = data
-                let num = 1
-                if (HOD.hits > 0) {
-
-                    var trHOD = document.createElement('tr')
-                    trHOD.style = `text-align: center;font-size: 25px;`
-                    trHOD.innerHTML = `<th colspan="12">Hod</th>`
-                    appliedTable.append(trHOD)
-                    HOD.hod.forEach(element => {
-                        var fromDate = new Date(element.from_date).toDateString()
-                        var toDate = new Date(element.to_date).toDateString()
-                        var tr = document.createElement('tr')
-                        ihtml = `<td>${num}</td>
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Hod</th>`
+                        appliedTable.append(trHOD)
+                        HOD.hod.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
                     <td >${element.employee_name}</td>
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
@@ -127,22 +128,22 @@ const getLeaveApprovals = async () => {
                         <span type="button" onclick="approveUser('${element._id}','false','1')" class="btn btn-outline-danger col-lg-11">Reject</span>
                     </td>
                     <td></td>`
-                        tr.innerHTML = ihtml
-                        appliedTable.append(tr)
-                        num++;
-                    });
-                }
-                if (first.hits > 0) {
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (first.hits > 0) {
 
-                    var trHOD = document.createElement('tr')
-                    trHOD.style = `text-align: center;font-size: 25px;`
-                    trHOD.innerHTML = `<th colspan="12">First Year</th>`
-                    appliedTable.append(trHOD)
-                    first.firstYear.forEach(element => {
-                        var fromDate = new Date(element.from_date).toDateString()
-                        var toDate = new Date(element.to_date).toDateString()
-                        var tr = document.createElement('tr')
-                        ihtml = `<td>${num}</td>
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">First Year</th>`
+                        appliedTable.append(trHOD)
+                        first.firstYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
                     <td >${element.employee_name}</td>
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
@@ -153,22 +154,22 @@ const getLeaveApprovals = async () => {
                         <span type="button" onclick="approveUser('${element._id}','false','1')" class="btn btn-outline-danger col-lg-11">Reject</span>
                     </td>
                     <td></td>`
-                        tr.innerHTML = ihtml
-                        appliedTable.append(tr)
-                        num++;
-                    });
-                }
-                if (second.hits > 0) {
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (second.hits > 0) {
 
-                    var trHOD = document.createElement('tr')
-                    trHOD.style = `text-align: center;font-size: 25px;`
-                    trHOD.innerHTML = `<th colspan="12">Second Year</th>`
-                    appliedTable.append(trHOD)
-                    second.secondYear.forEach(element => {
-                        var fromDate = new Date(element.from_date).toDateString()
-                        var toDate = new Date(element.to_date).toDateString()
-                        var tr = document.createElement('tr')
-                        ihtml = `<td>${num}</td>
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Second Year</th>`
+                        appliedTable.append(trHOD)
+                        second.secondYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
                     <td >${element.employee_name}</td>
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
@@ -179,22 +180,22 @@ const getLeaveApprovals = async () => {
                         <span type="button" onclick="approveUser('${element._id}','false','2')" class="btn btn-outline-danger col-lg-11">Reject</span>
                     </td>
                     <td></td>`
-                        tr.innerHTML = ihtml
-                        appliedTable.append(tr)
-                        num++;
-                    });
-                }
-                if (third.hits > 0) {
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (third.hits > 0) {
 
-                    var trHOD = document.createElement('tr')
-                    trHOD.style = `text-align: center;font-size: 25px;`
-                    trHOD.innerHTML = `<th colspan="12">Third Year</th>`
-                    appliedTable.append(trHOD)
-                    third.thirdYear.forEach(element => {
-                        var fromDate = new Date(element.from_date).toDateString()
-                        var toDate = new Date(element.to_date).toDateString()
-                        var tr = document.createElement('tr')
-                        ihtml = `<td>${num}</td>
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Third Year</th>`
+                        appliedTable.append(trHOD)
+                        third.thirdYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
                     <td >${element.employee_name}</td>
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
@@ -205,22 +206,22 @@ const getLeaveApprovals = async () => {
                         <span type="button" onclick="approveUser('${element._id}','false','3')" class="btn btn-outline-danger col-lg-11">Reject</span>
                     </td>
                     <td></td>`
-                        tr.innerHTML = ihtml
-                        appliedTable.append(tr)
-                        num++;
-                    });
-                }
-                if (fourth.hits > 0) {
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (fourth.hits > 0) {
 
-                    var trHOD = document.createElement('tr')
-                    trHOD.style = `text-align: center;font-size: 25px;`
-                    trHOD.innerHTML = `<th colspan="12">Fourth Year</th>`
-                    appliedTable.append(trHOD)
-                    fourth.fourthYear.forEach(element => {
-                        var fromDate = new Date(element.from_date).toDateString()
-                        var toDate = new Date(element.to_date).toDateString()
-                        var tr = document.createElement('tr')
-                        ihtml = `<td>${num}</td>
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Fourth Year</th>`
+                        appliedTable.append(trHOD)
+                        fourth.fourthYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
                     <td >${element.employee_name}</td>
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
@@ -231,19 +232,20 @@ const getLeaveApprovals = async () => {
                     <span type="button" onclick="approveUser('${element._id}','false','4')" class="btn btn-outline-danger col-lg-11">Reject</span>
                 </td>
                     <td></td>`
-                        tr.innerHTML = ihtml
-                        appliedTable.append(tr)
-                        num++;
-                    });
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
                 }
+                off()
             }
-            off()
         }
     }
     catch (error) {
-    console.log(error);
-    off()
-}
+        console.log(error);
+        off()
+    }
 
 }
 
