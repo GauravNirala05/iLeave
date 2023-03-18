@@ -310,9 +310,15 @@ main{
 table{
   border-collapse: collapse;
 }
+table td,th,tr{
+  vertical-align: middle;
+  text-align: center;
+}
 thead tr{
   border-top: 1px solid #f0f0f0;
   border-bottom:2px solid #f0f0f0;
+  vertical-align: middle;
+  text-align: center;
   
 
 }
@@ -320,6 +326,8 @@ thead tr{
 thead td{
   font-weight: 550;
   font-size: 20px;
+  text-align: center;
+  vertical-align:middle;
 }
 td{
   padding: .5rem 1rem ;
@@ -327,8 +335,7 @@ td{
   color: #222;
   font-size: 17px;
   text-align: center;
-  
-  
+  vertical-align: middle;
 }
 
 .ttt th{
