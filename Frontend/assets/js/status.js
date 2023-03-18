@@ -271,11 +271,5 @@ function toggleContentstatus() {
   }
  
   
-window.onload = function () {
-  document.getElementById('loading-screen').style.display = 'block';
-};
-function off () {
-  document.getElementById('loading-screen').style.display = 'none';
-};
 
 

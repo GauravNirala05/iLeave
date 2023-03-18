@@ -169,12 +169,5 @@ button_apply.addEventListener('click', async (e) => {
     }
 })
 
-window.onload = function () {
-    document.getElementById('loading-screen').style.display = 'block';
-  };
-  function off () {
-    document.getElementById('loading-screen').style.display = 'none';
-  };
-  
   
   
