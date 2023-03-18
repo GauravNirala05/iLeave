@@ -1,12 +1,5 @@
 
 const UserDesignation = localStorage.getItem('UserDesignation')
-function errorHandler(msg) {
-    document.getElementById("error_warn").innerHTML = `${msg[0]}`
-    document.getElementById("error_msg").innerHTML = `${msg[1]}`
-    openerrorPopup()
-    off()
-
-}
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
