@@ -119,6 +119,8 @@ const getuser = async () => {
       arraryError.push(status)
       arraryError.push(msg)
       errorHandler(arraryError)
+    off()
+
     }
     else {
       const { data } = await user.json()
@@ -127,23 +129,23 @@ const getuser = async () => {
       document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
       document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
       getleavestatus()
-      off()
+    off()
+
     }
   }
   catch (error) {
     console.log(error);
+    // off()
+    off()
+
   }
 }
 if (token) {
   getuser()
+  off()
 }
 
-window.onload = function () {
-  document.getElementById('loading-screen').style.display = 'block';
-};
-function off () {
-  document.getElementById('loading-screen').style.display = 'none';
-};
+
 let error_popup = document.getElementById("popupError")
 console.log("Running")
 function openerrorPopup() {
