@@ -1,14 +1,14 @@
-document.getElementById("contactForm").style.display='none'
-document.getElementById("profileform").style.display='block'
+document.getElementById("contactForm").style.display = 'none'
+document.getElementById("profileform").style.display = 'block'
 
 
-const editProfile=document.querySelector(".editProfile")
-const div=document.getElementById("profileform")
+const editProfile = document.querySelector(".editProfile")
+const div = document.getElementById("profileform")
 editProfile.addEventListener('click', () => {
 
-div.parentNode.removeChild(div);
-// document.getElementById("profileform").style.display='none'
-document.getElementById("contactForm").style.display='block'
+  div.parentNode.removeChild(div);
+  // document.getElementById("profileform").style.display='none'
+  document.getElementById("contactForm").style.display = 'block'
 
 });
 const update_profile = document.querySelector('.update')
@@ -97,9 +97,9 @@ update_profile.addEventListener('click', async (e) => {
 })
 
 const delete_account = document.querySelector('.delete')
+
 delete_account.addEventListener('click', async (e) => {
   e.preventDefault()
-
   try {
 
     const user = await fetch('/getUserData', {
@@ -116,23 +116,27 @@ delete_account.addEventListener('click', async (e) => {
       errorHandler(arraryError)
     }
 
-    const userData = await user.json()
-    console.log(userData.data._id)
-
-    const deleteuser = await fetch('/deleteProfile/', {
+    const {data} = await user.json()
+    const userId = data._id
+    console.log((userId));
+    const deleteuser = await fetch(`/deleteProfile/${userId}`, {
+      method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`
       }
     })
-    if (!user.ok) {
-      const status = user.status
-      const { msg } = await user.json()
+    if (!deleteuser.ok) {
+      const status = deleteuser.status
+      const { msg } = await deleteuser.json()
       var arraryError = []
       arraryError.push(status)
       arraryError.push(msg)
       errorHandler(arraryError)
     }
-
+    else {
+      const data = await deleteuser.json()
+      console.log(data);
+    }
 
   } catch (error) {
     console.log(error);
@@ -149,6 +153,9 @@ function closePopup() {
 
 function openPopup() {
   document.getElementById("popup").style.display = "block";
+}
+function deletepopup() {
+  document.getElementById("deletepopup").style.display = "block";
 }
 
 function openPopup2() {
