@@ -25,11 +25,13 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
-                if (data.designation == 'principal'){    
+                const UserDesignation = data.designation
+                console.log(UserDesignation);
+                if (data.designation == 'principal') {
                     document.querySelector("#allusersidebar").hidden = false
                     document.querySelector("#applyleavesidebar").hidden = true
                     document.querySelector("#statussidebar").hidden = true
-                    }
+                }
                 localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
                 document.querySelector(".userDepartment").innerHTML = data.department
@@ -49,7 +51,7 @@ const getUserDetails = async () => {
                     document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
                     document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
                 }
-                
+
             }
         }
         off()
@@ -72,7 +74,6 @@ if (token == null) {
     sidebar.hidden = true
     openPopup2()
     document.getElementById('loading-screen').hidden = true;
-    
 }
 else {
     getUserDetails()
@@ -122,5 +123,5 @@ window.onload = function () {
 };
 function off() {
     document.getElementById('loading-screen').style.display = 'none';
-    
+
 }

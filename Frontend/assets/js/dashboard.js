@@ -131,7 +131,10 @@ const getuser = async () => {
   }
 }
 var UserDesignation=localStorage.getItem('UserDesignation')
-if (token && UserDesignation) {
+console.log(UserDesignation);
+
+if (token) {
+  console.log(`its running`);
   getuser()
   off()
 }

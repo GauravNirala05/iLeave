@@ -139,7 +139,7 @@ const getApprovals = async (req, res) => {
                 status: ['applied', 'rejected', 'approved']
             }).select('employee_id employee_name employee_dep from_date to_date leave_type discription status')
 
-            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data1.length + data2.length + data3.length, data: { facultyLeave: data1, HodLeave: data2, nonTechLeave: data3 } })
+            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data1.length + data2.length + data3.length, data: { facultyLeave: {hits:data1.length,data:data1}, HodLeave: {hits:data2.length,data:data2}, nonTechLeave: {hits:data3.length,data:data3} } })
         }
     }
     else {
