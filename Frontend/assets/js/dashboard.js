@@ -106,83 +106,26 @@ const getuser = async () => {
     }
     else {
       const { data } = await user.json()
-      document.querySelector(".userEmail").innerHTML = data.email
-      if (data.profileCompleted == true) {
-        document.querySelector(".userName").innerHTML = data.name
-        document.querySelector(".userDepartment").innerHTML = data.department
-        document.querySelector(".userDesignation").innerHTML = data.designation
-        if (data.gender=='male') {
-          document.querySelector(".userGreet").innerHTML = `Mr. `
-        }
-        if (data.gender=='female') {
-          document.querySelector(".userGreet").innerHTML = `Miss. `
-        }
-        document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
-        document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
-        document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
-        document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
-        getleavestatus()
-      }
+      document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+      document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+      document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+      document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+      getleavestatus()
     }
-  } catch (error) {
+  }
+  catch (error) {
     console.log(error);
   }
-
 }
-
-
-
-const main = document.querySelector(".main-content")
-const sidebar = document.querySelector(".sidebar")
-const foot = document.querySelector(".footer")
-const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#logmsg")
-
-
-if (token == null) {
-  pop2.hidden = false
-  main.hidden = true
-  f.innerHTML = `You Need to Login First`
-  sidebar.hidden = true
-  openPopup2()
-}
-else {
+if (token) {
   getuser()
 }
 
-function closePopup() {
-  document.getElementById("popup3").style.display = "none";
-}
-function openPopup() {
-  document.getElementById("popup").style.display = "block";
-}
-
-function openPopup2() {
-  document.getElementById("popup2").style.display = "block";
-}
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-function confirm_logout() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('designation');
-  location.replace("index.html")
-}
-function complete_profile() {
-  location.replace("complete_profile.html")
-}
-function login() {
-  location.replace("login.html")
-}
-
-
-window.onload = function() {
+window.onload = function () {
   document.getElementById('loading-screen').style.display = 'none';
 };
 
-
-$(window).on('load', function() {
+$(window).on('load', function () {
   $('#loading-screen').fadeOut('slow');
-});
+}
+)

@@ -1,37 +1,6 @@
 
-const UserDesignation = localStorage.getItem('designation')
+const UserDesignation = localStorage.getItem('UserDesignation')
 
-const getuser = async () => {
-    try {
-        const user = await fetch('/getUserData', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        if (!user.ok) {
-            const userData = await user.json()
-            throw Error(userData.msg)
-        }
-
-        const { data } = await user.json()
-
-        if (data.profileCompleted == false) {
-          
-            complete_profile()
-        }
-        else {
-            document.querySelector(".applyLeaveCasual").innerHTML = data.leave_type.casual_leave
-            document.querySelector(".applyLeaveEarned").innerHTML = data.leave_type.earned_leave
-            document.querySelector(".applyLeaveMedical").innerHTML = data.leave_type.medical_leave
-            document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
-            document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
-
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-}
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -107,33 +76,20 @@ const getReferenceUser = async () => {
         console.log(error)
     }
 }
-const main = document.querySelector(".main-content")
-const sidebar = document.querySelector(".sidebar")
-const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#logmsg")
 
-if (token == null) {
-    pop2.hidden = false
-    main.hidden = true
-    f.innerHTML = `You Need to Login First`
-    sidebar.hidden = true
-    openPopup2()
+if (UserDesignation == 'HOD') {
+    const hodLeaveApply = document.querySelector("#ref_hide_hod")
+    hodLeaveApply.hidden = false
+    getReferenceUser()
+
 }
-else {
-    getuser()
-    if (UserDesignation == 'HOD') {
-        const hodLeaveApply = document.querySelector("#ref_hide_hod")
-        hodLeaveApply.hidden = false
-        getReferenceUser()
-
-    }
-    if (UserDesignation == 'faculty') {
-        const facultyLeaveApply = document.querySelector("#All_ref_hide")
-        facultyLeaveApply.hidden = false
-        getReferenceUser()
-
-    }
+if (UserDesignation == 'faculty') {
+    console.log(`is it running`);
+    const facultyLeaveApply = document.querySelector("#All_ref_hide")
+    facultyLeaveApply.hidden = false
+    getReferenceUser()
 }
+
 
 
 const button_apply = document.querySelector('.btn_apply')
@@ -203,27 +159,3 @@ button_apply.addEventListener('click', async (e) => {
         alert(error)
     }
 })
-
-function openPopup() {
-    document.getElementById("popup").style.display = "block";
-}
-
-function openPopup2() {
-    document.getElementById("popup2").style.display = "block";
-}
-
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
-
-function confirm_logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('designation');
-    location.replace("index.html")
-}
-function complete_profile() {
-    location.replace("complete_profile.html")
-}
-function login() {
-    location.replace("login.html")
-}

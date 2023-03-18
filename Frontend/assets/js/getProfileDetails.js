@@ -1,4 +1,5 @@
 const token = localStorage.getItem('token')
+
 const getUserDetails = async () => {
     try {
         const user = await fetch('/getUserData', {
@@ -17,11 +18,25 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
+                localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
                 document.querySelector(".userDepartment").innerHTML = data.department
                 document.querySelector(".userDesignation").innerHTML = data.designation
                 document.querySelector(".userEmail").innerHTML = data.email
-                document.querySelector(".userGreet").innerHTML = `Mr.`
+                if (data.gender === 'male') {
+                    document.querySelector(".userGreet").innerHTML = `Mr.`
+                }
+                if (data.gender === 'female') {
+                    document.querySelector(".userGreet").innerHTML = `Miss.`
+                }
+
+                if (document.querySelector(".applyLeaveCasual")) {
+                    document.querySelector(".applyLeaveCasual").innerHTML = data.leave_type.casual_leave
+                    document.querySelector(".applyLeaveEarned").innerHTML = data.leave_type.earned_leave
+                    document.querySelector(".applyLeaveMedical").innerHTML = data.leave_type.medical_leave
+                    document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
+                    document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
+                }
             }
         }
     } catch (error) {
@@ -29,8 +44,48 @@ const getUserDetails = async () => {
     }
 
 }
-getUserDetails()
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#logmsg")
+
+if (token == null) {
+    pop2.hidden = false
+    main.hidden = true
+    f.innerHTML = `You Need to Login First`
+    sidebar.hidden = true
+    openPopup2()
+}
+else {
+    getUserDetails()
+}
 
 function openmodal() {
     document.getElementById("popup3").style.display = "block";
+}
+function closePopup() {
+    document.getElementById("popup3").style.display = "none";
+}
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function openPopup2() {
+    document.getElementById("popup2").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+function confirm_logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('designation');
+    location.replace("index.html")
+}
+function complete_profile() {
+    location.replace("complete_profile.html")
+}
+function login() {
+    location.replace("login.html")
 }
