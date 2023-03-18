@@ -507,7 +507,7 @@ footer a {
 	font-size: 50px;
 	font-weight: 500;
 	margin: 30px 0 10px;
-	color: #007c04;
+	color: #ff1515;
 	font-weight: bold;
 }
 .popupError p{
@@ -531,7 +531,7 @@ footer a {
 	width: 100%;
 	margin-top: 50px;
 	padding: 10px 0;
-	background: #6fd649;
+	background: #d64949;
 	color: #fff;
 	border: 0;
 	outline:none;
