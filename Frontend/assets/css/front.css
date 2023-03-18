@@ -31,12 +31,13 @@
         font-family: sans-serif;
 		color:#fff ;
         border-bottom: 3px solid transparent;
-	}
-	.nav-nav:hover{
-		color:rgb(0, 0, 0);
-        border-bottom: 3px solid #fff;
         text-decoration: none;
 	}
+	.nav-nav:hover{
+        animation: glow 0.5s;
+        text-decoration: none;
+	}
+
 	.navbtn{
         font-family:sans-serif;
         font-weight: bold;
@@ -81,6 +82,9 @@ body{
     animation: opacityOn 4s normal forwards;
     /* animation-delay: 1s; */
 	
+}
+@keyframes glow{
+    
 }
 @keyframes opacityOn {
     0% {

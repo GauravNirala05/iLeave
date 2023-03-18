@@ -1,4 +1,11 @@
 const token = localStorage.getItem('token')
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#msgerror")
+const footer = document.querySelector(".footer")
+
+
 const errorHandler = (msg) => {
     document.getElementById("error_warn").innerHTML = `${msg[0]}`
     document.getElementById("error_msg").innerHTML = `${msg[1]}`
@@ -55,15 +62,18 @@ const getUserDetails = async () => {
         off()
     } catch (error) {
         console.log(error);
+        pop2.hidden = false
+        main.hidden = true
+        f.innerHTML = error
+        sidebar.hidden = true
+        openPopup2()
+        document.getElementById('loading-screen').hidden = true;
+        footer.style.opacity = "0";
         off()
     }
 
 }
-const main = document.querySelector(".main-content")
-const sidebar = document.querySelector(".sidebar")
-const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#logmsg")
-const footer = document.querySelector("#footer")
+
 
 if (token == null) {
     pop2.hidden = false
@@ -72,6 +82,7 @@ if (token == null) {
     sidebar.hidden = true
     openPopup2()
     document.getElementById('loading-screen').hidden = true;
+    footer.style.opacity = "0";
     
 }
 else {
