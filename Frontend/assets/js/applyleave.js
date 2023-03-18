@@ -84,7 +84,6 @@ if (UserDesignation == 'HOD') {
 
 }
 if (UserDesignation == 'faculty') {
-    console.log(`is it running`);
     const facultyLeaveApply = document.querySelector("#All_ref_hide")
     facultyLeaveApply.hidden = false
     getReferenceUser()

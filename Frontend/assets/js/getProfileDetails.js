@@ -80,7 +80,7 @@ function closePopup() {
 
 function confirm_logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('designation');
+    localStorage.removeItem('UserDesignation');
     location.replace("index.html")
 }
 function complete_profile() {
