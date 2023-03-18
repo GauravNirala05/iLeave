@@ -40,17 +40,9 @@
       <div id="shadow"></div>
       <div id="box"></div>
     </div>
- </div>  
- 
- <div class="popupError" id="popupError">
-    
-  <img src="images/error_img.jpg">
-  <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
-  <h2 id="error_warn">OOpps!</h2>
-  <p id="error_msg">ERROR 400.Reload!</p>
+  </div>
+
   
-  <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
-</div>
   <div id="popup3" class="popup card-header">
     <div class="popup-content">
       <div class="modal-header d-flex justify-content-center">
@@ -219,7 +211,7 @@
             </div>
             <div class="card-body">
               <div class="table table-responsive">
-                <table width="100%"id="leavePending" class="table table-striped-columns">
+                <table width="100%" id="leavePending" class="table table-striped-columns">
                   <thead class="ttt table table-striped-columns table-info">
                     <tr>
                       <th>Sr.No</th>
@@ -267,7 +259,15 @@
 
     </main>
   </div>
-  
+  <div id="overlay">
+    <div class="popupError" id="popupError">
+      <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+      <img src="images/errornew.png">
+      <h2 id="error_warn">OOpps!</h2>
+      <p id="error_msg">ERROR 400.Reload!</p>
+
+      <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
+    </div>
   <footer class="mt-3 d-flex justify-content-center footer">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by
