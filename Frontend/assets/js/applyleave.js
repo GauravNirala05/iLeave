@@ -25,7 +25,7 @@ const getReferenceUser = async () => {
             const ref = document.querySelector('.reference')
 
             if (UserDesignation === 'HOD') {
-                if (hits == 0) {
+                if (hits ==0) {
                     var opt = document.createElement('option')
                     opt.innerHTML = `--empty--`
                     ref.append(opt)
