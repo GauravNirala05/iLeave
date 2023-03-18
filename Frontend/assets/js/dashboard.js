@@ -1,3 +1,10 @@
+function errorHandler(msg) {
+
+  document.getElementById("error_warn").innerHTML = `${msg[0]}`
+  document.getElementById("error_msg").innerHTML = `${msg[1]}`
+  openerrorPopup()
+
+}
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
@@ -14,8 +21,13 @@ const getleavestatus = async () => {
     })
 
     if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
+      
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
     const { data, hits } = await user.json()
     if (hits == 0) {
@@ -101,8 +113,12 @@ const getuser = async () => {
       }
     })
     if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
     else {
       const { data } = await user.json()

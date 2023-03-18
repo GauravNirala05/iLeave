@@ -1,4 +1,10 @@
+function errorHandler(msg) {
 
+  document.getElementById("error_warn").innerHTML = `${msg[0]}`
+  document.getElementById("error_msg").innerHTML = `${msg[1]}`
+  openerrorPopup()
+
+}
 const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
 const update_email = document.querySelector('#emailOfUpdateProfile')
@@ -15,18 +21,23 @@ const userData = async () => {
       }
     })
     if (!user.ok) {
-      const userData = await user.json()
-      throw Error(userData.msg)
+
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
 
     else {
       const { data } = await user.json()
-      update_contact.placeholder=data.mob_no
-      update_name.placeholder=data.name
-      update_email.placeholder=data.email
-      update_designation.placeholder=data.designation
-      update_department.placeholder=data.department
-      update_contract_type.placeholder=data.contect_type
+      update_contact.placeholder = data.mob_no
+      update_name.placeholder = data.name
+      update_email.placeholder = data.email
+      update_designation.placeholder = data.designation
+      update_department.placeholder = data.department
+      update_contract_type.placeholder = data.contect_type
     }
   } catch (error) {
     console.log(error);
@@ -61,12 +72,13 @@ update_profile.addEventListener('click', async (e) => {
     })
     if (!fetcher.ok) {
       const status = fetcher.status
-      console.log(status);
-      const { msg, error } = await fetcher.json()
-      console.log(msg);
-      throw Error(`${status}`)
+      const { msg } = await fetcher.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
-    const {msg } = await fetcher.json()
+    const { msg } = await fetcher.json()
     alert(`${msg}`)
 
     setTimeout(() => {
@@ -90,7 +102,12 @@ delete_account.addEventListener('click', async (e) => {
       }
     })
     if (!user.ok) {
-      throw Error('something went wrong')
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
 
     const userData = await user.json()
@@ -102,7 +119,12 @@ delete_account.addEventListener('click', async (e) => {
       }
     })
     if (!user.ok) {
-      throw Error('something went wrong')
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
     }
 
 

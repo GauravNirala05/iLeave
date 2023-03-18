@@ -1,4 +1,10 @@
+function errorHandler(msg) {
 
+    document.getElementById("error_warn").innerHTML = `${msg[0]}`
+    document.getElementById("error_msg").innerHTML = `${msg[1]}`
+    openerrorPopup()
+
+}
 async function approveUser(id, approval, refer) {
     console.log(`its running`);
     try {
@@ -35,16 +41,15 @@ const getLeaveApprovals = async () => {
             }
         })
         if (!user.ok) {
-            const userData = await user.json()
-            throw Error(userData.msg)
-        }
-
-        const { data } = await user.json()
-
-        if (data.profileCompleted == false) {
-            complete_profile()
+            const status = user.status
+            const { msg } = await user.json()
+            var arraryError = []
+            arraryError.push(status)
+            arraryError.push(msg)
+            errorHandler(arraryError)
         }
         else {
+            const { data } = await user.json()
             const { HOD, first, second, third, fourth } = data
             let num = 1
             const appliedTable = document.querySelector('.userAppliedTable')

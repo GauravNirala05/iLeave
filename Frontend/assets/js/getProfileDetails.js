@@ -1,5 +1,11 @@
 const token = localStorage.getItem('token')
+function errorHandler(msg) {
 
+    document.getElementById("error_warn").innerHTML = `${msg[0]}`
+    document.getElementById("error_msg").innerHTML = `${msg[1]}`
+    openerrorPopup()
+
+}
 const getUserDetails = async () => {
     try {
         const user = await fetch('/getUserData', {
@@ -8,8 +14,13 @@ const getUserDetails = async () => {
             }
         })
         if (!user.ok) {
-            const userData = await user.json()
-            throw Error(userData.msg)
+
+            const status = user.status
+            const { msg } = await user.json()
+            var arraryError = []
+            arraryError.push(status)
+            arraryError.push(msg)
+            errorHandler(arraryError)
         }
 
         else {
