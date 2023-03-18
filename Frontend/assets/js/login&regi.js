@@ -1,9 +1,15 @@
 const usertoken = localStorage.getItem('token');
 
-if (usertoken!=null){
-  location.replace("dashboard.html")
+if (usertoken != null) {
+    location.replace("dashboard.html")
 }
+function errorHandler(msg) {
 
+    document.getElementById("error_warn").innerHTML = `${msg[0]}`
+    document.getElementById("error_msg").innerHTML = `${msg[1]}`
+    openerrorPopup()
+
+}
 const btn_log = document.querySelector('.btn_log')
 const email_log = document.querySelector('.email_log')
 const password_log = document.querySelector('.password_log')
@@ -11,13 +17,13 @@ const password_log = document.querySelector('.password_log')
 btn_log.addEventListener('click', async (e) => {
     if (!LOGform.checkValidity()) {
         return;
-      }
+    }
     e.preventDefault()
     document.getElementById("loginerrormsg").innerHTML = ``
 
     const email = email_log.value
     const password = password_log.value
-    
+
     try {
         const loger = await fetch('http://localhost:4000/signin', {
             method: 'POST',
@@ -31,10 +37,12 @@ btn_log.addEventListener('click', async (e) => {
 
         })
         if (!loger.ok) {
-            const { msg } = loger.json()
-            console.log(msg)
-            console.log(loger)
-            throw Error(`${msg},${loger.status}`)
+            const status = loger.status
+            const { msg } = await loger.json()
+            var arraryError = []
+            arraryError.push(status)
+            arraryError.push(msg)
+            errorHandler(arraryError)
         }
         else {
             const { data, msg, token } = await loger.json()
@@ -43,38 +51,15 @@ btn_log.addEventListener('click', async (e) => {
         }
     }
     catch (error) {
-        console.log(error)
-        
-        if (error=="Error: undefined  400"){
-            // document.getElementById("loginerrormsg").innerHTML = `User not Registered`
-             document.getElementById("error_warn").innerHTML = `Error: undefined  400`
-             document.getElementById("error_msg").innerHTML = `User not Registered`
-             openerrorPopup()
-             
-        }
-        if (error=="Error: undefined  401"){
-            // document.getElementById("loginerrormsg").innerHTML = `Wrong Password`
-            document.getElementById("error_warn").innerHTML = `Error: undefined  401`
-            document.getElementById("error_msg").innerHTML = `Wrong Password`
-            openerrorPopup()
-
-        }
-        if (email=='' || password ==''){
-            // document.getElementById("loginerrormsg").innerHTML = `Fill all the information`
-            document.getElementById("error_warn").innerHTML = ''
-            document.getElementById("error_msg").innerHTML = `Fill all the information`
-            openerrorPopup()
-
-        }
+        console.log(error);
     }
+
 })
-let popup=document.getElementById("popupError")
-console.log("Running")
-function openerrorPopup(){
-    console.log("Running")
+let popup = document.getElementById("popupError")
+function openerrorPopup() {
     popup.classList.add("open-popup")
 }
-function closeerrorPopup(){
+function closeerrorPopup() {
     popup.classList.remove("open-popup")
 }
 
@@ -83,19 +68,18 @@ const email_regi = document.querySelector('.email_regi')
 const password_regi = document.querySelector('.password_regi')
 const confirmPassword_regi = document.querySelector('.confirmPassword_regi')
 var errorhtml = document.getElementById("errormsg").innerHTML;
-const errorElement=document.getElementById("error")
+const errorElement = document.getElementById("error")
 
 
 btn_regi.addEventListener('click', async (e) => {
     if (!form.checkValidity()) {
         return;
-      }
+    }
     e.preventDefault()
     // validateInputs();
     if (password_regi.value == confirmPassword_regi.value) {
         document.getElementById("errormsg").innerHTML = ``
         const email = email_regi.value
-        // const mob = mob_no.value
         const password = password_regi.value
         try {
             const fetcher = await fetch('http://localhost:4000/registration', {
@@ -111,22 +95,17 @@ btn_regi.addEventListener('click', async (e) => {
             })
             if (!fetcher.ok) {
                 const status = fetcher.status
-                console.log(status)
-                const { msg, error } = await fetcher.json()
-                console.log(msg);
-                throw Error(`${status}`)
+                const { msg } = await fetcher.json()
+                var arraryError = []
+                arraryError.push(status)
+                arraryError.push(msg)
+                errorHandler(arraryError)
             }
             const { msg } = await fetcher.json()
             showPopup()
 
         } catch (error) {
             console.log(error)
-            if (error == "Error: 500"){
-                document.getElementById("errormsg").innerHTML = `Fill all the information`
-            }
-            if (error == "Error: 400"){
-                document.getElementById("errormsg").innerHTML = `User with this email already exists...`
-            }
         }
 
     }
@@ -137,17 +116,17 @@ btn_regi.addEventListener('click', async (e) => {
 
 })
 //for validation
-const setError=(element,message)=>{
-    const inputControl=element.parentElement;
-    const errorDisplay=inputControl.querySelector(".error")
-    errorDisplay.innerText=message
+const setError = (element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector(".error")
+    errorDisplay.innerText = message
     inputControl.classList.add("error")
     inputControl.classList.remove("success")
 }
-const setSuccess=(element)=>{
-    const inputControl=element.parentElement;
-    const errorDisplay=inputControl.querySelector(".error")
-    errorDisplay.innerText=''
+const setSuccess = (element) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector(".error")
+    errorDisplay.innerText = ''
     inputControl.classList.add("success")
     inputControl.classList.remove("error")
 }
@@ -155,19 +134,19 @@ const isValidEmail = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
-const validateInputs=()=>{
-    const email_regiValue=email_regi.value.trim()
-    const password_regiValue=password_regi.value.trim() 
-    if (email_regiValue==''){
-        setError(email_regi,'Email is required')
-    }else{
-            setSuccess(email_regi)
+const validateInputs = () => {
+    const email_regiValue = email_regi.value.trim()
+    const password_regiValue = password_regi.value.trim()
+    if (email_regiValue == '') {
+        setError(email_regi, 'Email is required')
+    } else {
+        setSuccess(email_regi)
     }
-    if (password_regiValue==''){
-        setError(password_regi,'Password is required')
-    }else if(password_regiValue.length<8){
-            setError(password_regi,'Password must be at least 8 character')
-    }else{
+    if (password_regiValue == '') {
+        setError(password_regi, 'Password is required')
+    } else if (password_regiValue.length < 8) {
+        setError(password_regi, 'Password must be at least 8 character')
+    } else {
         setSuccess(password_regi)
     }
 }
@@ -204,23 +183,23 @@ const closeButton = document.getElementById("closeButton");
 
 // Show the popup when the button is clicked
 function showPopup() {
-  myPopup.style.display = "block";
-  setTimeout(() => {
-    location.replace('index.html')
-  }, 5000);
+    myPopup.style.display = "block";
+    setTimeout(() => {
+        location.replace('index.html')
+    }, 5000);
 }
 
 // Hide the popup when the close button is clicked
 function hidePopup() {
-  myPopup.style.display = "none";
+    myPopup.style.display = "none";
 }
 
-let error_popup=document.getElementById("popupError")
+let error_popup = document.getElementById("popupError")
 console.log("Running")
-function openerrorPopup(){
+function openerrorPopup() {
     console.log("Running")
     error_popup.classList.add("open-popup")
 }
-function closeerrorPopup(){
+function closeerrorPopup() {
     error_popup.classList.remove("open-popup")
 }
