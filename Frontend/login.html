@@ -13,8 +13,8 @@
 
 <body>
   <div class="container" id="container">
-    <div class="form-container sign-up-container" >
-<!-- <div id="error"></div> -->
+    <div class="form-container sign-up-container">
+      <!-- <div id="error"></div> -->
       <form id="form">
         <!--           REGISTER              -->
         <h1>Create Account</h1>
@@ -27,6 +27,7 @@
         <input required type="password" class="confirmPassword_regi" placeholder="Confirm Password" />
         <button class="btn_regi">Register</button>
         <p class="red" id="errormsg"></p>
+
       </form>
     </div>
     <div class="form-container sign-in-container">
@@ -40,7 +41,8 @@
         <input required type="password" class="password_log" placeholder="Password" />
         <!-- Trigger/Open The Modal -->
         <a class="button2" href="changepassword.html">Forgot your password?</a>
-        <button class="btn_log" type="submit">Sign In</button>
+        <button class=" btn_log" type="submit">Sign In</button>
+        
         <p class="red" id="loginerrormsg"></p>
       </form>
 
@@ -70,6 +72,16 @@
       <!-- <a id="button">Go to your Mail</a> -->
     </div>
   </div>
+
+  <div class="popupError" id="popupError">
+    
+    <img src="images/error_img.jpg">
+    <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+    <h2 id="error_warn">OOpps!</h2>
+    <p id="error_msg">ERROR 400.Reload!</p>
+    
+    <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
+</div>
 
 
 
