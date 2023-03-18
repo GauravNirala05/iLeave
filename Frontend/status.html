@@ -252,15 +252,15 @@
 
     </main>
   </div>
-  <div class="popupError" id="popupError">
-    
-    <img src="images/error_img.jpg">
-    <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
-    <h2 id="error_warn">OOpps!</h2>
-    <p id="error_msg">ERROR 400.Reload!</p>
-    
-    <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
-</div>
+  <div id="overlay">
+    <div class="popupError" id="popupError">
+      <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+      <img src="images/errornew.png">
+      <h2 id="error_warn">OOpps!</h2>
+      <p id="error_msg">ERROR 400.Reload!</p>
+
+      <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
+    </div>
   <footer class="d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by
