@@ -163,8 +163,11 @@ button_apply.addEventListener('click', async (e) => {
             const { leave, status } = await fetcher.json()
             alert(`${leave.employee_name} your leave is applied`)
         }
+        off()
     } catch (error) {
         alert(error)
+        off()
+
     }
 })
 
