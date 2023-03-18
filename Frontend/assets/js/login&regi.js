@@ -3,12 +3,11 @@ const usertoken = localStorage.getItem('token');
 if (usertoken != null) {
     location.replace("dashboard.html")
 }
-function errorHandler(msg) {
 
+function errorHandler(msg) {
     document.getElementById("error_warn").innerHTML = `${msg[0]}`
     document.getElementById("error_msg").innerHTML = `${msg[1]}`
     openerrorPopup()
-
 }
 const btn_log = document.querySelector('.btn_log')
 const email_log = document.querySelector('.email_log')
@@ -182,9 +181,6 @@ const myPopup = document.getElementById("myPopup");
 const myButton = document.getElementById("myButton");
 const closeButton = document.getElementById("closeButton");
 
-
-
-// Show the popup when the button is clicked
 function showPopup() {
     myPopup.style.display = "block";
     setTimeout(() => {
@@ -198,7 +194,6 @@ function hidePopup() {
 }
 
 let error_popup = document.getElementById("popupError")
-console.log("Running")
 function openerrorPopup() {
     document.getElementById("overlay").style.display = "block";
     console.log("Running")

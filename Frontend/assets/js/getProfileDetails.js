@@ -1,10 +1,8 @@
 const token = localStorage.getItem('token')
-const errorHandler=(msg)=> {
-
+const errorHandler = (msg) => {
     document.getElementById("error_warn").innerHTML = `${msg[0]}`
     document.getElementById("error_msg").innerHTML = `${msg[1]}`
     openerrorPopup()
-
 }
 const getUserDetails = async () => {
     try {
@@ -14,13 +12,13 @@ const getUserDetails = async () => {
             }
         })
         if (!user.ok) {
-
             const status = user.status
             const { msg } = await user.json()
             var arraryError = []
             arraryError.push(status)
             arraryError.push(msg)
             errorHandler(arraryError)
+            throw Error(msg)
         }
         else {
             const { data } = await user.json()
@@ -33,6 +31,7 @@ const getUserDetails = async () => {
                 document.querySelector(".userDepartment").innerHTML = data.department
                 document.querySelector(".userDesignation").innerHTML = data.designation
                 document.querySelector(".userEmail").innerHTML = data.email
+                console.log(data.gender);
                 if (data.gender === 'male') {
                     document.querySelector(".userGreet").innerHTML = `Mr.`
                 }
@@ -58,13 +57,18 @@ const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
 const f = document.querySelector("#logmsg")
+const footer = document.querySelector("#footer")
 
 if (token == null) {
+    console.log(`hello`);
+    off()
     pop2.hidden = false
     main.hidden = true
     f.innerHTML = `You Need to Login First`
     sidebar.hidden = true
+    // footer.hidden = true
     openPopup2()
+    
 }
 else {
     getUserDetails()
@@ -101,19 +105,17 @@ function login() {
     location.replace("login.html")
 }
 
-
 const error_popup = document.getElementById("popupError")
-console.log("Running")
 function openerrorPopup() {
-    console.log("Running")
     error_popup.classList.add("open-popup")
 }
 function closeerrorPopup() {
     error_popup.classList.remove("open-popup")
 }
+
 window.onload = function () {
     document.getElementById('loading-screen').style.display = 'block';
-  };
-  function off () {
+};
+function off() {
     document.getElementById('loading-screen').style.display = 'none';
-  };
+};

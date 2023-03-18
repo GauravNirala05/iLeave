@@ -27,8 +27,8 @@ const signin = async (req, res) => {
 
 }
 const getSingleData = async (req, res) => {
-    const { userID, userName } = req.user
-    const data = await User.findOne({ _id: userID}).select('profileCompleted _id email name contect_type department designation mob_no leave_type')
+    const { userID } = req.user
+    const data = await User.findOne({ _id: userID}).select('profileCompleted _id email name contect_type department designation mob_no leave_type gender')
     if(!data){
         throw new BadRequestError(`Invalid credential passed..(token)`)
     }
@@ -36,10 +36,10 @@ const getSingleData = async (req, res) => {
 }
 
 const completeProfile = async (req, res) => {
-    const { userID, userName } = req.user
-    const { mob_no, contect_type, department, designation } = req.body
+    const { userID } = req.user
+    const { name,mob_no, contect_type, department, designation,gender } = req.body
     const user=await User.findOne({ _id: userID})
-    if (!mob_no || !contect_type || !department || !designation) {
+    if (!name||!mob_no || !contect_type || !department || !designation||!gender) {
         throw new BadRequestError(`Provide all the credentials...mob_no,contect_type,department,designation...`)
     }
     if (!user) {
@@ -47,7 +47,7 @@ const completeProfile = async (req, res) => {
     }
     if (user.profileCompleted==false ) {
         try {
-            const user = await User.findOneAndUpdate({_id:userID}, { mob_no, contect_type, department, designation, profileCompleted: true }, { new: true})
+            const user = await User.findOneAndUpdate({_id:userID}, {name, gender,mob_no, contect_type, department, designation, profileCompleted: true }, { new: true})
             await user.leaveSchema()
             user.save()
             res.status(200).json({ status: 'SUCCESS', msg:`Account is successfully initailized.` })
@@ -61,7 +61,7 @@ const completeProfile = async (req, res) => {
 
 }
 const updateProfile = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
 
     if (await User.exists({ _id: userID,profileCompleted:true })) {
         const user = await User.findOneAndUpdate({_id:userID,profileCompleted:true},req.body, { new: true, runValidators: true })
@@ -74,7 +74,7 @@ const updateProfile = async (req, res) => {
 }
 
 const deleteProfile = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const { id: targetID } = req.params
     const user = await User.findOne({ _id: userID })
     if (user) {

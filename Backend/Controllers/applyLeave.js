@@ -11,13 +11,14 @@ const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
 
 
 const applyLeave = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const { from_date, to_date, discription, contect_no, leave_type } = req.body
     
     if(!from_date|| !to_date|| !discription|| !contect_no|| !leave_type){
         throw new BadRequestError(`Please provide all credentials`)
     }
     const user = await User.findOne({ _id: userID })
+    const userName=user.name
     if (user.designation === 'faculty') {
         const availableleave = await Leave.find({ employee_id: userID, status: ['applied', 'approved', 'completed'] }).sort('to_date')
         const fromDate = new Date(req.body.from_date)
@@ -163,7 +164,7 @@ const applyLeave = async (req, res) => {
     }
 }
 const getReferenceName = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const user = await User.findOne({ _id: userID })
     if (user) {
         const designation = user.designation
@@ -186,9 +187,10 @@ const getReferenceName = async (req, res) => {
     }
 }
 const deleteLeave = async (req, res) => {
-    const { userID, userName } = req.user
+    const { userID } = req.user
     const { leaveId: targetLeaveID } = req.params
     const user = await User.findOne({ _id: userID })
+    const userName=user.name
     if (user) {
         if (await Leave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
             await Leave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
