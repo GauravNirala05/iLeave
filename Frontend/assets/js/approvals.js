@@ -172,7 +172,6 @@ const getLeaveApprovals = async () => {
                 appliedTable.append(tr)
                 num++;
             });
-            off()
         }
     } catch (error) {
         console.log(error);
@@ -182,14 +181,10 @@ const getLeaveApprovals = async () => {
 
 if (token) {
     getLeaveApprovals()
+    off()
+
 }
 
-window.onload = function () {
-    document.getElementById('loading-screen').style.display = 'block';
-};
-function off () {
-    document.getElementById('loading-screen').style.display = 'none';
-};
 
 let error_popup = document.getElementById("popupError")
 console.log("Running")
