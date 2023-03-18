@@ -22,65 +22,65 @@ const getReferenceUser = async () => {
             arraryError.push(msg)
             errorHandler(arraryError)
         }
-        const { data, hits } = await getRefUser.json()
-        const ref1 = document.querySelector('.reference1')
-        const ref2 = document.querySelector('.reference2')
-        const ref3 = document.querySelector('.reference3')
-        const ref4 = document.querySelector('.reference4')
-        const ref = document.querySelector('.reference')
+        else {
+            const { data, hits } = await getRefUser.json()
+            const ref1 = document.querySelector('.reference1')
+            const ref2 = document.querySelector('.reference2')
+            const ref3 = document.querySelector('.reference3')
+            const ref4 = document.querySelector('.reference4')
+            const ref = document.querySelector('.reference')
 
-        if (UserDesignation === 'HOD') {
-            if (hits == 0) {
-                var opt = document.createElement('option')
-                opt.innerHTML = `--empty--`
-                ref.append(opt)
-            }
-            else {
-                for (item of data) {
+            if (UserDesignation === 'HOD') {
+                if (hits == 0) {
                     var opt = document.createElement('option')
-                    opt.innerHTML = `${item.name}`
+                    opt.innerHTML = `--empty--`
                     ref.append(opt)
+                }
+                else {
+                    for (item of data) {
+                        var opt = document.createElement('option')
+                        opt.innerHTML = `${item.name}`
+                        ref.append(opt)
 
+                    }
                 }
             }
-        }
-        if (UserDesignation === 'faculty') {
+            if (UserDesignation === 'faculty') {
 
-            if (hits == 0) {
-                var opt1 = document.createElement('option')
-                opt1.innerHTML = `--empty--`
-                var opt2 = document.createElement('option')
-                opt2.innerHTML = `--empty--`
-                var opt3 = document.createElement('option')
-                opt3.innerHTML = `--empty--`
-                var opt4 = document.createElement('option')
-                opt4.innerHTML = `--empty--`
-                ref1.append(opt1)
-                ref2.append(opt2)
-                ref3.append(opt3)
-                ref4.append(opt4)
-            }
-            else {
-                for (item of data) {
+                if (hits == 0) {
                     var opt1 = document.createElement('option')
-                    opt1.innerHTML = `${item.name}`
+                    opt1.innerHTML = `--empty--`
                     var opt2 = document.createElement('option')
-                    opt2.innerHTML = `${item.name}`
+                    opt2.innerHTML = `--empty--`
                     var opt3 = document.createElement('option')
-                    opt3.innerHTML = `${item.name}`
+                    opt3.innerHTML = `--empty--`
                     var opt4 = document.createElement('option')
-                    opt4.innerHTML = `${item.name}`
+                    opt4.innerHTML = `--empty--`
                     ref1.append(opt1)
                     ref2.append(opt2)
                     ref3.append(opt3)
                     ref4.append(opt4)
+                }
+                else {
+                    for (item of data) {
+                        var opt1 = document.createElement('option')
+                        opt1.innerHTML = `${item.name}`
+                        var opt2 = document.createElement('option')
+                        opt2.innerHTML = `${item.name}`
+                        var opt3 = document.createElement('option')
+                        opt3.innerHTML = `${item.name}`
+                        var opt4 = document.createElement('option')
+                        opt4.innerHTML = `${item.name}`
+                        ref1.append(opt1)
+                        ref2.append(opt2)
+                        ref3.append(opt3)
+                        ref4.append(opt4)
 
+                    }
                 }
             }
         }
         off()
-
-
     }
     catch (error) {
         console.log(error)
@@ -171,10 +171,18 @@ button_apply.addEventListener('click', async (e) => {
 
 window.onload = function () {
     document.getElementById('loading-screen').style.display = 'block';
-  };
-  function off () {
+};
+function off() {
     document.getElementById('loading-screen').style.display = 'none';
-  };
-  
-  
-  
+};
+
+let error_popup = document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup() {
+    console.log("Running")
+    error_popup.classList.add("open-popup")
+}
+function closeerrorPopup() {
+    error_popup.classList.remove("open-popup")
+}
+

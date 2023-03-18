@@ -114,6 +114,14 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-
+let error_popup = document.getElementById("popupError")
+console.log("Running")
+function openerrorPopup() {
+    console.log("Running")
+    error_popup.classList.add("open-popup")
+}
+function closeerrorPopup() {
+    error_popup.classList.remove("open-popup")
+}
 
 
