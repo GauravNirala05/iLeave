@@ -94,7 +94,6 @@ if (UserDesignation == 'faculty') {
 }
 if (UserDesignation == 'principal') {
     console.log(`its running`);
-    off()
 }
 
 
