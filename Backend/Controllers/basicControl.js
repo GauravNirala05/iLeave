@@ -28,7 +28,7 @@ const signin = async (req, res) => {
 }
 const getSingleData = async (req, res) => {
     const { userID } = req.user
-    const data = await User.findOne({ _id: userID}).select('profileCompleted _id email name contect_type department designation mob_no leave_type')
+    const data = await User.findOne({ _id: userID}).select('profileCompleted _id email name contect_type department designation mob_no leave_type gender')
     if(!data){
         throw new BadRequestError(`Invalid credential passed..(token)`)
     }
