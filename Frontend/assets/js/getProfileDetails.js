@@ -26,6 +26,11 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
+                if (data.designation == 'principal'){    
+                    document.querySelector("#allusersidebar").hidden = false
+                    document.querySelector("#applyleavesidebar").hidden = true
+                    document.querySelector("#statussidebar").hidden = true
+                    }
                 localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
                 document.querySelector(".userDepartment").innerHTML = data.department
@@ -46,6 +51,7 @@ const getUserDetails = async () => {
                     document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
                     document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
                 }
+                
             }
         }
         off()
@@ -70,7 +76,7 @@ if (token == null) {
     sidebar.hidden = true
     // footer.hidden = true
     openPopup2()
-    
+
 }
 else {
     getUserDetails()
