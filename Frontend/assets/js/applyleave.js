@@ -1,6 +1,11 @@
 
 const UserDesignation = localStorage.getItem('UserDesignation')
+function errorHandler(msg) {
+    document.getElementById("error_warn").innerHTML = `${msg[0]}`
+    document.getElementById("error_msg").innerHTML = `${msg[1]}`
+    openerrorPopup()
 
+}
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -10,11 +15,14 @@ const getReferenceUser = async () => {
 
         })
         if (!getRefUser.ok) {
-            const users = await getRefUser.json()
-            throw Error(users.msg)
+            const status = getRefUser.status
+            const { msg } = await getRefUser.json()
+            var arraryError = []
+            arraryError.push(status)
+            arraryError.push(msg)
+            errorHandler(arraryError)
         }
         const { data, hits } = await getRefUser.json()
-        console.log(data)
         const ref1 = document.querySelector('.reference1')
         const ref2 = document.querySelector('.reference2')
         const ref3 = document.querySelector('.reference3')
