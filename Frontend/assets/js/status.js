@@ -49,10 +49,10 @@ const getleavestatus = async () => {
           pendingLeaveReference.hidden = true
           if (element.head_approval) {
             if (element.head_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.head_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
           }
           else {
@@ -60,10 +60,10 @@ const getleavestatus = async () => {
           }
           if (element.principal_approval) {
             if (element.principal_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.principal_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
           }
           else {
@@ -75,11 +75,11 @@ const getleavestatus = async () => {
           if (element.reference) {
             ihtml += `<td>${element.reference.name}`
             if (element.reference.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
               ihtml += `</td>`
             }
-            if (element.reference.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            else if (element.reference.approved === false) {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
               ihtml += `</td>`
             }
             else {
@@ -89,45 +89,43 @@ const getleavestatus = async () => {
           else {
             ihtml += `<td><div>${element.reference1.name}`
             if (element.reference1.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference1.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
-            ihtml += `</div>
-          <div>${element.reference2.name}`
+            ihtml += `</div><div>${element.reference2.name}`
             if (element.reference2.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference2.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div>
-          <div>${element.reference3.name}`
+            <div>${element.reference3.name}`
             if (element.reference3.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference3.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div>
           <div>${element.reference4.name}`
             if (element.reference4.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference4.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
-            ihtml += `</div>
-        </td>`
+            ihtml += `</div></td>`
           }
 
           if (element.HOD_approval) {
             if (element.HOD_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
-            if (element.HOD_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            else {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
           }
           else {
@@ -135,16 +133,21 @@ const getleavestatus = async () => {
           }
           if (element.principal_approval) {
             if (element.principal_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
             }
-            if (element.principal_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+            else {
+              ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
             }
           }
           else {
             ihtml += `<td>Pending</td>`
           }
           ihtml += `<td>${element.status}</td>`
+          ihtml += `<td>
+          <div class="btn btn-danger">
+            <i class="fa fa-trash-o fa-lg"></i> Delete
+          </div>
+        </td>`
         }
         tr.innerHTML = ihtml
         pendingLeaveBody.append(tr)
@@ -202,10 +205,10 @@ const getleaveHistory = async () => {
           pendingLeaveReference.hidden = true
           if (element.head_approval) {
             if (element.head_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.head_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
           }
           else {
@@ -213,10 +216,10 @@ const getleaveHistory = async () => {
           }
           if (element.principal_approval) {
             if (element.principal_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.principal_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
           }
           else {
@@ -228,11 +231,11 @@ const getleaveHistory = async () => {
           if (element.reference) {
             ihtml += `<td>${element.reference.name}`
             if (element.reference.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
               ihtml += `</td>`
             }
             if (element.reference.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
               ihtml += `</td>`
             }
             else {
@@ -242,34 +245,34 @@ const getleaveHistory = async () => {
           else {
             ihtml += `<td><div>${element.reference1.name}`
             if (element.reference1.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference1.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div>
           <div>${element.reference2.name}`
             if (element.reference2.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference2.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div>
           <div>${element.reference3.name}`
             if (element.reference3.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference3.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div>
           <div>${element.reference4.name}`
             if (element.reference4.approved === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
             if (element.reference4.approved === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div>
         </td>`
@@ -277,10 +280,10 @@ const getleaveHistory = async () => {
 
           if (element.HOD_approval) {
             if (element.HOD_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
             }
             if (element.HOD_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
             }
           }
           else {
@@ -288,10 +291,10 @@ const getleaveHistory = async () => {
           }
           if (element.principal_approval) {
             if (element.principal_approval === true) {
-              ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
+              ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
             }
             if (element.principal_approval === false) {
-              ihtml += `<i class="fa fa-times-circle" aria-hidden="true"></i>`
+              ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
             }
           }
           else {

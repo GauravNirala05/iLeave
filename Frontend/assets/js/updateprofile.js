@@ -139,13 +139,12 @@ delete_account.addEventListener('click', async (e) => {
       localStorage.removeItem('token');
       localStorage.removeItem('UserDesignation');
       location.replace("index.html")
-      alert(`${data.name} you account is successfully DEleted`)
+      alert(`${data.name} you account is successfully Deleted`)
     }
 
   } catch (error) {
     console.log(error);
-    alert(data)
-
+    alert(error)
   }
 })
 function openPopup() {
@@ -183,7 +182,6 @@ var loadFile = function (event) {
   var image = document.getElementById("output");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
-
 
 function changepassword() {
   location.replace('changepassword.html')
