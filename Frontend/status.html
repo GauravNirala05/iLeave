@@ -41,7 +41,7 @@
       <div id="shadow"></div>
       <div id="box"></div>
     </div>
- </div>  
+  </div>
   <div id="popup" class="popup card-header">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
@@ -153,7 +153,7 @@
               </div>
               <div class="card-body">
                 <div class=" table-responsive">
-                  <table width="100%"  id="leavePending" class="table-striped-columns  ">
+                  <table width="100%" id="leavePending" class="table-striped-columns  ">
                     <thead class="ttt table-info">
                       <tr>
                         <th>Sr.No</th>
@@ -166,6 +166,7 @@
                         <th>HOD Appoval</th>
                         <th>Principal Approval</th>
                         <th>Status</th>
+                        <th>Delete Leave</th>
                       </tr>
                     </thead>
                     <tbody id="pendingLeaveBody">
@@ -185,11 +186,14 @@
                         <td>Pending</td>
                         <td>Pending</td>
                         <td>Pending</td>
-                        <td></td>
-    
+                        <td>
+                          <div class="btn btn-danger">
+                            <i class="fa fa-trash-o fa-lg"></i> Delete
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
-    
+
                   </table>
                 </div>
               </div>
@@ -208,7 +212,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table width="100%"  id="leaveHistory" class="   table-striped-columns ">
+                  <table width="100%" id="leaveHistory" class="   table-striped-columns ">
                     <thead class="ttt table-info ">
                       <tr>
                         <th>Sr.No</th>
@@ -240,11 +244,10 @@
                         <td>Pending</td>
                         <td>Pending</td>
                         <td>Pending</td>
-                        <td></td>
-    
+
                       </tr>
                     </tbody>
-    
+
                   </table>
                 </div>
               </div>
@@ -268,7 +271,7 @@
 
       <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
     </div>
-    </div>
+  </div>
   <footer class="d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by

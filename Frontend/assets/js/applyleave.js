@@ -25,7 +25,7 @@ const getReferenceUser = async () => {
             const ref = document.querySelector('.reference')
 
             if (UserDesignation === 'HOD') {
-                if (hits ==0) {
+                if (hits == 0) {
                     var opt = document.createElement('option')
                     opt.innerHTML = `--empty--`
                     ref.append(opt)
@@ -97,6 +97,22 @@ if (UserDesignation == 'principal') {
 }
 
 
+const contactno = document.querySelector('.mob_no')
+const fromdate = document.querySelector('.fromdate')
+const todate = document.querySelector('.todate')
+const reference1 = document.querySelector('.reference1')
+const reference2 = document.querySelector('.reference2')
+const reference3 = document.querySelector('.reference3')
+const reference4 = document.querySelector('.reference4')
+const leave_type = document.querySelector('.leavetype')
+const reason = document.querySelector('.reason')
+
+if (UserDesignation == 'faculty') {
+    reference1.required=true
+    reference2.required=true
+    reference3.required=true
+    reference4.required=true
+}
 
 const button_apply = document.querySelector('.btn_apply')
 
@@ -105,25 +121,29 @@ button_apply.addEventListener('click', async (e) => {
         return;
     }
     e.preventDefault()
-
-    const contactno = document.querySelector('.mob_no').value
-    const fromdate = document.querySelector('.fromdate').value
-    const todate = document.querySelector('.todate').value
-    const reference1 = document.querySelector('.reference1').value
-    const reference2 = document.querySelector('.reference2').value
-    const reference3 = document.querySelector('.reference3').value
-    const reference4 = document.querySelector('.reference4').value
-    const leave_type = document.querySelector('.leavetype').value
-    const reason = document.querySelector('.reason').value
+    const contactnoData = contactno.value
+    const fromdateData = fromdate.value
+    const todateData = todate.value
+    const reference1Data = reference1.value
+    const reference2Data = reference2.value
+    const reference3Data = reference3.value
+    const reference4Data = reference4.value
+    const leave_typeData = leave_type.value
+    const reasonData = reason.value
 
     //for Hod
     const reference = document.querySelector('.reference').value
-
-    const date2 = new Date(fromdate)
-    const date1 = new Date(todate)
+    const dayDiscription = document.querySelector('#dayDiscription').value
+    dayDiscription
+    console.log(reference);
+    const date2 = new Date(fromdateData)
+    const date1 = new Date(todateData)
     console.log(date1 - date2);
-    const totaldays = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+    let totaldays = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
     console.log(totaldays);
+    if (totaldays == 1 && dayDiscription == 'true') {
+        totaldays = 0.5
+    }
     try {
         const token = localStorage.getItem('token')
         if (!token) {
@@ -133,17 +153,17 @@ button_apply.addEventListener('click', async (e) => {
             method: 'POST',
 
             body: JSON.stringify({
-                contect_no: contactno,
-                from_date: fromdate,
-                to_date: todate,
+                contect_no: contactnoData,
+                from_date: fromdateData,
+                to_date: todateData,
                 total_days: totaldays,
                 reference: { name: reference },
-                reference1: { name: reference1 },
-                reference2: { name: reference2 },
-                reference3: { name: reference3 },
-                reference4: { name: reference4 },
-                leave_type: leave_type,
-                discription: reason,
+                reference1: { name: reference1Data },
+                reference2: { name: reference2Data },
+                reference3: { name: reference3Data },
+                reference4: { name: reference4Data },
+                leave_type: leave_typeData,
+                discription: reasonData,
             }),
 
             headers: {
