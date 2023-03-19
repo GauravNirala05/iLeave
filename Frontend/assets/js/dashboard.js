@@ -130,11 +130,7 @@ const getuser = async () => {
     off()
   }
 }
-var UserDesignation=localStorage.getItem('UserDesignation')
-console.log(UserDesignation);
-
 if (token) {
-  console.log(`its running`);
   getuser()
   off()
 }

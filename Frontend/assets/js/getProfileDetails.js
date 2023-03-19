@@ -7,12 +7,6 @@ const statusmsg = document.querySelector("#statuserror")
 const statusmsgtext = document.querySelector("#statuserrortext")
 const errormsg = document.querySelector("#msgerror")
 
-
-const errorHandler = (msg) => {
-    document.getElementById("error_warn").innerHTML = `${msg[0]}`
-    document.getElementById("error_msg").innerHTML = `${msg[1]}`
-    openerrorPopup()
-}
 const getUserDetails = async () => {
     try {
         const user = await fetch('/getUserData', {
@@ -35,13 +29,9 @@ const getUserDetails = async () => {
             errormsg.innerHTML = msg
             openPopup2()
             localStorage.removeItem('token');
+            localStorage.removeItem('UserDesignation');
             document.getElementById('loading-screen').hidden = true;
             footer.style.opacity = "0";
-
-            var arraryError = []
-            arraryError.push(status)
-            arraryError.push(msg)
-            errorHandler(arraryError)
         }
         else {
             const { data } = await user.json()
@@ -49,8 +39,6 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
-                const UserDesignation = data.designation
-                console.log(UserDesignation);
                 if (data.designation == 'principal') {
                     document.querySelector("#allusersidebar").hidden = false
                     document.querySelector("#applyleavesidebar").hidden = true
@@ -105,34 +93,36 @@ else {
     off()
 }
 
+function login() {
+    location.replace("login.html")
+}
+function complete_profile() {
+    location.replace("complete_profile.html")
+}
+
 function openmodal() {
     document.getElementById("popup3").style.display = "block";
 }
 function closePopup() {
     document.getElementById("popup3").style.display = "none";
 }
+
 function openPopup() {
     document.getElementById("popup").style.display = "block";
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
 }
 
 function openPopup2() {
     document.getElementById("popup2").style.display = "block";
 }
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
 
 function confirm_logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('UserDesignation');
     location.replace("index.html")
-}
-function complete_profile() {
-    location.replace("complete_profile.html")
-}
-function login() {
-    location.replace("login.html")
 }
 
 const error_popup = document.getElementById("popupError")

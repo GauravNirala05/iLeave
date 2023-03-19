@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/updateprofile.css">
   <!-- <link rel="stylesheet" href="assets/css/completeprofile.css">-->
-  <link rel="stylesheet" href="assets/css/newapplyleave.css"> 
+  <link rel="stylesheet" href="assets/css/newapplyleave.css">
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
     $(function () {
       $("#profilecontent").load("profile.html");
     });
   </script>
+  <script defer src="assets/js/getProfileDetails.js"></script>
+  <script defer src="assets/js/updateprofile.js"></script>
 </head>
 
 <body>
@@ -175,10 +177,10 @@
       <div class="recents-grid mt-4">
         <div class="projects">
           <div class="card">
-           
+
             <div class="card-body">
               <h4 class="ml-3">Update Profile&nbsp;<button type="button" class="editProfile fa fa-edit"
-                  style=" color: #f57c00;background:none;font-size: 35px;"></button></h4> 
+                  style=" color: #f57c00;background:none;font-size: 35px;"></button></h4>
               <div class="row align-items-center">
                 <div class="col-lg-4  mb-lg-0">
                   <div class="upload ml-4">
@@ -189,33 +191,33 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="col-lg-8 mb-5 mb-lg-0">
-                  <div class="table-responsive" id= "profileform">
+                  <div class="table-responsive" id="profileform">
                     <table width="100%" class="table table-striped-columns ">
                       <thead class=" ttt table-info">
 
                       </thead>
-                      <tbody class="table-group-divider userAppliedTable" >
+                      <tbody class="table-group-divider userAppliedTable">
                         <tr id="defaultApprovingText">
-                          <td class="" ><i class="fa fa-user-circle-o" style="font-size:24px"></i>&nbsp;Name</td>
-                          <td class="" >User1</td>
+                          <td class=""><i class="fa fa-user-circle-o" style="font-size:24px"></i>&nbsp;Name</td>
+                          <td class="">User1</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class="" ><i class="fa fa-envelope" style="font-size:24px"></i>&nbsp;Email</td>
-                          <td class="" >user1@gmail.com</td>
+                          <td class=""><i class="fa fa-envelope" style="font-size:24px"></i>&nbsp;Email</td>
+                          <td class="">user1@gmail.com</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class="" ><i class="fa fa-phone" style="font-size:24px"></i>&nbsp;Phone no</td>
-                          <td class="" >9583946342</td>
+                          <td class=""><i class="fa fa-phone" style="font-size:24px"></i>&nbsp;Phone no</td>
+                          <td class="">9583946342</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class="" >Designation</td>
-                          <td class="" >Faculty</td>
+                          <td class="">Designation</td>
+                          <td class="">Faculty</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class="" >Department</td>
-                          <td class="" >Computer Sciencce</td>
+                          <td class="">Department</td>
+                          <td class="">Computer Sciencce</td>
                         </tr>
 
                       </tbody>
@@ -342,16 +344,7 @@
 
   </main>
   </div>
-  <div id="overlay">
-    <div class="popupError" id="popupError">
-      <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
-      <img src="images/errornew.png">
-      <h2 id="error_warn">OOpps!</h2>
-      <p id="error_msg">ERROR 400.Reload!</p>
 
-      <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
-    </div>
-  </div>
   <footer class="d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by
@@ -360,18 +353,6 @@
       <a target="_blank" href="https://github.com/Jiteshayam">Jitesh</a>
     </p>
   </footer>
-
-  <!-- <script>// Data Picker Initialization
-    $('.datepicker').datepicker({
-      inline: true
-    });
-    
-  </script> -->
-
-
-  <script src="assets/js/getProfileDetails.js"></script>
-  <script src="assets/js/updateprofile.js"></script>
-
 </body>
 
 </html>

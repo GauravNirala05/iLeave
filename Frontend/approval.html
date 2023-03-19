@@ -28,6 +28,9 @@
       $("#profilecontent").load("profile.html");
     });
   </script>
+
+  <script defer src="assets/js/getProfileDetails.js"></script>
+  <script defer src="assets/js/approvals.js"></script>
   <!-- <link rel="stylesheet" href="assets/css/newapplyleave.css"> -->
   <link rel="stylesheet" href="assets/css/newdashboard.css">
 </head>
@@ -40,7 +43,7 @@
       <div id="shadow"></div>
       <div id="box"></div>
     </div>
- </div> 
+  </div>
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
@@ -51,7 +54,7 @@
     <div class="sidebar-menu">
       <ul>
         <li>
-          <a href="dashboard.html" >
+          <a href="dashboard.html">
             <span class="fa fa-clone"></span>
             <span>Dashboard</span>
           </a>
@@ -76,7 +79,7 @@
           </a>
         </li>
         <li>
-          <a href="approval.html" class="active" >
+          <a href="approval.html" class="active">
             <span class="fa fa-calendar-check-o"></span>
             <span>Leave Approval</span>
           </a>
@@ -139,25 +142,25 @@
 
     <main>
       <div class="recent-grid mt-4 mb-0 col-md-8">
-      <div class="projects">
-        <div class="card">
-          <div class="card-header">
-            <h3>Leave Approval</h3>
-            <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table width="100%" class="table table-striped-columns ">
-                <thead class=" ttt table-info">
-                  <tr>
-                    <td>Sr.No</td>
-                    <td>Name</td>
-                    <td>Leave Name</td>
-                    <td>From Date</td>
-                    <td>To Date</td>
-                    <td>Reason</td>
-                    <td>Approve</td>
-                    <td></td>
+        <div class="projects">
+          <div class="card">
+            <div class="card-header">
+              <h3>Leave Approval</h3>
+              <!-- <button>See all <span class="fas fa-arrow-right"></span> </button> -->
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%" class="table table-striped-columns ">
+                  <thead class=" ttt table-info">
+                    <tr>
+                      <td>Sr.No</td>
+                      <td>Name</td>
+                      <td>Leave Name</td>
+                      <td>From Date</td>
+                      <td>To Date</td>
+                      <td>Reason</td>
+                      <td>Approve</td>
+                      <td></td>
                     </tr>
                   </thead>
                   <tbody class="table-group-divider userAppliedTable">
@@ -195,7 +198,7 @@
 
       <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
     </div>
-    </div>
+  </div>
   <footer class="d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by
@@ -207,7 +210,5 @@
 
 
 </body>
-<script src="assets/js/getProfileDetails.js"></script>
-<script src="assets/js/approvals.js"></script>
 
 </html>

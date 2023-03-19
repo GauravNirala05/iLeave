@@ -79,7 +79,6 @@ async function approveUserPrincipal(id, approval) {
     }
 }
 var UserDesignation = localStorage.getItem('UserDesignation')
-console.log(UserDesignation);
 const getLeaveApprovals = async () => {
     try {
         const user = await fetch('/approvals', {
