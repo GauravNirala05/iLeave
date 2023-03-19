@@ -4,6 +4,7 @@ const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
 const footer = document.querySelector(".footer")
 const statusmsg = document.querySelector("#statuserror")
+const statusmsgtext = document.querySelector("#statuserrortext")
 const errormsg = document.querySelector("#msgerror")
 
 
@@ -24,18 +25,19 @@ const getUserDetails = async () => {
 
             console.log(status);
             console.log(user.statusText);
+            const { msg } = await user.json()
 
             pop2.hidden = false
             main.hidden = true
             sidebar.hidden = true
             statusmsg.innerHTML = status
-            errormsg.innerHTML = user.statusText
+            statusmsgtext.innerHTML = user.statusText
+            errormsg.innerHTML = msg
             openPopup2()
             localStorage.removeItem('token');
             document.getElementById('loading-screen').hidden = true;
             footer.style.opacity = "0";
 
-            const { msg } = await user.json()
             var arraryError = []
             arraryError.push(status)
             arraryError.push(msg)
@@ -91,6 +93,8 @@ if (token == null) {
     main.hidden = true
     sidebar.hidden = true
     footer.style.opacity = "0";
+    statusmsg.innerHTML = `Token not found`
+    statusmsgtext.innerHTML = ``
     errormsg.innerHTML = `You Need to Login First`
     openPopup2()
     document.getElementById('loading-screen').hidden = true;
