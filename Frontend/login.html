@@ -23,13 +23,12 @@
     <div class="form-container sign-up-container">
       <!-- <div id="error"></div> -->
       <form id="form">
-        <!--           REGISTER              -->
+        <!--           REGISTER              -->  
         <h1>Create Account</h1>
         <span>use your email for registration</span>
         <input required type="email" class="email_regi" placeholder="Email" />
-        <div hidden="true" class="error"></div>
-        <!-- <input type="number" class="mob_no" placeholder="Mobile Number" />-->
-        <input type="password" class="password_regi" placeholder="Password" />
+        <div hidden="true" class="error"></div>     
+        <input type="password" class="password_regi " placeholder="Password" />
         <div class="error"></div>
         <input required type="password" class="confirmPassword_regi" placeholder="Confirm Password" />
         <button class="btn_regi">Register</button>
@@ -85,7 +84,7 @@
 
   <div id="overlay">
     <div class="popupError" id="popupError">
-      <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+      <a type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</a>
       <img src="images/error.svg">
       <h2 id="error_warn">OOpps!</h2>
       <p id="error_msg">ERROR 400.Reload!</p>
