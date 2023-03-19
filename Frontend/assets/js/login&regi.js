@@ -183,9 +183,10 @@ const closeButton = document.getElementById("closeButton");
 
 function showPopup() {
     myPopup.style.display = "block";
-    setTimeout(() => {
-        location.replace('index.html')
-    }, 5000);
+    console.log("run");
+    // setTimeout(() => {
+    //     location.replace('index.html')
+    // }, 5000);
 }
 
 // Hide the popup when the close button is clicked
@@ -198,6 +199,7 @@ function openerrorPopup() {
     document.getElementById("overlay").style.display = "block";
     console.log("Running")
     error_popup.classList.add("open-popup")
+    document.addEventListener('click',closeerrorPopup)
 }
 function closeerrorPopup() {
     document.getElementById("overlay").style.display = "none";

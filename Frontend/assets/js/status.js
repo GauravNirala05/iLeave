@@ -73,7 +73,7 @@ const getleavestatus = async () => {
         }
         else {
           if (element.reference) {
-            ihtml += `<td>${element.reference1.name}`
+            ihtml += `<td>${element.reference.name}`
             if (element.reference.approved === true) {
               ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
               ihtml += `</td>`
@@ -226,7 +226,7 @@ const getleaveHistory = async () => {
         }
         else {
           if (element.reference) {
-            ihtml += `<td>${element.reference1.name}`
+            ihtml += `<td>${element.reference.name}`
             if (element.reference.approved === true) {
               ihtml += `<i class="fa fa-check-circle" aria-hidden="true"></i>`
               ihtml += `</td>`
