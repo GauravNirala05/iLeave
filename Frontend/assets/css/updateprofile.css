@@ -1,11 +1,6 @@
 
-  
   .content {
     padding: 7rem 0; }
- 
-
-
-  
   h3 {
     font-size: 2rem;
     font-weight: 700; }
@@ -193,3 +188,12 @@
 	border-radius: 4px;
 	cursor: pointer;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);    }
+
+  
+  table tr td{
+    text-align: left;
+  }
+  table tr td{
+    font-weight: bold;
+    font-size: 20px;
+  }
