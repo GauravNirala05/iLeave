@@ -52,9 +52,15 @@ const getUserDetails = async () => {
                 const UserDesignation = data.designation
                 console.log(UserDesignation);
                 if (data.designation == 'principal') {
-                    document.querySelector("#allusersidebar").hidden = false
-                    document.querySelector("#applyleavesidebar").hidden = true
-                    document.querySelector("#statussidebar").hidden = true
+                    if (document.querySelector("#allusersidebar")) {
+                        document.querySelector("#allusersidebar").hidden = false
+                    }
+                    if (document.querySelector("#applyleavesidebar")) {
+                        document.querySelector("#applyleavesidebar").hidden = true
+                    }
+                    if (document.querySelector("#statussidebar")) {
+                        document.querySelector("#statussidebar").hidden = true
+                    }
                 }
                 localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
