@@ -143,17 +143,16 @@ const getleavestatus = async () => {
             ihtml += `</div></td>`
           }
 
-          if (element.HOD_approval) {
-            if (element.HOD_approval === true) {
-              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
-            }
-            else {
-              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
-            }
+
+          if (element.HOD_approval === true) {
+            ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
           }
-          else {
+          else if ((element.HOD_approval === false)) {
+            ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+          }else {
             ihtml += `<td>Pending</td>`
           }
+          
           if (element.principal_approval) {
             if (element.principal_approval === true) {
               ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
@@ -167,7 +166,7 @@ const getleavestatus = async () => {
           }
           ihtml += `<td>${element.status}</td>`
           ihtml += `<td>
-          <div class="btn btn-danger">
+          <div onclick="deleteLeave('${element._id}')" class="btn btn-danger">
             <i class="fa fa-trash-o fa-lg"></i> Delete
           </div>
         </td>`
