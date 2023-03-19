@@ -72,12 +72,11 @@ const approve = async (req, res) => {
                 approveObject.reference={}
                 approveObject.reference.name = user.name
                 approveObject.reference.approved = approval
+                approveObject.HOD_approval=approval
                 if (approval === 'true') {
-                    approveObject.HOD_approval='true'
                     approveObject.status = 'applied'
                 }
                 else {
-                    approveObject.HOD_approval='false'
                     approveObject.status = 'rejected'
                 }
                 console.log(approveObject);
@@ -85,10 +84,9 @@ const approve = async (req, res) => {
                 return res.status(StatusCodes.OK).json({ status: 'SUCCESS', data: data })
             }
             else {
-                throw new NotFound(`Leave not found with id ${targetID}`)
+                throw new NotFound(`Leave not found ...`)
             }
         }
-
 
         if (user.designation === 'HOD') {
             if (await Leave.exists({ _id: targetID, employee_dep: user.department, status: ['applied'] })) {

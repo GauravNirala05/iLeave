@@ -107,6 +107,12 @@ const reference4 = document.querySelector('.reference4')
 const leave_type = document.querySelector('.leavetype')
 const reason = document.querySelector('.reason')
 
+if (UserDesignation == 'faculty') {
+    reference1.required=true
+    reference2.required=true
+    reference3.required=true
+    reference4.required=true
+}
 
 const button_apply = document.querySelector('.btn_apply')
 
@@ -115,12 +121,6 @@ button_apply.addEventListener('click', async (e) => {
         return;
     }
     e.preventDefault()
-    if (UserDesignation == 'faculty') {
-        reference1.setAttribute('required', true)
-        reference2.setAttribute('required', true)
-        reference3.setAttribute('required', true)
-        reference4.setAttribute('required', true)
-    }
     const contactnoData = contactno.value
     const fromdateData = fromdate.value
     const todateData = todate.value

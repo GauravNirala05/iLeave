@@ -591,6 +591,9 @@ td .status{
   z-index: 100;
 	background-color: rgba(0, 0, 0, 0.5);
 }
+.popup2 h1{
+  color: red;
+}
 
 .popup-content {
 	background-color: white;
@@ -634,6 +637,13 @@ td .status{
   min-width: 500px;
   max-height: 500px;
 	transform: translate(-50%, -50%);
+}
+.popup-content2 img {
+	width: 100px;
+	margin-top:-90px;
+	border-radius: 50%;
+  margin-left: 39%;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .close {
@@ -877,7 +887,7 @@ a:hover{
 	width: 100%;
 	margin-top: 50px;
 	padding: 10px 0;
-	background: #6fd649;
+	background: rgb(252, 73, 73);
 	color: #fff;
 	border: 0;
 	outline:none;
@@ -885,3 +895,10 @@ a:hover{
 	border-radius: 4px;
 	cursor: pointer;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);    }
+
+  .popup-content2 button:hover{
+    background: red;
+  }
+  .popup-content2 button:active{
+    background: red;
+  }
