@@ -16,6 +16,7 @@ const update_name = document.querySelector('#name')
 // const update_designation = document.querySelector('#Designation')
 // const update_department = document.querySelector('#Department')
 // const update_contract_type = document.querySelector('#Contract_type')
+
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
 const update_contract_type = document.querySelector('.contract_type')
@@ -60,6 +61,7 @@ const userData = async () => {
 }
 userData()
 
+console.log('running')
 update_profile.addEventListener('click', async (e) => {
   e.preventDefault()
   const name = update_name.value

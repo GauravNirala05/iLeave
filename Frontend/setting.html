@@ -21,8 +21,8 @@
   <link rel="icon" href="images/logo.svg">
   <link rel="stylesheet" href="assets/css/newdashboard.css">
   <link rel="stylesheet" href="assets/css/updateprofile.css">
-  <link rel="stylesheet" href="assets/css/completeprofile.css">
-  <link rel="stylesheet" href="assets/css/newapplyleave.css">
+  <!-- <link rel="stylesheet" href="assets/css/completeprofile.css">-->
+  <link rel="stylesheet" href="assets/css/newapplyleave.css"> 
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
     $(function () {
@@ -139,10 +139,10 @@
     <div class="popup-content3">
       <div class="modal-header row d-flex justify-content-center">
 
-          <img src="images/error.png" alt=""> 
-          <h4 class="modal-title ml-2">Account Delete</h4>
-          
-        </div>
+        <img src="images/error.png" alt="">
+        <h4 class="modal-title ml-2">Account Delete</h4>
+
+      </div>
       <div class="d-flex justify-content-center">
         <p>Are You Sure You Want delete your account</p>
       </div>
@@ -168,10 +168,10 @@
       <div class="recents-grid mt-4">
         <div class="projects">
           <div class="card">
-
+           
             <div class="card-body">
               <h4 class="ml-3">Update Profile&nbsp;<button type="button" class="editProfile fa fa-edit"
-                  style=" color: #f57c00;background:none;font-size: 35px;"></button></h4>
+                  style=" color: #f57c00;background:none;font-size: 35px;"></button></h4> 
               <div class="row align-items-center">
                 <div class="col-lg-4  mb-lg-0">
                   <div class="upload ml-4">
@@ -182,76 +182,39 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-header d-flex justify-content-center" id="profileform">
-                  <div class="table-responsive" id="profileform">
-                    <table class="table v-middle">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div class="m-r-10">
+                
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                  <div class="table-responsive" id= "profileform">
+                    <table width="100%" class="table table-striped-columns ">
+                      <thead class=" ttt table-info">
 
-                              </div>
-                              <div>
-
-                                <h5 class="m-b-0 font-16">
-                                  Email
-                                </h5>
-                                <h5 class="m-b-0 font-16">
-                                  Dept
-                                </h5>
-                                <h5 class="m-b-0 font-16">
-                                  Job Title
-                                </h5>
-                                <h5 class="m-b-0 font-16">
-                                  Contact Duration
-                                </h5>
-                                <h5 class="m-b-0 font-16">
-                                  Contact No
-                                </h5>
-                                <h5 class="m-b-0 font-16">
-                                  Annual Gross Salary
-                                </h5>
-                                <h5 class="m-b-0 font-16">
-                                  Leave Remaining
-                                </h5>
-
-                              </div>
-                            </div>
-
-                          </td>
-                          <td>
-                            <div>
-                              <h5 class="m-b-0 font-16">
-                                akhilsharma92@gmail.com
-                              </h5>
-                              <h5 class="m-b-0 font-16">
-                                Computer Science
-                              </h5>
-                              <h5 class="m-b-0 font-16">
-                                HOD
-                              </h5>
-                              <h5 class="m-b-0 font-16">
-                                Permanent
-                              </h5>
-                              <h5 class="m-b-0 font-16">
-                                983549923
-                              </h5>
-                              <h5 class="m-b-0 font-16">
-                                9LPA
-                              </h5>
-                              <h5 class="m-b-0 font-16">
-                                85
-
-                            </div>
-                          </td>
+                      </thead>
+                      <tbody class="table-group-divider userAppliedTable" >
+                        <tr id="defaultApprovingText">
+                          <td class="" ><i class="fa fa-user-circle-o" style="font-size:24px"></i>&nbsp;Name</td>
+                          <td class="" >User1</td>
                         </tr>
+                        <tr id="defaultApprovingText">
+                          <td class="" ><i class="fa fa-envelope" style="font-size:24px"></i>&nbsp;Email</td>
+                          <td class="" >user1@gmail.com</td>
+                        </tr>
+                        <tr id="defaultApprovingText">
+                          <td class="" ><i class="fa fa-phone" style="font-size:24px"></i>&nbsp;Phone no</td>
+                          <td class="" >9583946342</td>
+                        </tr>
+                        <tr id="defaultApprovingText">
+                          <td class="" >Designation</td>
+                          <td class="" >Faculty</td>
+                        </tr>
+                        <tr id="defaultApprovingText">
+                          <td class="" >Department</td>
+                          <td class="" >Computer Sciencce</td>
+                        </tr>
+
                       </tbody>
+
                     </table>
                   </div>
-                </div>
-
-                <div class="col-lg-8 mb-5 mb-lg-0">
                   <form class="pr-5 mb-5" id="contactForm" name="contactForm" novalidate="novalidate">
                     <div class="row">
 
@@ -284,8 +247,8 @@
                       <div class="col-md-6 form-group">
                         <!-- Designation -->
                         <label class="mb-0">Designation</label>
-                        <div >
-                          <select class="form-control designation" >
+                        <div>
+                          <select class="form-control designation">
                             <option name="reference3" id="Designation" value="">Designation</option>
                             <option value="faculty">Faculty</option>
                             <option value="HOD">HOD</option>
@@ -296,7 +259,7 @@
                       <div class="col-md-6 form-group">
                         <!-- Department -->
                         <label class="mb-0">Department</label>
-                        <div >
+                        <div>
                           <select class="form-control department" id="department">
                             <option name="reference3" id="Department" value="">Department</option>
                             <option value="Computer Science">Computer Science</option>
@@ -317,7 +280,7 @@
                       <div class="col-md-6 form-group">
                         <!-- Contract_type -->
                         <label class="mb-0">Contract Type</label>
-                        <div >
+                        <div>
                           <select class="form-control contract_type" id="contract_type">
                             <option id="Contract_type">parmanent</option>
                             <option>contract</option>
