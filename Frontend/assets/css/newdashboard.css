@@ -569,7 +569,7 @@ td .status{
 }
 .popup {
 	display: none;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -577,10 +577,13 @@ td .status{
   z-index: 100;
 	background-color: rgba(0, 0, 0, 0.5);
 }
+#deletepopup{
+  position:absolute;
+}
 
 .popup2 {
 	display: none;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
