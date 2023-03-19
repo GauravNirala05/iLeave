@@ -47,6 +47,8 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
+                const UserDesignation = data.designation
+                console.log(UserDesignation);
                 if (data.designation == 'principal') {
                     document.querySelector("#allusersidebar").hidden = false
                     document.querySelector("#applyleavesidebar").hidden = true

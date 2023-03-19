@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -28,11 +27,11 @@
   <!--script to include an html page to another page-->
   <script src="https://unpkg.com/htmlincludejs"></script>
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-   <script>
-      $(function() {
-         $("#profilecontent").load('profile.html');
-      });
-   </script> 
+  <script>
+    $(function () {
+      $("#profilecontent").load('profile.html');
+    });
+  </script>
 </head>
 
 <body>
@@ -41,7 +40,7 @@
       <div id="shadow"></div>
       <div id="box"></div>
     </div>
- </div>  
+  </div>
   <div id="popup" class="popup card-header">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
@@ -80,7 +79,7 @@
   </div>
 
   <input type="checkbox" id="nav-toggle">
-  
+
   <div class="sidebar">
     <div class="sidebar-brand">
       <span><img class="img-logo mr-2" src="images/logo.svg"> </span>
@@ -101,8 +100,8 @@
             <span>Apply Leave</span>
           </a>
         </li>
-      </li>
-      <li>
+        </li>
+        <li>
           <a href="status.html">
             <span class="fa fa-check-circle-o"></span>
             <span>Leave Status</span>
@@ -168,7 +167,7 @@
                       <div class="col-md-6 form-group">
                         <label class="mb-0">To:</label>
                         <!-- To -->
-                        <input  type="date" class="form-control error todate" name="todate" id="todate"
+                        <input type="date" class="form-control error todate" name="todate" id="todate"
                           placeholder="To Date" required>
                       </div>
 
@@ -178,8 +177,8 @@
                       <div class="col-md-6 form-group">
                         <!-- To -->
                         <label for="">Total days:</label>
-                        <input type="number" required class="form-control error totaldays" name="totaldays" id="totaldays"
-                          placeholder="Total days" aria-required="true"  required>
+                        <input type="number" required class="form-control error totaldays" name="totaldays"
+                          id="totaldays" placeholder="Total days" aria-required="true" required>
                         </label>
                       </div>
                       <div class="col-md-6 form-group">
@@ -329,11 +328,10 @@
       <img src="images/errornew.png">
       <h2 id="error_warn">OOpps!</h2>
       <p id="error_msg">ERROR 400.Reload!</p>
-
       <button type="button" class="btn_close" onclick="closeerrorPopup()">Ok</button>
     </div>
+  </div>
 
-    </div>
   <footer class="footer d-flex mt-3 justify-content-center">
     <p>Copyright ©2023
       Created with <i class="fa fa-heart"></i> by
