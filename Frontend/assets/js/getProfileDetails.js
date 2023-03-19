@@ -2,8 +2,9 @@ const token = localStorage.getItem('token')
 const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#msgerror")
 const footer = document.querySelector(".footer")
+const statusmsg = document.querySelector("#statuserror")
+const errormsg = document.querySelector("#msgerror")
 
 
 const errorHandler = (msg) => {
@@ -20,6 +21,20 @@ const getUserDetails = async () => {
         })
         if (!user.ok) {
             const status = user.status
+
+            console.log(status);
+            console.log(user.statusText);
+
+            pop2.hidden = false
+            main.hidden = true
+            sidebar.hidden = true
+            statusmsg.innerHTML = status
+            errormsg.innerHTML = user.statusText
+            openPopup2()
+            localStorage.removeItem('token');
+            document.getElementById('loading-screen').hidden = true;
+            footer.style.opacity = "0";
+
             const { msg } = await user.json()
             var arraryError = []
             arraryError.push(status)
@@ -64,13 +79,7 @@ const getUserDetails = async () => {
         off()
     } catch (error) {
         console.log(error);
-        pop2.hidden = false
-        main.hidden = true
-        f.innerHTML = error
-        sidebar.hidden = true
-        openPopup2()
         document.getElementById('loading-screen').hidden = true;
-        footer.style.opacity = "0";
         off()
     }
 
@@ -80,12 +89,12 @@ const getUserDetails = async () => {
 if (token == null) {
     pop2.hidden = false
     main.hidden = true
-    f.innerHTML = `You Need to Login First`
     sidebar.hidden = true
+    footer.style.opacity = "0";
+    errormsg.innerHTML = `You Need to Login First`
     openPopup2()
     document.getElementById('loading-screen').hidden = true;
-    footer.style.opacity = "0";
-    
+
 }
 else {
     getUserDetails()

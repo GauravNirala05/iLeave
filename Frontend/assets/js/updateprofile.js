@@ -136,11 +136,10 @@ delete_account.addEventListener('click', async (e) => {
     else {
       const data = await deleteuser.json()
       console.log(data);
-
       localStorage.removeItem('token');
       localStorage.removeItem('UserDesignation');
       location.replace("index.html")
-      alert(data)
+      alert(`${data.name} you account is successfully DEleted`)
     }
 
   } catch (error) {
