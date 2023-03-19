@@ -138,7 +138,7 @@ delete_account.addEventListener('click', async (e) => {
       console.log(data);
 
       localStorage.removeItem('token');
-      localStorage.removeItem('designation');
+      localStorage.removeItem('UserDesignation');
       location.replace("index.html")
       alert(data)
     }
@@ -173,7 +173,7 @@ function deletepopup() {
 
 function confirm_logout() {
   localStorage.removeItem('token');
-  localStorage.removeItem('designation');
+  localStorage.removeItem('UserDesignation');
   location.replace("index.html")
 }
 function login() {

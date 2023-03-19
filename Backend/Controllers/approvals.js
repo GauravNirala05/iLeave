@@ -73,9 +73,11 @@ const approve = async (req, res) => {
                 approveObject.reference.name = user.name
                 approveObject.reference.approved = approval
                 if (approval === 'true') {
+                    approveObject.HOD_approval='true'
                     approveObject.status = 'applied'
                 }
                 else {
+                    approveObject.HOD_approval='false'
                     approveObject.status = 'rejected'
                 }
                 console.log(approveObject);

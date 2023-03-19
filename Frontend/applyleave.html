@@ -139,7 +139,6 @@
         </label>
         Apply Leave
       </h2>
-
       <div id="profilecontent"></div>
 
     </header>
@@ -193,9 +192,9 @@
                       <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                       <div class="col-md-6">
                         <div class="form-group">
-                          <select class="form-control" required>
-                            <option name="reference3">Full Day</option>
-                            <option>Half Day</option>
+                          <select class="form-control" id="dayDiscription" required>
+                            <option value="false">Full Day</option>
+                            <option value="true">Half Day</option>
                           </select>
                         </div>
                       </div>
@@ -219,7 +218,7 @@
                     <div class="row mt-0" hidden="true" id="All_ref_hide">
                       <div class="col-md-3">
                         <div class=" form-group  mt-4">
-                          <select class="form-control reference1" required>
+                          <select class="form-control reference1" >
                             <option name="reference1" value="">First Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -229,7 +228,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference2">
-                          <select class="form-control reference2" required>
+                          <select class="form-control reference2" >
                             <option name="reference2" value="">Second Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -239,7 +238,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference">
-                          <select class="form-control reference3" required>
+                          <select class="form-control reference3" >
                             <option name="reference3" value="">Third Year</option>
                           </select>
                           <div class="invalid-feedback">
@@ -249,7 +248,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class=" form-group mt-4" id="reference4">
-                          <select class="form-control reference4" required>
+                          <select class="form-control reference4" >
                             <option name="reference3" value="">Fourth Year</option>
                           </select>
                           <div class="invalid-feedback">

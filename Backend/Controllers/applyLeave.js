@@ -145,9 +145,7 @@ const applyLeave = async (req, res) => {
         }
         if (designation === 'HOD') {
             const leave = await HodLeave.create(req.body)
-            await leave.save()
             return res.status(StatusCodes.CREATED).json({ leave: leave, status: 'SUCCESS' })
-
         }
         if (userDep === 'non-tech') {
             const leave = await nonTechLeave.create(req.body)
