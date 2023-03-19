@@ -73,11 +73,15 @@
 
   <div id="myPopup">
     <div id="content">
-      <img id="logo" src="images/mail.svg" alt="Logo" />
-      <h2>Please Verify Your Email</h2>
-      <!-- <a id="button">Go to your Mail</a> -->
+      <div class="modal-header d-flex justify-content-center">
+        <img id="logo" src="images/mail.svg" alt="Logo" />
+      </div>
+      <div class="d-flex justify-content-center">
+        <h2>Please Verify Your Email</h2>
+      </div>
     </div>
   </div>
+
   <div id="overlay">
     <div class="popupError" id="popupError">
       <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>

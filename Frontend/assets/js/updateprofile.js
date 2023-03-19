@@ -137,7 +137,7 @@ delete_account.addEventListener('click', async (e) => {
       const data = await deleteuser.json()
       console.log(data);
 
-      localStorage.removeItem('token');
+      // localStorage.removeItem('token');
       localStorage.removeItem('designation');
       location.replace("index.html")
       alert(data)

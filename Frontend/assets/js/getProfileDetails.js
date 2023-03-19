@@ -2,8 +2,9 @@ const token = localStorage.getItem('token')
 const main = document.querySelector(".main-content")
 const sidebar = document.querySelector(".sidebar")
 const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#msgerror")
 const footer = document.querySelector(".footer")
+const statusmsg = document.querySelector("#statuserror")
+const errormsg = document.querySelector("#msgerror")
 
 
 const errorHandler = (msg) => {
@@ -20,6 +21,20 @@ const getUserDetails = async () => {
         })
         if (!user.ok) {
             const status = user.status
+
+            console.log(status);
+            console.log(user.statusText);
+
+            pop2.hidden = false
+            main.hidden = true
+            sidebar.hidden = true
+            statusmsg.innerHTML = status
+            errormsg.innerHTML = user.statusText
+            openPopup2()
+            localStorage.removeItem('token');
+            document.getElementById('loading-screen').hidden = true;
+            footer.style.opacity = "0";
+
             const { msg } = await user.json()
             var arraryError = []
             arraryError.push(status)
@@ -32,11 +47,11 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
-                if (data.designation == 'principal'){    
+                if (data.designation == 'principal') {
                     document.querySelector("#allusersidebar").hidden = false
                     document.querySelector("#applyleavesidebar").hidden = true
                     document.querySelector("#statussidebar").hidden = true
-                    }
+                }
                 localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
                 document.querySelector(".userDepartment").innerHTML = data.department
@@ -56,19 +71,13 @@ const getUserDetails = async () => {
                     document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
                     document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
                 }
-                
+
             }
         }
         off()
     } catch (error) {
         console.log(error);
-        pop2.hidden = false
-        main.hidden = true
-        f.innerHTML = error
-        sidebar.hidden = true
-        openPopup2()
         document.getElementById('loading-screen').hidden = true;
-        footer.style.opacity = "0";
         off()
     }
 
@@ -78,12 +87,12 @@ const getUserDetails = async () => {
 if (token == null) {
     pop2.hidden = false
     main.hidden = true
-    f.innerHTML = `You Need to Login First`
     sidebar.hidden = true
+    footer.style.opacity = "0";
+    errormsg.innerHTML = `You Need to Login First`
     openPopup2()
     document.getElementById('loading-screen').hidden = true;
-    footer.style.opacity = "0";
-    
+
 }
 else {
     getUserDetails()
@@ -133,5 +142,5 @@ window.onload = function () {
 };
 function off() {
     document.getElementById('loading-screen').style.display = 'none';
-    
+
 }
