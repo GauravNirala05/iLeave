@@ -1,11 +1,62 @@
 
 async function approveUser(id, approval, refer) {
-    console.log(`its running`);
     try {
         const user = await fetch(`/approvals/${id}`, {
             method: 'PATCH',
             body: JSON.stringify({
                 refer: refer,
+                approval: approval
+            }),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-type': 'application/json'
+            }
+        })
+        if (!user.ok) {
+            const { msg } = await user.json()
+            throw Error(msg)
+        }
+        else {
+            const data = await user.json()
+
+            console.log(data)
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function approveUserHOD(id, approval) {
+    try {
+        const user = await fetch(`/approvals/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                approval: approval
+            }),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-type': 'application/json'
+            }
+        })
+        if (!user.ok) {
+            const { msg } = await user.json()
+            throw Error(msg)
+        }
+        else {
+            const data = await user.json()
+
+            console.log(data)
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function approveUserPrincipal(id, approval) {
+    try {
+        const user = await fetch(`/approvals/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
                 approval: approval
             }),
             headers: {
@@ -59,6 +110,7 @@ const getLeaveApprovals = async () => {
             }
             else {
                 if (UserDesignation == 'HOD') {
+                    let num = 1
                     data.forEach(element => {
                         var fromDate = new Date(element.from_date).toDateString()
                         var toDate = new Date(element.to_date).toDateString()
@@ -80,29 +132,86 @@ const getLeaveApprovals = async () => {
                     });
                 }
                 if (UserDesignation == 'principal') {
-                    data.forEach(element => {
-                        var fromDate = new Date(element.from_date).toDateString()
-                        var toDate = new Date(element.to_date).toDateString()
-                        var tr = document.createElement('tr')
-                        ihtml = `<td>${num}</td>
-                        <td >${element.employee_name}</td>
-                        <td >${element.leave_type}</td>
-                        <td >${fromDate}</td>
-                        <td >${toDate}</td>
-                        <td >${element.discription}</td>
-                        <td>
-                            <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
-                        </td>
-                        <td>
-                            <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
-                        </td>
-                        <td></td>`
-                        tr.innerHTML = ihtml
-                        appliedTable.append(tr)
-                        num++;
-                    });
+                    const { HodLeave, facultyLeave, nonTechLeave } = data
+                    let num = 1
+                    if (HodLeave.hits > 0) {
+
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">HOD Leaves</th>`
+                        appliedTable.append(trHOD)
+                        HodLeave.data.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>
+                    <td>
+                        <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                        <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                    </td>
+                    <td></td>`
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (facultyLeave.hits > 0) {
+
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Faculty Leaves</th>`
+                        appliedTable.append(trHOD)
+                        facultyLeave.data.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>
+                    <td>
+                        <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                        <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                    </td>
+                    <td></td>`
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (nonTechLeave.hits > 0) {
+
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Non-Tech Leave</th>`
+                        appliedTable.append(trHOD)
+                        nonTechLeave.data.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>
+                    <td>
+                        <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                        <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                    </td>
+                    <td></td>`
+                            tr.innerHTML = ihtml
+                            appliedTable.append(tr)
+                            num++;
+                        });
+                    }
                 }
                 if (UserDesignation == 'faculty') {
                     const { HOD, first, second, third, fourth } = data

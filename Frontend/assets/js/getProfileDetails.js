@@ -1,4 +1,11 @@
 const token = localStorage.getItem('token')
+const main = document.querySelector(".main-content")
+const sidebar = document.querySelector(".sidebar")
+const pop2 = document.querySelector("#popup2")
+const f = document.querySelector("#msgerror")
+const footer = document.querySelector(".footer")
+
+
 const errorHandler = (msg) => {
     document.getElementById("error_warn").innerHTML = `${msg[0]}`
     document.getElementById("error_msg").innerHTML = `${msg[1]}`
@@ -25,11 +32,13 @@ const getUserDetails = async () => {
                 openmodal()
             }
             else {
-                if (data.designation == 'principal'){    
+                const UserDesignation = data.designation
+                console.log(UserDesignation);
+                if (data.designation == 'principal') {
                     document.querySelector("#allusersidebar").hidden = false
                     document.querySelector("#applyleavesidebar").hidden = true
                     document.querySelector("#statussidebar").hidden = true
-                    }
+                }
                 localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
                 document.querySelector(".userDepartment").innerHTML = data.department
@@ -49,21 +58,24 @@ const getUserDetails = async () => {
                     document.querySelector(".applyLeaveOrdinary").innerHTML = data.leave_type.ordinary_leave
                     document.querySelector(".applyLeaveTotal").innerHTML = data.leave_type.ordinary_leave + data.leave_type.medical_leave + data.leave_type.earned_leave + data.leave_type.casual_leave
                 }
-                
+
             }
         }
         off()
     } catch (error) {
         console.log(error);
+        pop2.hidden = false
+        main.hidden = true
+        f.innerHTML = error
+        sidebar.hidden = true
+        openPopup2()
+        document.getElementById('loading-screen').hidden = true;
+        footer.style.opacity = "0";
         off()
     }
 
 }
-const main = document.querySelector(".main-content")
-const sidebar = document.querySelector(".sidebar")
-const pop2 = document.querySelector("#popup2")
-const f = document.querySelector("#logmsg")
-const footer = document.querySelector("#footer")
+
 
 if (token == null) {
     pop2.hidden = false
@@ -72,6 +84,7 @@ if (token == null) {
     sidebar.hidden = true
     openPopup2()
     document.getElementById('loading-screen').hidden = true;
+    footer.style.opacity = "0";
     
 }
 else {
@@ -122,5 +135,5 @@ window.onload = function () {
 };
 function off() {
     document.getElementById('loading-screen').style.display = 'none';
-    
+
 }
