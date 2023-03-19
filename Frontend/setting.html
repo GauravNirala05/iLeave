@@ -181,9 +181,9 @@
                   style=" color: #f57c00;background:none;font-size: 35px;"></button></h4> 
               <div class="row align-items-center">
                 <div class="col-lg-4  mb-lg-0">
-                  <div class="upload ml-4">
+                  <div class="upload ml-4" >
                     <img src="images/profile.png" width="200" height="200" alt="...">
-                    <div class="round">
+                    <div class="round" id="round">
                       <input id="file" type="file" />
                       <i class="fa fa-camera" style="color:black;font-size: 32px;"></i>
                     </div>
@@ -222,38 +222,40 @@
 
                     </table>
                   </div>
-                  <form class="pr-5 mb-5" id="contactForm" name="contactForm" novalidate="novalidate">
+                  <form class="pr-5 mb-5" id="updateform" name="updateform" novalidate="novalidate">
                     <div class="row">
 
                       <div class="col-md-6 form-group">
                         <!-- name -->
-                        <label class="mb-0">Name</label>
+                        <label class="mb-0"><b>Name</b></label>
                         <div id="Name">
-                          <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
-                            aria-required="true" aria-invalid="true">
+                          <!-- <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+                            aria-required="true" aria-invalid="true"> -->
                         </div>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
-                        <label class="mb-0">Phone Number</label>
-                        <div id="number"><input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
-                            value="" placeholder="Contact No." aria-required="true" aria-invalid="true"></div>
+                        <label class="mb-0"><b>Phone Number</b></label>
+                        <div id="number">
+                          <!-- <input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
+                            value="" placeholder="Contact No." aria-required="true" aria-invalid="true"> -->
+                          </div>
                       </div>
 
                     </div>
                     <div class=" form-group">
                       <!-- Email  -->
-                      <label class="mb-0">Email</label>
+                      <label class="mb-0"><b>Email</b></label>
                       <div id="email">
-                        <input type="email" disabled class="form-control Name" name="email" id="emailOfUpdateProfile"
-                          placeholder="Email" aria-required="true" aria-invalid="true">
+                        <!-- <input type="email"  class="form-control Name" name="email" id="emailOfUpdateProfile"
+      placeholder="${data.email}" value="" aria-required="true" aria-invalid="true"> -->
                       </div>
                     </div>
                     <div class="row">
 
                       <div class="col-md-6 form-group">
                         <!-- Designation -->
-                        <label class="mb-0">Designation</label>
+                        <label class="mb-0"><b>Designation</b></label>
                         <div>
                           <select class="form-control designation">
                             <option name="reference3" id="Designation" value="">Designation</option>
@@ -265,7 +267,7 @@
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Department -->
-                        <label class="mb-0">Department</label>
+                        <label class="mb-0"><b>Department</b></label>
                         <div>
                           <select class="form-control department" id="department">
                             <option name="reference3" id="Department" value="">Department</option>
@@ -286,7 +288,7 @@
 
                       <div class="col-md-6 form-group">
                         <!-- Contract_type -->
-                        <label class="mb-0">Contract Type</label>
+                        <label class="mb-0"><b>Contract Type</b></label>
                         <div>
                           <select class="form-control contract_type" id="contract_type">
                             <option id="Contract_type">parmanent</option>
@@ -344,7 +346,7 @@
   </div>
   <div id="overlay">
     <div class="popupError" id="popupError">
-      <button type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</button>
+      <a type="button" class="close_btn" id="close" onclick="closeerrorPopup()">&times</a>
       <img src="images/errornew.png">
       <h2 id="error_warn">OOpps!</h2>
       <p id="error_msg">ERROR 400.Reload!</p>
