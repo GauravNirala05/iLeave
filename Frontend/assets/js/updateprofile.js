@@ -1,12 +1,14 @@
-document.getElementById("contactForm").style.display = 'none'
+document.getElementById("updateform").style.display = 'none'
 document.getElementById("profileform").style.display = 'block'
-
+document.getElementById("round").style.display='none'
 
 const editProfile = document.querySelector(".editProfile")
 const div = document.getElementById("profileform")
 editProfile.addEventListener('click', () => {
   div.parentNode.removeChild(div);
-  document.getElementById("contactForm").style.display = 'block'
+  document.getElementById("updateform").style.display = 'block'
+document.getElementById("round").style.display='block'
+
 
 });
 const update_profile = document.querySelector('.update')
@@ -47,7 +49,12 @@ const userData = async () => {
       update_designation.placeholder = data.designation
       update_department.placeholder = data.department
       update_contract_type.placeholder = data.contect_type
-      
+      // document.getElementById('Name').innerHTML=`<input type="name" class="form-control Name" name="name" id="name" placeholder="${data.name}"
+      // aria-required="true" value ="" aria-invalid="true">`
+      // document.getElementById('number').innerHTML=`<input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
+      // placeholder="${data.mob_no}" value =""  aria-required="true" aria-invalid="true">`
+      // document.getElementById('email').innerHTML=`<input type="email" class="form-control Name" name="email" id="emailOfUpdateProfile"
+      // placeholder="${data.email}" value="" aria-required="true" aria-invalid="true">`
       // document.getElementById('Designation').innerHTML=data.designation
       // document.getElementById('Department').innerHTML=data.department
       // document.getElementById('Contract_type').innerHTML=data.contect_type
@@ -60,7 +67,13 @@ const userData = async () => {
   }
 }
 userData()
-
+// const update_profile = document.querySelector('.update')
+// const update_contact = document.querySelector('#number')
+// const update_email = document.querySelector('#email')
+// const update_name = document.querySelector('#Name')
+// const update_designation = document.querySelector('#Designation')
+// const update_department = document.querySelector('#Department')
+// const update_contract_type = document.querySelector('#Contract_type')
 console.log('running')
 update_profile.addEventListener('click', async (e) => {
   e.preventDefault()
@@ -69,11 +82,13 @@ update_profile.addEventListener('click', async (e) => {
   const contract_type = update_contract_type.value
   const desig = update_designation.value
   const depart = update_department.value
-
+  console.log('running')
   // const mob = mob_no.value
   // const pass = confirmPassword.value
   try {
+    console.log('running')
     const fetcher = await fetch('/updateProfile', {
+     
       method: 'PATCH',
       body: JSON.stringify({
         name: name,

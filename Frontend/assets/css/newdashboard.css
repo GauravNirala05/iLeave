@@ -860,7 +860,7 @@ footer{
 }
 .close_btn{
 	margin-top: 0;
-	margin-left: 285px;
+	margin-left: 330px;
 	width: 40px;
 	height: 40px;
 	background:none;
@@ -868,6 +868,10 @@ footer{
 	color: rgb(219, 214, 214);
 	font-size: 40px;
 	
+}
+a:hover{
+	color: black;
+	text-decoration: none;
 }
 .btn_close{
 	width: 100%;
