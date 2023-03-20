@@ -7,7 +7,7 @@
   --text-grey:  #8390A2;
 }
 .img-logo-name{
-  width: 200px;
+  width: 60%;
 }
 .img-logo{
   width: 40px;
@@ -32,6 +32,11 @@
   transition: width 300ms;
 
 }
+
+.sidebar .imglogoileave{
+  width: 10%;
+}
+
 .sidebar-brand{
     height: 90px;
     padding: 1rem 0rem 1rem 2rem;
