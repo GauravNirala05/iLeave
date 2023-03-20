@@ -1,25 +1,22 @@
 var content1 = document.getElementById("content-1");
 var content2 = document.getElementById("content-2");
-var button1 = document.getElementById("toggle-button-1");
-var button2 = document.getElementById("toggle-button-2");
+// var statusSwitch = document.getElementById("historycheckbox");
+var historySwitch = document.getElementById("historycheckbox")
 
-content1.style.display = "block";
-content2.style.display = "none";
-button1.classList.add("active");
+historySwitch.style.color = "blue"
+content1.hidden = false
+content2.hidden = true
 
 
-function toggleContentstatus() {
-  content1.style.display = "block";
-  content2.style.display = "none";
-  button1.classList.add("active");
-  button2.classList.remove("active");
-}
-
-function toggleContenthistory() {
-  content1.style.display = "none";
-  content2.style.display = "block";
-  button1.classList.remove("active");
-  button2.classList.add("active");
+function toggleContent() {
+  if (content1.hidden == false) {
+    content1.hidden = true
+    content2.hidden = false
+  }
+  else{
+    content1.hidden = false
+    content2.hidden = true
+  }
 }
 
 const getleavestatus = async () => {
@@ -149,10 +146,10 @@ const getleavestatus = async () => {
           }
           else if ((element.HOD_approval === false)) {
             ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
-          }else {
+          } else {
             ihtml += `<td>Pending</td>`
           }
-          
+
           if (element.principal_approval) {
             if (element.principal_approval === true) {
               ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
@@ -370,3 +367,12 @@ function off() {
   document.getElementById('loading-screen').style.display = 'none';
 };
 
+function tgl() {
+  var t = document.getElementById("myBtn");
+  if (t.value == "ON") {
+    t.value = "OFF";
+  }
+  else if (t.value == "OFF") {
+    t.value = "ON";
+  }
+}

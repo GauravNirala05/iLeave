@@ -3,12 +3,13 @@
     color: black;
 }
 .recents-grid{
-    /* margin-top: 3.5rem; */
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: 65% auto;
-    animation: scroll 0.95s;
-    width: 65%;
+  margin-top: 1.5rem;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 65% auto;
+  /* animation: top-bottom2 300ms */
+  animation: scroll 0.95s ease-in-out;
+  width: auto;
    
   }
 
@@ -73,6 +74,7 @@
   
   #content-container {
     margin-top: 20px;
+    justify-content: center;
   }
 
 .toggle-button{
@@ -177,3 +179,82 @@ a:hover{
 	border-radius: 4px;
 	cursor: pointer;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);    }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .switch-button {
+    justify-content: center;
+    font-family: sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 95%;
+    height: 57px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #000;
+    position: relative;
+    padding-right: 120px;
+    position: relative;
+  }
+  .switch-button:before {
+    content: "History";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+
+  }
+  .switch-button-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    
+  }
+  .switch-button-checkbox:checked + .switch-button-label:before {
+    transform: translateX(100%);
+    transition: transform 300ms linear;
+  }
+  .switch-button-checkbox + .switch-button-label {
+    position: relative;
+    padding: 15px 0;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+    width: 56%;
+  }
+  .switch-button-checkbox + .switch-button-label:before {
+    content: "";
+    background: #f57c00;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+  .switch-button-checkbox + .switch-button-label .switch-button-label-span {
+    position: relative;
+  }
+
+
