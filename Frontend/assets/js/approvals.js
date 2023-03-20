@@ -25,7 +25,7 @@ async function approveUser(id, approval, refer) {
     } catch (error) {
         console.log(error);
     }
-    location.reload()
+    getLeaveApprovals()
 }
 async function approveUserHOD(id, approval) {
     try {
@@ -52,15 +52,15 @@ async function approveUserHOD(id, approval) {
     } catch (error) {
         console.log(error);
     }
-    location.reload()
-
+    getLeaveApprovals()
 }
 async function approveUserPrincipal(id, approval) {
     try {
         const user = await fetch(`/approvals/${id}`, {
             method: 'PATCH',
             body: JSON.stringify({
-                approval: approval
+                approval: approval,
+                confirmation:approval
             }),
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -80,7 +80,7 @@ async function approveUserPrincipal(id, approval) {
     } catch (error) {
         console.log(error);
     }
-    location.reload()
+    getLeaveApprovals()
 
 }
 var UserDesignation = localStorage.getItem('UserDesignation')
@@ -124,12 +124,23 @@ const getLeaveApprovals = async () => {
                         <td >${element.leave_type}</td>
                         <td >${fromDate}</td>
                         <td >${toDate}</td>
-                        <td >${element.discription}</td>
-                        <td>
-                            <span type="button" onclick="approveUserHOD('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" onclick="approveUserHOD('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
-                        </td>
-                        <td></td>`
+                        <td >${element.discription}</td>`
+                        if (element.HOD_approved == true) {
+                            ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
+                            ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
+    
+                        }
+                        else if (element.HOD_approved == false) {
+                            ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
+                            ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
+                        }
+                        else {
+                            ihtml += `<td>
+                            <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                            <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                            </td>`
+                        }
+                        ihtml += `<td></td>`
                         tr.innerHTML = ihtml
                         appliedTable.append(tr)
                         num++;
@@ -153,12 +164,23 @@ const getLeaveApprovals = async () => {
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
                     <td >${toDate}</td>
-                    <td >${element.discription}</td>
-                    <td>
+                    <td >${element.discription}</td>`
+                    if (element.principal_approved == true) {
+                        ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
+                        ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
+
+                    }
+                    else if (element.principal_approved == false) {
+                        ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
+                        ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
+                    }
+                    else {
+                        ihtml += `<td>
                         <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
                         <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
-                    </td>
-                    <td></td>`
+                        </td>`
+                    }
+                    ihtml += `<td></td>`
                             tr.innerHTML = ihtml
                             appliedTable.append(tr)
                             num++;
@@ -179,12 +201,23 @@ const getLeaveApprovals = async () => {
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
                     <td >${toDate}</td>
-                    <td >${element.discription}</td>
-                    <td>
+                    <td >${element.discription}</td>`
+                    if (element.principal_approved == true) {
+                        ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
+                        ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
+
+                    }
+                    else if (element.principal_approved == false) {
+                        ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
+                        ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
+                    }
+                    else {
+                        ihtml += `<td>
                         <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
                         <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
-                    </td>
-                    <td></td>`
+                        </td>`
+                    }
+                    ihtml += `<td></td>`
                             tr.innerHTML = ihtml
                             appliedTable.append(tr)
                             num++;
@@ -205,12 +238,23 @@ const getLeaveApprovals = async () => {
                     <td >${element.leave_type}</td>
                     <td >${fromDate}</td>
                     <td >${toDate}</td>
-                    <td >${element.discription}</td>
-                    <td>
+                    <td >${element.discription}</td>`
+                    if (element.principal_approved == true) {
+                        ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
+                        ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
+
+                    }
+                    else if (element.principal_approved == false) {
+                        ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
+                        ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
+                    }
+                    else {
+                        ihtml += `<td>
                         <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
                         <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
-                    </td>
-                    <td></td>`
+                        </td>`
+                    }
+                    ihtml += `<td></td>`
                             tr.innerHTML = ihtml
                             appliedTable.append(tr)
                             num++;
@@ -274,6 +318,7 @@ const getLeaveApprovals = async () => {
                     <td >${fromDate}</td>
                     <td >${toDate}</td>
                     <td >${element.discription}</td>`
+
                             if (element.reference1.approved == true) {
                                 ihtml += `<td> <span type="button" onclick="approveUser('${element._id}','true','1')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
                                 ihtml += `<span type="button" onclick="approveUser('${element._id}','false','1')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
@@ -417,7 +462,6 @@ const getLeaveApprovals = async () => {
     }
 
 }
-
 if (token) {
     getLeaveApprovals()
     off()
