@@ -126,18 +126,18 @@ const getLeaveApprovals = async () => {
                         <td >${toDate}</td>
                         <td >${element.discription}</td>`
                         if (element.HOD_approved == true) {
-                            ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
-                            ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
+                            ihtml += `<td> <span type="button" onclick="approveUserHOD('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
+                            ihtml += `<span type="button" onclick="approveUserHOD('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
     
                         }
                         else if (element.HOD_approved == false) {
-                            ihtml += `<td> <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
-                            ihtml += `<span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
+                            ihtml += `<td> <span type="button" onclick="approveUserHOD('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
+                            ihtml += `<span type="button" onclick="approveUserHOD('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
                         }
                         else {
                             ihtml += `<td>
-                            <span type="button" onclick="approveUserPrincipal('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
-                            <span type="button" onclick="approveUserPrincipal('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                            <span type="button" onclick="approveUserHOD('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                            <span type="button" onclick="approveUserHOD('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
                             </td>`
                         }
                         ihtml += `<td></td>`
