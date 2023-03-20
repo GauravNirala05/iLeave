@@ -25,7 +25,7 @@ async function approveUser(id, approval, refer) {
     } catch (error) {
         console.log(error);
     }
-    getLeaveApprovals()
+    location.reload()
 }
 async function approveUserHOD(id, approval) {
     try {
@@ -52,7 +52,7 @@ async function approveUserHOD(id, approval) {
     } catch (error) {
         console.log(error);
     }
-    getLeaveApprovals()
+    location.reload()
 }
 async function approveUserPrincipal(id, approval) {
     try {
@@ -80,7 +80,8 @@ async function approveUserPrincipal(id, approval) {
     } catch (error) {
         console.log(error);
     }
-    getLeaveApprovals()
+    location.reload()
+    
 
 }
 var UserDesignation = localStorage.getItem('UserDesignation')
