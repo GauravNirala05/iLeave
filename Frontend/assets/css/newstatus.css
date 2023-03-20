@@ -6,7 +6,7 @@
   margin-top: 1.5rem;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 65% auto;
+  grid-template-columns: 100% auto;
   /* animation: top-bottom2 300ms */
   animation: scroll 0.95s ease-in-out;
   width: auto;
@@ -14,24 +14,24 @@
   }
 
   @media only screen and (max-width: 960px){
+    .cards{
+      grid-template-columns: repeat(3, 1fr);
+    }
     .recents-grid{
       grid-template-columns: 60% 40%;
     }
   }
   
   @media only screen and (max-width: 768px){
+    .cards{
+      grid-template-columns: repeat(2, 1fr);
+    }
     .recents-grid{
       grid-template-columns: 100%;
     }
 }
+c:\Users\ayamk\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.html
 
-.card{
-    background: #fff;
-    width: 154%;
-    border-radius: 12px;
-     box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
-    padding: 1rem;
-  }
   .status.green{
     background: rgb(61, 255, 47);
   }
@@ -198,13 +198,12 @@ a:hover{
     text-align: center;
     font-size: 18px;
     letter-spacing: 1px;
-    color: #000;
     position: relative;
     padding-right: 120px;
     position: relative;
   }
   .switch-button:before {
-    content: "History";
+    content: "History";  
     position: absolute;
     top: 0;
     bottom: 0;
@@ -217,6 +216,7 @@ a:hover{
     pointer-events: none;
 
   }
+
   .switch-button-checkbox {
     cursor: pointer;
     position: absolute;
@@ -239,7 +239,8 @@ a:hover{
     display: block;
     user-select: none;
     pointer-events: none;
-    width: 56%;
+    width: 90%;
+    max-width: 575px;
   }
   .switch-button-checkbox + .switch-button-label:before {
     content: "";

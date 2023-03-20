@@ -1,21 +1,25 @@
 var content1 = document.getElementById("content-1");
 var content2 = document.getElementById("content-2");
-// var statusSwitch = document.getElementById("historycheckbox");
+var statusSwitch = document.getElementById("statuscheckbox")
 var historySwitch = document.getElementById("historycheckbox")
 
-historySwitch.style.color = "blue"
+statusSwitch.style.color = "#fff"
+historySwitch.innerHTML = '<span style="color:#fff"> History </span>'; 
 content1.hidden = false
 content2.hidden = true
-
 
 function toggleContent() {
   if (content1.hidden == false) {
     content1.hidden = true
     content2.hidden = false
+    statusSwitch.style.color = "#000"
+    historySwitch.style.color = "#fff"
+
   }
-  else{
+  else {
     content1.hidden = false
     content2.hidden = true
+    statusSwitch.style.color = "#fff"
   }
 }
 
