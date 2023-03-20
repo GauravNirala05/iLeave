@@ -1,13 +1,13 @@
 document.getElementById("updateform").style.display = 'none'
 document.getElementById("profileform").style.display = 'block'
-document.getElementById("round").style.display='none'
+document.getElementById("round").style.display = 'none'
 
 const editProfile = document.querySelector(".editProfile")
 const div = document.getElementById("profileform")
 editProfile.addEventListener('click', () => {
   div.parentNode.removeChild(div);
   document.getElementById("updateform").style.display = 'block'
-document.getElementById("round").style.display='block'
+  document.getElementById("round").style.display = 'block'
 
 
 });
@@ -43,6 +43,14 @@ const userData = async () => {
     else {
       const { data } = await user.json()
       console.log(data)
+      document.getElementById("entered_name").innerHTML=data.name
+      document.getElementById("entered_email").innerHTML=data.email
+      document.getElementById("entered_phoneno").innerHTML=data.mob_no
+      document.getElementById("entered_designation").innerHTML=data.designation
+      document.getElementById("entered_department").innerHTML=data.department
+
+      
+
       update_contact.placeholder = data.mob_no
       update_name.placeholder = data.name
       update_email.placeholder = data.email
@@ -59,7 +67,7 @@ const userData = async () => {
       // document.getElementById('Department').innerHTML=data.department
       // document.getElementById('Contract_type').innerHTML=data.contect_type
 
-      
+
 
     }
   } catch (error) {
@@ -88,7 +96,7 @@ update_profile.addEventListener('click', async (e) => {
   try {
     console.log('running')
     const fetcher = await fetch('/updateProfile', {
-     
+
       method: 'PATCH',
       body: JSON.stringify({
         name: name,

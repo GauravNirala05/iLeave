@@ -181,6 +181,7 @@ button_apply.addEventListener('click', async (e) => {
             off()
             const { leave, status } = await fetcher.json()
             alert(`${leave.employee_name} your leave is applied`)
+            leave_applied()
         }
         off()
     } catch (error) {
@@ -189,5 +190,14 @@ button_apply.addEventListener('click', async (e) => {
 
     }
 })
+
+function leave_applied(){
+    document.getElementById("popup4").style.display = "block";
+
+}
+function close_popup(){
+    document.getElementById("popup4").style.display = "none";
+
+}
 
 

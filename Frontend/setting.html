@@ -200,24 +200,27 @@
                       </thead>
                       <tbody class="table-group-divider userAppliedTable">
                         <tr id="defaultApprovingText">
-                          <td class=""><i class="fa fa-user-circle-o" style="font-size:24px"></i>&nbsp;Name</td>
-                          <td class="">User1</td>
+                          <td ><i class="fa fa-user-circle-o" style="font-size:24px"></i>&nbsp;Name</td>
+                          <td  id="entered_name">User1</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class=""><i class="fa fa-envelope" style="font-size:24px"></i>&nbsp;Email</td>
-                          <td class="">user1@gmail.com</td>
+                          <td ><i class="fa fa-envelope" style="font-size:24px"></i>&nbsp;Email</td>
+                          <td id="entered_email">user1@gmail.com</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class=""><i class="fa fa-phone" style="font-size:24px"></i>&nbsp;Phone no</td>
-                          <td class="">9583946342</td>
+                          <td ><i class="fa fa-phone" style="font-size:24px"></i>&nbsp;Phone no</td>
+                          <td id="entered_phoneno">9583946342</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class="">Designation</td>
-                          <td class="">Faculty</td>
+                          <td ><div class="row" style="margin-left: 1px;">
+                            <span><img src="images/icon_designation.png" style="font-size:24px"></img></span><span>&nbsp;Designation</span>
+                          </div>
+                          </td>
+                          <td id="entered_designation">Faculty</td>
                         </tr>
                         <tr id="defaultApprovingText">
-                          <td class="">Department</td>
-                          <td class="">Computer Sciencce</td>
+                          <td ><i class="fa fa-institution" style="font-size:24px"></i>&nbsp;Department</td>
+                          <td id="entered_department">Computer Sciencce</td>
                         </tr>
 
                       </tbody>
@@ -231,16 +234,16 @@
                         <!-- name -->
                         <label class="mb-0"><b>Name</b></label>
                         <div id="Name">
-                          <!-- <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
-                            aria-required="true" aria-invalid="true"> -->
+                          <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+                            aria-required="true" aria-invalid="true">
                         </div>
                       </div>
                       <div class="col-md-6 form-group">
                         <!-- Phone Number -->
                         <label class="mb-0"><b>Phone Number</b></label>
                         <div id="number">
-                          <!-- <input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
-                            value="" placeholder="Contact No." aria-required="true" aria-invalid="true"> -->
+                          <input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
+                            value="" placeholder="Contact No." aria-required="true" aria-invalid="true">
                           </div>
                       </div>
 
@@ -249,8 +252,8 @@
                       <!-- Email  -->
                       <label class="mb-0"><b>Email</b></label>
                       <div id="email">
-                        <!-- <input type="email"  class="form-control Name" name="email" id="emailOfUpdateProfile"
-      placeholder="${data.email}" value="" aria-required="true" aria-invalid="true"> -->
+                        <input type="email"  class="form-control Name" name="email" id="emailOfUpdateProfile"
+      placeholder="${data.email}" value="" aria-required="true" aria-invalid="true">
                       </div>
                     </div>
                     <div class="row">
