@@ -7,20 +7,20 @@ content1.style.display = "block";
 content2.style.display = "none";
 button1.classList.add("active");
 
+var btnnew = document.getElementById('btn')
 
-function toggleContentstatus() {
+function leftClick() {
+	btnnew.style.left = '0'
   content1.style.display = "block";
   content2.style.display = "none";
-  button1.classList.add("active");
-  button2.classList.remove("active");
 }
 
-function toggleContenthistory() {
+function rightClick() {
+	btnnew.style.left = '110px'
   content1.style.display = "none";
   content2.style.display = "block";
-  button1.classList.remove("active");
-  button2.classList.add("active");
 }
+
 
 const getleavestatus = async () => {
   const stat = []
