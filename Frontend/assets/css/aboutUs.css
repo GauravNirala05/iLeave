@@ -18,7 +18,7 @@
     font-weight: bold;
     font-size: 22px;
     font-family: sans-serif;
-    color: #fff;
+    color: #241e1e;
     border-bottom: 3px solid transparent;
     text-decoration: none;
 }
@@ -50,22 +50,23 @@
     color: rgb(194, 205, 214);
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(194, 205, 214)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
+.button {
+  font: 20px Lato, sans-serif;
+  text-decoration: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  background-color: #318752;
+  color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.button:hover {
+  background: #037145;
+  text-decoration: none;
+} 
 /*navbar ends*/
 /*About section*/
-  .button {
-    font: 20px Lato, sans-serif;
-    text-decoration: none;
-    border-radius: 25px;
-    padding: 10px 20px;
-    background-color: #131b87;
-    color: white;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  }
-  
-  .button:hover {
-    background: #160965;
-    text-decoration: none;
-  } 
+ 
 
   body {
     font-family: Arial, Helvetica, sans-serif;
