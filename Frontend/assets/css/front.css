@@ -1,157 +1,202 @@
-#home{
-    background:none;
-    height:100%;
-  }
-  #myvideo{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translateX(-50%) translateY(-50%);
+#home {
+    background: none;
+    height: 100%;
+}
+
+#myvideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     min-width: 100%;
-    min-height:50%;
-    width:auto;
-    height:auto;
-    z-index:-1;
-	opacity: 0.6;
-    
-  }
-	.header{
-		color:#fff ;
-    font-family:Swis721 Ex BT;
+    min-height: 50%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    opacity: 0.6;
+
+}
+
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.header {
+    color: #fff;
+    font-family: Swis721 Ex BT;
     font-size: 50px;
-	font-weight:bold ;
-	}
-	.img_nav{
-		height:70px;
-		width:70px;
-	}
-	.nav-item a{
-		font-weight:bold;
-		font-size:22px;
-        font-family: sans-serif;
-		color:#fff ;
-        border-bottom: 3px solid transparent;
-        text-decoration: none;
-	}
-	.nav-nav:hover{
-        animation: glow 0.5s;
-        text-decoration: none;
-	}
+    font-weight: bold;
+    overflow: hidden;
 
-	.navbtn{
-        font-family:sans-serif;
-        font-weight: bold;
-		color:#ffffff;
-        font-size: 15px;
-		border-radius:100px;
-		transition: transform .2s; 
-	}
-	.navbtn:hover{
-		background-color:#eeeeee;
-		zoom: 1.2;
-	}
-    .custom-toggler.navbar-toggler {
-        border-color: aliceblue;
-    }
-    .custom-toggler .navbar-toggler-icon {
-        color: rgb(194, 205, 214);
-        background-image: url(
-"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(194, 205, 214)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
-body{
-	background-size: cover;
-	background-position: center;
-	background: #000;   
+    position: fixed;
+    top: 0;
+    width: 100%;
+
 }
 
-#d451f1d61e{
-	margin-top: 0%;
-	width: 400px;
-	height: 400px; 
-	/* margin: 10% auto; */
-	display: block;
-	top:0;
-	margin-top: -1%;
-	margin-left: 38%;
-	/* margin: 100px 2px 0px 700px; */
+.img_nav {
+    height: 70px;
+    width: 70px;
 }
-.face,.man,.f2{
-	opacity: 0; 
+
+.nav-item a {
+    font-weight: bold;
+    font-size: 22px;
+    font-family: sans-serif;
+    color: #fff;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+}
+
+.nav-nav:hover {
+    animation: glow 0.5s;
+    text-decoration: none;
+}
+
+.navbtn {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 100px;
+    transition: transform .2s;
+}
+
+.navbtn:hover {
+    background-color: #eeeeee;
+    zoom: 1.2;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: aliceblue;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    color: rgb(194, 205, 214);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(194, 205, 214)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+body {
+    background-size: cover;
+    background-position: center;
+    background: #000;
+}
+
+#d451f1d61e {
+    margin-top: 0%;
+    width: 400px;
+    height: 400px;
+    /* margin: 10% auto; */
+    display: block;
+    top: 0;
+    margin-top: -1%;
+    margin-left: 38%;
+    /* margin: 100px 2px 0px 700px; */
+}
+
+.face,
+.man,
+.f2 {
+    opacity: 0;
     height: 100px;
-    width: 100px; 
+    width: 100px;
     animation: opacityOn 4s normal forwards;
     /* animation-delay: 1s; */
-	
+
 }
-@keyframes glow{
-    
-}
+
+@keyframes glow {}
+
 @keyframes opacityOn {
     0% {
         opacity: 0%;
     }
+
     25% {
         opacity: 25%;
     }
+
     50% {
         opacity: 50%;
     }
+
     75% {
         opacity: 75%;
     }
+
     100% {
         opacity: 100%;
     }
 }
-.a1{
-	animation: opacityOna1 2.50s normal forwards;
+
+.a1 {
+    animation: opacityOna1 2.50s normal forwards;
 }
-.a2{
-	animation: opacityOna1 2.55s normal forwards;
+
+.a2 {
+    animation: opacityOna1 2.55s normal forwards;
 }
-.a3{
-	animation: opacityOna1 2.60s normal forwards;
+
+.a3 {
+    animation: opacityOna1 2.60s normal forwards;
 }
-.a4{
-	animation: opacityOna1 2.65s normal forwards;
+
+.a4 {
+    animation: opacityOna1 2.65s normal forwards;
 }
-.a5{
-	animation: opacityOna1 2.70s normal forwards;
+
+.a5 {
+    animation: opacityOna1 2.70s normal forwards;
 }
-.a6{
-	animation: opacityOna1 2.75s normal forwards;
+
+.a6 {
+    animation: opacityOna1 2.75s normal forwards;
 }
-.a7{
-	animation: opacityOna1 2.80s normal forwards;
+
+.a7 {
+    animation: opacityOna1 2.80s normal forwards;
 }
-.a8{
-	animation: opacityOna1 2.85s normal forwards;
+
+.a8 {
+    animation: opacityOna1 2.85s normal forwards;
 }
-.a9{
-	animation: opacityOna1 2.90s normal forwards;
+
+.a9 {
+    animation: opacityOna1 2.90s normal forwards;
 }
-.a10{
-	animation: opacityOna1 2.95s normal forwards;
+
+.a10 {
+    animation: opacityOna1 2.95s normal forwards;
 }
-.a11{
-	animation: opacityOna1 3.0s normal forwards;
+
+.a11 {
+    animation: opacityOna1 3.0s normal forwards;
 }
-.a12{
-	animation: opacityOna1 3.05s normal forwards;
+
+.a12 {
+    animation: opacityOna1 3.05s normal forwards;
 }
-.a13{
-	animation: opacityOna1 3.10s normal forwards;
+
+.a13 {
+    animation: opacityOna1 3.10s normal forwards;
 }
-.a14{
-	animation: opacityOna1 3.15s normal forwards;
+
+.a14 {
+    animation: opacityOna1 3.15s normal forwards;
 }
+
 @keyframes opacityOna1 {
     0% {
         opacity: 0%;
     }
-	90%{
-		opacity: 0%;
-	}
+
+    90% {
+        opacity: 0%;
+    }
+
     100% {
         opacity: 100%;
     }
@@ -162,22 +207,22 @@ body{
 
 @keyframes fadeInUp {
     from {
-        transform: translate3d(0,40px,0)
+        transform: translate3d(0, 40px, 0)
     }
 
     to {
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
         opacity: 1
     }
 }
 
 @-webkit-keyframes fadeInUp {
     from {
-        transform: translate3d(0,40px,0)
+        transform: translate3d(0, 40px, 0)
     }
 
     to {
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
         opacity: 1
     }
 }
@@ -198,12 +243,13 @@ body{
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
 }
+
 /*footer*/
-footer {
+ footer {
     background-color: #000;
-    width: 100%;
-    /* Height of the footer*/
-    height: 40px;
+    width: 1750px;
+    
+    height: 130px;
     margin-top: 800px;
     position: absolute;
     padding: 10px 10px 0px 10px;
@@ -265,4 +311,4 @@ font-size: 20px;
   .button:hover {
     background: #007c04;
     text-decoration: none;
-  }
+  } 
