@@ -907,3 +907,32 @@ a:hover{
   .popup-content2 button:active{
     background: red;
   }
+
+.btn-lg,.btn-outline{
+  color: var(--main-color);
+}
+
+.card-header4
+{
+  padding: 1rem;
+}
+.card-header4{
+  /* display:flex; */
+  width: 248px;
+  padding: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f57c00;
+  margin-left: 20px;
+  margin-bottom: 1%;
+  border-radius: 3%;
+  font-size: 1px;
+  border-bottom: 1px solid #f57c00;
+}
+
+.card-header4 td{
+  font-size: 22px;
+  color: #f0f0f0;
+  justify-content: center;
+  
+}
