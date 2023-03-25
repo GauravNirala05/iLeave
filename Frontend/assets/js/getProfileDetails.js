@@ -132,6 +132,8 @@ function openPopup2() {
 function confirm_logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('UserDesignation');
+    localStorage.removeItem('alluserdetails');
+    localStorage.removeItem('allusertoken');
     location.replace("index.html")
 }
 

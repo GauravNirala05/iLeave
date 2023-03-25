@@ -147,7 +147,6 @@ const alluserByPrincipal = async () => {
       })
       const cs_user = document.querySelector('#csuserdetail')
       localStorage.setItem("alluserdetails", JSON.stringify(data))
-      document.querySelector('#dephead').innerHTML = `All User`
       document.querySelector("#alluserdetail").innerHTML = tr
     }
   }
@@ -180,9 +179,16 @@ const getuser = async () => {
 
         alluserByPrincipal()
 
-        
+
+        document.querySelector("#Only_pri").hidden = false
         document.querySelector("#all-user").hidden = false
         document.querySelector("#headname").innerHTML = "All User"
+      }
+      else if (data.designation == "HOD") {
+        alluserByPrincipal()
+        document.querySelector("#all-user").hidden = false
+        document.querySelector('#dephead').innerHTML = data.department
+
       }
       else {
         document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
@@ -207,7 +213,7 @@ if (token) {
 
 function alluserdetailsbyDep(dep) {
   var alluserdetails = localStorage.getItem('alluserdetails');
-  alluserdetail_DEP =  document.querySelector("#alluserdetail")
+  alluserdetail_DEP = document.querySelector("#alluserdetail")
   alluserdetails = JSON.parse(alluserdetails)
 
   const dep_head = document.querySelector('#dephead')
@@ -243,7 +249,7 @@ function alluserdetailsbyDep(dep) {
                   </td>
                   </tr>`
     }
-    else if(dep == 'All User'){
+    else if (dep == 'All User') {
       alluserByPrincipal()
       return
     }
