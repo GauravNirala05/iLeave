@@ -188,6 +188,12 @@ const getuser = async () => {
         alluserByPrincipal()
         document.querySelector("#all-user").hidden = false
         document.querySelector('#dephead').innerHTML = data.department
+        document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+        document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+        document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+        document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+        getleavestatus()
+        off()
 
       }
       else {
