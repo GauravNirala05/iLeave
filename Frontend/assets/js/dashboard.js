@@ -1,4 +1,3 @@
-
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
@@ -23,6 +22,7 @@ const getleavestatus = async () => {
       errorHandler(arraryError)
     }
     const { data, hits } = await user.json()
+    console.log();
     if (hits == 0) {
       const table = document.querySelector('#leavePending')
       table.innerHTML = `<tr style="text-align: center;font-size: 30px;font-weight: 100;">
@@ -98,6 +98,32 @@ const getleavestatus = async () => {
   }
 
 }
+const alluserByPrincipal = async () => {
+  try {
+    const alluserdata = await fetch('/alluser', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!alluserdata.ok) {
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
+      off()
+    }
+    else{
+      const { data } = await alluserdata.json()
+      console.log(data);
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
 const getuser = async () => {
   try {
     const user = await fetch('/getUserData', {
@@ -116,12 +142,26 @@ const getuser = async () => {
     }
     else {
       const { data } = await user.json()
-      document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
-      document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
-      document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
-      document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
-      getleavestatus()
-    off()
+      if (data.designation == "principal") {
+        document.querySelector("#Leave-Balance").hidden = true
+        document.querySelector("#Leave-Pending").hidden = true
+
+        alluserByPrincipal()
+        document.querySelector("#all-user").hidden = false
+        document.querySelector("#headname").innerHTML = "All User"
+        document.querySelector("#linkname").innerHTML = ` <a href="dashboard.html" class="active">
+        <span class="fa fa-user"></span>
+        <span>All User</span>
+      </a>`
+      }
+      else {
+        document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+        document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+        document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+        document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+        getleavestatus()
+        off()
+      }
 
     }
   }
