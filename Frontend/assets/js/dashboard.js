@@ -147,6 +147,7 @@ const alluserByPrincipal = async () => {
       })
       const cs_user = document.querySelector('#csuserdetail')
       localStorage.setItem("alluserdetails", JSON.stringify(data))
+      document.querySelector('#dephead').innerHTML = `All User`
       document.querySelector("#alluserdetail").innerHTML = tr
     }
   }
@@ -179,12 +180,9 @@ const getuser = async () => {
 
         alluserByPrincipal()
 
+        
         document.querySelector("#all-user").hidden = false
         document.querySelector("#headname").innerHTML = "All User"
-        document.querySelector("#linkname").innerHTML = ` <a href="dashboard.html" class="active">
-        <span class="fa fa-user"></span>
-        <span>All User</span>
-      </a>`
       }
       else {
         document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
@@ -244,6 +242,10 @@ function alluserdetailsbyDep(dep) {
                         class="fa fa-trash"></i> </button>
                   </td>
                   </tr>`
+    }
+    else if(dep == 'All User'){
+      alluserByPrincipal()
+      return
     }
   })
   if (tr == ``) {
