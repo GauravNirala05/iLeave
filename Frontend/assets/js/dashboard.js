@@ -114,9 +114,40 @@ const alluserByPrincipal = async () => {
       errorHandler(arraryError)
       off()
     }
-    else{
+    else {
       const { data } = await alluserdata.json()
-      console.log(data);
+      let num = 1
+      tr = ``
+      let data_user = ""
+      data.forEach(element => {
+        data_user += element;
+        tr += `<tr>
+        <td class="pl-4">${num}</td>
+        <td>
+          <h5 class="font-medium mb-0">${element.name}</h5>
+        </td>
+        <td>
+          <span class="text-muted">${element.designation}</span><br>
+          <span class="text-muted">${element.department}</span>
+        </td>
+        <td>
+          <span class="text-muted">${element.email}</span>
+        </td>
+        <td>
+          <span class="text-muted">${element.mob_no}</span>
+        </td>
+        <td>
+          <button class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
+              class="fa fa-edit"></i> </button>
+          <button class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
+              class="fa fa-trash"></i> </button>
+        </td>
+        </tr>`
+        num += 1
+      })
+      const cs_user = document.querySelector('#csuserdetail')
+      localStorage.setItem("alluserdetails", JSON.stringify(data))
+      document.querySelector("#alluserdetail").innerHTML = tr
     }
   }
   catch (error) {
@@ -147,6 +178,7 @@ const getuser = async () => {
         document.querySelector("#Leave-Pending").hidden = true
 
         alluserByPrincipal()
+
         document.querySelector("#all-user").hidden = false
         document.querySelector("#headname").innerHTML = "All User"
         document.querySelector("#linkname").innerHTML = ` <a href="dashboard.html" class="active">
@@ -175,3 +207,49 @@ if (token) {
   off()
 }
 
+function alluserdetailsbyDep(dep) {
+  var alluserdetails = localStorage.getItem('alluserdetails');
+  alluserdetail_DEP =  document.querySelector("#alluserdetail")
+  alluserdetails = JSON.parse(alluserdetails)
+
+  const dep_head = document.querySelector('#dephead')
+  dep_head.innerHTML = dep
+
+  tr = ``
+  num = 0
+  dep_head.scrollIntoView()
+
+  alluserdetails.forEach(element => {
+    if (element.department == dep) {
+      num += 1
+      tr += `<tr>
+                  <td class="pl-4">${num}</td>
+                  <td>
+                    <h5 class="font-medium mb-0">${element.name}</h5>
+                  </td>
+                  <td>
+                    <span class="text-muted">${element.designation}</span><br>
+                    <span class="text-muted">${element.department}</span>
+                  </td>
+                  <td>
+                    <span class="text-muted">${element.email}</span>
+                  </td>
+                  <td>
+                    <span class="text-muted">${element.mob_no}</span>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
+                        class="fa fa-edit"></i> </button>
+                    <button class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
+                        class="fa fa-trash"></i> </button>
+                  </td>
+                  </tr>`
+    }
+  })
+  if (tr == ``) {
+    alluserdetail_DEP.style = `text-align: center;font-size: 25px;`
+    alluserdetail_DEP.innerHTML = `<th colspan="12">No Users Yet...</th>`
+  } else {
+    alluserdetail_DEP.innerHTML = tr
+  }
+}
