@@ -303,7 +303,6 @@ const approve = async (req, res) => {
                 const leaveUpdate = await nonTechLeave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
                 return res.status(200).json({ status: 'SUCCESS', data: leaveUpdate, })
 
-
             }
             else {
                 throw new NotFound(`Leave not found with id ${targetID}`)
