@@ -137,6 +137,20 @@
       </div>
     </div>
   </div>
+  <div id="popup4" class="popup card-header">
+    <div class="popup-content4">
+      <span class="close" onclick="close_updatepopup()">&times;</span>
+      <!-- <div class="modal-header d-flex justify-content-center">
+        <h4 class="modal-title">Successfull !</h4>
+      </div> -->
+      <div class="d-flex justify-content-center">
+        <p id="logmsg">Successfull ! Your profile is updated</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="close_updatepopup()" class="btn btn-danger" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
 
   <!-- deletepopup -->
   <div id="deletepopup" class="popup card-header">
@@ -229,7 +243,7 @@
                         <!-- name -->
                         <label class="mb-0"><b>Name</b></label>
                         <div id="Name">
-                          <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+                          <input type="name" class="form-control namee" name="name" id="name" placeholder="Name"
                             aria-required="true" aria-invalid="true" value="">
                         </div>
                       </div>
@@ -247,7 +261,7 @@
                       <!-- Email  -->
                       <label class="mb-0"><b>Email</b></label>
                       <div id="email">
-                        <input type="email"  class="form-control Name" name="email" id="emailOfUpdateProfile"
+                        <input type="email"  class="form-control email" name="email" id="emailOfUpdateProfile"
       placeholder="" value="" aria-required="true" aria-invalid="true">
                       </div>
                     </div>
@@ -272,7 +286,7 @@
                           <select class="form-control department" id="department">
                             <option name="reference3" id="Department" value="">Department</option>
                             <option value="Computer Science">Computer Science</option>
-                            <option value="Information Technology">Information Tecnology</option>
+                            <option value="Information Tecnology">Information Tecnology</option>
                             <option value="ET & T">ET & T</option>
                             <option value="Mechanical">Mechanical</option>
                             <option value="Mining">Mining</option>

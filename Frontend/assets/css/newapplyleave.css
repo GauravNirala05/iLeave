@@ -119,7 +119,7 @@ label.error {
 .popup4{
   height: 100px;
   width: 500px;
-  top: 0%;
+  padding-top: 0px;
 }
 .popup4 {
 	display: none;
@@ -154,6 +154,7 @@ label.error {
 } */
 
 .popup-content4 {
+  overflow: auto;
 	background-color: white;
 	border-radius: 5px;
 	/* padding: 50px; */
