@@ -39,21 +39,21 @@ const userData = async () => {
     else {
       const { data } = await user.json()
       console.log(data)
-      document.getElementById("entered_name").innerHTML=data.name
-      document.getElementById("entered_email").innerHTML=data.email
-      document.getElementById("entered_phoneno").innerHTML=data.mob_no
-      document.getElementById("entered_designation").innerHTML=data.designation
-      document.getElementById("entered_department").innerHTML=data.department
+      document.getElementById("entered_name").innerHTML = data.name
+      document.getElementById("entered_email").innerHTML = data.email
+      document.getElementById("entered_phoneno").innerHTML = data.mob_no
+      document.getElementById("entered_designation").innerHTML = data.designation
+      document.getElementById("entered_department").innerHTML = data.department
 
-      
-      document.querySelector(".namee").value=data.name
-      document.querySelector(".email").value=data.email
-      document.querySelector(".phone_no").value=data.mob_no
 
-      document.querySelector(".department").value=data.department
-      document.querySelector(".designation").value=data.designation
+      document.querySelector(".namee").value = data.name
+      document.querySelector(".email").value = data.email
+      document.querySelector(".phone_no").value = data.mob_no
 
-      document.querySelector(".contract_type").value=data.contect_type
+      document.querySelector(".department").value = data.department
+      document.querySelector(".designation").value = data.designation
+
+      document.querySelector(".contract_type").value = data.contect_type
     }
   } catch (error) {
     console.log(error);
@@ -95,10 +95,11 @@ update_profile.addEventListener('click', async (e) => {
       errorHandler(arraryError)
     }
     const { msg } = await fetcher.json()
-    profile_updated()
+    console.log(msg);
+    profile_updated(msg)
     console.log('updated profile')
-    update_name.value=``
-    update_contact.value=``
+    update_name.value = ``
+    update_contact.value = ``
     update_designation.value = ``
     update_department.value = ``
     update_contact.value = ``
@@ -202,11 +203,14 @@ window.onload = function () {
   document.getElementById('loading-screen').style.display = 'none';
 };
 
-function profile_updated(){
+function profile_updated(msg) {
   document.getElementById("popup4").style.display = "block";
+  // document.getElementById("updateMessage").innerText=msg
+
 
 }
-function close_updatepopup(){
+function close_updatepopup() {
   document.getElementById("popup4").style.display = "none";
+  location.reload()
 
 }
