@@ -101,6 +101,7 @@ const contactno = document.querySelector('.mob_no')
 const fromdate = document.querySelector('.fromdate')
 const todate = document.querySelector('.todate')
 const totaldays = document.querySelector('.totaldays')
+const dayDiscription = document.querySelector('#dayDiscription')
 const reference1 = document.querySelector('.reference1')
 const reference2 = document.querySelector('.reference2')
 const reference3 = document.querySelector('.reference3')
@@ -109,22 +110,30 @@ const leave_type = document.querySelector('.leavetype')
 const reason = document.querySelector('.reason')
 
 
-todate.addEventListener("input", () => {
-    const date2 = new Date(fromdate.value)
-    const date1 = new Date(todate.value)
-    console.log(date1 - date2);
-    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
-
-    totaldays.value = totalday;
+dayDiscription.addEventListener("input", () => {
+    console.log(dayDiscription.value)
+    if (dayDiscription.value == 'true') {
+        totaldays.value = 0.5;
+    }else{
+        todate.addEventListener("input", () => {
+            const date2 = new Date(fromdate.value)
+            const date1 = new Date(todate.value)
+            console.log(date1 - date2);
+            let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+        
+            totaldays.value = totalday;
+        })
+        fromdate.addEventListener("input", () => {
+            const date2 = new Date(fromdate.value)
+            const date1 = new Date(todate.value)
+            console.log(date1 - date2);
+            let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+        
+            totaldays.value = totalday;
+        })
+    }
 })
-fromdate.addEventListener("input", () => {
-    const date2 = new Date(fromdate.value)
-    const date1 = new Date(todate.value)
-    console.log(date1 - date2);
-    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
 
-    totaldays.value = totalday;
-})
 
 if (UserDesignation == 'faculty') {
     reference1.required = true
