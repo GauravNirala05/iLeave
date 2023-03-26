@@ -184,18 +184,6 @@ const getuser = async () => {
         document.querySelector("#all-user").hidden = false
         document.querySelector("#headname").innerHTML = "All User"
       }
-      else if (data.designation == "HOD") {
-        alluserByPrincipal()
-        document.querySelector("#all-user").hidden = false
-        document.querySelector('#dephead').innerHTML = data.department
-        document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
-        document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
-        document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
-        document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
-        getleavestatus()
-        off()
-
-      }
       else {
         document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
         document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
@@ -204,6 +192,14 @@ const getuser = async () => {
         getleavestatus()
         off()
       }
+      if (data.designation == "HOD") {
+        alluserByPrincipal()
+        document.querySelector("#all-user").hidden = false
+        document.querySelector('#dephead').innerHTML = data.department
+        getleavestatus()
+        off()
+      }
+     
 
     }
   }
@@ -261,7 +257,7 @@ function alluserdetailsbyDep(dep) {
     }
   })
   if (tr == ``) {
-    alluserdetail_DEP.style = `text-align: center;font-size: 25px;`
+    alluserdetail_DEP.style = `text-align: center;font-size: 20px;`
     alluserdetail_DEP.innerHTML = `<th colspan="12">No Users Yet...</th>`
   } else {
     alluserdetail_DEP.innerHTML = tr
