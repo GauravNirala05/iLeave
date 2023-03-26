@@ -49,6 +49,10 @@ const getUserDetails = async () => {
                     if (document.querySelector("#statussidebar")) {
                         document.querySelector("#statussidebar").hidden = true
                     }
+                    document.querySelector("#linkname").innerHTML = ` 
+                        <span class="fa fa-user"></span>
+                        <span>All User</span>
+                    `
                 }
                 localStorage.setItem('UserDesignation', data.designation)
                 document.querySelector(".userName").innerHTML = data.name
@@ -128,6 +132,8 @@ function openPopup2() {
 function confirm_logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('UserDesignation');
+    localStorage.removeItem('alluserdetails');
+    localStorage.removeItem('allusertoken');
     location.replace("index.html")
 }
 
