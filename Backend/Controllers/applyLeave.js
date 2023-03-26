@@ -193,7 +193,7 @@ const deleteLeave = async (req, res) => {
     const user = await User.findOne({ _id: userID })
     const userName = user.name
     if (user) {
-        if (await Leave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
+        if (await Leave.exists({ _id: targetLeaveID, employee_name: userName, status: `applied` })) {
             await Leave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }

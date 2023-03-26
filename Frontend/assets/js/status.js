@@ -4,10 +4,56 @@ var statusSwitch = document.getElementById("statuscheckbox")
 var historySwitch = document.getElementById("historycheckbox")
 
 statusSwitch.style.color = "#fff"
-historySwitch.innerHTML = '<span style="color:#fff"> History </span>'; 
+historySwitch.innerHTML = '<span style="color:#fff"> History </span>';
 content1.hidden = false
 content2.hidden = true
 
+function confirmationPopup(id) {
+  document.getElementById("confirmationPopup").style.display = "block";
+  localStorage.setItem('leaveID', id)
+}
+function confirmationPopupClose() {
+  document.getElementById("confirmationPopup").style.display = "none";
+}
+function normalPopup(msg) {
+  document.getElementById("normalPopup").style.display = "block";
+  document.getElementById("normalPopupMessage").innerHTML = msg
+}
+function normalPopupClose() {
+  document.getElementById("normalPopup").style.display = "none";
+  location.reload()
+
+}
+async function confirmationPopupOpen() {
+  const leaveID = localStorage.getItem('leaveID')
+  console.log(leaveID);
+  try {
+    if (leaveID) {
+      const deleteLeaveData = await fetch(`/deleteLeave/${leaveID}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'Application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      if (!deleteLeaveData.ok) {
+        const LeaveData = await deleteLeaveData.json()
+        console.log(LeaveData);
+        localStorage.removeItem('leaveID')
+        throw Error(LeaveData.msg)
+      }
+      else {
+        const { msg } = await deleteLeaveData.json()
+        localStorage.removeItem('leaveID')
+        normalPopup(msg)
+
+      }
+    }
+  } catch (error) {
+    normalPopup(error)
+
+  }
+}
 function toggleContent() {
   if (content1.hidden == false) {
     content1.hidden = true
@@ -22,7 +68,6 @@ function toggleContent() {
     statusSwitch.style.color = "#fff"
   }
 }
-
 
 const getleavestatus = async () => {
   const stat = []
@@ -168,7 +213,7 @@ const getleavestatus = async () => {
           }
           ihtml += `<td>${element.status}</td>`
           ihtml += `<td>
-          <div onclick="deleteLeave('${element._id}')" class="btn btn-danger">
+          <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
             <i class="fa fa-trash-o fa-lg"></i> Delete
           </div>
         </td>`
@@ -352,6 +397,7 @@ else {
   getleavestatus()
   getleaveHistory()
 }
+
 
 
 function toggleDropdown() {
