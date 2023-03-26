@@ -251,7 +251,7 @@ const approve = async (req, res) => {
                 const { approval, confirmation } = req.body
                 const approveObject = {}
                 const updateObj = {}
-                if (confirmation === true && approval === true) {
+                if (confirmation === `true` && approval === `true`) {
                     const type = leaveData.leave_type
                     const totalDay = leaveData.total_days
                     const leaveUser = await User.findOne({ _id: leaveData.employee_id })
@@ -292,7 +292,7 @@ const approve = async (req, res) => {
                     const data2 = await User.findOneAndUpdate({ _id: leaveData.employee_id }, updateObj, { new: true })
                     return res.status(StatusCodes.OK).json({ status: 'SUCCESS', userUpadated: 'TRUE', data: data3, user: data2 })
                 }
-                if (approval === true) {
+                if (approval === `true`) {
                     approveObject.principal_approval = approval
                     approveObject.status = 'approved'
                 }
@@ -302,7 +302,6 @@ const approve = async (req, res) => {
                 }
                 const leaveUpdate = await nonTechLeave.findOneAndUpdate({ _id: targetID }, approveObject, { new: true })
                 return res.status(200).json({ status: 'SUCCESS', data: leaveUpdate, })
-
 
             }
             else {
