@@ -15,6 +15,9 @@ const update_profile = document.querySelector('.update')
 const update_contact = document.querySelector('.phone_no')
 const update_email = document.querySelector('#emailOfUpdateProfile')
 const update_name = document.querySelector('#name')
+// const update_contact = document.querySelector('#number')
+// const update_email = document.querySelector('#email')
+// const update_name = document.querySelector('#Name')
 
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
@@ -31,10 +34,10 @@ const userData = async () => {
 
       const status = user.status
       const { msg } = await user.json()
-      var arraryError = []
-      arraryError.push(status)
-      arraryError.push(msg)
-      errorHandler(arraryError)
+      // var arraryError = []
+      // arraryError.push(status)
+      // arraryError.push(msg)
+      // errorHandler(arraryError)
     }
 
     else {
@@ -48,12 +51,27 @@ const userData = async () => {
 
       
 
-      update_contact.placeholder = data.mob_no
+      update_contact. placeholder= data.mob_no
       update_name.placeholder = data.name
       update_email.placeholder = data.email
-      update_designation.placeholder = data.designation
-      update_department.placeholder = data.department
-      update_contract_type.placeholder = data.contect_type
+      // document.getElementById("Name").innerHTML=`<input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
+      // aria-required="true" aria-invalid="true" value="${data.name}">`
+
+      // document.getElementById("email").innerHTML=`<input type="email"  class="form-control Name" name="email" id="emailOfUpdateProfile"
+      // placeholder="email" value="${data.email}" aria-required="true" aria-invalid="true">`
+
+      // document.getElementById("number").innerHTML= `<input type="number" class="form-control phone_no" name="mob_no" id="phone_no"
+      // placeholder="Contact No." aria-required="true" aria-invalid="true" value="${data.mob_no}">`
+      
+
+      document.querySelector(".department").value=data.department
+      document.querySelector(".designation").value=data.designation
+
+      document.querySelector(".contract_type").value=data.contect_type
+
+      // update_designation.placeholder = data.designation
+      // update_department.placeholder = data.department
+      // update_contract_type.placeholder = data.contect_type
 
 
 
@@ -63,7 +81,19 @@ const userData = async () => {
   }
 }
 userData()
-console.log('running')
+
+// const update_profile = document.querySelector('.update')
+// // const update_contact = document.querySelector('.phone_no')
+// // const update_email = document.querySelector('#emailOfUpdateProfile')
+// // const update_name = document.querySelector('#name')
+// const update_name = document.querySelector('#Name')
+// const update_contact = document.querySelector('#number')
+// const update_email = document.querySelector('#email')
+
+
+// const update_designation = document.querySelector('.designation')
+// const update_department = document.querySelector('.department')
+// const update_contract_type = document.querySelector('.contract_type')
 update_profile.addEventListener('click', async (e) => {
   e.preventDefault()
   const name = update_name.value
@@ -94,10 +124,12 @@ update_profile.addEventListener('click', async (e) => {
     if (!fetcher.ok) {
       const status = fetcher.status
       const { msg } = await fetcher.json()
-      var arraryError = []
-      arraryError.push(status)
-      arraryError.push(msg)
-      errorHandler(arraryError)
+      console.log(msg);
+      throw Error(`${status}`)
+      // var arraryError = []
+      // arraryError.push(status)
+      // arraryError.push(msg)
+      // errorHandler(arraryError)
     }
     const { msg } = await fetcher.json()
     alert(`${msg}`)
@@ -106,6 +138,12 @@ update_profile.addEventListener('click', async (e) => {
       location.replace("dashboard.html")
     }, 1000);
     console.log('updated profile')
+    update_name.value=``
+    update_contact.value=``
+    update_designation.value = ``
+    update_department.value = ``
+    update_contact.value = ``
+    update_contract_type.value = ``
   } catch (error) {
     console.log(error)
   }
