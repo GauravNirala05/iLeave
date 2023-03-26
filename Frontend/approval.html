@@ -44,6 +44,29 @@
       <div id="box"></div>
     </div>
   </div>
+  <div id="confirmationPopup" class="popup card-header">
+    <div class="popup-content">
+      <span class="close" onclick="confirmationPopupClose()">&times;</span>
+      <div class="d-flex justify-content-center">
+        <p id="logmsg">Are You Sure ?</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button onclick="confirmationPopupOpen()"><i class="fa fa-sign-out"></i>ok</button>
+        <button onclick="confirmationPopupClose()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="normalPopup" class="popup card-header">
+    <div class="popup-content">
+      <span class="close" onclick="normalPopupClose()">&times;</span>
+      <div class="d-flex justify-content-center">
+        <p id="normalPopupMessage">wait</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button onclick="normalPopupClose()"><i class="fa fa-sign-out"></i>ok</button>
+      </div>
+    </div>
+  </div>
   <input type="checkbox" id="nav-toggle">
   <div class="sidebar">
     <div class="sidebar-brand">
