@@ -14,6 +14,7 @@ function confirmationPopup(id) {
 }
 function confirmationPopupClose() {
   document.getElementById("confirmationPopup").style.display = "none";
+  localStorage.removeItem('leaveID')
 }
 function normalPopup(msg) {
   document.getElementById("normalPopup").style.display = "block";
@@ -25,9 +26,9 @@ function normalPopupClose() {
 
 }
 async function confirmationPopupOpen() {
-  const leaveID = localStorage.getItem('leaveID')
-  console.log(leaveID);
   try {
+    const leaveID = localStorage.getItem('leaveID')
+    console.log(leaveID);
     if (leaveID) {
       const deleteLeaveData = await fetch(`/deleteLeave/${leaveID}`, {
         method: 'DELETE',
@@ -72,7 +73,6 @@ function toggleContent() {
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
-  console.log(stat);
   try {
     const user = await fetch('/leaveStatus', {
       method: 'POST',
@@ -144,59 +144,60 @@ const getleavestatus = async () => {
         else {
           if (element.reference) {
             ihtml += `<td>${element.reference.name}`
-            if (element.reference.approved === true) {
+            if (element.reference.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
               ihtml += `</td>`
             }
-            else if (element.reference.approved === false) {
+            else if (element.reference.approved == false) {
               ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
               ihtml += `</td>`
             }
             else {
-              ihtml += `<td>Pending</td>`
+              ihtml += `</td>`
             }
           }
           else {
             ihtml += `<td><div>${element.reference1.name}`
-            if (element.reference1.approved === true) {
+            if (element.reference1.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
-            if (element.reference1.approved === false) {
+            if (element.reference1.approved == false) {
               ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div><div>${element.reference2.name}`
-            if (element.reference2.approved === true) {
+            if (element.reference2.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
-            if (element.reference2.approved === false) {
+            if (element.reference2.approved == false) {
               ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
-            ihtml += `</div>
-            <div>${element.reference3.name}`
-            if (element.reference3.approved === true) {
+            ihtml += `</div><div>${element.reference3.name}`
+            if (element.reference3.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
-            if (element.reference3.approved === false) {
+            if (element.reference3.approved == false) {
               ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
-            ihtml += `</div>
-          <div>${element.reference4.name}`
-            if (element.reference4.approved === true) {
+            ihtml += `</div><div>${element.reference4.name}`
+            if (element.reference4.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
             }
-            if (element.reference4.approved === false) {
+            if (element.reference4.approved == false) {
               ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div></td>`
           }
 
+          if (element.HOD_approval) {
+            if (element.HOD_approval == true) {
 
-          if (element.HOD_approval === true) {
-            ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            }
+            else {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+            }
           }
-          else if ((element.HOD_approval === false)) {
-            ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
-          } else {
+          else {
             ihtml += `<td>Pending</td>`
           }
 
@@ -216,7 +217,7 @@ const getleavestatus = async () => {
           <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
             <i class="fa fa-trash-o fa-lg"></i> Delete
           </div>
-        </td>`
+                    </td>`
         }
         tr.innerHTML = ihtml
         pendingLeaveBody.append(tr)
@@ -308,7 +309,7 @@ const getleaveHistory = async () => {
               ihtml += `</td>`
             }
             else {
-              ihtml += `<td>Pending</td>`
+              ihtml += `</td>`
             }
           }
           else {
@@ -375,7 +376,6 @@ const getleaveHistory = async () => {
         pendingLeaveBody.append(tr)
         counter++
       });
-      console.log(data)
     }
     off()
 
