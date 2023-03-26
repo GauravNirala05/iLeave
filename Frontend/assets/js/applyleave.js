@@ -133,7 +133,22 @@ dayDiscription.addEventListener("input", () => {
         })
     }
 })
+todate.addEventListener("input", () => {
+    const date2 = new Date(fromdate.value)
+    const date1 = new Date(todate.value)
+    console.log(date1 - date2);
+    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
 
+    totaldays.value = totalday;
+})
+fromdate.addEventListener("input", () => {
+    const date2 = new Date(fromdate.value)
+    const date1 = new Date(todate.value)
+    console.log(date1 - date2);
+    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+
+    totaldays.value = totalday;
+})
 
 if (UserDesignation == 'faculty') {
     reference1.required = true
