@@ -191,26 +191,34 @@ const deleteLeave = async (req, res) => {
     const { userID } = req.user
     const { leaveId: targetLeaveID } = req.params
     const user = await User.findOne({ _id: userID })
-    const userName = user.name
-    if (user) {
-        if (await Leave.exists({ _id: targetLeaveID, employee_name: userName, status: `applied` })) {
-            await Leave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
-            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
-        }
-        if (await HodLeave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
-            await HodLeave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
-            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
-        }
-        if (await nonTechLeave.exists({ _id: targetLeaveID, employee_name: userName, status: applied })) {
-            await nonTechLeave.findOneAndDelete({ _id: targetLeaveID, employee_name: userName })
+    if (user.designation === 'faculty') {
+        if (await Leave.exists({ _id: targetLeaveID, status: `applied` })) {
+            await Leave.findOneAndDelete({ _id: targetLeaveID })
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
         else {
-            throw new NotFound(`The provided leave id does'nt exists.`)
+            throw new NotFound(`The provided facultyLeave id does'nt exists.`)
         }
     }
-    else {
-        throw new NotFound(`User does'nt exists.Plz give valid credentials`)
+    if (user.designation === 'HOD') {
+        if (await HodLeave.exists({ _id: targetLeaveID, status: 'applied' })) {
+            await HodLeave.findOneAndDelete({ _id: targetLeaveID})
+            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+        }
+        else {
+            throw new NotFound(`The provided Hod leave id does'nt exists.`)
+        }
     }
+    if (user.department === 'non-tech') {
+
+        if (await nonTechLeave.exists({ _id: targetLeaveID, status: 'applied' })) {
+            await nonTechLeave.findOneAndDelete({ _id: targetLeaveID})
+            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+        }
+        else {
+            throw new NotFound(`The provided non-tech leave id does'nt exists.`)
+        }
+    }
+
 }
 module.exports = { applyLeave, getReferenceName, deleteLeave }
