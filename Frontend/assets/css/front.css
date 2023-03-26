@@ -46,6 +46,7 @@ html{
 .img_nav {
     height: 70px;
     width: 70px;
+
 }
 
 *{
@@ -128,7 +129,7 @@ body {
 
 }
 
-@keyframes glow {}
+/* @keyframes glow {} */
 
 @keyframes opacityOn {
     0% {

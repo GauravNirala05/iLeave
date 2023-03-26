@@ -12,10 +12,9 @@ editProfile.addEventListener('click', () => {
 
 });
 const update_profile = document.querySelector('.update')
+const update_name = document.querySelector('.namee')
 const update_contact = document.querySelector('.phone_no')
-const update_email = document.querySelector('#emailOfUpdateProfile')
-const update_name = document.querySelector('#name')
-
+const update_email = document.querySelector('.email')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
 const update_contract_type = document.querySelector('.contract_type')
@@ -47,23 +46,21 @@ const userData = async () => {
       document.getElementById("entered_department").innerHTML=data.department
 
       
+      document.querySelector(".namee").value=data.name
+      document.querySelector(".email").value=data.email
+      document.querySelector(".phone_no").value=data.mob_no
 
-      update_contact.placeholder = data.mob_no
-      update_name.placeholder = data.name
-      update_email.placeholder = data.email
-      update_designation.placeholder = data.designation
-      update_department.placeholder = data.department
-      update_contract_type.placeholder = data.contect_type
+      document.querySelector(".department").value=data.department
+      document.querySelector(".designation").value=data.designation
 
-
-
+      document.querySelector(".contract_type").value=data.contect_type
     }
   } catch (error) {
     console.log(error);
   }
 }
 userData()
-console.log('running')
+
 update_profile.addEventListener('click', async (e) => {
   e.preventDefault()
   const name = update_name.value
@@ -71,11 +68,7 @@ update_profile.addEventListener('click', async (e) => {
   const contract_type = update_contract_type.value
   const desig = update_designation.value
   const depart = update_department.value
-  console.log('running')
-  // const mob = mob_no.value
-  // const pass = confirmPassword.value
   try {
-    console.log('running')
     const fetcher = await fetch('/updateProfile', {
 
       method: 'PATCH',
@@ -94,18 +87,22 @@ update_profile.addEventListener('click', async (e) => {
     if (!fetcher.ok) {
       const status = fetcher.status
       const { msg } = await fetcher.json()
+      console.log(msg);
+      throw Error(`${status}`)
       var arraryError = []
       arraryError.push(status)
       arraryError.push(msg)
       errorHandler(arraryError)
     }
     const { msg } = await fetcher.json()
-    alert(`${msg}`)
-
-    setTimeout(() => {
-      location.replace("dashboard.html")
-    }, 1000);
+    profile_updated()
     console.log('updated profile')
+    update_name.value=``
+    update_contact.value=``
+    update_designation.value = ``
+    update_department.value = ``
+    update_contact.value = ``
+    update_contract_type.value = ``
   } catch (error) {
     console.log(error)
   }
@@ -205,3 +202,11 @@ window.onload = function () {
   document.getElementById('loading-screen').style.display = 'none';
 };
 
+function profile_updated(){
+  document.getElementById("popup4").style.display = "block";
+
+}
+function close_updatepopup(){
+  document.getElementById("popup4").style.display = "none";
+
+}

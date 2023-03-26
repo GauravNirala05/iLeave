@@ -150,7 +150,7 @@
 }
 header{
   background: #fff;
-  display: flex;
+  display:flex;
   justify-content: space-between;
   padding: 1rem 1.5rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -928,6 +928,7 @@ a:hover{
   border-radius: 3%;
   font-size: 1px;
   border-bottom: 1px solid #f57c00;
+
 }
 
 .card-header4 td{
@@ -935,4 +936,15 @@ a:hover{
   color: #f0f0f0;
   justify-content: center;
   
+}
+
+@keyframes scroll2 {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

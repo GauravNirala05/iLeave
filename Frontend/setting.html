@@ -85,15 +85,9 @@
     <div class="sidebar-menu">
       <ul>
         <li>
-          <a href="dashboard.html">
+          <a href="dashboard.html" id="linkname">
             <span class="fa fa-clone"></span>
             <span>Dashboard</span>
-          </a>
-        </li>
-        <li id="allusersidebar" hidden>
-          <a href="allusers.html">
-            <span class="fa fa-user"></span>
-            <span>All Users</span>
           </a>
         </li>
         <li id="applyleavesidebar">
@@ -116,7 +110,7 @@
           </a>
         </li>
         <li>
-          <a href="setting.html" class="active">
+          <a href="setting.html"  class="active">
             <span class="fa fa-cog"></span>
             <span>Setting</span>
           </a>
@@ -140,6 +134,20 @@
       <div class="modal-footer d-flex justify-content-center">
         <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
         <button onclick="closePopup()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="popup4" class="popup card-header">
+    <div class="popup-content4">
+      <span class="close" onclick="close_updatepopup()">&times;</span>
+      <!-- <div class="modal-header d-flex justify-content-center">
+        <h4 class="modal-title">Successfull !</h4>
+      </div> -->
+      <div class="d-flex justify-content-center">
+        <p id="logmsg">Successfull ! Your profile is updated</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="close_updatepopup()" class="btn btn-danger" data-dismiss="modal">Ok</button>
       </div>
     </div>
   </div>
@@ -235,8 +243,8 @@
                         <!-- name -->
                         <label class="mb-0"><b>Name</b></label>
                         <div id="Name">
-                          <input type="name" class="form-control Name" name="name" id="name" placeholder="Name"
-                            aria-required="true" aria-invalid="true">
+                          <input type="name" class="form-control namee" name="name" id="name" placeholder="Name"
+                            aria-required="true" aria-invalid="true" value="">
                         </div>
                       </div>
                       <div class="col-md-6 form-group">
@@ -253,8 +261,8 @@
                       <!-- Email  -->
                       <label class="mb-0"><b>Email</b></label>
                       <div id="email">
-                        <input type="email"  class="form-control Name" name="email" id="emailOfUpdateProfile"
-      placeholder="${data.email}" value="" aria-required="true" aria-invalid="true">
+                        <input type="email"  class="form-control email" name="email" id="emailOfUpdateProfile"
+      placeholder="" value="" aria-required="true" aria-invalid="true">
                       </div>
                     </div>
                     <div class="row">
@@ -278,7 +286,7 @@
                           <select class="form-control department" id="department">
                             <option name="reference3" id="Department" value="">Department</option>
                             <option value="Computer Science">Computer Science</option>
-                            <option value="Information Technology">Information Technology</option>
+                            <option value="Information Tecnology">Information Tecnology</option>
                             <option value="ET & T">ET & T</option>
                             <option value="Mechanical">Mechanical</option>
                             <option value="Mining">Mining</option>
