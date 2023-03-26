@@ -159,6 +159,7 @@ const getLeaveApprovals = async () => {
             const appliedTable = document.querySelector('.userAppliedTable')
             const defaultApprovingText = document.querySelector('#defaultApprovingText')
             defaultApprovingText.hidden = true
+            console.log(hits);
             if (hits == 0) {
                 var trHOD = document.createElement('tr')
                 trHOD.style = `text-align: center;font-size: 25px;`

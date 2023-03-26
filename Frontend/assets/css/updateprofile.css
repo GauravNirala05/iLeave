@@ -85,7 +85,6 @@
 
 .upload img {
   border-radius: 50%;
-  border: 6px solid black;
 }
 
 .upload .round {
@@ -97,7 +96,7 @@
   background-color: #fff;
   width: 32px;
   height: 32px;
-  line-height: 33px;
+  /* line-height: 33px; */
   overflow: hidden;
 
 }

@@ -100,6 +100,7 @@ if (UserDesignation == 'principal') {
 const contactno = document.querySelector('.mob_no')
 const fromdate = document.querySelector('.fromdate')
 const todate = document.querySelector('.todate')
+const totaldays = document.querySelector('.totaldays')
 const reference1 = document.querySelector('.reference1')
 const reference2 = document.querySelector('.reference2')
 const reference3 = document.querySelector('.reference3')
@@ -107,11 +108,29 @@ const reference4 = document.querySelector('.reference4')
 const leave_type = document.querySelector('.leavetype')
 const reason = document.querySelector('.reason')
 
+
+todate.addEventListener("input", () => {
+    const date2 = new Date(fromdate.value)
+    const date1 = new Date(todate.value)
+    console.log(date1 - date2);
+    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+
+    totaldays.value = totalday;
+})
+fromdate.addEventListener("input", () => {
+    const date2 = new Date(fromdate.value)
+    const date1 = new Date(todate.value)
+    console.log(date1 - date2);
+    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+
+    totaldays.value = totalday;
+})
+
 if (UserDesignation == 'faculty') {
-    reference1.required=true
-    reference2.required=true
-    reference3.required=true
-    reference4.required=true
+    reference1.required = true
+    reference2.required = true
+    reference3.required = true
+    reference4.required = true
 }
 
 const button_apply = document.querySelector('.btn_apply')
@@ -190,11 +209,11 @@ button_apply.addEventListener('click', async (e) => {
     }
 })
 
-function leave_applied(){
+function leave_applied() {
     document.getElementById("popup4").style.display = "block";
 
 }
-function close_popup(){
+function close_popup() {
     document.getElementById("popup4").style.display = "none";
 
 }
