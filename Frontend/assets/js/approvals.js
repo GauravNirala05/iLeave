@@ -109,6 +109,33 @@ async function approveUserHOD(id, approval) {
     }
     location.reload()
 }
+async function approveUserHead(id, approval) {
+    try {
+        const user = await fetch(`/approvals/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                approval: approval
+            }),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-type': 'application/json'
+            }
+        })
+        if (!user.ok) {
+            const { msg } = await user.json()
+            throw Error(msg)
+        }
+        else {
+            const data = await user.json()
+
+            console.log(data)
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    location.reload()
+}
 var UserDesignation = localStorage.getItem('UserDesignation')
 const getLeaveApprovals = async () => {
     try {
@@ -478,6 +505,39 @@ const getLeaveApprovals = async () => {
                         });
                     }
                 }
+                if (UserDesignation == 'non-tech-head') {
+                    let num = 1
+                    data.forEach(element => {
+                        var fromDate = new Date(element.from_date).toDateString()
+                        var toDate = new Date(element.to_date).toDateString()
+                        var tr = document.createElement('tr')
+                        ihtml = `<td>${num}</td>
+                        <td >${element.employee_name}</td>
+                        <td >${element.leave_type}</td>
+                        <td >${fromDate}</td>
+                        <td >${toDate}</td>
+                        <td >${element.discription}</td>`
+                        if (element.head_approval == true) {
+                            ihtml += `<td> <span type="button" onclick="approveUserHead('${element._id}','true')" class="btn btn-success mb-2 col-lg-11">Accepted</span>`
+                            ihtml += `<span type="button" onclick="approveUserHead('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span></td>`
+
+                        }
+                        else if (element.head_approval == false) {
+                            ihtml += `<td> <span type="button" onclick="approveUserHead('${element._id}','false')" class="btn btn-danger mb-2 col-lg-11">Rejected</span>`
+                            ihtml += `<span type="button" onclick="approveUserHead('${element._id}','true')" class="btn btn-outline-success  col-lg-11">Accept</span></td>`
+                        }
+                        else {
+                            ihtml += `<td>
+                            <span type="button" onclick="approveUserHead('${element._id}','true')" class="btn btn-outline-success mb-2 col-lg-11">Accept</span>
+                            <span type="button" onclick="approveUserHead('${element._id}','false')" class="btn btn-outline-danger col-lg-11">Reject</span>
+                            </td>`
+                        }
+                        ihtml += `<td></td>`
+                        tr.innerHTML = ihtml
+                        appliedTable.append(tr)
+                        num++;
+                    });
+                }
                 off()
             }
         }
@@ -491,5 +551,4 @@ const getLeaveApprovals = async () => {
 if (token) {
     getLeaveApprovals()
     off()
-
 }

@@ -55,15 +55,15 @@ const getUserDetails = async () => {
                     `
                 }
                 localStorage.setItem('UserDesignation', data.designation)
-                document.querySelector(".userName").innerHTML = data.name
-                document.querySelector(".userDepartment").innerHTML = data.department
-                document.querySelector(".userDesignation").innerHTML = data.designation
-                document.querySelector(".userEmail").innerHTML = data.email
+                document.querySelector("#userName").innerHTML = data.name
+                document.querySelector("#userDepartment").innerHTML = data.department
+                document.querySelector("#userDesignation").innerHTML = data.designation
+                document.querySelector("#userEmail").innerHTML = data.email
                 if (data.gender === 'male') {
-                    document.querySelector(".userGreet").innerHTML = `Mr.`
+                    document.querySelector("#userGreet").innerHTML = `Mr.`
                 }
                 if (data.gender === 'female') {
-                    document.querySelector(".userGreet").innerHTML = `Miss.`
+                    document.querySelector("#userGreet").innerHTML = `Miss.`
                 }
 
                 if (document.querySelector(".applyLeaveCasual")) {

@@ -123,6 +123,14 @@ const getApprovals = async (req, res) => {
             })
             res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
+        if (user.designation === 'non-tech-head') {
+
+            const data = await nonTechLeave.find({
+                employee_dep: user.department,
+                status: ['applied', 'rejected']
+            })
+            res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
+        }
         if (user.designation === 'principal') {
             const data1 = await Leave.find({
                 HOD_approval: true,
