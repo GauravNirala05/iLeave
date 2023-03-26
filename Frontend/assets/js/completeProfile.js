@@ -110,14 +110,14 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-function profile_completed() {
-  document.getElementById("popup4").style.display = "block";
+function profile_completed(msg) {
+  document.getElementById("popup6").style.display = "block";
   // document.getElementById("updateMessage").innerText=msg
 
 
 }
 function close_completepopup() {
-  document.getElementById("popup4").style.display = "none";
+  document.getElementById("popup6").style.display = "none";
   location.replace('dashboard.html')
   // location.reload()
 
