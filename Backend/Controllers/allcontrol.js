@@ -82,7 +82,7 @@ const getApprovals = async (req, res) => {
             const hod = await HodLeave.find({
                 'reference.name': user.name,
                 status: ['applied', 'rejected']
-            }).select('employee_id employee_dep employee_name from_date to_date status leave_type discription')
+            })
             const firstYear = await Leave.find({
                 'reference1.name': user.name,
                 status: ['applied', 'rejected']
