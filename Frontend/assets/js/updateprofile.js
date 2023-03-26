@@ -88,7 +88,7 @@ update_profile.addEventListener('click', async (e) => {
       const status = fetcher.status
       const { msg } = await fetcher.json()
       console.log(msg);
-      throw Error(`${status}`)
+      // throw Error(`${status}`)
       var arraryError = []
       arraryError.push(status)
       arraryError.push(msg)
