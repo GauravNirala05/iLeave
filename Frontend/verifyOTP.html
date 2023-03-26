@@ -25,15 +25,15 @@
         </div>
 
         <form style="margin-top: 10%;" id="form">
-            
             <img class="logo" src="images/name.svg">
             <span class="row mb-5">
-            <h2>Reset Password</h2>
+                <h2>Reset Password</h2>
             </span>
 
-            <input required type="String" id="resetPassword" class="email" placeholder="New Password" />
-            <input required type="String" id="resetPasswordConfirm" class="email" placeholder="Confirm Password" />
-            <button class="mt-4 mb-5" id="changePassword">Reset Password</button>
+            <input type="number" id="resetPasswordOTP" class="email" placeholder="OTP" />
+
+            <button id="OtpVerification" class="mt-4 mb-5">Submit</button>
+            <button class="mt-4 mb-5" id="resetPasswordBtn">Re-Send OTP</button>
             <a target="_blank" href="login.html">Sign In and Register</a>
 
         </form>
