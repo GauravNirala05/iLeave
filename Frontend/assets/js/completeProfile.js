@@ -87,10 +87,11 @@ complete_profile.addEventListener('click', async (e) => {
       throw Error(`${status}`)
     }
     const { msg } = await fetcher.json()
-    alert(`${msg}`)
-    setTimeout(() => {
-      location.replace("dashboard.html")
-    }, 1000);
+    profile_completed()
+    // alert(`${msg}`)
+    // setTimeout(() => {
+    //   location.replace("dashboard.html")
+    // }, 1000);
     console.log('completed profile')
     update_designation.value = ``
     update_department.value = ``
@@ -109,5 +110,16 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
+function profile_completed() {
+  document.getElementById("popup4").style.display = "block";
+  // document.getElementById("updateMessage").innerText=msg
 
+
+}
+function close_completepopup() {
+  document.getElementById("popup4").style.display = "none";
+  location.replace('dashboard.html')
+  // location.reload()
+
+}
 
