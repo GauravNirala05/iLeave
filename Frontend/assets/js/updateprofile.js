@@ -38,7 +38,6 @@ const userData = async () => {
 
     else {
       const { data } = await user.json()
-      console.log(data)
       document.getElementById("entered_name").innerHTML = data.name
       document.getElementById("entered_email").innerHTML = data.email
       document.getElementById("entered_phoneno").innerHTML = data.mob_no
