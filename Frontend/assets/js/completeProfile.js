@@ -16,7 +16,8 @@ const getuser = async () => {
       errorHandler(arraryError)
     }
     const { data } = await user.json()
-    ihtml = `
+    ihtml = 
+    `
         <div class="media align-items-end profile-head">
                         <div class="profile mr-3"><img src="images/profile.png" alt="..." width="130"
                                 class="rounded mb-2 img-thumbnail">
@@ -27,6 +28,7 @@ const getuser = async () => {
                             <p class="small mb-4" id="email" style="font-size:40px;"> <i class="fa fa-envelope "></i>  ${data.email}</p>
                         </div>
         </div>`
+   
     document.getElementById("profile").innerHTML = ihtml
   } catch (error) {
     console.log(error);
@@ -110,14 +112,14 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-function profile_completed() {
-  document.getElementById("popup4").style.display = "block";
+function profile_completed(msg) {
+  document.getElementById("popup6").style.display = "block";
   // document.getElementById("updateMessage").innerText=msg
 
 
 }
 function close_completepopup() {
-  document.getElementById("popup4").style.display = "none";
+  document.getElementById("popup6").style.display = "none";
   location.replace('dashboard.html')
   // location.reload()
 

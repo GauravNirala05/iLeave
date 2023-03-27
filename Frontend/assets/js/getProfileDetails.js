@@ -43,6 +43,9 @@ const getUserDetails = async () => {
                     if (document.querySelector("#allusersidebar")) {
                         document.querySelector("#allusersidebar").hidden = false
                     }
+                    if (document.querySelector("#resetAllLeaveByPrincipal")) {
+                        document.querySelector("#resetAllLeaveByPrincipal").hidden = false
+                    }
                     if (document.querySelector("#applyleavesidebar")) {
                         document.querySelector("#applyleavesidebar").hidden = true
                     }

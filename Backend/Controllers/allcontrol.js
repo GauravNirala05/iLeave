@@ -154,6 +154,46 @@ const getApprovals = async (req, res) => {
         throw new NotFound(`no user with id ${userID}`)
     }
 }
+const resetAllLeave = async (req, res) => {
+    const { userID } = req.user
+    if (await User.exists({ _id: userID, designation: 'principal' })) {
+        const data1 = await User.find({designation:'faculty'})
+        data1.forEach(element => {
+            element.leave_type={
+                casual_leave:20,
+                earned_leave:20,
+                medical_leave:20,
+                ordinary_leave:20
+            }
+            element.save()
+        });
+        const data2 = await User.find({designation:'HOD'})
+        data2.forEach(element => {
+            element.leave_type={
+                casual_leave:15,
+                earned_leave:15,
+                medical_leave:15,
+                ordinary_leave:15
+            }
+            element.save()
+        });
+        const data3 = await User.find({department:'non-tech'})
+        data3.forEach(element => {
+            element.leave_type={
+                casual_leave:10,
+                earned_leave:10,
+                medical_leave:10,
+                ordinary_leave:10
+            }
+            element.save()
+        });
+        return res.status(StatusCodes.OK).json({ status: 'SUCCESS', data:{faculty:data1,HOD:data2,non_tech:data3} })
+    }
+    else {
+        throw new NotFound(`No user with id ${userID}`)
+    }
+
+}
 
 
-module.exports = { alluser, leaveStatus, getApprovals, leaveHistory }
+module.exports = { alluser, leaveStatus, getApprovals, leaveHistory,resetAllLeave }
