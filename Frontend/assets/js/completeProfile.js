@@ -47,25 +47,24 @@ const complete_profile = document.querySelector('.save')
 const update_contact = document.querySelector('.phone_no')
 const update_name = document.querySelector('#name')
 const update_gender = document.querySelector('#gender')
+const update_title = document.querySelector('#userTitle')
 const update_designation = document.querySelector('.designation')
 const update_department = document.querySelector('.department')
 const update_contract_type = document.querySelector('.contract_type')
 complete_profile.addEventListener('click', async (e) => {
   e.preventDefault()
-
+  
   const token = localStorage.getItem('token')
-
   const contact_no = update_contact.value
   const contract_type = update_contract_type.value
   const desig = update_designation.value
   const depart = update_department.value
   const name = update_name.value
   const gender = update_gender.value
-  console.log(gender);
+  const title=update_title.value
   // const img = previewImage.value
 
   try {
-    console.log(token);
     const fetcher = await fetch('/completeProfile', {
       method: 'PATCH',
       body: JSON.stringify({
@@ -75,6 +74,7 @@ complete_profile.addEventListener('click', async (e) => {
         contect_type: contract_type,
         department: depart,
         designation: desig,
+        title:title
       }),
       headers: {
         'Content-Type': `application/json`,
@@ -94,7 +94,6 @@ complete_profile.addEventListener('click', async (e) => {
     // setTimeout(() => {
     //   location.replace("dashboard.html")
     // }, 1000);
-    console.log('completed profile')
     update_designation.value = ``
     update_department.value = ``
     update_contact.value = ``

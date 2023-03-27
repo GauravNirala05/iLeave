@@ -44,6 +44,7 @@
       <div id="box"></div>
     </div>
   </div>
+  
   <div id="popup" class="popup card-header">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
@@ -200,7 +201,7 @@
                       <div class="col-md-6 form-group">
                         <!-- To -->
                         <label for="">Total days:</label>
-                        <input type="number" class="form-control error totaldays" name="totaldays" id="totaldays"
+                        <input type="float" class="form-control error totaldays" name="totaldays" id="totaldays"
                           placeholder="Total days">
                       </div>
                       <div class="col-md-6 form-group">
@@ -213,7 +214,7 @@
                     </div>
                     <div class="row">
                       <!-- &nbsp;&nbsp;OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-                      <div class="col-md-6">
+                      <div hidden  id="halfDayORfullDay" class="col-md-6">
                         <div class="form-group">
                           <select class="form-control" id="dayDiscription" required>
                             <option value="false">Full Day</option>
@@ -222,7 +223,7 @@
                         </div>
                       </div>
 
-                      <div class="col-md-6">
+                      <div id="leaveTypeDiscription" class="col-md-12">
                         <div class=" form-group">
                           <select class="form-control leavetype" id="leavetype" required>
                             <option name="reference3" value="">Leave Type</option>

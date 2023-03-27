@@ -114,40 +114,65 @@ dayDiscription.addEventListener("input", () => {
     console.log(dayDiscription.value)
     if (dayDiscription.value == 'true') {
         totaldays.value = 0.5;
-    }else{
-        todate.addEventListener("input", () => {
-            const date2 = new Date(fromdate.value)
-            const date1 = new Date(todate.value)
-            console.log(date1 - date2);
-            let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
-        
-            totaldays.value = totalday;
-        })
-        fromdate.addEventListener("input", () => {
-            const date2 = new Date(fromdate.value)
-            const date1 = new Date(todate.value)
-            console.log(date1 - date2);
-            let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
-        
-            totaldays.value = totalday;
-        })
+    } else {
+        totaldays.value = 1;
     }
 })
 todate.addEventListener("input", () => {
-    const date2 = new Date(fromdate.value)
-    const date1 = new Date(todate.value)
-    console.log(date1 - date2);
-    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+    if (fromdate.value) {
+        const date2 = new Date(fromdate.value)
+        const date1 = new Date(todate.value)
+        console.log(date1 - date2);
+        let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
 
-    totaldays.value = totalday;
+        totaldays.value = totalday;
+        if (totalday == `1`) {
+            const dayDiscribe = document.querySelector('#halfDayORfullDay')
+            const leaveTypeDiscription = document.querySelector('#leaveTypeDiscription')
+            dayDiscribe.hidden = false
+            leaveTypeDiscription.removeAttribute('class')
+            leaveTypeDiscription.classList.remove(`col-md-12`)
+            leaveTypeDiscription.classList.add(`col-md-6`)
+        }
+        else {
+            const dayDiscribe = document.querySelector('#halfDayORfullDay')
+            const leaveTypeDiscription = document.querySelector('#leaveTypeDiscription')
+            dayDiscribe.hidden = true
+            leaveTypeDiscription.classList.add(`col-md-12`)
+        }
+    }
+    else {
+        totaldays.value = 0;
+    }
 })
 fromdate.addEventListener("input", () => {
-    const date2 = new Date(fromdate.value)
-    const date1 = new Date(todate.value)
-    console.log(date1 - date2);
-    let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+    if (todate.value) {
+        const date2 = new Date(fromdate.value)
+        const date1 = new Date(todate.value)
+        console.log(date1 - date2);
+        let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
 
-    totaldays.value = totalday;
+        totaldays.value = totalday;
+        if (totalday == `1`) {
+            const dayDiscribe = document.querySelector('#halfDay$fullDay')
+            const leaveTypeDiscription = document.querySelector('#leaveTypeDiscription')
+            dayDiscribe.hidden = false
+            leaveTypeDiscription.removeAttribute('class')
+            leaveTypeDiscription.classList.remove(`col-md-12`)
+            leaveTypeDiscription.classList.add(`col-md-6`)
+        }
+        else {
+            const dayDiscribe = document.querySelector('#halfDayORfullDay')
+            const leaveTypeDiscription = document.querySelector('#leaveTypeDiscription')
+            dayDiscribe.hidden = true
+            leaveTypeDiscription.classList.add(`col-md-12`)
+
+
+        }
+    }
+    else {
+        totaldays.value = 0;
+    }
 })
 
 if (UserDesignation == 'faculty') {
@@ -176,9 +201,9 @@ button_apply.addEventListener('click', async (e) => {
 
     //for Hod
     const reference = document.querySelector('.reference').value
+
     const dayDiscription = document.querySelector('#dayDiscription').value
-    dayDiscription
-    console.log(reference);
+  
     const date2 = new Date(fromdateData)
     const date1 = new Date(todateData)
     console.log(date1 - date2);
@@ -239,6 +264,7 @@ function leave_applied() {
 }
 function close_popup() {
     document.getElementById("popup4").style.display = "none";
+    location.replace("status.html")
 
 }
 

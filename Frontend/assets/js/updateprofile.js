@@ -170,6 +170,43 @@ function closePopup() {
   document.getElementById("deletepopup").style.display = "none";
 
 }
+function resetLeavePopup() {
+  document.getElementById("resetLeaveByPrincipal").style.display = "block"
+}
+function resetLeavePopupClose() {
+  document.getElementById("resetLeaveByPrincipal").style.display = "none"
+}
+async function resetLeavePopupDone() {
+  try {
+    const user = await fetch(`/resetLeaves`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!user.ok) {
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
+    }
+    else {
+
+      const { data } = await user.json()
+      console.log(data)
+      document.getElementById("msgConfirmation").innerHTML = `All leaves are re-initialized...`
+      setTimeout(() => {
+        location.reload()
+      }, 3000);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
 
 function openPopup2() {
   document.getElementById("popup2").style.display = "block";

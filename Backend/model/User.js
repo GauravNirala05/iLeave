@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['Computer Science', 'Information Tecnology', 'ET & T', 'Mechanical', 'Mining', 'Electrical', 'Civil','non-tech']
     },
+    title: {
+        type: String,
+    },
     password: {
         type: String,
         required: [true, 'Must provide'],
