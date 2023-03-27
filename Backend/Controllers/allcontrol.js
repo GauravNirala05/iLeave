@@ -291,10 +291,6 @@ const getApproved = async (req, res) => {
 
             const data1 = await Leave.find({
                 employee_dep: user.department,
-                'reference1.approved': true,
-                'reference2.approved': true,
-                'reference3.approved': true,
-                'reference4.approved': true,
                 status: `completed`
             })
             const data = data1.filter((element) => {
