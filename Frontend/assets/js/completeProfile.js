@@ -1,46 +1,8 @@
-const token = localStorage.getItem('token')
 
-const getuser = async () => {
-  try {
-    const user = await fetch('/getUserData', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    if (!user.ok) {
-      const status = user.status
-      const { msg } = await user.json()
-      var arraryError = []
-      arraryError.push(status)
-      arraryError.push(msg)
-      errorHandler(arraryError)
-    }
-    const { data } = await user.json()
-    ihtml = 
-    `
-        <div class="media align-items-end profile-head">
-                        <div class="profile mr-3"><img src="images/profile.png" alt="..." width="130"
-                                class="rounded mb-2 img-thumbnail">
-                            <!-- <a href="#"
-                                class="btn btn-outline-dark btn-sm btn-block">Edit profile</a> -->
-                        </div>
-                        <div class="media-body mb-5 text-white">
-                            <p class="small mb-4" id="email" style="font-size:40px;"> <i class="fa fa-envelope "></i>  ${data.email}</p>
-                        </div>
-        </div>`
-   
-    document.getElementById("profile").innerHTML = ihtml
-  } catch (error) {
-    console.log(error);
-  }
-}
-if (token == null) {
-  alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
-  location.replace("login.html")
-}
-else {
-  getuser()
-}
+// if (token == null) {
+//   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
+//   location.replace("login.html")
+// }
 
 
 const complete_profile = document.querySelector('.save')
@@ -89,11 +51,12 @@ complete_profile.addEventListener('click', async (e) => {
       throw Error(`${status}`)
     }
     const { msg } = await fetcher.json()
-    profile_completed()
-    // alert(`${msg}`)
-    // setTimeout(() => {
-    //   location.replace("dashboard.html")
-    // }, 1000);
+    console.log("Running")
+    // profile_completed()
+    alert(`${msg}`)
+    setTimeout(() => {
+      location.replace("dashboard.html")
+    }, 1000);
     update_designation.value = ``
     update_department.value = ``
     update_contact.value = ``
@@ -112,13 +75,13 @@ function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
 function profile_completed(msg) {
-  document.getElementById("popup6").style.display = "block";
+  document.getElementById("popup3").style.display = "block";
   // document.getElementById("updateMessage").innerText=msg
 
 
 }
 function close_completepopup() {
-  document.getElementById("popup6").style.display = "none";
+  document.getElementById("popup3").style.display = "none";
   location.replace('dashboard.html')
   // location.reload()
 
