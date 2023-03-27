@@ -171,12 +171,14 @@ function closePopup() {
 
 }
 function resetLeavePopup() {
-  console.log(`its a popup`);
-  document.querySelector("#resetLeaveByPrincipal").hidden = false
+  document.getElementById("resetLeaveByPrincipal").style.display = "block"
+}
+function resetLeavePopupClose() {
+  document.getElementById("resetLeaveByPrincipal").style.display = "none"
 }
 async function resetLeavePopupDone() {
   try {
-    const user = await fetch(`/resetLeave`, {
+    const user = await fetch(`/resetLeaves`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -190,17 +192,20 @@ async function resetLeavePopupDone() {
       errorHandler(arraryError)
     }
     else {
+
       const { data } = await user.json()
       console.log(data)
+      document.getElementById("msgConfirmation").innerHTML = `All leaves are re-initialized...`
+      setTimeout(() => {
+        location.reload()
+      }, 3000);
     }
   } catch (error) {
     console.log(error);
   }
 }
 
-function resetLeavePopupDone() {
-  document.querySelector("#resetLeavePopup").display = "none"
-}
+
 
 
 function openPopup2() {
