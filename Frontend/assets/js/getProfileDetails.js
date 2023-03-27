@@ -62,12 +62,8 @@ const getUserDetails = async () => {
                 document.querySelector("#userDepartment").innerHTML = data.department
                 document.querySelector("#userDesignation").innerHTML = data.designation
                 document.querySelector("#userEmail").innerHTML = data.email
-                if (data.gender === 'male') {
-                    document.querySelector("#userGreet").innerHTML = `Mr.`
-                }
-                if (data.gender === 'female') {
-                    document.querySelector("#userGreet").innerHTML = `Miss.`
-                }
+
+                document.querySelector("#userGreet").innerHTML = data.title
 
                 if (document.querySelector(".applyLeaveCasual")) {
                     document.querySelector(".applyLeaveCasual").innerHTML = data.leave_type.casual_leave
