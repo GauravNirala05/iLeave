@@ -37,6 +37,12 @@ const getUserDetails = async () => {
             const { data } = await user.json()
             if (data.profileCompleted == false) {
                 openmodal()
+
+                ihtml =              
+                 `<img class="rounded-circle mt-5 imgnew" src="images/profile.png">
+    <span class="" style="color:black;"> ${data.email}</span><span>
+  </span>`                                                                                                                                                           
+    document.getElementById("profile").innerHTML = ihtml
             }
             else {
                 if (data.designation == 'principal') {
@@ -101,11 +107,10 @@ else {
     getUserDetails()
     off()
 }
-
 function login() {
     location.replace("login.html")
 }
-function complete_profile() {
+function completeprofile() {
     location.replace("complete_profile.html")
 }
 
