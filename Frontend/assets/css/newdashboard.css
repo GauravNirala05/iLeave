@@ -948,3 +948,59 @@ a:hover{
     transform: translateY(0);
   }
 }
+
+/*  */
+
+.container {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.btn-save{
+  height: 50px;
+  width: 150px;
+  border-radius: 3rem;
+  background-color: #f57c00;
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 800px;
+   
+  }
+  .modal-dialog .modal-content {
+    padding: 1rem;
+  }
+}
+.modal-header .close {
+  margin-top: -1.5rem;
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.social-buttons .btn {
+  margin: 0 0.5rem 1rem;
+}
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+.modal-body{
+  padding-top: 0px;
+}
+.imgnew{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+

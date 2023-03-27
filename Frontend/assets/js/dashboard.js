@@ -265,3 +265,23 @@ function alluserdetailsbyDep(dep) {
     alluserdetail_DEP.innerHTML = tr
   }
 }
+
+
+let popup = document.getElementById("loginModal")
+        console.log("Running")
+        function openerrorPopup() {
+          document.getElementById("popup3").style.display = "none";
+
+            document.getElementById("loginModal").style.display = "block";
+
+            console.log("Running")
+           
+        }
+        function closeerrorPopup() {
+            document.getElementById("loginModal").style.display = "none";
+            profile_completed()
+           
+        }
+        function on() {
+            document.getElementById("loginModal").style.display = "block";
+        }

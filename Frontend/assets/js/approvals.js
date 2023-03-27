@@ -1,12 +1,12 @@
 function normalPopup(msg) {
     document.getElementById("normalPopup").style.display = "block";
     document.getElementById("normalPopupMessage").innerHTML = msg
-  }
-  function normalPopupClose() {
+}
+function normalPopupClose() {
     document.getElementById("normalPopup").style.display = "none";
     location.reload()
-  
-  }
+
+}
 
 function confirmationPopup(id, approval) {
     document.getElementById("confirmationPopup").style.display = "block";
@@ -20,9 +20,9 @@ function confirmationPopupClose() {
 }
 async function confirmationPopupOpen() {
     try {
-        const id=localStorage.getItem('userID')
+        const id = localStorage.getItem('userID')
         console.log(id);
-        const approval=localStorage.getItem('userApproval')
+        const approval = localStorage.getItem('userApproval')
         console.log(approval);
         const user = await fetch(`/approvals/${id}`, {
             method: 'PATCH',
@@ -47,7 +47,7 @@ async function confirmationPopupOpen() {
             localStorage.removeItem('userApproval')
             console.log(data)
             location.reload()
-            
+
         }
     } catch (error) {
         console.log(error);
@@ -549,7 +549,261 @@ const getLeaveApprovals = async () => {
     }
 
 }
+const getLeaveApproved = async () => {
+    try {
+        const user = await fetch('/approved', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        if (!user.ok) {
+            const status = user.status
+            const { msg } = await user.json()
+            var arraryError = []
+            arraryError.push(status)
+            arraryError.push(msg)
+            errorHandler(arraryError)
+            off()
+        }
+        else {
+            const { hits, data } = await user.json()
+            console.log(hits, data);
+            const appliedTable = document.querySelector('.userAppliedTable')
+            const defaultApprovingText = document.querySelector('#defaultApprovingText')
+            defaultApprovingText.hidden = true
+            console.log(hits);
+            // if (hits == 0) {
+            //     var trHOD = document.createElement('tr')
+            //     trHOD.style = `text-align: center;font-size: 25px;`
+            //     trHOD.innerHTML = `<th colspan="12">No Leaves Yet...</th>`
+            //     appliedTable.append(trHOD)
+            // }
+            // else {
+            //     if (UserDesignation == 'HOD') {
+            //         let num = 1
+            //         data.forEach(element => {
+            //             var fromDate = new Date(element.from_date).toDateString()
+            //             var toDate = new Date(element.to_date).toDateString()
+            //             var tr = document.createElement('tr')
+            //             ihtml = `<td>${num}</td>
+            //             <td >${element.employee_name}</td>
+            //             <td >${element.leave_type}</td>
+            //             <td >${fromDate}</td>
+            //             <td >${toDate}</td>
+            //             <td >${element.discription}</td>`
+            //             tr.innerHTML = ihtml
+            //             appliedTable.append(tr)
+            //             num++;
+            //         });
+            //     }
+            //     if (UserDesignation == 'principal') {
+            //         const { HodLeave, facultyLeave, nonTechLeave } = data
+            //         let num = 1
+            //         if (HodLeave.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">HOD Leaves</th>`
+            //             appliedTable.append(trHOD)
+            //             HodLeave.data.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //         if (facultyLeave.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">Faculty Leaves</th>`
+            //             appliedTable.append(trHOD)
+            //             facultyLeave.data.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //         if (nonTechLeave.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">Non-Tech Leave</th>`
+            //             appliedTable.append(trHOD)
+            //             nonTechLeave.data.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+                            
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //     }
+            //     if (UserDesignation == 'faculty') {
+            //         const { HOD, first, second, third, fourth } = data
+            //         let num = 1
+            //         if (HOD.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">Hod</th>`
+            //             appliedTable.append(trHOD)
+            //             HOD.hod.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+                         
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //         if (first.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">First Year</th>`
+            //             appliedTable.append(trHOD)
+            //             first.firstYear.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //         if (second.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">Second Year</th>`
+            //             appliedTable.append(trHOD)
+            //             second.secondYear.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //         if (third.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">Third Year</th>`
+            //             appliedTable.append(trHOD)
+            //             third.thirdYear.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //         if (fourth.hits > 0) {
+
+            //             var trHOD = document.createElement('tr')
+            //             trHOD.style = `text-align: center;font-size: 25px;`
+            //             trHOD.innerHTML = `<th colspan="12">Fourth Year</th>`
+            //             appliedTable.append(trHOD)
+            //             fourth.fourthYear.forEach(element => {
+            //                 var fromDate = new Date(element.from_date).toDateString()
+            //                 var toDate = new Date(element.to_date).toDateString()
+            //                 var tr = document.createElement('tr')
+            //                 ihtml = `<td>${num}</td>
+            //         <td >${element.employee_name}</td>
+            //         <td >${element.leave_type}</td>
+            //         <td >${fromDate}</td>
+            //         <td >${toDate}</td>
+            //         <td >${element.discription}</td>`
+            //                 tr.innerHTML = ihtml
+            //                 appliedTable.append(tr)
+            //                 num++;
+            //             });
+            //         }
+            //     }
+            //     if (UserDesignation == 'non-tech-head') {
+            //         let num = 1
+            //         data.forEach(element => {
+            //             var fromDate = new Date(element.from_date).toDateString()
+            //             var toDate = new Date(element.to_date).toDateString()
+            //             var tr = document.createElement('tr')
+            //             ihtml = `<td>${num}</td>
+            //             <td >${element.employee_name}</td>
+            //             <td >${element.leave_type}</td>
+            //             <td >${fromDate}</td>
+            //             <td >${toDate}</td>
+            //             <td >${element.discription}</td>`
+            //             tr.innerHTML = ihtml
+            //             appliedTable.append(tr)
+            //             num++;
+            //         });
+            //     }
+            //     off()
+            // }
+        }
+    }
+    catch (error) {
+        console.log(error);
+        off()
+    }
+
+}
 if (token) {
     getLeaveApprovals()
+    getLeaveApproved()
     off()
 }

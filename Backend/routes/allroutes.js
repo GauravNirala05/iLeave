@@ -8,7 +8,7 @@ const auth = require('../middlewares/auth')
 const {register,verifyEmail,forgotPassword,verifyOTP,updatePass} = require('../Controllers/regi&verification')
 const {getSingleData,signin,completeProfile,updateProfile,deleteProfile} = require('../Controllers/basicControl')
 const {applyLeave,getReferenceName,deleteLeave} = require('../Controllers/applyLeave')
-const {alluser,leaveStatus,getApprovals, leaveHistory, resetAllLeave} = require('../Controllers/allcontrol')
+const {alluser,leaveStatus,getApprovals, leaveHistory, resetAllLeave, getApproved} = require('../Controllers/allcontrol')
 const approve = require('../Controllers/approvals')
 
 
@@ -38,6 +38,7 @@ router.route('/resetLeaves').get(auth, resetAllLeave)
 //Leave approving
 router.route('/approvals').get(auth, getApprovals)
 router.route('/approvals/:leaveId').patch(auth, approve)
+router.route('/approved').get(auth, getApproved)
 
 //principal route for grtting all Users
 router.route('/alluser').get(auth, alluser)
