@@ -152,7 +152,7 @@ delete_account.addEventListener('click', async (e) => {
       localStorage.removeItem('token');
       localStorage.removeItem('UserDesignation');
       location.replace("index.html")
-      alert(`${data.name} you account is successfully Deleted`)
+      // alert(`${data.name} you account is successfully Deleted`)
     }
 
   } catch (error) {
