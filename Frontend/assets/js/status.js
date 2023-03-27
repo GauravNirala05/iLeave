@@ -117,7 +117,7 @@ const getleavestatus = async () => {
         if (element.employee_dep == 'non-tech') {
           const pendingLeaveReference = document.querySelector('#pendingLeaveReference')
           const pendingLeaveHead = document.querySelector('#pendingLeaveHead')
-          pendingLeaveHead.innerHTML=`Head approval`
+          pendingLeaveHead.innerHTML = `Head approval`
           pendingLeaveReference.hidden = true
           if (element.head_approval) {
             if (element.head_approval == true) {
@@ -152,6 +152,8 @@ const getleavestatus = async () => {
         }
         else {
           if (element.reference) {
+            const pendingLeaveHead = document.querySelector('#pendingLeaveHead')
+            pendingLeaveHead.hidden=true
             ihtml += `<td>${element.reference.name}`
             if (element.reference.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
@@ -195,20 +197,21 @@ const getleavestatus = async () => {
               ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
             }
             ihtml += `</div></td>`
-          }
-
-          if (element.HOD_approval) {
-            if (element.HOD_approval == true) {
-
-              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            if (element.HOD_approval) {
+              if (element.HOD_approval == true) {
+  
+                ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+              }
+              else {
+                ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+              }
             }
             else {
-              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+              ihtml += `<td>Pending</td>`
             }
           }
-          else {
-            ihtml += `<td>Pending</td>`
-          }
+
+         
 
           if (element.principal_approval) {
             if (element.principal_approval === true) {
@@ -282,7 +285,7 @@ const getleaveHistory = async () => {
         if (element.employee_dep == 'non-tech') {
           const historyLeaveReference = document.querySelector('#historyLeaveReference')
           const historyLeaveHead = document.querySelector('#historyLeaveHead')
-          historyLeaveHead.innerHTML=`Head approval`
+          historyLeaveHead.innerHTML = `Head approval`
           historyLeaveReference.hidden = true
           if (element.head_approval) {
             if (element.head_approval === true) {
@@ -310,6 +313,8 @@ const getleaveHistory = async () => {
         }
         else {
           if (element.reference) {
+            const historyLeaveHead = document.querySelector('#historyLeaveHead')
+            historyLeaveHead.hidden = true
             ihtml += `<td>${element.reference.name}`
             if (element.reference.approved === true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
@@ -357,19 +362,20 @@ const getleaveHistory = async () => {
             }
             ihtml += `</div>
         </td>`
+            if (element.HOD_approval) {
+              if (element.HOD_approval === true) {
+                ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
+              }
+              if (element.HOD_approval === false) {
+                ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
+              }
+            }
+            else {
+              ihtml += `<td>Pending</td>`
+            }
           }
 
-          if (element.HOD_approval) {
-            if (element.HOD_approval === true) {
-              ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
-            }
-            if (element.HOD_approval === false) {
-              ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
-            }
-          }
-          else {
-            ihtml += `<td>Pending</td>`
-          }
+
           if (element.principal_approval) {
             if (element.principal_approval === true) {
               ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
