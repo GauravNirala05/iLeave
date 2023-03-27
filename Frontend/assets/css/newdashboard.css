@@ -574,7 +574,7 @@ td .status{
 }
 .popup {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -583,12 +583,12 @@ td .status{
 	background-color: rgba(0, 0, 0, 0.5);
 }
 #deletepopup{
-  position:absolute;
+  position:fixed;
 }
 
 .popup2 {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -604,7 +604,7 @@ td .status{
 	background-color: white;
 	border-radius: 5px;
 	padding: 20px;
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
   min-width: 500px;
@@ -615,7 +615,7 @@ td .status{
 	background-color: white;
 	border-radius: 5px;
 	padding: 20px;
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
   min-width: 500px;
@@ -636,7 +636,7 @@ td .status{
   padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
   min-width: 500px;
@@ -838,7 +838,7 @@ footer{
 	width: 400px;
 	background: #fff;
 	border-radius: 10px;
-	position: absolute;
+	position: fixed;
 	top:50%;
 	left:50%;
 	transform: translate(-50%,-50%) scale(0.1);

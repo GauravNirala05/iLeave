@@ -73,6 +73,7 @@ var errorhtml = document.getElementById("errormsg").innerHTML;
 const errorElement = document.getElementById("error")
 
 
+
 btn_regi.addEventListener('click', async (e) => {
     if (!form.checkValidity()) {
         return;
@@ -104,6 +105,7 @@ btn_regi.addEventListener('click', async (e) => {
                 errorHandler(arraryError)
             }
             const { msg } = await fetcher.json()
+            document.querySelector("#emailid").innerHTML= email;
             showPopup()
 
         } catch (error) {
@@ -184,9 +186,6 @@ const closeButton = document.getElementById("closeButton");
 function showPopup() {
     myPopup.style.display = "block";
     console.log("run");
-    // setTimeout(() => {
-    //     location.replace('index.html')
-    // }, 5000);
 }
 
 // Hide the popup when the close button is clicked
@@ -205,4 +204,3 @@ function closeerrorPopup() {
     document.getElementById("overlay").style.display = "none";
     error_popup.classList.remove("open-popup")
 }
-
