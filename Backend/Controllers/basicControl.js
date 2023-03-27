@@ -22,14 +22,14 @@ const signin = async (req, res) => {
         throw new UnAuthorizedError(`incorrect password`)
     }
     const token = data.generateJWT()
-    res.status(StatusCodes.OK).json({ status: 'SUCCESS', msg: `You are successfully Sign In`, token})
+    res.status(StatusCodes.OK).json({ status: 'SUCCESS', msg: `You are successfully Sign In`, token })
 
 
 }
 const getSingleData = async (req, res) => {
     const { userID } = req.user
-    const data = await User.findOne({ _id: userID}).select('profileCompleted _id email name contect_type department designation mob_no leave_type gender')
-    if(!data){
+    const data = await User.findOne({ _id: userID }).select('profileCompleted _id email name contect_type department designation mob_no leave_type gender title')
+    if (!data) {
         throw new BadRequestError(`Invalid credential passed..(token)`)
     }
     res.status(StatusCodes.OK).json({ status: 'SUCCESS', data })
@@ -37,20 +37,20 @@ const getSingleData = async (req, res) => {
 
 const completeProfile = async (req, res) => {
     const { userID } = req.user
-    const { name,mob_no, contect_type, department, designation,gender } = req.body
-    const user=await User.findOne({ _id: userID})
-    if (!name||!mob_no || !contect_type || !department || !designation||!gender) {
+    const { name, mob_no, contect_type, department, designation, gender,title } = req.body
+    const user = await User.findOne({ _id: userID })
+    if (!name || !mob_no || !contect_type || !department || !designation || !gender) {
         throw new BadRequestError(`Provide all the credentials...mob_no,contect_type,department,designation...`)
     }
     if (!user) {
         throw new BadRequestError(`No user with given id ${userID} or`)
     }
-    if (user.profileCompleted==false ) {
+    if (user.profileCompleted == false) {
         try {
-            const user = await User.findOneAndUpdate({_id:userID}, {name, gender,mob_no, contect_type, department, designation, profileCompleted: true }, { new: true})
+            const user = await User.findOneAndUpdate({ _id: userID }, { name, gender, mob_no, title, contect_type, department, designation, profileCompleted: true }, { new: true })
             await user.leaveSchema()
             user.save()
-            res.status(200).json({ status: 'SUCCESS', msg:`Account is successfully initailized.` })
+            res.status(200).json({ status: 'SUCCESS', msg: `Account is successfully initailized.` })
         } catch (error) {
             throw error
         }
@@ -63,9 +63,9 @@ const completeProfile = async (req, res) => {
 const updateProfile = async (req, res) => {
     const { userID } = req.user
 
-    if (await User.exists({ _id: userID,profileCompleted:true })) {
-        const user = await User.findOneAndUpdate({_id:userID,profileCompleted:true},req.body, { new: true, runValidators: true })
-        res.status(200).json({ status: 'SUCCESS', msg:`Profile updated.` })
+    if (await User.exists({ _id: userID, profileCompleted: true })) {
+        const user = await User.findOneAndUpdate({ _id: userID, profileCompleted: true }, req.body, { new: true, runValidators: true })
+        res.status(200).json({ status: 'SUCCESS', msg: `Profile updated.` })
     }
     else {
         throw new NotFound(`User doesn't exixts or profile is initially not completed`)
@@ -85,15 +85,15 @@ const deleteProfile = async (req, res) => {
                 msg: `Your account is successfully deleted...`
             })
         }
-        else{
+        else {
             const designation = user.designation
             if (designation === 'faculty') {
-               throw new BadRequestError(`You are a Faculty and can't delete anyone else account`)
+                throw new BadRequestError(`You are a Faculty and can't delete anyone else account`)
             }
             if (designation === 'HOD') {
-                const targetUser=await User.findOne({ _id: targetID, department: user.department })
+                const targetUser = await User.findOne({ _id: targetID, department: user.department })
                 if (targetUser) {
-                    await User.findOneAndDelete({ _id: targetID})
+                    await User.findOneAndDelete({ _id: targetID })
                     res.json({ status: `SUCCESS`, msg: `user ${targetUser.name}'s account is deleted` })
                 }
                 else {
@@ -105,7 +105,7 @@ const deleteProfile = async (req, res) => {
                     await User.findOneAndDelete({ _id: targetID })
                     res.json({ status: `SUCCESS`, msg: `user deleted with id ${targetID}` })
                 } else {
-                   throw new BadRequestError(`User doesn't exists...`)
+                    throw new BadRequestError(`User doesn't exists...`)
                 }
             }
         }
@@ -114,4 +114,4 @@ const deleteProfile = async (req, res) => {
     }
 }
 
-module.exports = {getSingleData, signin,completeProfile, updateProfile, deleteProfile }
+module.exports = { getSingleData, signin, completeProfile, updateProfile, deleteProfile }
