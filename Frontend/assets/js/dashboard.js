@@ -49,6 +49,8 @@ const getleavestatus = async () => {
 
         if (element.employee_dep == 'non-tech') {
           const pendingLeaveReference = document.querySelector('#pendingLeaveReference')
+          const dashboardLeaveHead = document.querySelector('#dashboardLeaveHead')
+          dashboardLeaveHead.innerHTML = `Head approval`
           pendingLeaveReference.hidden = true
           if (element.head_approval) {
             ihtml += `<td>${element.head_approval}</td>`
@@ -199,7 +201,7 @@ const getuser = async () => {
         getleavestatus()
         off()
       }
-     
+
 
     }
   }

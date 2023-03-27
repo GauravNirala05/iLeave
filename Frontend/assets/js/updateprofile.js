@@ -170,6 +170,38 @@ function closePopup() {
   document.getElementById("deletepopup").style.display = "none";
 
 }
+function resetLeavePopup() {
+  console.log(`its a popup`);
+  document.querySelector("#resetLeaveByPrincipal").hidden = false
+}
+async function resetLeavePopupDone() {
+  try {
+    const user = await fetch(`/resetLeave`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!user.ok) {
+      const status = user.status
+      const { msg } = await user.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
+    }
+    else {
+      const { data } = await user.json()
+      console.log(data)
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function resetLeavePopupDone() {
+  document.querySelector("#resetLeavePopup").display = "none"
+}
+
 
 function openPopup2() {
   document.getElementById("popup2").style.display = "block";
