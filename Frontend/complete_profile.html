@@ -28,6 +28,7 @@
     <script defer src="assets/js/completeProfile.js"></script>
 
 </head>
+
 <body>
     <div id="popup6" class="popup card-header">
         <div class="popup-content6">
@@ -48,34 +49,36 @@
         <div class="col-md-8 mx-auto"> <!-- Profile widget -->
             <div class="bg-light shadow rounded overflow-hidden">
                 <div class=" px-4 pt-0 pb-4 cover" id="profile">
-                   
+
                 </div>
                 <div class="px-4 py-3">
 
                     <div class="p-4 rounded shadow-sm bg-white">
 
                         <div class="row mt-4">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-12 form-group">
                                 <!-- Phone Number -->
-                                <label class="mb-0">Title</label>
                                 <div>
+                                    <label class="mb-0">Title</label>
                                     <input type="text" class="form-control Title" name="Title" id="userTitle"
                                         placeholder="Mr./Mrs./Miss/Dr." aria-required="true" aria-invalid="true">
-                                </div>
-                                <label class="mb-0">Name</label>
-                                <div>
-                                    <input type="name" class="form-control name" name="name" id="name"
-                                        placeholder="Name" aria-required="true" aria-invalid="true">
-                                </div>
-                            </div>
-                            <div class=" col-md-6 form-group ">
-                                <!-- Contract_type -->
-                                <label class="mb-0">Gender</label>
-                                <div>
+                                    <label class="mb-0">Gender</label>
                                     <select class="form-control gender" id="gender">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+
+                            <div class=" col-md-12 form-group ">
+                                <!-- Contract_type -->
+                                <label class="mb-0">Name</label>
+                                <div>
+                                    <input type="name" class="form-control name" name="name" id="name"
+                                        placeholder="Name" aria-required="true" aria-invalid="true">
                                 </div>
                             </div>
                         </div>
