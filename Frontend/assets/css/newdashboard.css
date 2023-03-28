@@ -466,6 +466,7 @@ td .status{
   header h2{
     display: flex;
     align-items: center;
+    
   }
   header h2 label{
     display: inline-block;
@@ -484,9 +485,11 @@ td .status{
   header h2 span{
     text-align: center;
     padding-right: 0rem;
+   
   }
   header h2{
     font-size: 1.1rem;
+   
   }
   .main-content{
     width: 100%;
