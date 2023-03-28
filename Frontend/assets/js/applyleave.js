@@ -111,7 +111,6 @@ const reason = document.querySelector('.reason')
 
 
 dayDiscription.addEventListener("input", () => {
-    console.log(dayDiscription.value)
     if (dayDiscription.value == 'true') {
         totaldays.value = 0.5;
     } else {
@@ -122,7 +121,6 @@ todate.addEventListener("input", () => {
     if (fromdate.value) {
         const date2 = new Date(fromdate.value)
         const date1 = new Date(todate.value)
-        console.log(date1 - date2);
         let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
 
         totaldays.value = totalday;
@@ -149,7 +147,6 @@ fromdate.addEventListener("input", () => {
     if (todate.value) {
         const date2 = new Date(fromdate.value)
         const date1 = new Date(todate.value)
-        console.log(date1 - date2);
         let totalday = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
 
         totaldays.value = totalday;
@@ -189,30 +186,35 @@ button_apply.addEventListener('click', async (e) => {
         return;
     }
     e.preventDefault()
-    const contactnoData = contactno.value
-    const fromdateData = fromdate.value
-    const todateData = todate.value
-    const reference1Data = reference1.value
-    const reference2Data = reference2.value
-    const reference3Data = reference3.value
-    const reference4Data = reference4.value
-    const leave_typeData = leave_type.value
-    const reasonData = reason.value
-
-    //for Hod
-    const reference = document.querySelector('.reference').value
-
-    const dayDiscription = document.querySelector('#dayDiscription').value
-  
-    const date2 = new Date(fromdateData)
-    const date1 = new Date(todateData)
-    console.log(date1 - date2);
-    let totaldays = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
-    console.log(totaldays);
-    if (totaldays == 1 && dayDiscription == 'true') {
-        totaldays = 0.5
-    }
     try {
+        const contactnoData = contactno.value
+        const fromdateData = fromdate.value
+        const todateData = todate.value
+        const reference1Data = reference1.value
+        const reference2Data = reference2.value
+        const reference3Data = reference3.value
+        const reference4Data = reference4.value
+        const leave_typeData = leave_type.value
+        const reasonData = reason.value
+
+        //for Hod
+        const reference = document.querySelector('.reference').value
+
+        const dayDiscription = document.querySelector('#dayDiscription').value
+
+        const date2 = new Date(fromdateData)
+        const date1 = new Date(todateData)
+        let totaldays = (((date1 - date2) / (1000 * 60 * 60 * 24)) + 1)
+        let dateNow = Date.now()
+        
+        var result=((date2 - dateNow)+(1000*60*60*24))
+        if (result<0) {
+            throw Error(`From date must be greater`)
+        }
+        if (totaldays == 1 && dayDiscription == 'true') {
+            totaldays = 0.5
+        }
+
         const token = localStorage.getItem('token')
         if (!token) {
         }

@@ -103,18 +103,18 @@ const getleavestatus = async () => {
       const defaultPendingLeave = document.querySelector('#defaultPendingLeave')
       defaultPendingLeave.hidden = true
       let counter = 1
-      const data1 = data.filter((element) => {
-        const dateNow = Date.now()
-        const toDate = new Date(element.from_date)
-        const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
-        if (filterComponent > 0) {
-          return element
-        }
-        else {
-          return
-        }
-      })
-      data1.forEach(element => {
+      // const data1 = data.filter((element) => {
+      //   const dateNow = Date.now()
+      //   const toDate = new Date(element.from_date)
+      //   const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+      //   if (filterComponent > 0) {
+      //     return element
+      //   }
+      //   else {
+      //     return
+      //   }
+      // })
+      data.forEach(element => {
         dateCreated = new Date(element.createdAt).toDateString()
         dateFrom = new Date(element.from_date).toDateString()
         dateTo = new Date(element.to_date).toDateString()
