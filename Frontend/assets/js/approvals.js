@@ -592,232 +592,232 @@ const getLeaveApproved = async () => {
         else {
             const { hits, data } = await user.json()
             console.log(hits, data);
-            const appliedTable = document.querySelector('.userAppliedTable')
-            const defaultApprovingText = document.querySelector('#defaultApprovingText')
-            defaultApprovingText.hidden = true
+            const approvedTable = document.querySelector('.ApproveduserAppliedTable')
+            const defaultApprovedText = document.querySelector('#defaultApprovedText')
+            defaultApprovedText.hidden = true
             console.log(hits);
-            // if (hits == 0) {
-            //     var trHOD = document.createElement('tr')
-            //     trHOD.style = `text-align: center;font-size: 25px;`
-            //     trHOD.innerHTML = `<th colspan="12">No Leaves Yet...</th>`
-            //     appliedTable.append(trHOD)
-            // }
-            // else {
-            //     if (UserDesignation == 'HOD') {
-            //         let num = 1
-            //         data.forEach(element => {
-            //             var fromDate = new Date(element.from_date).toDateString()
-            //             var toDate = new Date(element.to_date).toDateString()
-            //             var tr = document.createElement('tr')
-            //             ihtml = `<td>${num}</td>
-            //             <td >${element.employee_name}</td>
-            //             <td >${element.leave_type}</td>
-            //             <td >${fromDate}</td>
-            //             <td >${toDate}</td>
-            //             <td >${element.discription}</td>`
-            //             tr.innerHTML = ihtml
-            //             appliedTable.append(tr)
-            //             num++;
-            //         });
-            //     }
-            //     if (UserDesignation == 'principal') {
-            //         const { HodLeave, facultyLeave, nonTechLeave } = data
-            //         let num = 1
-            //         if (HodLeave.hits > 0) {
+            if (hits == 0) {
+                var trHOD = document.createElement('tr')
+                trHOD.style = `text-align: center;font-size: 25px;`
+                trHOD.innerHTML = `<th colspan="12">No Leaves Yet...</th>`
+                approvedTable.append(trHOD)
+            }
+            else {
+                if (UserDesignation == 'HOD') {
+                    let num = 1
+                    data.forEach(element => {
+                        var fromDate = new Date(element.from_date).toDateString()
+                        var toDate = new Date(element.to_date).toDateString()
+                        var tr = document.createElement('tr')
+                        ihtml = `<td>${num}</td>
+                        <td >${element.employee_name}</td>
+                        <td >${element.leave_type}</td>
+                        <td >${fromDate}</td>
+                        <td >${toDate}</td>
+                        <td >${element.discription}</td>`
+                        tr.innerHTML = ihtml
+                        approvedTable.append(tr)
+                        num++;
+                    });
+                }
+                if (UserDesignation == 'principal') {
+                    const { HodLeave, facultyLeave, nonTechLeave } = data
+                    let num = 1
+                    if (HodLeave.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">HOD Leaves</th>`
-            //             appliedTable.append(trHOD)
-            //             HodLeave.data.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">HOD Leaves</th>`
+                        approvedTable.append(trHOD)
+                        HodLeave.data.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
 
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //         if (facultyLeave.hits > 0) {
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (facultyLeave.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">Faculty Leaves</th>`
-            //             appliedTable.append(trHOD)
-            //             facultyLeave.data.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //         if (nonTechLeave.hits > 0) {
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Faculty Leaves</th>`
+                        approvedTable.append(trHOD)
+                        facultyLeave.data.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (nonTechLeave.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">Non-Tech Leave</th>`
-            //             appliedTable.append(trHOD)
-            //             nonTechLeave.data.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Non-Tech Leave</th>`
+                        approvedTable.append(trHOD)
+                        nonTechLeave.data.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
                             
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //     }
-            //     if (UserDesignation == 'faculty') {
-            //         const { HOD, first, second, third, fourth } = data
-            //         let num = 1
-            //         if (HOD.hits > 0) {
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                }
+                if (UserDesignation == 'faculty') {
+                    const { HOD, first, second, third, fourth } = data
+                    let num = 1
+                    if (HOD.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">Hod</th>`
-            //             appliedTable.append(trHOD)
-            //             HOD.hod.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Hod</th>`
+                        approvedTable.append(trHOD)
+                        HOD.hod.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
                          
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //         if (first.hits > 0) {
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (first.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">First Year</th>`
-            //             appliedTable.append(trHOD)
-            //             first.firstYear.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //         if (second.hits > 0) {
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">First Year</th>`
+                        approvedTable.append(trHOD)
+                        first.firstYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (second.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">Second Year</th>`
-            //             appliedTable.append(trHOD)
-            //             second.secondYear.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //         if (third.hits > 0) {
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Second Year</th>`
+                        approvedTable.append(trHOD)
+                        second.secondYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (third.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">Third Year</th>`
-            //             appliedTable.append(trHOD)
-            //             third.thirdYear.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //         if (fourth.hits > 0) {
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Third Year</th>`
+                        approvedTable.append(trHOD)
+                        third.thirdYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                    if (fourth.hits > 0) {
 
-            //             var trHOD = document.createElement('tr')
-            //             trHOD.style = `text-align: center;font-size: 25px;`
-            //             trHOD.innerHTML = `<th colspan="12">Fourth Year</th>`
-            //             appliedTable.append(trHOD)
-            //             fourth.fourthYear.forEach(element => {
-            //                 var fromDate = new Date(element.from_date).toDateString()
-            //                 var toDate = new Date(element.to_date).toDateString()
-            //                 var tr = document.createElement('tr')
-            //                 ihtml = `<td>${num}</td>
-            //         <td >${element.employee_name}</td>
-            //         <td >${element.leave_type}</td>
-            //         <td >${fromDate}</td>
-            //         <td >${toDate}</td>
-            //         <td >${element.discription}</td>`
-            //                 tr.innerHTML = ihtml
-            //                 appliedTable.append(tr)
-            //                 num++;
-            //             });
-            //         }
-            //     }
-            //     if (UserDesignation == 'non-tech-head') {
-            //         let num = 1
-            //         data.forEach(element => {
-            //             var fromDate = new Date(element.from_date).toDateString()
-            //             var toDate = new Date(element.to_date).toDateString()
-            //             var tr = document.createElement('tr')
-            //             ihtml = `<td>${num}</td>
-            //             <td >${element.employee_name}</td>
-            //             <td >${element.leave_type}</td>
-            //             <td >${fromDate}</td>
-            //             <td >${toDate}</td>
-            //             <td >${element.discription}</td>`
-            //             tr.innerHTML = ihtml
-            //             appliedTable.append(tr)
-            //             num++;
-            //         });
-            //     }
-            //     off()
-            // }
+                        var trHOD = document.createElement('tr')
+                        trHOD.style = `text-align: center;font-size: 25px;`
+                        trHOD.innerHTML = `<th colspan="12">Fourth Year</th>`
+                        approvedTable.append(trHOD)
+                        fourth.fourthYear.forEach(element => {
+                            var fromDate = new Date(element.from_date).toDateString()
+                            var toDate = new Date(element.to_date).toDateString()
+                            var tr = document.createElement('tr')
+                            ihtml = `<td>${num}</td>
+                    <td >${element.employee_name}</td>
+                    <td >${element.leave_type}</td>
+                    <td >${fromDate}</td>
+                    <td >${toDate}</td>
+                    <td >${element.discription}</td>`
+                            tr.innerHTML = ihtml
+                            approvedTable.append(tr)
+                            num++;
+                        });
+                    }
+                }
+                if (UserDesignation == 'non-tech-head') {
+                    let num = 1
+                    data.forEach(element => {
+                        var fromDate = new Date(element.from_date).toDateString()
+                        var toDate = new Date(element.to_date).toDateString()
+                        var tr = document.createElement('tr')
+                        ihtml = `<td>${num}</td>
+                        <td >${element.employee_name}</td>
+                        <td >${element.leave_type}</td>
+                        <td >${fromDate}</td>
+                        <td >${toDate}</td>
+                        <td >${element.discription}</td>`
+                        tr.innerHTML = ihtml
+                        approvedTable.append(tr)
+                        num++;
+                    });
+                }
+                off()
+            }
         }
     }
     catch (error) {
