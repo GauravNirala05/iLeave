@@ -79,25 +79,80 @@ const getApprovals = async (req, res) => {
     if (user) {
         if (user.designation === 'faculty') {
 
-            const hod = await HodLeave.find({
+            const hod1 = await HodLeave.find({
                 'reference.name': user.name,
                 status: ['applied', 'rejected']
             })
-            const firstYear = await Leave.find({
+            const hod = hod1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
+            const firstYear1 = await Leave.find({
                 'reference1.name': user.name,
                 status: ['applied', 'rejected']
             })
-            const secondYear = await Leave.find({
+            const firstYear = firstYear1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
+            const secondYear1 = await Leave.find({
                 'reference2.name': user.name,
                 status: ['applied', 'rejected']
             })
-            const thirdYear = await Leave.find({
+            const secondYear = secondYear1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
+            const thirdYear1 = await Leave.find({
                 'reference3.name': user.name,
                 status: ['applied', 'rejected']
             })
-            const fourthYear = await Leave.find({
+            const thirdYear = thirdYear1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
+            const fourthYear1 = await Leave.find({
                 'reference4.name': user.name,
                 status: ['applied', 'rejected']
+            })
+            const fourthYear = fourthYear1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
             })
             res.status(StatusCodes.OK).json({
                 status: 'SUCCESS',
@@ -113,7 +168,7 @@ const getApprovals = async (req, res) => {
         }
         if (user.designation === 'HOD') {
 
-            const data = await Leave.find({
+            const data1 = await Leave.find({
                 employee_dep: user.department,
                 'reference1.approved': true,
                 'reference2.approved': true,
@@ -121,30 +176,85 @@ const getApprovals = async (req, res) => {
                 'reference4.approved': true,
                 status: ['applied', 'rejected']
             })
+            const data = data1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
             res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
         if (user.designation === 'non-tech-head') {
 
-            const data = await nonTechLeave.find({
+            const data1 = await nonTechLeave.find({
                 employee_dep: user.department,
                 status: ['applied', 'rejected']
+            })
+            const data = data1.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
             })
             res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data.length, data: data })
         }
         if (user.designation === 'principal') {
-            const data1 = await Leave.find({
+            const data11 = await Leave.find({
                 HOD_approval: true,
                 status: ['applied', 'rejected', 'approved']
             })
+            const data1 = data11.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
 
-            const data2 = await HodLeave.find({
+            const data22 = await HodLeave.find({
                 'reference.approved': true,
                 status: ['applied', 'rejected', 'approved']
             })
+            const data2 = data22.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
+            })
 
-            const data3 = await nonTechLeave.find({
+            const data33 = await nonTechLeave.find({
                 head_approval: true,
                 status: ['applied', 'rejected', 'approved']
+            })
+            const data3 = data33.filter((element) => {
+                const dateNow = Date.now()
+                const toDate = new Date(element.from_date)
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
+                    return element
+                }
+                else {
+                    return
+                }
             })
 
             res.status(StatusCodes.OK).json({ status: 'SUCCESS', hits: data1.length + data2.length + data3.length, data: { facultyLeave: { hits: data1.length, data: data1 }, HodLeave: { hits: data2.length, data: data2 }, nonTechLeave: { hits: data3.length, data: data3 } } })
@@ -207,8 +317,8 @@ const getApproved = async (req, res) => {
             const hod = hod1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -222,8 +332,8 @@ const getApproved = async (req, res) => {
             const firstYear = firstYear1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -237,8 +347,8 @@ const getApproved = async (req, res) => {
             const secondYear = secondYear1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -252,8 +362,8 @@ const getApproved = async (req, res) => {
             const thirdYear = thirdYear1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -267,8 +377,8 @@ const getApproved = async (req, res) => {
             const fourthYear = fourthYear1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -296,8 +406,8 @@ const getApproved = async (req, res) => {
             const data = data1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -315,8 +425,8 @@ const getApproved = async (req, res) => {
             const data = data1.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -333,8 +443,8 @@ const getApproved = async (req, res) => {
             const data1 = data11.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -348,8 +458,8 @@ const getApproved = async (req, res) => {
             const data2 = data22.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
@@ -363,8 +473,8 @@ const getApproved = async (req, res) => {
             const data3 = data33.filter((element) => {
                 const dateNow = Date.now()
                 const toDate = new Date(element.to_date)
-                const filterComponent=((toDate - dateNow)+(1000*60*60*24))
-                if (filterComponent>0) {
+                const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+                if (filterComponent > 0) {
                     return element
                 }
                 else {
