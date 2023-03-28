@@ -103,7 +103,7 @@ if (changePassword) {
     changePassword.addEventListener('click', async (e) => {
         e.preventDefault()
         try {
-            const token=localStorage.getItem('token')
+            const token = localStorage.getItem('token')
             const resetPassword = document.querySelector('#resetPassword').value
             const resetPasswordConfirm = document.querySelector('#resetPasswordConfirm').value
             if (resetPassword == resetPasswordConfirm) {
@@ -125,6 +125,9 @@ if (changePassword) {
                 }
                 else {
                     localStorage.removeItem('token')
+                    localStorage.removeItem('forgetEmail')
+                    localStorage.removeItem('forgetEmail')
+
                     const { msg } = await resetPasswordData.json()
                     showPopup(msg)
                     location.replace("login.html")

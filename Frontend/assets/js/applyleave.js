@@ -109,7 +109,6 @@ const reference4 = document.querySelector('.reference4')
 const leave_type = document.querySelector('.leavetype')
 const reason = document.querySelector('.reason')
 
-
 dayDiscription.addEventListener("input", () => {
     if (dayDiscription.value == 'true') {
         totaldays.value = 0.5;
