@@ -1,6 +1,7 @@
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
+  stat.push('rejected')
   try {
     const user = await fetch('/leaveStatus', {
       method: 'POST',
@@ -49,43 +50,130 @@ const getleavestatus = async () => {
 
         if (element.employee_dep == 'non-tech') {
           const pendingLeaveReference = document.querySelector('#pendingLeaveReference')
-          const dashboardLeaveHead = document.querySelector('#dashboardLeaveHead')
-          dashboardLeaveHead.innerHTML = `Head approval`
+          const pendingLeaveHead = document.querySelector('#pendingLeaveHead')
+          pendingLeaveHead.innerHTML = `Head approval`
           pendingLeaveReference.hidden = true
           if (element.head_approval) {
-            ihtml += `<td>${element.head_approval}</td>`
+            if (element.head_approval == true) {
+
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            }
+            else {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
           }
+
           if (element.principal_approval) {
-            ihtml += `<td>${element.principal_approval}</td>`
+            if (element.principal_approval === true) {
+              ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
+            }
+            else {
+              ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
           }
           ihtml += `<td>${element.status}</td>`
+          if (element.status == 'applied') {
+            ihtml += `<td>
+            <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
+              <i class="fa fa-trash-o fa-lg"></i> Delete
+            </div>
+                      </td>`
+          } else {
+            const deleteLeaveStatus = document.querySelector('#deleteLeaveStatus')
+            deleteLeaveStatus.hidden = true
+          }
         }
         else {
-          ihtml += `<td>
-          <div>${element.reference1.name}</div>
-          <div>${element.reference2.name}</div>
-          <div>${element.reference3.name}</div>
-          <div>${element.reference4.name}</div>
-        </td>`
-          if (element.head_approval) {
-            ihtml += `<td>${element.head_approval}</td>`
+          if (element.reference) {
+            const pendingLeaveHead = document.querySelector('#pendingLeaveHead')
+            pendingLeaveHead.hidden = true
+            ihtml += `<td>${element.reference.name}`
+            if (element.reference.approved == true) {
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+              ihtml += `</td>`
+            }
+            else if (element.reference.approved == false) {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+              ihtml += `</td>`
+            }
+            else {
+              ihtml += `</td>`
+            }
           }
           else {
-            ihtml += `<td>Pending</td>`
+            ihtml += `<td><div>${element.reference1.name}`
+            if (element.reference1.approved == true) {
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            }
+            if (element.reference1.approved == false) {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+            }
+            ihtml += `</div><div>${element.reference2.name}`
+            if (element.reference2.approved == true) {
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            }
+            if (element.reference2.approved == false) {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+            }
+            ihtml += `</div><div>${element.reference3.name}`
+            if (element.reference3.approved == true) {
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            }
+            if (element.reference3.approved == false) {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+            }
+            ihtml += `</div><div>${element.reference4.name}`
+            if (element.reference4.approved == true) {
+              ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+            }
+            if (element.reference4.approved == false) {
+              ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+            }
+            ihtml += `</div></td>`
+            if (element.HOD_approval) {
+              if (element.HOD_approval == true) {
+
+                ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
+              }
+              else {
+                ihtml += `<i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i>`
+              }
+            }
+            else {
+              ihtml += `<td>Pending</td>`
+            }
           }
+
+
+
           if (element.principal_approval) {
-            ihtml += `<td>${element.principal_approval}</td>`
+            if (element.principal_approval === true) {
+              ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
+            }
+            else {
+              ihtml += `<td><i class="fa fa-times-circle-o " style="color: red;" aria-hidden="true"></i></td>`
+            }
           }
           else {
             ihtml += `<td>Pending</td>`
           }
           ihtml += `<td>${element.status}</td>`
+          // if (element.status == 'applied') {
+          //   ihtml += `<td>
+          //   <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
+          //     <i class="fa fa-trash-o fa-lg"></i> Delete
+          //   </div>
+          //             </td>`
+          // } else {
+          //   const deleteLeaveStatus = document.querySelector('#deleteLeaveStatus')
+          //   deleteLeaveStatus.hidden = true
+          // }
         }
         tr.innerHTML = ihtml
         pendingLeaveBody.append(tr)

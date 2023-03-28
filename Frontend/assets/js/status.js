@@ -29,6 +29,7 @@ async function confirmationPopupOpen() {
   try {
     const leaveID = localStorage.getItem('leaveID')
     console.log(leaveID);
+    console.log(token);
     if (leaveID) {
       const deleteLeaveData = await fetch(`/deleteLeave/${leaveID}`, {
         method: 'DELETE',
@@ -73,6 +74,7 @@ function toggleContent() {
 const getleavestatus = async () => {
   const stat = []
   stat.push('applied')
+  stat.push('rejected')
   try {
     const user = await fetch('/leaveStatus', {
       method: 'POST',
@@ -101,7 +103,18 @@ const getleavestatus = async () => {
       const defaultPendingLeave = document.querySelector('#defaultPendingLeave')
       defaultPendingLeave.hidden = true
       let counter = 1
-      data.forEach(element => {
+      const data1 = data.filter((element) => {
+        const dateNow = Date.now()
+        const toDate = new Date(element.from_date)
+        const filterComponent = ((toDate - dateNow) + (1000 * 60 * 60 * 24))
+        if (filterComponent > 0) {
+          return element
+        }
+        else {
+          return
+        }
+      })
+      data1.forEach(element => {
         dateCreated = new Date(element.createdAt).toDateString()
         dateFrom = new Date(element.from_date).toDateString()
         dateTo = new Date(element.to_date).toDateString()
@@ -144,16 +157,21 @@ const getleavestatus = async () => {
             ihtml += `<td>Pending</td>`
           }
           ihtml += `<td>${element.status}</td>`
-          ihtml += `<td>
-          <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
-            <i class="fa fa-trash-o fa-lg"></i> Delete
-          </div>
-                    </td>`
+          if (element.status == 'applied') {
+            ihtml += `<td>
+            <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
+              <i class="fa fa-trash-o fa-lg"></i> Delete
+            </div>
+                      </td>`
+          } else {
+            const deleteLeaveStatus = document.querySelector('#deleteLeaveStatus')
+            deleteLeaveStatus.hidden = true
+          }
         }
         else {
           if (element.reference) {
             const pendingLeaveHead = document.querySelector('#pendingLeaveHead')
-            pendingLeaveHead.hidden=true
+            pendingLeaveHead.hidden = true
             ihtml += `<td>${element.reference.name}`
             if (element.reference.approved == true) {
               ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
@@ -199,7 +217,7 @@ const getleavestatus = async () => {
             ihtml += `</div></td>`
             if (element.HOD_approval) {
               if (element.HOD_approval == true) {
-  
+
                 ihtml += `<i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i>`
               }
               else {
@@ -211,7 +229,7 @@ const getleavestatus = async () => {
             }
           }
 
-         
+
 
           if (element.principal_approval) {
             if (element.principal_approval === true) {
@@ -225,11 +243,16 @@ const getleavestatus = async () => {
             ihtml += `<td>Pending</td>`
           }
           ihtml += `<td>${element.status}</td>`
-          ihtml += `<td>
-          <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
-            <i class="fa fa-trash-o fa-lg"></i> Delete
-          </div>
-                    </td>`
+          if (element.status == 'applied') {
+            ihtml += `<td>
+            <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
+              <i class="fa fa-trash-o fa-lg"></i> Delete
+            </div>
+                      </td>`
+          } else {
+            const deleteLeaveStatus = document.querySelector('#deleteLeaveStatus')
+            deleteLeaveStatus.hidden = true
+          }
         }
         tr.innerHTML = ihtml
         pendingLeaveBody.append(tr)
@@ -375,7 +398,6 @@ const getleaveHistory = async () => {
             }
           }
 
-
           if (element.principal_approval) {
             if (element.principal_approval === true) {
               ihtml += `<td><i class="fa fa-check-circle-o " style="color: green;" aria-hidden="true"></i></td>`
@@ -387,7 +409,21 @@ const getleaveHistory = async () => {
           else {
             ihtml += `<td>Pending</td>`
           }
-          ihtml += `<td>${element.status}</td>`
+          ihtml += `<td>${element.status}`
+          var fromDate = new Date(element.from_date)
+          var nowDate = Date.now()
+          var status = element.status
+          var result = fromDate < nowDate
+          if (status == 'rejected' && result) {
+            ihtml += `
+          <div onclick="confirmationPopup('${element._id}')" class="btn btn-danger">
+            <i class="fa fa-trash-o fa-lg"></i> Delete
+          </div>
+                    </td>`
+          }
+          else {
+            ihtml += `</td>`
+          }
         }
         tr.innerHTML = ihtml
         pendingLeaveBody.append(tr)

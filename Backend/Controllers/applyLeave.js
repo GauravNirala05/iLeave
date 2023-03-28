@@ -192,7 +192,7 @@ const deleteLeave = async (req, res) => {
     const { leaveId: targetLeaveID } = req.params
     const user = await User.findOne({ _id: userID })
     if (user.designation === 'faculty') {
-        if (await Leave.exists({ _id: targetLeaveID, status: `applied` })) {
+        if (await Leave.exists({ _id: targetLeaveID, status: [`applied`,`rejected`] })) {
             await Leave.findOneAndDelete({ _id: targetLeaveID })
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
@@ -201,7 +201,7 @@ const deleteLeave = async (req, res) => {
         }
     }
     if (user.designation === 'HOD') {
-        if (await HodLeave.exists({ _id: targetLeaveID, status: 'applied' })) {
+        if (await HodLeave.exists({ _id: targetLeaveID, status: [`applied`,`rejected`] })) {
             await HodLeave.findOneAndDelete({ _id: targetLeaveID})
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
@@ -211,7 +211,7 @@ const deleteLeave = async (req, res) => {
     }
     if (user.department === 'non-tech') {
 
-        if (await nonTechLeave.exists({ _id: targetLeaveID, status: 'applied' })) {
+        if (await nonTechLeave.exists({ _id: targetLeaveID, status: [`applied`,`rejected`] })) {
             await nonTechLeave.findOneAndDelete({ _id: targetLeaveID})
             return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
         }
