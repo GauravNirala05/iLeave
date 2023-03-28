@@ -27,6 +27,10 @@ const getUserDetails = async () => {
             statusmsg.innerHTML = status
             statusmsgtext.innerHTML = user.statusText
             errormsg.innerHTML = msg
+            if (status==400){
+                statusmsgtext.innerHTML = `Token Not Found`
+                errormsg.innerHTML = `Go to Login`
+            }
             openPopup2()
             localStorage.removeItem('token');
             localStorage.removeItem('UserDesignation');
