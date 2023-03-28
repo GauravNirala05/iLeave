@@ -188,6 +188,38 @@ const getleavestatus = async () => {
   }
 
 }
+
+async function delete_account() {
+  const userId=localStorage.getItem(`deleteId`)
+
+  try {
+    const deleteuser = await fetch(`/deleteProfile/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    if (!deleteuser.ok) {
+      deletePopupClose()
+      const status = deleteuser.status
+      const { msg } = await deleteuser.json()
+      var arraryError = []
+      arraryError.push(status)
+      arraryError.push(msg)
+      errorHandler(arraryError)
+    }
+    else {
+      const data = await deleteuser.json()
+      deletePopupClose()
+      location.reload()
+      // alert(`${data.name} you account is successfully Deleted`)
+    }
+
+  } catch (error) {
+    console.log(error);
+    alert(error)
+  }
+}
 const alluserByPrincipal = async () => {
   try {
     const alluserdata = await fetch('/alluser', {
@@ -229,7 +261,7 @@ const alluserByPrincipal = async () => {
         <td>
           <button class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
               class="fa fa-edit"></i> </button>
-          <button class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
+          <button onclick="deletePopup('${element._id}')"  class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2"><i
               class="fa fa-trash"></i> </button>
         </td>
         </tr>`
@@ -356,20 +388,27 @@ function alluserdetailsbyDep(dep) {
 
 
 let popup = document.getElementById("loginModal")
-        console.log("Running")
-        function openerrorPopup() {
-          document.getElementById("popup3").style.display = "none";
 
-            document.getElementById("loginModal").style.display = "block";
+function openerrorPopup() {
+  document.getElementById("popup3").style.display = "none";
+  document.getElementById("loginModal").style.display = "block";
+}
+function closeerrorPopup() {
+  document.getElementById("loginModal").style.display = "none";
+  profile_completed()
+}
 
-            console.log("Running")
-           
-        }
-        function closeerrorPopup() {
-            document.getElementById("loginModal").style.display = "none";
-            profile_completed()
-           
-        }
-        function on() {
-            document.getElementById("loginModal").style.display = "block";
-        }
+function deletePopup(id) {
+  document.getElementById("deleteProfilePopup").style.display = "block";
+  localStorage.setItem(`deleteId`,id)
+}
+function deletePopupOpen() {
+  delete_account()
+}
+function deletePopupClose() {
+  document.getElementById("deleteProfilePopup").style.display = "none";
+  localStorage.removeItem(`deleteId`)
+}
+function on() {
+  document.getElementById("loginModal").style.display = "block";
+}
