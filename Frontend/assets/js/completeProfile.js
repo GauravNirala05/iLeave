@@ -1,10 +1,3 @@
-
-// if (token == null) {
-//   alert(`You need to log in or authenticate to access this resource. Please click ok to log in or create an account.`)
-//   location.replace("login.html")
-// }
-
-
 const complete_profile = document.querySelector('.save')
 const update_contact = document.querySelector('.phone_no')
 const update_name = document.querySelector('#name')
@@ -53,7 +46,7 @@ complete_profile.addEventListener('click', async (e) => {
     const { msg } = await fetcher.json()
     console.log("Running")
     // profile_completed()
-    alert(`${msg}`)
+    // alert(`${msg}`)
     setTimeout(() => {
       location.replace("dashboard.html")
     }, 1000);
