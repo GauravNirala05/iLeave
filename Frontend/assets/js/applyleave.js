@@ -1,5 +1,13 @@
 
 const UserDesignation = localStorage.getItem('UserDesignation')
+function leaveApplingError(status,msg){
+    document.getElementById("leaveApplingError").style.display="block"
+    document.getElementById("leaveApplingErrorMsg").innerHTML=msg
+    document.getElementById("leaveApplingErrorStatus").innerHTML=status
+}
+function leaveApplingErrorClose(){
+    document.getElementById("leaveApplingError").style.display="none"
+}
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -208,6 +216,7 @@ button_apply.addEventListener('click', async (e) => {
         
         var result=((date2 - dateNow)+(1000*60*60*24))
         if (result<0) {
+            leaveApplingError(401,`From date must be greater`)
             throw Error(`From date must be greater`)
         }
         if (totaldays == 1 && dayDiscription == 'true') {
@@ -244,6 +253,7 @@ button_apply.addEventListener('click', async (e) => {
         if (!fetcher.ok) {
             const { msg } = await fetcher.json()
             off()
+            leaveApplingError(fetcher.status,msg)
             throw Error(`${msg}`)
         }
         else {
@@ -253,7 +263,7 @@ button_apply.addEventListener('click', async (e) => {
         }
         off()
     } catch (error) {
-        alert(error)
+        console.log(error)
         off()
 
     }
