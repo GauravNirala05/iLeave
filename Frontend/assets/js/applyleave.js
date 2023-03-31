@@ -216,7 +216,7 @@ button_apply.addEventListener('click', async (e) => {
         
         var result=((date2 - dateNow)+(1000*60*60*24))
         if (result<0) {
-            leaveApplingError(401,`From date must be greater`)
+            leaveApplingError(401,`From date must be greater or equal to your application date ${new Date().toDateString()}`)
             throw Error(`From date must be greater`)
         }
         if (totaldays == 1 && dayDiscription == 'true') {

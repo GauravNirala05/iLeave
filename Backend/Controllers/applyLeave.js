@@ -29,7 +29,10 @@ const applyLeave = async (req, res) => {
         if (availableleave.length > 0) {
             lastLeaveApplied = availableleave[availableleave.length - 1]
             if (lastLeaveApplied.from_date >= fromDate  ) {
-                if (lastLeaveApplied.to_date <= fromDate) {
+                console.log(`its here`);
+                if (lastLeaveApplied.from_date <= toDate) {
+                console.log(`its here to`);
+                
                     throw new BadRequestError(`Can't apply leave of confilicting dates ...Please check your current leave status...`)
                 }
             }
@@ -200,7 +203,7 @@ const deleteLeave = async (req, res) => {
     if (user.designation === 'faculty') {
         if (await Leave.exists({ _id: targetLeaveID, status: [`applied`,`rejected`] })) {
             await Leave.findOneAndDelete({ _id: targetLeaveID })
-            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+            return res.status(StatusCodes.OK).json({ msg: `Hey, ${user.name} your leave is deleted` })
         }
         else {
             throw new NotFound(`The provided facultyLeave id does'nt exists.`)
@@ -209,7 +212,7 @@ const deleteLeave = async (req, res) => {
     if (user.designation === 'HOD') {
         if (await HodLeave.exists({ _id: targetLeaveID, status: [`applied`,`rejected`] })) {
             await HodLeave.findOneAndDelete({ _id: targetLeaveID})
-            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+            return res.status(StatusCodes.OK).json({ msg: `Hey, ${user.name} your leave is deleted` })
         }
         else {
             throw new NotFound(`The provided Hod leave id does'nt exists.`)
@@ -219,7 +222,7 @@ const deleteLeave = async (req, res) => {
 
         if (await nonTechLeave.exists({ _id: targetLeaveID, status: [`applied`,`rejected`] })) {
             await nonTechLeave.findOneAndDelete({ _id: targetLeaveID})
-            return res.status(StatusCodes.OK).json({ msg: `leave with id ${targetLeaveID} is deleted` })
+            return res.status(StatusCodes.OK).json({ msg: `Hey, ${user.name} your leave is deleted` })
         }
         else {
             throw new NotFound(`The provided non-tech leave id does'nt exists.`)

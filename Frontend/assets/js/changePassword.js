@@ -36,7 +36,9 @@ if (resetPasswordBtn) {
                 if (!forgotPassData.ok) {
                     const status = forgotPassData.status
                     const { msg } = await forgotPassData.json()
+                    localStorage.removeItem('forgetEmail')
                     throw Error(`${status} ${msg}`)
+
                 }
                 else {
                     const { userid, msg } = await forgotPassData.json()
@@ -76,6 +78,7 @@ if (OtpVerification) {
                 const status = verifyOTPData.status
                 const { msg } = await verifyOTPData.json()
                 localStorage.removeItem('userID')
+                localStorage.removeItem('forgetEmail')
                 throw Error(`${status} ${msg}`)
 
             }
@@ -85,12 +88,14 @@ if (OtpVerification) {
                 showPopup(msg)
                 localStorage.setItem('token', token)
                 setTimeout(() => {
+                    localStorage.removeItem('forgetEmail')
                     location.replace("changePassword.html")
                 }, 2000);
             }
         } catch (error) {
             showPopup(error)
             setTimeout(() => {
+                localStorage.removeItem('forgetEmail')
                 location.replace("sentOTP.html")
             }, 5000);
 
@@ -121,13 +126,12 @@ if (changePassword) {
                     const status = resetPasswordData.status
                     const { msg } = await resetPasswordData.json()
                     localStorage.removeItem('token')
+                    localStorage.removeItem('forgetEmail')
                     throw Error(`${status} ${msg}`)
                 }
                 else {
                     localStorage.removeItem('token')
                     localStorage.removeItem('forgetEmail')
-                    localStorage.removeItem('forgetEmail')
-
                     const { msg } = await resetPasswordData.json()
                     showPopup(msg)
                     location.replace("login.html")
