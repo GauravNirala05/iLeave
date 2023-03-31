@@ -6,6 +6,8 @@ const User = require('../model/User')
 const Leave = require('../model/Leave')
 //Errors
 const { NotFound, BadRequestError, UnAuthorizedError } = require('../errors');
+const HODLeave = require('../model/HODLeave');
+const nonTechLeave = require('../model/non-techLeave');
 
 
 const signin = async (req, res) => {
@@ -80,6 +82,15 @@ const deleteProfile = async (req, res) => {
     if (user) {
         if (userID === targetID) {
             await User.findOneAndDelete({ _id: userID })
+            if (await Leave.exists({employee_id:targetID})) {
+                await Leave.deleteMany({employee_id:targetID})
+            }
+            if (await HODLeave.exists({employee_id:targetID})) {
+                await HODLeave.deleteMany({employee_id:targetID})
+            }
+            if (await nonTechLeave.exists({employee_id:targetID})) {
+                await nonTechLeave.deleteMany({employee_id:targetID})
+            }
             return res.json({
                 status: `SUCCESS`,
                 msg: `Your account is successfully deleted...`
@@ -94,6 +105,15 @@ const deleteProfile = async (req, res) => {
                 const targetUser = await User.findOne({ _id: targetID, department: user.department })
                 if (targetUser) {
                     await User.findOneAndDelete({ _id: targetID })
+                    if (await Leave.exists({employee_id:targetID})) {
+                        await Leave.deleteMany({employee_id:targetID})
+                    }
+                    if (await HODLeave.exists({employee_id:targetID})) {
+                        await HODLeave.deleteMany({employee_id:targetID})
+                    }
+                    if (await nonTechLeave.exists({employee_id:targetID})) {
+                        await nonTechLeave.deleteMany({employee_id:targetID})
+                    }
                     res.json({ status: `SUCCESS`, msg: `user ${targetUser.name}'s account is deleted` })
                 }
                 else {
@@ -103,6 +123,15 @@ const deleteProfile = async (req, res) => {
             if (designation === 'principal') {
                 if (await User.exists({ _id: targetID })) {
                     await User.findOneAndDelete({ _id: targetID })
+                    if (await Leave.exists({employee_id:targetID})) {
+                        await Leave.deleteMany({employee_id:targetID})
+                    }
+                    if (await HODLeave.exists({employee_id:targetID})) {
+                        await HODLeave.deleteMany({employee_id:targetID})
+                    }
+                    if (await nonTechLeave.exists({employee_id:targetID})) {
+                        await nonTechLeave.deleteMany({employee_id:targetID})
+                    }
                     res.json({ status: `SUCCESS`, msg: `user deleted with id ${targetID}` })
                 } else {
                     throw new BadRequestError(`User doesn't exists...`)

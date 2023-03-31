@@ -26,6 +26,14 @@ const applyLeave = async (req, res) => {
         if (fromDate > toDate) {
             throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
         }
+        if (availableleave.length > 0) {
+            lastLeaveApplied = availableleave[availableleave.length - 1]
+            if (lastLeaveApplied.from_date >= fromDate  ) {
+                if (lastLeaveApplied.to_date <= fromDate) {
+                    throw new BadRequestError(`Can't apply leave of confilicting dates ...Please check your current leave status...`)
+                }
+            }
+        }
         const leave_type = req.body.leave_type
         const total_days = req.body.total_days
 
@@ -57,6 +65,14 @@ const applyLeave = async (req, res) => {
         if (fromDate > toDate) {
             throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
         }
+        if (availableleave.length > 0) {
+            lastLeaveApplied = availableleave[availableleave.length - 1]
+            if (lastLeaveApplied.from_date >= fromDate  ) {
+                if (lastLeaveApplied.to_date <= fromDate) {
+                    throw new BadRequestError(`Can't apply leave of confilicting dates ...Please check your current leave status...`)
+                }
+            }
+        }
         const leave_type = req.body.leave_type
         const total_days = req.body.total_days
 
@@ -87,6 +103,14 @@ const applyLeave = async (req, res) => {
         const toDate = new Date(req.body.to_date)
         if (fromDate > toDate) {
             throw new BadRequestError(`toDate must be greater or equal to the fromDate..`)
+        }
+        if (availableleave.length > 0) {
+            lastLeaveApplied = availableleave[availableleave.length - 1]
+            if (lastLeaveApplied.from_date >= fromDate  ) {
+                if (lastLeaveApplied.to_date <= fromDate) {
+                    throw new BadRequestError(`Can't apply leave of confilicting dates ...Please check your current leave status...`)
+                }
+            }
         }
         const leave_type = req.body.leave_type
         const total_days = req.body.total_days
