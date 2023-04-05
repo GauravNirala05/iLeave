@@ -1,3 +1,12 @@
+function errorPopup(status,msg) {
+  var errorPopup=document.querySelector("#errorPopup")
+  errorPopup.style.display = "block";
+  document.getElementById("statuserrortext").innerHTML = status;
+  document.getElementById("errorPopupMsg").innerHTML = msg;
+}
+function errorPopupClose() {
+  document.getElementById("errorPopup").style.display = "none";
+}
 const complete_profile = document.querySelector('.save')
 const update_contact = document.querySelector('.phone_no')
 const update_name = document.querySelector('#name')
@@ -38,18 +47,17 @@ complete_profile.addEventListener('click', async (e) => {
     })
     if (!fetcher.ok) {
       const status = fetcher.status
-      console.log(status);
-      const { msg, error } = await fetcher.json()
-      console.log(msg);
-      throw Error(`${status}`)
+      const { msg } = await fetcher.json()
+      errorPopup(status,msg)
+      throw Error(`${msg}`)
     }
-    const { msg } = await fetcher.json()
-    console.log("Running")
+    const {status, msg } = await fetcher.json()
     // profile_completed()
     // alert(`${msg}`)
+    errorPopup(status,msg)
     setTimeout(() => {
       location.replace("dashboard.html")
-    }, 1000);
+    }, 2000);
     update_designation.value = ``
     update_department.value = ``
     update_contact.value = ``
@@ -70,8 +78,6 @@ function closePopup() {
 function profile_completed(msg) {
   document.getElementById("popup3").style.display = "block";
   // document.getElementById("updateMessage").innerText=msg
-
-
 }
 function close_completepopup() {
   document.getElementById("popup3").style.display = "none";

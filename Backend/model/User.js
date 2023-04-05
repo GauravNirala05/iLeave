@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
     },
     mob_no: {
         type: Number,
-        min: 10
     },
     designation: {
         type: String,

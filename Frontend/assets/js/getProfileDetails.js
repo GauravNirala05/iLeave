@@ -27,7 +27,7 @@ const getUserDetails = async () => {
             statusmsg.innerHTML = status
             statusmsgtext.innerHTML = user.statusText
             errormsg.innerHTML = msg
-            if (status==400){
+            if (status == 400) {
                 statusmsgtext.innerHTML = `Token Not Found`
                 errormsg.innerHTML = `Go to Login`
             }
@@ -42,11 +42,11 @@ const getUserDetails = async () => {
             if (data.profileCompleted == false) {
                 openmodal()
 
-                ihtml =              
-                 `<img class="rounded-circle mt-5 imgnew" src="images/profile.png">
-    <span class="" style="color:black;"> ${data.email}</span><span>
-  </span>`                                                                                                                                                           
-    document.getElementById("profile").innerHTML = ihtml
+                ihtml =
+                    `<img class="rounded-circle mt-5 imgnew" src="images/profile.png">
+                    <span class="" style="color:black;"> ${data.email}</span>`
+
+                document.getElementById("profile").innerHTML = ihtml
             }
             else {
                 if (data.designation == 'principal') {

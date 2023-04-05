@@ -39,7 +39,7 @@ const getSingleData = async (req, res) => {
 
 const completeProfile = async (req, res) => {
     const { userID } = req.user
-    const { name, mob_no, contect_type, department, designation, gender,title } = req.body
+    const { name, mob_no, contect_type, department, designation, gender, title } = req.body
     const user = await User.findOne({ _id: userID })
     if (!name || !mob_no || !contect_type || !department || !designation || !gender) {
         throw new BadRequestError(`Provide all the credentials...mob_no,contect_type,department,designation...`)
@@ -48,14 +48,10 @@ const completeProfile = async (req, res) => {
         throw new BadRequestError(`No user with given id ${userID} or`)
     }
     if (user.profileCompleted == false) {
-        try {
-            const user = await User.findOneAndUpdate({ _id: userID }, { name, gender, mob_no, title, contect_type, department, designation, profileCompleted: true }, { new: true })
-            await user.leaveSchema()
-            user.save()
-            res.status(200).json({ status: 'SUCCESS', msg: `Account is successfully initailized.` })
-        } catch (error) {
-            throw error
-        }
+        const user = await User.findOneAndUpdate({ _id: userID }, { name, gender, mob_no, title, contect_type, department, designation, profileCompleted: true }, { new: true })
+        await user.leaveSchema()
+        user.save()
+        res.status(200).json({ status: 'SUCCESS', msg: `Account is successfully initailized.` })
     }
     else {
         throw new NotFound(`User ${userName} Account records is already initially updated`)
@@ -82,14 +78,14 @@ const deleteProfile = async (req, res) => {
     if (user) {
         if (userID === targetID) {
             await User.findOneAndDelete({ _id: userID })
-            if (await Leave.exists({employee_id:targetID})) {
-                await Leave.deleteMany({employee_id:targetID})
+            if (await Leave.exists({ employee_id: targetID })) {
+                await Leave.deleteMany({ employee_id: targetID })
             }
-            if (await HODLeave.exists({employee_id:targetID})) {
-                await HODLeave.deleteMany({employee_id:targetID})
+            if (await HODLeave.exists({ employee_id: targetID })) {
+                await HODLeave.deleteMany({ employee_id: targetID })
             }
-            if (await nonTechLeave.exists({employee_id:targetID})) {
-                await nonTechLeave.deleteMany({employee_id:targetID})
+            if (await nonTechLeave.exists({ employee_id: targetID })) {
+                await nonTechLeave.deleteMany({ employee_id: targetID })
             }
             return res.json({
                 status: `SUCCESS`,
@@ -105,14 +101,14 @@ const deleteProfile = async (req, res) => {
                 const targetUser = await User.findOne({ _id: targetID, department: user.department })
                 if (targetUser) {
                     await User.findOneAndDelete({ _id: targetID })
-                    if (await Leave.exists({employee_id:targetID})) {
-                        await Leave.deleteMany({employee_id:targetID})
+                    if (await Leave.exists({ employee_id: targetID })) {
+                        await Leave.deleteMany({ employee_id: targetID })
                     }
-                    if (await HODLeave.exists({employee_id:targetID})) {
-                        await HODLeave.deleteMany({employee_id:targetID})
+                    if (await HODLeave.exists({ employee_id: targetID })) {
+                        await HODLeave.deleteMany({ employee_id: targetID })
                     }
-                    if (await nonTechLeave.exists({employee_id:targetID})) {
-                        await nonTechLeave.deleteMany({employee_id:targetID})
+                    if (await nonTechLeave.exists({ employee_id: targetID })) {
+                        await nonTechLeave.deleteMany({ employee_id: targetID })
                     }
                     res.json({ status: `SUCCESS`, msg: `user ${targetUser.name}'s account is deleted` })
                 }
@@ -123,14 +119,14 @@ const deleteProfile = async (req, res) => {
             if (designation === 'principal') {
                 if (await User.exists({ _id: targetID })) {
                     await User.findOneAndDelete({ _id: targetID })
-                    if (await Leave.exists({employee_id:targetID})) {
-                        await Leave.deleteMany({employee_id:targetID})
+                    if (await Leave.exists({ employee_id: targetID })) {
+                        await Leave.deleteMany({ employee_id: targetID })
                     }
-                    if (await HODLeave.exists({employee_id:targetID})) {
-                        await HODLeave.deleteMany({employee_id:targetID})
+                    if (await HODLeave.exists({ employee_id: targetID })) {
+                        await HODLeave.deleteMany({ employee_id: targetID })
                     }
-                    if (await nonTechLeave.exists({employee_id:targetID})) {
-                        await nonTechLeave.deleteMany({employee_id:targetID})
+                    if (await nonTechLeave.exists({ employee_id: targetID })) {
+                        await nonTechLeave.deleteMany({ employee_id: targetID })
                     }
                     res.json({ status: `SUCCESS`, msg: `user deleted with id ${targetID}` })
                 } else {
