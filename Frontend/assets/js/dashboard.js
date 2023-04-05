@@ -190,7 +190,7 @@ const getleavestatus = async () => {
 }
 
 async function delete_account() {
-  const userId=localStorage.getItem(`deleteId`)
+  const userId = localStorage.getItem(`deleteId`)
 
   try {
     const deleteuser = await fetch(`/deleteProfile/${userId}`, {
@@ -295,34 +295,34 @@ const getuser = async () => {
     }
     else {
       const { data } = await user.json()
-      if (data.designation == "principal") {
-        document.querySelector("#Leave-Balance").hidden = true
-        document.querySelector("#Leave-Pending").hidden = true
-
-        alluserByPrincipal()
-
-
-        document.querySelector("#Only_pri").hidden = false
-        document.querySelector("#all-user").hidden = false
-        document.querySelector("#headname").innerHTML = "All User"
-      }
+      if (data.profileCompleted == false) {
+        throw Error('profile not completed')
+      } 
       else {
-        document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
-        document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
-        document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
-        document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
-        getleavestatus()
-        off()
+        if (data.designation == "principal") {
+          alluserByPrincipal()
+          document.querySelector("#Leave-Balance").hidden = true
+          document.querySelector("#Leave-Pending").hidden = true
+          document.querySelector("#Only_pri").hidden = false
+          document.querySelector("#all-user").hidden = false
+          document.querySelector("#headname").innerHTML = "All User"
+        }
+        else {
+          document.querySelector(".casual").innerHTML = data.leave_type.casual_leave
+          document.querySelector(".earned").innerHTML = data.leave_type.earned_leave
+          document.querySelector(".medical").innerHTML = data.leave_type.medical_leave
+          document.querySelector(".ordinary").innerHTML = data.leave_type.ordinary_leave
+          getleavestatus()
+          off()
+        }
+        if (data.designation == "HOD") {
+          alluserByPrincipal()
+          document.querySelector("#all-user").hidden = false
+          document.querySelector('#dephead').innerHTML = data.department
+          getleavestatus()
+          off()
+        }
       }
-      if (data.designation == "HOD") {
-        alluserByPrincipal()
-        document.querySelector("#all-user").hidden = false
-        document.querySelector('#dephead').innerHTML = data.department
-        getleavestatus()
-        off()
-      }
-
-
     }
   }
   catch (error) {
@@ -400,7 +400,7 @@ function closeerrorPopup() {
 
 function deletePopup(id) {
   document.getElementById("deleteProfilePopup").style.display = "block";
-  localStorage.setItem(`deleteId`,id)
+  localStorage.setItem(`deleteId`, id)
 }
 function deletePopupOpen() {
   delete_account()
