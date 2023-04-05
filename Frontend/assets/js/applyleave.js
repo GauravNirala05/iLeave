@@ -8,6 +8,7 @@ function leaveApplingError(status,msg){
 function leaveApplingErrorClose(){
     document.getElementById("leaveApplingError").style.display="none"
 }
+
 const getReferenceUser = async () => {
     try {
         const getRefUser = await fetch('/getReferenceUser', {
@@ -25,14 +26,14 @@ const getReferenceUser = async () => {
             errorHandler(arraryError)
         }
         else {
-            const { data, hits } = await getRefUser.json()
             const ref1 = document.querySelector('.reference1')
             const ref2 = document.querySelector('.reference2')
             const ref3 = document.querySelector('.reference3')
             const ref4 = document.querySelector('.reference4')
             const ref = document.querySelector('.reference')
-
+            
             if (UserDesignation === 'HOD') {
+                const {data, hits } = await getRefUser.json()
                 if (hits == 0) {
                     var opt = document.createElement('option')
                     opt.innerHTML = `--empty--`
@@ -48,10 +49,19 @@ const getReferenceUser = async () => {
                 }
             }
             if (UserDesignation === 'faculty') {
-
-                if (hits == 0) {
+                const {refUserFirstYearHits,dataFirstYear,data, hits } = await getRefUser.json()
+                if (refUserFirstYearHits==0) {
                     var opt1 = document.createElement('option')
                     opt1.innerHTML = `--empty--`
+                }
+                else{
+                    for (item of dataFirstYear) {
+                        var opt1 = document.createElement('option')
+                        opt1.innerHTML = `${item.name}`
+                        ref1.append(opt1)
+                    }
+                }
+                if (hits == 0) {
                     var opt2 = document.createElement('option')
                     opt2.innerHTML = `--empty--`
                     var opt3 = document.createElement('option')
@@ -65,15 +75,12 @@ const getReferenceUser = async () => {
                 }
                 else {
                     for (item of data) {
-                        var opt1 = document.createElement('option')
-                        opt1.innerHTML = `${item.name}`
                         var opt2 = document.createElement('option')
                         opt2.innerHTML = `${item.name}`
                         var opt3 = document.createElement('option')
                         opt3.innerHTML = `${item.name}`
                         var opt4 = document.createElement('option')
                         opt4.innerHTML = `${item.name}`
-                        ref1.append(opt1)
                         ref2.append(opt2)
                         ref3.append(opt3)
                         ref4.append(opt4)
@@ -88,7 +95,6 @@ const getReferenceUser = async () => {
         console.log(error)
     }
 }
-
 if (UserDesignation == 'HOD') {
     const hodLeaveApply = document.querySelector("#ref_hide_hod")
     hodLeaveApply.hidden = false

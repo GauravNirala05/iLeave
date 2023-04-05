@@ -180,7 +180,11 @@ const getReferenceName = async (req, res) => {
             const refUser = getuser.filter((element) => {
                 return element.name != user.name
             })
-            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: refUser.length, data: refUser })
+            const getUserFirstYear = await User.find({ designation: 'faculty' }).select('name')
+            const refUserFirstYear = getUserFirstYear.filter((element) => {
+                return element.name != user.name
+            })
+            return res.status(StatusCodes.OK).json({ status: `SUCCESS`, hits: refUser.length, data: refUser,refUserFirstYearHits:refUserFirstYear.length,dataFirstYear:refUserFirstYear })
         }
         if (designation === 'HOD') {
             const getuser = await User.find({ department: user.department, designation: 'faculty' }).select('name')
