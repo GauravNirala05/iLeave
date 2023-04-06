@@ -1,6 +1,6 @@
-function errorPopup(status,msg) {
-  var errorPopup=document.querySelector("#errorPopup")
-  errorPopup.style.display = "block";
+
+function errorCompletPopup(status,msg) {  
+  document.getElementById("errorPopup").style.display = "block";
   document.getElementById("statuserrortext").innerHTML = status;
   document.getElementById("errorPopupMsg").innerHTML = msg;
 }
@@ -48,13 +48,13 @@ complete_profile.addEventListener('click', async (e) => {
     if (!fetcher.ok) {
       const status = fetcher.status
       const { msg } = await fetcher.json()
-      errorPopup(status,msg)
+      errorCompletPopup(status,msg)
       throw Error(`${msg}`)
     }
     const {status, msg } = await fetcher.json()
     // profile_completed()
     // alert(`${msg}`)
-    errorPopup(status,msg)
+    // openerrorPopup(status,msg)
     setTimeout(() => {
       location.replace("dashboard.html")
     }, 2000);

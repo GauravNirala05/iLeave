@@ -630,7 +630,16 @@ td .status{
   width: 30px;
   height: 30px;
 }
-
+.popuperr {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  z-index: 9999; 
+	background-color: rgba(0, 0, 0, 0.5);
+}
 .popup-content2 {
 	background-color: white;
 	border-radius: 5px;
@@ -850,6 +859,7 @@ footer{
 	color: #333;
 	visibility: hidden;
 	transition: transform 0.4s,top 0,4s;
+
 }
 .open-popup{
 	visibility: visible;
@@ -985,9 +995,10 @@ a:hover{
   height: 200px;
   margin-bottom: 10px;
 }
+/* complete profile error popup*/
 
-.modal{
   
-  position: absolute;
+   .modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
 }
-
