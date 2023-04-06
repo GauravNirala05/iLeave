@@ -21,6 +21,8 @@ const userSchema = new mongoose.Schema({
     },
     mob_no: {
         type: Number,
+        min:1000000000,
+        max:9999999999
     },
     designation: {
         type: String,

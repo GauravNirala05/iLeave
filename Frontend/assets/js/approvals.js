@@ -69,7 +69,6 @@ async function confirmationPopupOpen() {
             const data = await user.json()
             localStorage.removeItem('userID')
             localStorage.removeItem('userApproval')
-            console.log(data)
             location.reload()
 
         }
@@ -179,11 +178,9 @@ const getLeaveApprovals = async () => {
         }
         else {
             const { hits, data } = await user.json()
-            console.log(hits, data);
             const appliedTable = document.querySelector('.userAppliedTable')
             const defaultApprovingText = document.querySelector('#defaultApprovingText')
             defaultApprovingText.hidden = true
-            console.log(hits);
             if (hits == 0) {
                 var trHOD = document.createElement('tr')
                 trHOD.style = `text-align: center;font-size: 25px;`
@@ -591,11 +588,9 @@ const getLeaveApproved = async () => {
         }
         else {
             const { hits, data } = await user.json()
-            console.log(hits, data);
             const approvedTable = document.querySelector('.ApproveduserAppliedTable')
             const defaultApprovedText = document.querySelector('#defaultApprovedText')
             defaultApprovedText.hidden = true
-            console.log(hits);
             if (hits == 0) {
                 var trHOD = document.createElement('tr')
                 trHOD.style = `text-align: center;font-size: 25px;`

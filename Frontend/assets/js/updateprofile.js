@@ -27,15 +27,11 @@ const userData = async () => {
       }
     })
     if (!user.ok) {
-
       const status = user.status
       const { msg } = await user.json()
-      var arraryError = []
-      arraryError.push(status)
-      arraryError.push(msg)
-      errorHandler(arraryError)
+      errorPopup(status,msg)
+      throw Error(msg)
     }
-
     else {
       const { data } = await user.json()
       document.getElementById("entered_name").innerHTML = data.name
@@ -86,17 +82,11 @@ update_profile.addEventListener('click', async (e) => {
     if (!fetcher.ok) {
       const status = fetcher.status
       const { msg } = await fetcher.json()
-      console.log(msg);
-      // throw Error(`${status}`)
-      var arraryError = []
-      arraryError.push(status)
-      arraryError.push(msg)
-      errorHandler(arraryError)
+      errorPopup(status,msg)
+      throw Error(msg)
     }
     const { msg } = await fetcher.json()
-    console.log(msg);
     profile_updated(msg)
-    console.log('updated profile')
     update_name.value = ``
     update_contact.value = ``
     update_designation.value = ``
@@ -204,7 +194,14 @@ async function resetLeavePopupDone() {
   }
 }
 
-
+function errorPopup(status,msg) {  
+  document.getElementById("errorPopup").style.display = "block";
+  document.getElementById("errorStatusCode").innerHTML = status;
+  document.getElementById("errorPopupMsg").innerHTML = msg;
+}
+function errorPopupClose() {
+  document.getElementById("errorPopup").style.display = "none";
+}
 
 
 function openPopup2() {
@@ -214,10 +211,6 @@ function openPopup2() {
 function deletepopup() {
   document.getElementById("deletepopup").style.display = "block";
 }
-
-
-
-
 function confirm_logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('UserDesignation');
