@@ -389,7 +389,7 @@ function alluserdetailsbyDep(dep) {
 
 let popup = document.getElementById("loginModal")
 
-function openerrorPopup() {
+function openCompletePopup() {
   document.getElementById("popup3").style.display = "none";
   document.getElementById("loginModal").style.display = "block";
 }
