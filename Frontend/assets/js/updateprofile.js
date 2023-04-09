@@ -33,6 +33,8 @@ const userData = async () => {
       throw Error(msg)
     }
     else {
+      var setting_link = document.querySelector(".setting");
+      setting_link.classList.add("active");
       const { data } = await user.json()
       document.getElementById("entered_name").innerHTML = data.name
       document.getElementById("entered_email").innerHTML = data.email

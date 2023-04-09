@@ -177,6 +177,8 @@ const getLeaveApprovals = async () => {
             off()
         }
         else {
+            var approval_link = document.querySelector(".approval");
+            approval_link.classList.add("active");
             const { hits, data } = await user.json()
             const appliedTable = document.querySelector('.userAppliedTable')
             const defaultApprovingText = document.querySelector('#defaultApprovingText')

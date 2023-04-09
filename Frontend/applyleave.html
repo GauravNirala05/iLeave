@@ -29,7 +29,10 @@
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
     $(function () {
-      $("#profilecontent").load('profile.html');
+      $("#profilecontent").load("profile.html");
+      $("#footer").load("footer.html");
+      $("#sidebar").load("sidebar.html");
+      $("#logout").load("logout.html");
     });
   </script>
 
@@ -45,18 +48,7 @@
     </div>
   </div>
   
-  <div id="popup" class="popup card-header">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-      <div class="d-flex justify-content-center">
-        <p id="fuck">Are You Sure You Want to Signout!</p>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button onclick="confirm_logout()"><i class="fa fa-sign-out"></i>ok</button>
-        <button onclick="closePopup()">Cancel</button>
-      </div>
-    </div>
-  </div>
+  <div id="logout"></div>
   <div id="popup3" class="popup card-header">
     <div class="popup-content">
       <div class="modal-header d-flex justify-content-center">
@@ -115,55 +107,7 @@
 
   <input type="checkbox" id="nav-toggle">
 
-  <div class="sidebar">
-    <div class="sidebar-brand">
-      <span class="d-flex"><img class="img-logo mr-2" src="images/logo.svg">
-      <img class="img-logo-name" src="images/name.svg" alt=""></span>
-    </div>
-
-    <div class="sidebar-menu">
-      <ul>
-        <li>
-          <a href="dashboard.html">
-            <span class="fa fa-clone"></span>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="applyleave.html" class="active">
-            <span class="fa fa-calendar"></span>
-            <span>Apply Leave</span>
-          </a>
-        </li>
-        </li>
-        <li>
-          <a href="status.html">
-            <span class="fa fa-check-circle-o"></span>
-            <span>Leave Status</span>
-          </a>
-        </li>
-        <li>
-          <a href="approval.html">
-            <span class="fa fa-calendar-check-o"></span>
-            <span>Leave Approval</span>
-          </a>
-        </li>
-        <li>
-          <a href="setting.html">
-            <span class="fa fa-cog"></span>
-            <span>Setting</span>
-          </a>
-        </li>
-        <li>
-          <a class="logout" onclick="openPopup()">
-            <span class="fa fa-sign-out"></span>
-            <span>Sign Out</span>
-          </a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
+  <div id="sidebar"></div>
 
 
   <div class="main-content">
@@ -365,30 +309,7 @@
     </div>
   </div>
 
-  <footer class="footer">
-		<div class="copyright-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-6 col-lg-6 text-center text-lg-left">
-						<div class="copyright-text">
-							<p>Copyright &copy;2023, All Right Reserved <a href="">Gec Bilaspur</a></p>
-						</div>
-					</div>
-					<div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-						<div class="footer-menu">
-							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Terms</a></li>
-								<li><a href="#">Privacy</a></li>
-								<li><a href="#">Policy</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-  </footer>
+  <div id="footer"></div>
   <!-- <script>// Data Picker Initialization
     $('.datepicker').datepicker({
       inline: true

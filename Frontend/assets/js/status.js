@@ -91,6 +91,8 @@ const getleavestatus = async () => {
       const userData = await user.json()
       throw Error(userData.msg)
     }
+    var statussidebar_link = document.querySelector(".statussidebar");
+    statussidebar_link.classList.add("active");
     const { data, hits } = await user.json()
     if (hits == 0) {
       const table = document.querySelector('#leavePending')

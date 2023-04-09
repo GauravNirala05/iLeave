@@ -297,8 +297,10 @@ const getuser = async () => {
       const { data } = await user.json()
       if (data.profileCompleted == false) {
         throw Error('profile not completed')
-      } 
+      }
       else {
+        var dashboard_link = document.querySelector(".dashboard");
+        dashboard_link.classList.add("active");
         if (data.designation == "principal") {
           alluserByPrincipal()
           document.querySelector("#Leave-Balance").hidden = true
@@ -412,3 +414,4 @@ function deletePopupClose() {
 function on() {
   document.getElementById("loginModal").style.display = "block";
 }
+

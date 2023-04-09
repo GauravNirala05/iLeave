@@ -26,6 +26,8 @@ const getReferenceUser = async () => {
             errorHandler(arraryError)
         }
         else {
+            var applyleavesidebar_link = document.querySelector(".applyleavesidebar");
+            applyleavesidebar_link.classList.add("active");
             const ref1 = document.querySelector('.reference1')
             const ref2 = document.querySelector('.reference2')
             const ref3 = document.querySelector('.reference3')
